@@ -19,8 +19,8 @@ def home():
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
 def sell():
-    # return render_template('sell.html')
-    return "Sell Page"
+    return render_template('sell.html')
+    # return "Sell Page"
 
 @life.route('/item', methods=['POST', 'GET'])
 # @check_login

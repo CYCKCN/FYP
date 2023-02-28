@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/user.css">
+    <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <div class="page-frame">
+        <div class="home-top">
+            <button class="go-back" type="submit" name="logout-button" value="logout">
+                <i class="material-icons" style="font-size: 40px; color:black;">chevron_left</i>
+            </button>
+
+            <button class="home-logout" type="submit" name="backward" value="back">
+                <i class="material-icons" style="font-size: 30px; color:black;">menu</i>
+            </button>
+        </div>
+        <div class="main-div">
+          <div class="question-box">
+            <p>Do you have anything to sell?</p>
+            <div class="options">
+              <div class="radio-button">
+                <input type="radio" id="sell1" name="sell" value="true" checked>
+                <label for="sell1">Yes</label>
+                <div style="width:10px;"></div>
+                <input type="radio" id="sell2" name="sell" value="false">
+                <label for="sell2">No</label>
+              </div>
+            </div>
+            <div class="num-option">
+              <p>How many items do you want to sell?</p>
+              <div style="width: 49px"></div>
+              <input class="num-items" type="number">
+            </div>
+            
+          </div>
+          <div class="question-box">
+            <p>Do you have anything to donate?</p>
+            <div class="radio-button">
+              <input type="radio" id="donate1" name="donate" value="all" checked>
+              <label for="donate1">Yes</label>
+              <div style="width:10px;"></div>
+              <input type="radio" id="donate2" name="donate" value="false">
+              <label for="donate2">No</label>
+            </div>
+          </div>
+          <div class="question-box">
+            <p>Estimated time needed for checking at the counter:</p>
+            <p class="estimation">15 minites</p>
+            <p>Please select a date and time-slot to come to our counter with your items!</p>
+            <div class="radio-button">
+              <input type="date" id="item-source" name="item-source" class="button-option">
+              <div style="width:10px;"></div>
+              <input list="time-sources" id="item-source" name="item-source" class="button-option">
+              <datalist id="time-sources">
+                  <option value="Donation">
+                  <option value="Sale">
+              </datalist>
+            </div>
+          </div>
+        </div>
+        <button name="create-contract" value="new-contract" class="create-style">Submit</button>
+    </div>
+  </body>
+</html>
