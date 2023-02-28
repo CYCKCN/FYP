@@ -148,6 +148,10 @@ html, body {
     display: table;
     position: relative;
     border-spacing:10px;
+    display: grid;
+    grid-template-columns: 340px 340px 340px;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 .display-row {
     display: table-row;
@@ -162,7 +166,7 @@ html, body {
     display: table-cell;
 }
 .table-div {
-    background: var(--mainGrey2);
+    background: none;
     position: relative;
     height: fit-content;
     width: 100%;
@@ -171,13 +175,28 @@ html, body {
 }
 .on-sale-block {
     display: table-cell;
-    padding: 5px;
     background: black;
     position: relative;
-    width: 170px;
-    height: 235px;
+    width: 340px;
+    height: 380px;
     border-radius: 10px;
     position: relative;
+}
+.display-image {
+    width: 340px;
+    height: 300px;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin-top: 0px;
+    background-color: gray;
+    border-radius: 10px 10px 0px 0px;
+}
+.display-name {
+    font-family: 'Alatsi';
+    font-size: 14px;
+    color: white;
+    padding-left: 15px;
 }
 .account-style {
     position: relative;
