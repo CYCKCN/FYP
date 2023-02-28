@@ -175,7 +175,7 @@ html, body {
 }
 .on-sale-block {
     display: table-cell;
-    background: black;
+    background: var(--mainGreen3);
     position: relative;
     width: 340px;
     height: 380px;
@@ -189,7 +189,7 @@ html, body {
     left: 0px;
     top: 0px;
     margin-top: 0px;
-    background-color: gray;
+    background-color: none;
     border-radius: 10px 10px 0px 0px;
 }
 .display-name {
