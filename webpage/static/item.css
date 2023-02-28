@@ -36,7 +36,7 @@ html, body {
 .item-image {
     height: 400px;
     width: 100%;
-    background-color: grey;
+    background-color: var(--mainGreen3);
 }
 .user-title {
     font-family: 'Alatsi';
@@ -70,12 +70,52 @@ html, body {
     margin: 20px;
     color: black;
 }
+.question-box {
+    margin-top: 20px;
+    width: 700px;
+    height: 550px;
+    left: 0%;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding-top: 0px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    font-family: 'Alatsi';
+    color: black;   
+    background: none;
+    display: flex;
+    flex-direction: column;
+}
+.seller-info {
+    margin-top: 20px;
+    width: 300px;
+    height: 550px;
+    right: 0%;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding-top: 0px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    font-family: 'Alatsi';
+    color: black;   
+    background: none;
+    display: flex;
+    flex-direction: column;
+}
 .scroll-div {
     margin-top: 50px;
     position: relative;
     overflow-y: scroll;
     height: 794px;
-    background: var(--mainGreen2);
+    background: none;
+}
+.info-pack {
+    display: flex;
+    flex-direction: row;
 }
 .sticky {
     position: fixed;
