@@ -1,69 +1,95 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/static/stylesheet.css">
+    <link rel="stylesheet" href="/static/home.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
 
   <body>
     <div class="page-frame">
-        
         <div class="home-top">
-            <span class="home-hi">Hi,</span>
-            <span class="home-username">Staff name</span>
+            <p class="user-title">LIFE 2</p>
+
+            <button class="home-logout" type="submit" name="Sell" value="Sell">
+                <p class="welcoming">Sell</p>
+            </button>
+            
         </div>
-
-        <button class="home-logout" type="submit" name="logout-button" value="logout">
-            <i class="material-icons" style="font-size: 30px; color:white;">exit_to_app</i>
-        </button>
-
-        <div class="bottom-div">
-            <div class="home-bottom-bar">
-                <div id="bar-icons-div">
-                    <button type="submit" name="items-page" value="items">
-                        <i class="material-icons home-icons" style="font-size: 60px;">storage</i>
-                        <span class="home-subtitle">Items</span>
-                    </button>
-                    <button type="submit" name="contract-page" value="contract">
-                        <i class="material-icons home-icons" style="font-size: 60px;">library_books</i>
-                        <span class="home-subtitle">Contract</span>
-                    </button>
-                    <button type="submit" name="reservation-page" value="reservation">
-                        <i class="material-icons home-icons" style="font-size: 60px;">access_time</i> 
-                        <span class="home-subtitle">Reservation</span>
-                    </button>
+        <div class="scroll-div">
+            <br/><br/>
+            <p class="welcoming">Wellcome to LIFE2!</p>
+            <p class="welcoming">Collection period is OPEN from Dec 1 to Jan 15!</p>
+            <p class="welcoming">And feel free to scroll down and browse the second-hand items that are currently on sale!</p>
+            <br/><br/>
+            <div class="header" id="myHeader">
+                <button class="account-style">Contribute My Items</button>
+                <br/>
+                <div class="on-sale-div">
+                    <div class="search-div">
+                        <input class="search" type="search" name="search-keyword" placeholder="Search now" required />
+                        <i class="material-icons icon-search" style="font-size: 20px;">search</i>
+                    </div>
+        
+                    <div class="filter-div">
+                        <select class="button-option">
+                            <option value="Donation" selected>Category</option>
+                            <option value="Sale">Sale</option>
+                        </select>
+                        <select class="button-option">
+                            <option value="Donation" selected>Price</option>
+                            <option value="Sale">Sale</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-
-            <div class="home-reservation">
-                <span class="home-head">Coming Reservation</span>
-                <button class="give-reservation" type="submit" name="in-details-page" value="in-details">
-                    <div class="icon-div">
-                        <i class="material-icons icon-in" style="font-size: 40px;">archive</i>
-                        <span class="icon-txt1">IN</span>
+            <div class="table-div">
+                <div class="display-table">
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
                     </div>
-                    <div class="info-div">
-                        <span class="reservation-name">Alice07 (20676790)</span>
-                        <span class="reservation-time">2022.12.15 18:00-18:30</span>
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
                     </div>
-                </button>
-                <button class="give-reservation" type="submit" name="out-details-page" value="out-details">
-                    <div class="icon-div">
-                        <i class="material-icons icon-out" style="font-size: 40px;">unarchive</i>
-                        <span class="icon-txt2">OUT</span>
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
                     </div>
-                    <div class="info-div">
-                        <span class="reservation-name">Alice07 (20676790)</span>
-                        <span class="reservation-time">2022.12.15 18:00-18:30</span>
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
                     </div>
-                </button>
-                
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
+                    </div>
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
+                    </div>
+                    <div class="display-row">
+                        <div class="on-sale-block"></div>
+                        <div class="on-sale-block"></div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
-
     </div>
-  </body>
+    </body>
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+        }
+    </script>
 </html>
