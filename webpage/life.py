@@ -9,12 +9,18 @@ life = Blueprint('life',__name__)
 @life.route('/home', methods=['POST', 'GET'])
 # @check_login
 def home():
+    if request.method == 'POST':
+        submit = request.form.get('Sell')
+        print(submit)
+        if submit == "Sell": 
+            return redirect(url_for('life.sell'))
     return render_template('home.html')
 
-@life.route('/newlife', methods=['POST', 'GET'])
+@life.route('/sell', methods=['POST', 'GET'])
 # @check_login
-def newlife():
-    return render_template('newlife.html')
+def sell():
+    # return render_template('sell.html')
+    return "Sell Page"
 
 @life.route('/item', methods=['POST', 'GET'])
 # @check_login
