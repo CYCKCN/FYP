@@ -60,6 +60,9 @@ class ItemDB():
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
+    def getItemList(self):
+        return self.db.find()
+
 
 class OrderDB():
     def __init__(self, db):

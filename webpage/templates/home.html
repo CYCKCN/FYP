@@ -46,12 +46,12 @@
 
             <div class="table-div">
                 <div class="display-table">
-                    {% for k,v in itemInfo.items() %}
-                    <a href="item/254278771399">
+                    {% for k, v in itemInfo.items() %}
+                    <a href="item/{{v.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
-                            <img src={{v.item_image}} width="340" class="display-image"/>
-                            <p class="display-name">{{v.item_name}}</p>
-                            <p class="display-description">{{v.item_description}}</p>
+                            <img src={{v.itemImg}} width="340" class="display-image"/>
+                            <p class="display-text">{{v.itemName}}</p>
+                            <p class="display-text">{{v.itemInfo}}</p>
                         </div>
                     </a>
                     {% endfor %}

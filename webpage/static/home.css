@@ -2,6 +2,7 @@ html, body {
     min-height: 100%;
     min-width: 100%;
 }
+a { color: inherit; } 
 .page-frame {
     opacity: 1;
     position: relative;
@@ -192,7 +193,7 @@ html, body {
     background-color: none;
     border-radius: 10px 10px 0px 0px;
 }
-.display-name {
+.display-text {
     font-family: 'Alatsi';
     font-size: 14px;
     color: white;
