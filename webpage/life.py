@@ -19,6 +19,11 @@ def home():
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
 def sell():
+    if request.method == 'POST':
+        home = request.form.get('Home')
+        # print(submit)
+        if home == "Home": 
+            return redirect(url_for('life.home'))
     return render_template('sell.html')
     # return "Sell Page"
 
