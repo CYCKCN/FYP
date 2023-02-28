@@ -1,0 +1,417 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+  }
+  .page-frame-login {
+    width: 390px;
+    height: 844px;
+    background: white;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .page-frame {
+    width: 390px;
+    height: 844px;
+    background: var(--mainGreen2);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .home-top {
+    width: 322px;
+    position: absolute;
+    height: 100px;
+    left: 34px;
+    top: 42px;
+  }
+  .home-logout {
+    width: 50px;
+    position: absolute;
+    height: 50px;
+    top: 50px;
+    right: 30px;
+    background: none;
+    border: none;
+  }
+  .home-icons {
+    color: var(--mainOrgange);
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .reservation-name {
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+  }
+  .reservation-date {
+    font-family: 'Alatsi';
+    font-size: 14px;
+    color: black;
+  }
+  .reservation-time {
+    font-family: 'Alatsi';
+    font-size: 24px;
+    color: black;
+  }
+  .info-div {
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    width: 290px;
+    padding-left: 10px;
+    padding-top: 25px;
+    text-align: left;
+  }
+  #bar-icons-div {
+    position: absolute;
+    width: 350px;
+    left: 10px;
+    top: 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+  }
+  #bar-icons-div button {
+    margin-left: 12px;
+    padding-top: 5px;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 10px;
+    border: none;
+  }
+  .home-subtitle {
+    font-family: 'Alatsi';
+    font-size: 12px;
+    color: black;
+  }
+  .subtitle1 {
+    margin-left: 35%;
+  }
+  .subtitle2 {
+    margin-left: 27%;
+  }
+  .subtitle3 {
+    margin-left: 20%;
+  }
+  .icon1 {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 20px;
+  }
+  .home-bottom-bar {
+    position: absolute;
+    width: 370px;
+    left: 10px;
+    top: 20px;
+    height: 50px;
+  }
+  .home-reservation {
+    position: absolute;
+    width: 370px;
+    left: 10px;
+    top: 150px;
+    height: 400px;
+  }
+  .single-reservation {
+    width: 360px;
+    position: relative;
+    top: 0px;
+    height: 100px;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+  }
+  .give-reservation {
+    display: flex;
+    flex-direction: row;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 100px;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+    border: none;
+  }
+  .take-reservation {
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 100px;
+    background: var(--mainBlue2);
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+  }
+  .icon-in {
+    color: var(--mainGreen2);
+  }
+  .icon-out {
+    color: var(--mainBlue2);
+  }
+  .icon-txt0 {
+    color: white;
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .icon-txt1 {
+    color: var(--mainGreen2);
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .icon-txt2 {
+    color: var(--mainBlue2);
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .icon-div {
+    width: 40px;
+    height: 90px;
+    position: relative;
+    top: 0px;
+    padding-top: 20px;
+    left: 10px;
+    margin-right: 25px;
+  }
+  .home-head{
+    color:black;
+    font-family: 'Alatsi';
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .bottom-div {
+    width: 390px;
+    height: 718px;
+    background: var(--mainGrey2);
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    border-radius: 40px 40px 0px 0px;
+  }
+  .login-button {
+    width: 328px;
+    height: 40px;
+    font-family: 'Alatsi';
+    color: white;
+    background: var(--mainGreen1);
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    top: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  .logo {
+    width: 156px;
+    height: 96px;
+    opacity: 1;
+    position: absolute;
+    top: 216px;
+    left: 135px;
+    overflow: hidden;
+  }
+  .logo-life {
+    width: 139px;
+    color: var(--mainGreen1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-family: 'Alatsi';
+    font-weight: Bold;
+    font-size: 64px;
+    opacity: 1;
+    text-align: center;
+  }
+  .logo-2 {
+    width: 16px;
+    color: var(--mainGreen1);
+    position: absolute;
+    top: 0px;
+    left: 110px;
+    font-family: 'Alatsi';
+    font-weight: Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: center;
+  }
+  .login-div {
+    width: 328px;
+    height: 300px;
+    opacity: 1;
+    position: absolute;
+    top: 345px;
+    left: 30px;
+    overflow: hidden;
+  }
+  .login-input1 {
+    width: 328px;
+    height: 48px;
+    font-family: 'Alatsi';
+    color: var(--mainGrey1);
+    background: none;
+    padding-left: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 0.6px solid var(--mainBlue1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .login-input2 {
+    width: 328px;
+    height: 48px;
+    font-family: 'Alatsi';
+    color: var(--mainGrey1);
+    background: none;
+    padding-left: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 59px;
+    left: 0px;
+    border: 0.6px solid var(--mainBlue1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .forget-password {
+    width: 150px;
+    color: var(--mainGreen1);
+    position: absolute;
+    top: 111px;
+    left: 221px;
+    font-family: 'Alatsi';
+    border: none;
+    background: none;
+    font-weight: Regular;
+    font-size: 13px;
+    opacity: 1;
+    text-align: left;
+  }
+  .bottom-bar {
+    width: 390px;
+    height: 140px;
+    background: var(--mainGreen2);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden;
+  }
+  .abondon1 {
+    width: 390px;
+    height: 140px;
+    background: var(--mainGreen2);
+    opacity: 0.8500000238418579;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .bottom-head {
+    width: 242px;
+    color: white;
+    position: absolute;
+    top: 24px;
+    left: 29px;
+    font-family: 'Alatsi';
+    font-weight: Bold;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .home-hi {
+    width: 343px;
+    color: white;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    font-family: 'Alatsi';
+    font-weight: Light;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+  }
+  .home-username {
+    width: 343px;
+    color: white;
+    position: absolute;
+    top: 24px;
+    left: 10px;
+    font-family: 'Alatsi';
+    font-weight: Light;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .bottom-body {
+    width: 343px;
+    color: white;
+    position: absolute;
+    top: 65px;
+    left: 29px;
+    font-family: 'Alatsi';
+    font-weight: Light;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+  }
+  .top-bar {
+    width: 70px;
+    height: 8px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 288px;
+    overflow: hidden;
+  }
+  .circle1 {
+    border-radius: 50%;
+    position: absolute;
+    width: 445px;
+    height: 406px;
+    left: -37px;
+    top: -210px;
+    background: #4B8173;
+    opacity: 0.2;
+  }
+  .circle2 {
+    border-radius: 50%;
+    position: absolute;
+    width: 342px;
+    height: 342px;
+    left: 207px;
+    top: -175px;
+    background: #4B8173;
+    opacity: 0.2;
+  }
+
+  :root {
+    --mainGreen1: #274E45;
+    --mainGreen2: #4B8173;
+    --mainGreen3: #B1CFC9;
+    --mainBlue1: #222E3C;
+    --mainBlue2: #455D74;
+    --mainOrgange: #F26542;
+    --mainYellow: #FEE44C;
+    
+    --mainGrey1: #6C6A6A;
+    --mainGrey2: #F2F2F2;
+  }
