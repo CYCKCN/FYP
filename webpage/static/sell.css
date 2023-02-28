@@ -1159,6 +1159,22 @@
     margin-left: 10px;
     padding-top: 130px;
   }
+  .image-display {
+    position: absolute;
+    top: 220px;
+    left: 120px;
+    text-align: center;
+    line-height: 40px;
+    border-color: var(--mainGreen1);
+    background: none;
+    color: black;
+    font-family: 'Alatsi';
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+  }
   .user-title {
       font-family: 'Alatsi';
       font-size: 20px;

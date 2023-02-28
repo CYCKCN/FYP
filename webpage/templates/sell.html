@@ -19,8 +19,8 @@
         </div>
         
         <label for="file-upload" class="item-add-style">Upload Image</label>
-        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)">
-        <p><img id="output" width="200"/></p>
+        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+        <p class="image-display"><img id="output" width="200"/></p>
         <script>
             var loadFile = function(event) {
                 var image = document.getElementById('output');
