@@ -8,12 +8,13 @@
 
   <body>
     <form method="POST">
-    <div class="page-frame">
-        <div class="home-top">
-            <div class="top-buttons">
-                    <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
-                    <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
+        <div class="page-frame">
+            <div class="home-top">
+                <div class="top-buttons">
+                        <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                        <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                        <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
+                </div>
             </div>
         </div>
         
@@ -28,30 +29,28 @@
         </script>
         
 
-        <div class="question-box">
-            <label for="Name">Name</label>
-            <input class="num-items" type="text" name="Name">
-            <br/>
-            <label for="Price">Price</label>
-            <input class="num-items" type="number" name="Price">
-            <br/>
-            <label for="Category">Category</label>
-            <select class="button-option" name="Category">
-                <option value="Clothes" selected>Clothes</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Toy">Toy</option>
-            </select>
-            <br/>
-            <label for="Description">Description</label>
-            <input class="description-block" type="text" name="Description">
+            <div class="question-box">
+                <label for="Name">Name</label>
+                <input class="num-items" type="text" name="Name">
+                <br/>
+                <label for="Price">Price</label>
+                <input class="num-items" type="number" name="Price">
+                <br/>
+                <label for="Category">Category</label>
+                <select class="button-option" name="Category">
+                    <option value="Clothes" selected>Clothes</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Toy">Toy</option>
+                </select>
+                <br/>
+                <label for="Description">Description</label>
+                <input class="description-block" type="text" name="Description">
 
-            <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
+                <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
+                
+            </div>      
             
         </div>
-
-          <button name="create-contract" value="new-contract" class="create-style">Submit</button>        
-        
-    </div>
     </form>
   </body>
 </html>
