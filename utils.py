@@ -10,6 +10,11 @@ time = ["0800", "0815", "0830", "0845", "0900", "0915", "0930", "0945", "1000", 
         "1700", "1715", "1730", "1745", "1800"]
 
 IDLENGTH = 12 
+UPLOAD_FOLDER = './static/data'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 class User(UserMixin):
     def __init__(self, id, name, auth):
