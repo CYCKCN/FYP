@@ -1,54 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="/static/sell.css">
-    <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  </head>
+    <head>
+        <link rel="stylesheet" href="/static/sell.css">
+        <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
 
-  <body>
-    <form method="POST" enctype="multipart/form-data">
-        <div class="page-frame">
-            <div class="home-top">
-                <div class="top-buttons">
-                        <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                        <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
-                        <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
+    <body>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="page-frame">
+                <div class="home-top">
+                    <div class="top-buttons">
+                            <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                            <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                            <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <label for="file-upload" class="item-add-style">Upload Image</label>
-        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
-        <p class="image-display"><img id="output" width="200"/></p>
-        <script>
-            var loadFile = function(event) {
-                var image = document.getElementById('output');
-                image.src=URL.createObjectURL(event.target.files[0]);
-            };
-        </script>
-        
-            <div class="question-box">
-                <label for="Name">Name</label>
-                <input class="num-items" type="text" name="Name">
-                <br/>
-                <label for="Price">Price</label>
-                <input class="num-items" type="number" name="Price">
-                <br/>
-                <label for="Category">Category</label>
-                <select class="button-option" name="Category">
-                    <option value="Clothes" selected>Clothes</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Toy">Toy</option>
-                </select>
-                <br/>
-                <label for="Description">Description</label>
-                <input class="description-block" type="text" name="Description">
-                <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
-                
-            </div>      
-            
-        </div>
-    </form>
-  </body>
+                <label for="file-upload" class="item-add-style">Upload Image</label>
+                <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+                <p class="image-display"><img id="output" width="200"/></p>
+                <div class="question-box">
+                    <label for="Name">Name</label>
+                    <input class="num-items" type="text" name="Name">
+                    <br/>
+                    <label for="Price">Price</label>
+                    <input class="num-items" type="number" name="Price">
+                    <br/>
+                    <label for="Category">Category</label>
+                    <select class="button-option" name="Category">
+                        <option value="Clothes" selected>Clothes</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Toy">Toy</option>
+                    </select>
+                    <br/>
+                    <label for="Description">Description</label>
+                    <input class="description-block" type="text" name="Description">
+                    <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button> 
+                </div>  
+            </div>    
+        </form>
+    </body>  
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src=URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 </html>
