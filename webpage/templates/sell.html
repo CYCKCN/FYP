@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="page-frame">
             <div class="home-top">
                 <div class="top-buttons">
@@ -16,10 +16,18 @@
                         <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
                 </div>
             </div>
-            
-            <label for="file-upload" class="item-add-style">Upload Image</label>
-            <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
-            
+        </div>
+        
+        <label for="file-upload" class="item-add-style">Upload Image</label>
+        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)">
+        <p><img id="output" width="200"/></p>
+        <script>
+            var loadFile = function(event) {
+                var image = document.getElementById('output');
+                image.src=URL.createObjectURL(event.target.files[0]);
+            };
+        </script>
+        
 
             <div class="question-box">
                 <label for="Name">Name</label>

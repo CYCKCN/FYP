@@ -4,10 +4,12 @@ from flask import Flask, redirect, url_for
 from flask_login import LoginManager
 
 from db import connection, accountdb, User
+from utils import UPLOAD_FOLDER
 
 class ConfigClass(object):
     SECRET_KEY = secrets.token_hex(16)
-    USER_APP_NAME = "LIFE2" 
+    USER_APP_NAME = "LIFE2"
+    UPLOAD_FOLDER = UPLOAD_FOLDER
     # USER_ENABLE_EMAIL = False     
     # USER_ENABLE_USERNAME = True  
     # USER_REQUIRE_RETYPE_PASSWORD = False  
