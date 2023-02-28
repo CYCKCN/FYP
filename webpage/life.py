@@ -11,7 +11,7 @@ life = Blueprint('life',__name__)
 def home():
     if request.method == 'POST':
         submit = request.form.get('Sell')
-        print(submit)
+        # print(submit)
         if submit == "Sell": 
             return redirect(url_for('life.sell'))
     return render_template('home.html')
