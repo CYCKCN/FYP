@@ -1,6 +1,7 @@
+html, body {
+    min-height: 100%;
+}
 .page-frame {
-    width: 1440px;
-    height: 1024px;
     opacity: 1;
     position: relative;
     top: 0px;
@@ -10,7 +11,6 @@
     flex-direction: column;
 }
 .home-top {
-    width: 1440px;
     position: absolute;
     height: 50px;
     left: 0px;
@@ -32,6 +32,10 @@
     top: 10px;
     background: none;
     border: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin: 20px;
+    color: black;
 }
 .welcoming {
     font-family: 'Alatsi';
@@ -40,7 +44,6 @@
     color: black;
 }
 .scroll-div {
-    width: 1440px;
     margin-top: 50px;
     position: relative;
     overflow-y: scroll;
@@ -89,7 +92,6 @@
     margin-top: 6px;
 }
 .filter-div {
-    width: 1440px;
     height: 30px;
     position: relative;
     margin-top: 10px;
@@ -120,7 +122,6 @@
     position: relative;
 }
 .on-sale-div {
-    width: 1440px;
     background: var(--mainGrey2);
     position: relative;
     border-radius: 10px 10px 0px 0px;
@@ -129,7 +130,6 @@
     display: table-cell;
 }
 .table-div {
-    width: 1440px;
     background: var(--mainGrey2);
     position: relative;
     height: fit-content;
