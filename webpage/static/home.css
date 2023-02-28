@@ -1,5 +1,6 @@
 html, body {
     min-height: 100%;
+    min-width: 100%;
 }
 .page-frame {
     opacity: 1;
@@ -12,12 +13,25 @@ html, body {
 }
 .home-top {
     position: absolute;
+    min-width: 100%;
     height: 50px;
     left: 0px;
     top: 0px;
     padding-left: 0px;
-    padding-top: 5px;
+    padding-top: 0px;
     background: white;
+}
+.top-buttons {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    right: 0%;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row-reverse;
 }
 .user-title {
     font-family: 'Alatsi';
@@ -30,6 +44,14 @@ html, body {
     position: absolute;
     right: 10px;
     top: 10px;
+    background: none;
+    border: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin: 20px;
+    color: black;
+}
+.individual-button {
     background: none;
     border: none;
     font-family: 'Alatsi';
@@ -59,7 +81,7 @@ html, body {
     display: none;
 }
 .search-div {
-    width: 370px;
+    width: 390px;
     height: 30px;
     position: relative;
     left: 10px;
