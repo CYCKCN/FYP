@@ -50,7 +50,7 @@ class ItemDB():
     def cleardb(self):
         self.db.delete_many({})
 
-    def findUser(self, itemID):
+    def findItem(self, itemID):
         return self.db.find_one({"itemID": itemID})
     
     def createItem(self, owner, name, price, category, info, image_path):

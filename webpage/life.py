@@ -58,5 +58,12 @@ def sell():
 
 @life.route('/item/<itemID>', methods=['POST', 'GET'])
 # @check_login
-def item():
-    return render_template('item.html', Name="test", Category="202", Price="202", Description="test")
+def item(itemID):
+    item = itemdb.findItem(itemID)
+    if item:
+        name, cate, price, des, path = item['itemName'], item['itemCate'], item['itemPrice'], item['itemInfo'], item['itemImg']
+    else:
+        return "Record not found", 400
+    
+    return render_template('item.html', item_name=name, item_category=cate, item_price=price, item_description=des, \
+                           item_image="../../" + path[8:], item_seller_name="default", item_pickup_info="default")
