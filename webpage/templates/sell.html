@@ -21,49 +21,28 @@
         <label for="file-upload" class="item-add-style">Upload Image</label>
         <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
         
-        <div class="main-div">
-            <div class="question-box">
-                <input class="num-items" type="text" name="Name">
-                <br/>
-                <input class="num-items" type="number" name="Price">
-                <br/>
-                <select class="button-option" name="Category">
-                    <option value="Donation" selected>Category</option>
-                    <option value="Sale">Clothes</option>
-                    <option value="Sale">Furniture</option>
-                    <option value="Sale">Toy</option>
-                </select>
-                <br/>
-                <input class="num-items" type="text" name="Description">
-            </div>
 
-          <div class="question-box">
-            
-            <p>Do you have anything to donate?</p>
-            <div class="radio-button">
-              <input type="radio" id="donate1" name="donate" value="all" checked>
-              <label for="donate1">Yes</label>
-              <div style="width:10px;"></div>
-              <input type="radio" id="donate2" name="donate" value="false">
-              <label for="donate2">No</label>
-            </div>
-          </div>
-          <div class="question-box">
-            <p>Estimated time needed for checking at the counter:</p>
-            <p class="estimation">15 minites</p>
-            <p>Please select a date and time-slot to come to our counter with your items!</p>
-            <div class="radio-button">
-              <input type="date" id="item-source" name="item-source" class="button-option">
-              <div style="width:10px;"></div>
-              <input list="time-sources" id="item-source" name="item-source" class="button-option">
-              <datalist id="time-sources">
-                  <option value="Donation">
-                  <option value="Sale">
-              </datalist>
-            </div>
-          </div>
+        <div class="question-box">
+            <label for="Name">Name</label>
+            <input class="num-items" type="text" name="Name">
+            <br/>
+            <label for="Price">Price</label>
+            <input class="num-items" type="number" name="Price">
+            <br/>
+            <label for="Category">Category</label>
+            <select class="button-option" name="Category">
+                <option value="Clothes" selected>Clothes</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Toy">Toy</option>
+            </select>
+            <br/>
+            <label for="Description">Description</label>
+            <input class="description-block" type="text" name="Description">
+
+            <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
         </div>
-        <button name="create-contract" value="new-contract" class="create-style">Submit</button>
+
+        
         
     </div>
   </body>
