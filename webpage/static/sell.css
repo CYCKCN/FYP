@@ -1,11 +1,39 @@
 * {
     box-sizing: border-box;
   }
+
+  html {
+    min-height: 100%;
+    min-width: 100%;
+  }
   body {
+    min-height: 100%;
+    min-width: 100%;
     font-size: 14px;
   }
   input[type=checkbox] {
     display: none;
+  }
+  .top-buttons {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    right: 0%;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .individual-button {
+    background: none;
+    border: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin: 20px;
+    color: black;
   }
   .radio-button {
       height: 40px;
@@ -87,18 +115,18 @@
     left: 0px;
     overflow: hidden;
   }
+
   .page-frame {
-    width: 390px;
-    height: 844px;
-    background: var(--mainGrey2);
     opacity: 1;
     position: relative;
     top: 0px;
     left: 0px;
     overflow: hidden;
-  }
+    display: flex;
+    flex-direction: column;
+}
   .home-top {
-    width: 390px;
+    min-width: 100%;
     position: absolute;
     height: 50px;
     left: 0px;
@@ -121,6 +149,7 @@
   .main-div {
     width: 390px;
     height: fit-content;
+    left: 400px;
     margin-top: 60px;
     position: relative;
     background: none;
