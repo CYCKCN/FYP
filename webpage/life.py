@@ -48,9 +48,9 @@ def sell():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
-
+        print(image_path)
         if submit == "new-contract":
-            # itemdb.createItem('-1', name, price, category, info, image_path)
+            itemdb.createItem('-1', name, price, category, info, image_path)
             return redirect(url_for('life.home'))
 
     return render_template('sell.html')
