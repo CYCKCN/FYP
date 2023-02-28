@@ -10,7 +10,7 @@ time = ["0800", "0815", "0830", "0845", "0900", "0915", "0930", "0945", "1000", 
         "1700", "1715", "1730", "1745", "1800"]
 
 IDLENGTH = 12 
-UPLOAD_FOLDER = './static/data'
+UPLOAD_FOLDER = 'D:\\Lessons\\2023 Spring\\FYP\\webpage\\static\\data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 def allowed_file(filename):
