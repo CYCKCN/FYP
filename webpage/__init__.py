@@ -12,11 +12,11 @@ class ConfigClass(object):
     # USER_ENABLE_USERNAME = True  
     # USER_REQUIRE_RETYPE_PASSWORD = False  
 
-staffweb = Flask(__name__)
-staffweb.config.from_object(ConfigClass)
+webpage = Flask(__name__)
+webpage.config.from_object(ConfigClass)
 
 login_manager = LoginManager()
-login_manager.init_app(staffweb)
+login_manager.init_app(webpage)
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -24,12 +24,13 @@ def user_loader(user_id):
     if not account: return None
     return User(id=account["accountID"], name=account["accountName"], auth=account["accountAuth"])
 
-from .staff import staff
+
 from .auth import auth
+from .life import life
 
-staffweb.register_blueprint(staff, url_prefix='/staff')
-staffweb.register_blueprint(auth, url_prefix='/auth')
+webpage.register_blueprint(life, url_prefix='/')
+webpage.register_blueprint(auth, url_prefix='/auth')
 
-@staffweb.route("/")
+@webpage.route("/")
 def main():
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('life.home'))
