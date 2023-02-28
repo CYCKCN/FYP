@@ -19,8 +19,8 @@
         </div>
         
         <label for="file-upload" class="item-add-style">Upload Image</label>
-        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)">
-        <p><img id="output" width="200"/></p>
+        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+        <p class="image-display"><img id="output" width="200"/></p>
         <script>
             var loadFile = function(event) {
                 var image = document.getElementById('output');
@@ -28,7 +28,6 @@
             };
         </script>
         
-
             <div class="question-box">
                 <label for="Name">Name</label>
                 <input class="num-items" type="text" name="Name">
@@ -45,7 +44,6 @@
                 <br/>
                 <label for="Description">Description</label>
                 <input class="description-block" type="text" name="Description">
-
                 <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
                 
             </div>      

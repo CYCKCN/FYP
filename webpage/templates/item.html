@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/item.css">
+    <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <div class="page-frame">
+        <div class="home-top">
+            <div class="top-buttons">
+                <form method="POST">
+                    <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
+                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                    <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
+                    <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="scroll-div">
+            <p class="item-image"><img id="output" width="200"/></p>
+            <div class="info-pack">
+                <div class="question-box">
+                    <p class="welcoming">{{Name}}</p>
+                    <p class="welcoming">{{Category}}</p>
+                    <p class="welcoming">{{Price}}</p>
+                    <p class="welcoming">{{Description}}</p>
+                </div>   
+                <div class="seller-info">
+                    <p class="welcoming">Seller Name</p>
+                    <p class="welcoming">Pickup</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </body>
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+        }
+    </script>
+</html>
