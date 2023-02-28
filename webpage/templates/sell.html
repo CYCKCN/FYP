@@ -7,23 +7,21 @@
   </head>
 
   <body>
-    <div class="page-frame">
-        <div class="home-top">
-            <div class="top-buttons">
-                <form method="POST">
-                    <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
-                    <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
-                </form>
+    <form method="POST">
+        <div class="page-frame">
+            <div class="home-top">
+                <div class="top-buttons">
+                        <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                        <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                        <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
+                </div>
             </div>
-        </div>
-        
-        <label for="file-upload" class="item-add-style">Upload Image</label>
-        <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
-        
+            
+            <label for="file-upload" class="item-add-style">Upload Image</label>
+            <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
+            
 
-        <div class="question-box">
-            <form method="POST">
+            <div class="question-box">
                 <label for="Name">Name</label>
                 <input class="num-items" type="text" name="Name">
                 <br/>
@@ -40,14 +38,11 @@
                 <label for="Description">Description</label>
                 <input class="description-block" type="text" name="Description">
 
-            </form>  
+                <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
+                
+            </div>      
+            
         </div>
-
-        <form method="POST">
-            <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
-        </form>
-        
-        
-    </div>
+    </form>
   </body>
 </html>
