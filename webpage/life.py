@@ -65,5 +65,10 @@ def item(itemID):
     else:
         return "Record not found", 400
     
+    if request.method == 'POST':
+        home = request.form.get('Home')
+        if home == "Home": 
+            return redirect(url_for('life.home'))
+
     return render_template('item.html', item_name=name, item_category=cate, item_price=price, item_description=des, \
                            item_image="../../" + path[8:], item_seller_name="default", item_pickup_info="default")
