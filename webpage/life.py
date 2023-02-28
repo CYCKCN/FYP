@@ -14,6 +14,14 @@ life = Blueprint('life',__name__)
 @life.route('/home', methods=['POST', 'GET'])
 # @check_login
 def home():
+    itemList = itemdb.getItemList()
+    itemInfo = {}
+    counter = 0
+    for item in itemList:
+        itemInfo[str(counter)] = item
+        itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][8:]
+        counter += 1
+    print(itemInfo)
     if request.method == 'POST':
         submit = request.form.get('Sell')
 
@@ -21,7 +29,7 @@ def home():
         if submit == "Sell": 
             return redirect(url_for('life.sell'))
 
-    return render_template('home.html')
+    return render_template('home.html', itemInfo=itemInfo)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
