@@ -67,8 +67,13 @@ def item(itemID):
     
     if request.method == 'POST':
         home = request.form.get('Home')
+        sell = request.form.get('Sell')
+
         if home == "Home": 
             return redirect(url_for('life.home'))
+        
+        if sell == "Sell": 
+            return redirect(url_for('life.sell'))
 
     return render_template('item.html', item_name=name, item_category=cate, item_price=price, item_description=des, \
                            item_image="../../" + path[8:], item_seller_name="default", item_pickup_info="default")
