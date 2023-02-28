@@ -23,18 +23,17 @@
         
         <div class="main-div">
             <div class="question-box">
+              <form method="POST">
                 <input class="num-items" type="text" name="Name">
-                <br/>
                 <input class="num-items" type="number" name="Price">
-                <br/>
                 <select class="button-option" name="Category">
-                    <option value="Donation" selected>Category</option>
-                    <option value="Sale">Clothes</option>
-                    <option value="Sale">Furniture</option>
-                    <option value="Sale">Toy</option>
+                    <option value="Category" selected>Category</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Toy">Toy</option>
                 </select>
-                <br/>
                 <input class="num-items" type="text" name="Description">
+              </form>
             </div>
 
           <div class="question-box">
@@ -63,7 +62,10 @@
             </div>
           </div>
         </div>
-        <button name="create-contract" value="new-contract" class="create-style">Submit</button>
+        <form method="POST">
+          <button name="create-contract" value="new-contract" class="create-style">Submit</button>
+        </form>
+        
         
     </div>
   </body>

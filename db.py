@@ -1,6 +1,6 @@
 
 from pymongo.mongo_client import MongoClient
-from utils import User, Account
+from utils import Account, User, Item, randomID, IDLENGTH
 
 from werkzeug.security import generate_password_hash, check_password_hash
     
@@ -46,6 +46,20 @@ class AccountDB():
 class ItemDB():
     def __init__(self, db):
         self.db = db["item"]
+
+    def cleardb(self):
+        self.db.delete_many({})
+
+    def findUser(self, itemID):
+        return self.db.find_one({"itemID": itemID})
+    
+    def createItem(self, owner, name, price, category, info, image_path):
+        itemID = randomID(IDLENGTH)
+        while (self.db.find_one({"itemID": itemID})): itemID = randomID(IDLENGTH)
+        newItem = Item(itemID, owner, name, price, category, info, image_path)
+        self.db.insert_one(newItem.__dict__)
+        return "Info: New Item Added"
+
 
 class OrderDB():
     def __init__(self, db):
