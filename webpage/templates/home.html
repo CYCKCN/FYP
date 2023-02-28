@@ -21,28 +21,28 @@
 
         <div class="scroll-div">
             <div class="header" id="myHeader">
-                <br/>
-                <p class="welcoming">Coming Soon...</p>
-                <button class="account-style">Contribute My Items</button>
-                <br/>
-                <div class="on-sale-div">
-                    <div class="search-div">
-                        <input class="search" type="search" name="search-keyword" placeholder="Search now" required />
-                        <i class="material-icons icon-search" style="font-size: 20px;">search</i>
-                    </div>
-        
-                    <div class="filter-div">
-                        <select class="button-option">
-                            <option value="Donation" selected>Category</option>
-                            <option value="Sale">Sale</option>
-                        </select>
-                        <select class="button-option">
-                            <option value="Donation" selected>Price</option>
-                            <option value="Sale">Sale</option>
-                        </select>
-                    </div>
+                <div class="search-div">
+                    <input class="search" type="search" name="search-keyword" placeholder="Search now" required />
+                    <i class="material-icons icon-search" style="font-size: 20px;">search</i>
+                </div>
+
+                <div class="filter-div">
+                    <select class="button-option">
+                        <option value="Donation" selected>Category</option>
+                        <option value="Sale">Toy</option>
+                        <option value="Sale">Stationary</option>
+                        <option value="Sale">Clothes</option>
+                    </select>
+                    <select class="button-option">
+                        <option value="Donation" selected>Price</option>
+                        <option value="Sale">Less than 50</option>
+                        <option value="Sale">Between 50 - 100</option>
+                        <option value="Sale">Between 100 - 200</option>
+                        <option value="Sale">More than 200</option>
+                    </select>
                 </div>
             </div>
+            
             <div class="table-div">
                 <div class="display-table">
                     <div class="display-row">
@@ -78,18 +78,4 @@
         </div>
     </div>
     </body>
-    <script>
-        window.onscroll = function() {myFunction()};
-
-        var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
-
-        function myFunction() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
-        }
-        }
-    </script>
 </html>
