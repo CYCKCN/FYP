@@ -43,36 +43,18 @@
                 </div>
             </div>
             
+
             <div class="table-div">
                 <div class="display-table">
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
-                    <div class="display-row">
-                        <div class="on-sale-block"></div>
-                        <div class="on-sale-block"></div>
-                    </div>
+                    {% for k,v in itemInfo.items() %}
+                    <a href="item/254278771399">
+                        <div class="on-sale-block">
+                            <p class="display-image"><img src={{v.item_image}} width="340"/></p>
+                            <p class="display-name">{{v.item_name}}</p>
+                            <p class="display-description">{{v.item_description}}</p>
+                        </div>
+                    </a>
+                    {% end for %}
                 </div>
             </div>
         </div>
