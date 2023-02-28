@@ -22,25 +22,23 @@
         <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
         
         <div class="main-div">
+            <div class="question-box">
+                <input class="num-items" type="text" name="Name">
+                <br/>
+                <input class="num-items" type="number" name="Price">
+                <br/>
+                <select class="button-option" name="Category">
+                    <option value="Donation" selected>Category</option>
+                    <option value="Sale">Clothes</option>
+                    <option value="Sale">Furniture</option>
+                    <option value="Sale">Toy</option>
+                </select>
+                <br/>
+                <input class="num-items" type="text" name="Description">
+            </div>
+
           <div class="question-box">
-            <p>Do you have anything to sell?</p>
-            <div class="options">
-              <div class="radio-button">
-                <input type="radio" id="sell1" name="sell" value="true" checked>
-                <label for="sell1">Yes</label>
-                <div style="width:10px;"></div>
-                <input type="radio" id="sell2" name="sell" value="false">
-                <label for="sell2">No</label>
-              </div>
-            </div>
-            <div class="num-option">
-              <p>How many items do you want to sell?</p>
-              <div style="width: 49px"></div>
-              <input class="num-items" type="number">
-            </div>
             
-          </div>
-          <div class="question-box">
             <p>Do you have anything to donate?</p>
             <div class="radio-button">
               <input type="radio" id="donate1" name="donate" value="all" checked>
