@@ -56,7 +56,7 @@ def sell():
     return render_template('sell.html')
     # return "Sell Page"
 
-@life.route('/item', methods=['POST', 'GET'])
+@life.route('/item/<itemID>', methods=['POST', 'GET'])
 # @check_login
 def item():
-    return render_template('item.html')
+    return render_template('item.html', Name="test", Category="202", Price="202", Description="test")
