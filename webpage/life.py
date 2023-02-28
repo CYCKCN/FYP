@@ -8,15 +8,15 @@ life = Blueprint('life',__name__)
 
 @life.route('/home', methods=['POST', 'GET'])
 # @check_login
-def main():
+def home():
     return render_template('home.html')
 
 @life.route('/newlife', methods=['POST', 'GET'])
 # @check_login
-def main():
+def newlife():
     return render_template('newlife.html')
 
 @life.route('/item', methods=['POST', 'GET'])
 # @check_login
-def main():
+def item():
     return render_template('item.html')
