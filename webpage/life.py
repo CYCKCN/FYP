@@ -33,6 +33,7 @@ def sell():
         info = request.form.get('Description')
 
         print(name, price, category, info)
+        print(submit)
 
         if home == "Home": 
             return redirect(url_for('life.home'))

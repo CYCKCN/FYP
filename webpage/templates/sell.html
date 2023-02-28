@@ -7,14 +7,13 @@
   </head>
 
   <body>
+    <form method="POST">
     <div class="page-frame">
         <div class="home-top">
             <div class="top-buttons">
-                <form method="POST">
                     <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                     <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
                     <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
-                </form>
             </div>
         </div>
         
@@ -23,7 +22,6 @@
         
 
         <div class="question-box">
-          <form method="POST">
             <label for="Name">Name</label>
             <input class="num-items" type="text" name="Name">
             <br/>
@@ -41,14 +39,12 @@
             <input class="description-block" type="text" name="Description">
 
             <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button>
-          </form>
             
         </div>
-        <form method="POST">
-          <button name="create-contract" value="new-contract" class="create-style">Submit</button>
-        </form>
-        
+
+          <button name="create-contract" value="new-contract" class="create-style">Submit</button>        
         
     </div>
+    </form>
   </body>
 </html>
