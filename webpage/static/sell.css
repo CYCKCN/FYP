@@ -40,6 +40,12 @@
       display: flex;
       flex-direction: row;
   }
+  .sell-title{
+    font-family: 'Alatsi';
+    font-size: 20px;
+    color: black;
+    text-align: center;
+  }
   .payment-radio {
     margin-top: 0px;
     position: relative;
@@ -185,19 +191,19 @@
 
   .question-box {
     margin-top: 70px;
-    width: 350px;
+    width: 410px;
     height: 550px;
     left: 60%;
     margin-left: 10px;
     border-radius: 10px;
-    padding-top: 10px;
-    padding-left: 25px;
+    padding-top: 20px;
+    padding-left: 10px;
     padding-right: 25px;
     padding-bottom: 10px;
     position: relative;
     font-family: 'Alatsi';
     color: black;   
-    background: var(--mainGreen3);
+    background: var(--mainGrey2);
     display: flex;
     flex-direction: column;
   }
@@ -955,15 +961,44 @@
     display: flex;
     flex-direction: column;
   }
+  .image-display {
+    position: absolute;
+    top: 250px;
+    left: 13%;
+    text-align: center;
+    line-height: 40px;
+    border-color: var(--mainGreen1);
+    background: none;
+    color: black;
+    font-family: 'Alatsi';
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+  }
   .img-div {
     position: relative;
-    width: 370px;
-    left: 0px;
-    top:0px;
+    width: 500px;
+    left: 10%;
+    top: 200px;
     height: 80px;
     background: none;
     display: flex;
     flex-direction: column;
+  }
+  .custom-file-upload {
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 100%;
+    height: 40px;
+    left: 10%;
+    border-radius: 10px;
+    transition: 0.5s;
   }
   .video-check-div {
     position: relative;
@@ -1037,20 +1072,6 @@
     font-size: 14px;
     overflow-y: scroll;
   }
-  .lable-div {
-    position: relative;
-    width: 280px;
-    left: 0px;
-    top: 0px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Alatsi';
-    font-size: 16px;
-    color: var(--mainBlue1);
-    padding-left: 0px;
-    text-align: left;
-  }
   .whole-division {
     height: fit-content;
     display: flex;
@@ -1104,7 +1125,7 @@
   .item-input-div {
     position: relative;
     width: 250px;
-    left: 20px;
+    left: 10px;
     top: 0px;
     height: fit-content;
     display: flex;
@@ -1112,6 +1133,20 @@
     color: black;
     font-family: 'Alatsi';
     font-size: 16px;
+  }
+  .lable-div {
+    position: relative;
+    width: 100px;
+    left: 0px;
+    top: 0px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Alatsi';
+    font-size: 12px;
+    color: black;
+    padding-left: 0px;
+    text-align: left;
   }
   .not-uploaded {
       color: var(--mainOrgange);
@@ -1153,28 +1188,13 @@
     background: none;
     color: black;
     font-family: 'Alatsi';
-    width: 500px;
-    height: 300px;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding-top: 130px;
-  }
-  .image-display {
-    position: absolute;
-    top: 220px;
-    left: 120px;
-    text-align: center;
-    line-height: 40px;
-    border-color: var(--mainGreen1);
-    background: none;
-    color: black;
-    font-family: 'Alatsi';
-    width: 400px;
-    height: 200px;
+    width: 200px;
+    height: 100px;
     border-radius: 10px;
     margin-left: 10px;
     padding-top: 20px;
   }
+  
   .user-title {
       font-family: 'Alatsi';
       font-size: 20px;
@@ -1184,6 +1204,7 @@
   }
   .create-style {
     position: absolute;
+    left: 10%;
     bottom: 20px;
     text-align: center;
     line-height: 40px;
@@ -1191,7 +1212,7 @@
     background: var(--mainGreen1);
     color: white;
     font-family: 'Alatsi';
-    width: 300px;
+    width: 80%;
     height: 40px;
     border-radius: 10px;
     cursor: pointer;
@@ -1361,18 +1382,6 @@
     margin-left: 10px;
     margin-right: 20px;
   }
-  .custom-file-upload {
-    text-align: center;
-    line-height: 40px;
-    border: none;
-    background: var(--mainGreen1);
-    color: white;
-    font-family: 'Alatsi';
-    width: 370px;
-    height: 40px;
-    border-radius: 10px;
-    transition: 0.5s;
-  }
   .custom-file-upload:hover {
     background: var(--mainGreen3);
   }
@@ -1384,6 +1393,9 @@
   }
   .item-add-style:hover {
     background: var(--mainGrey2);
+  }
+  .create-style:hover {
+    background: var(--mainGreen3);
   }
   canvas {
     position: absolute;

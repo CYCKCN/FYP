@@ -16,25 +16,31 @@
                             <button class="individual-button" type="submit" name="Login" value="Login">Personal</button>
                     </div>
                 </div>
-                <label for="file-upload" class="item-add-style">Upload Image</label>
-                <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
-                <p class="image-display"><img id="output" width="200"/></p>
+                <p class="image-display"><img id="output" width="400"/></p>
+                <div class="img-div">
+                    <label for="file-upload" class="custom-file-upload">Upload Image</label>
+                    <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+                </div>
                 <div class="question-box">
-                    <label for="Name">Name</label>
-                    <input class="num-items" type="text" name="Name">
-                    <br/>
-                    <label for="Price">Price</label>
-                    <input class="num-items" type="number" name="Price">
-                    <br/>
-                    <label for="Category">Category</label>
-                    <select class="button-option" name="Category">
-                        <option value="Clothes" selected>Clothes</option>
-                        <option value="Furniture">Furniture</option>
-                        <option value="Toy">Toy</option>
-                    </select>
-                    <br/>
-                    <label for="Description">Description</label>
-                    <input class="description-block" type="text" name="Description">
+                    <p class="sell-title">Item Information</p>
+                    <div class="inputs-div">
+                        <div class="lable-div">
+                            <label for="Name" class="lable-style1">Name</label>
+                            <label for="Price" class="lable-style2">Price</label>
+                            <label for="Category" class="lable-style2">Type</label>
+                            <label for="Description" class="lable-style2">Description</label>
+                        </div>
+                        <div class="item-input-div">
+                            <input type="text" id= "Name" name="Name" class="input-style">
+                            <input type="number" id= "Price" name="Price" class="input-style">
+                            <input list="Type" id="Category" name="Category" class="input-style">
+                            <datalist id="Type">
+                                <option value="Furniture">
+                                <option value="Electronices">
+                            </datalist>
+                            <textarea id="Description" name="Description" class="textarea-style"></textarea>
+                        </div>
+                    </div>
                     <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button> 
                 </div>  
             </div>    

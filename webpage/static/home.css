@@ -18,6 +18,7 @@ a { color: inherit; }
     height: 50px;
     left: 0px;
     top: 0px;
+    margin-left: 0px;
     padding-left: 0px;
     padding-top: 0px;
     background: white;
@@ -150,7 +151,7 @@ a { color: inherit; }
     position: relative;
     border-spacing:10px;
     display: grid;
-    grid-template-columns: 340px 340px 340px;
+    grid-template-columns: 340px 340px 340px 340px;
     column-gap: 10px;
     row-gap: 10px;
 }
