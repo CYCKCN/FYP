@@ -36,7 +36,8 @@ html, body {
 .item-image {
     height: 400px;
     width: 100%;
-    background-color: var(--mainGreen3);
+    background-color: none;
+    text-align: center;
 }
 .user-title {
     font-family: 'Alatsi';
