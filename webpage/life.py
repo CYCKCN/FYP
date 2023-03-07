@@ -138,7 +138,8 @@ def buy():
 # @check_login
 def requestList(requestID):
     if requestID == "all":
-        return render_template('requestall.html')
+        requestInfo = requestdb.getRequestList()
+        return render_template('requestall.html', requestInfo=requestInfo)
     else:
         return render_template('requestdetail.html')
 
