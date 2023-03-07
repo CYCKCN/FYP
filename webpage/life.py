@@ -4,7 +4,7 @@ from flask import Blueprint, request, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY
 from db import itemdb
 
 life = Blueprint('life',__name__)
@@ -46,7 +46,7 @@ def home():
     if current_user.is_authenticated: userStatus = True
     else: userStatus = False
 
-    return render_template('home.html', itemInfo=itemInfo, userStatus=userStatus)
+    return render_template('home.html', itemInfo=itemInfo, userStatus=userStatus, itemCategories=CATEGORY)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
