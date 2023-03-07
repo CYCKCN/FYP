@@ -148,13 +148,18 @@ def requestList(requestID):
 def profile():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
+    section = request.args.get('section')
     user = accountdb.findUser(current_user.email)
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
+        section = request.form.get('section')
         logout = request.form.get('logout')
 
         if logout == "logout": 
             return redirect(url_for('auth.logout'))
         
-    return render_template('profile.html', user=user)
+        if section:
+            return redirect(url_for('life.profile', section=section))
+        
+    return render_template('profile.html', user=user, section=section if section else "Info")
