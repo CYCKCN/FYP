@@ -20,7 +20,7 @@ def login():
         password = request.form.get('password')
         submit = request.form.get('submit-button')
         home = request.form.get('Home')
-        signup = request.form.get('Sign up')
+        signup = request.form.get('signup')
 
         # print(signup)
 
@@ -36,7 +36,7 @@ def login():
         if home == "Home": 
             return redirect(url_for('life.home'))
         
-        if signup == "Sign Up": 
+        if signup == "signup": 
             return redirect(url_for('auth.signup'))
 
     return render_template('login.html')
@@ -51,7 +51,7 @@ def signup():
         uni = request.form.get('Universities')
         submit = request.form.get('submit-button')
         home = request.form.get('Home')
-        login = request.form.get('Log In')
+        login = request.form.get('login')
 
         account = accountdb.findUser(email)
 
@@ -68,7 +68,7 @@ def signup():
         if home == "Home": 
             return redirect(url_for('life.home'))
         
-        if login == "Log In": 
+        if login == "login": 
             return redirect(url_for('auth.login'))
             
     return render_template('signup.html')
