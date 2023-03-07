@@ -66,9 +66,9 @@ class ItemDB():
     def getItemList(self, cate="", maxprice="", minprice=""):
         selection = {}
         if cate != "": selection["itemCate"] = cate
-        if maxprice != "" and minprice != "": selection["itemPrice"] = {"$lte": maxprice, "$gte": minprice}
-        elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": maxprice}
-        elif maxprice == "" and minprice != "": selection["itemPrice"] = {"$gte": minprice}
+        if maxprice != "" and minprice != "": selection["itemPrice"] = {"$lte": int(maxprice), "$gte": int(minprice)}
+        elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": int(maxprice)}
+        elif maxprice == "" and minprice != "": selection["itemPrice"] = {"$gte": int(minprice)}
         print(selection)
         itemList = self.db.find(selection)
         itemInfo = {}

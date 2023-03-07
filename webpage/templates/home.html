@@ -35,7 +35,7 @@
                 <select name="Category" class="button-option">
                     <option value="">- ALL -</option>
                     {% for c in itemCategories %}
-                        {% if selected == c %}
+                        {% if selected_cate == c %}
                             <option value="{{c}}" selected>{{c}}</option>
                         {% else %}
                             <option value="{{c}}">{{c}}</option>
@@ -43,11 +43,14 @@
                     {% endfor %}
                 </select>
                 <select name="Price" class="button-option">
-                    <option value="" selected>Price</option>
-                    <option value="Less than 50">Less than 50</option>
-                    <option value="Between 50 - 100">Between 50 - 100</option>
-                    <option value="Between 100 - 200">Between 100 - 200</option>
-                    <option value="More than 200">More than 200</option>
+                  <option value="">- Price -</option>
+                    {% for c in priceRange %}
+                        {% if selected_price == c %}
+                            <option value="{{c}}" selected>{{c}}</option>
+                        {% else %}
+                            <option value="{{c}}">{{c}}</option>
+                        {% endif%}
+                    {% endfor %}
                 </select>
                 <button class="button-option" type="submit" name="Apply" value="Apply">Apply</button>
             </div>

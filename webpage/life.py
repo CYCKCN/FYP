@@ -4,7 +4,7 @@ from flask import Blueprint, request, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, RequestForm, buttonCheck
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, buttonCheck
 from db import itemdb, requestdb, accountdb
 
 life = Blueprint('life',__name__)
@@ -19,6 +19,12 @@ def home():
     minprice = request.args.get('minprice')
     # print(cate, maxprice, minprice)
     itemInfo = itemdb.getItemList(cate if cate else "", maxprice if maxprice else "", minprice if minprice else "")
+
+    if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
+    elif (maxprice, minprice) == ('100', '50'): price = 'Between 50 - 100'
+    elif (maxprice, minprice) == ('200', '100'): price = 'Between 100 - 200'
+    elif (maxprice, minprice) == ('', '200'): price = 'More than 200'
+    else: price = ""
 
     requestInfo = requestdb.getRequestList()
 
@@ -40,8 +46,8 @@ def home():
         print(cate, maxprice, minprice)
 
         if apply: return redirect(url_for("life.home", cate=cate, maxprice=maxprice, minprice=minprice))
-
-    return render_template('home.html', selected=cate if cate else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
+    print(price)
+    return render_template('home.html', selected_cate=cate if cate else '', selected_price=price, itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
