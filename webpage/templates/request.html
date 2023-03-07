@@ -12,14 +12,17 @@
     <body>
         <form method="POST" enctype="multipart/form-data">
             <div class="page-frame">
-                <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
-                    <button class="individual-button" type="submit" name="Request" value="Request">Home</button>
-                    {% if userStatus == "login" %}
-                        <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
-                        <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
-                    {% else %}
+                <div class="home-top">
+                    <div class="top-buttons">
+                        <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                        {% if userStatus == True %}
                         <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    {% endif %}
+                        {% else %}
+                        <button class="individual-button" type="submit" name="Login" value="Login">{{userStatus}}</button>
+                        <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="question-box">
                     <p class="sell-title">Item Information</p>
                     <div class="inputs-div">
@@ -31,11 +34,6 @@
                         <div class="item-input-div">
                             <input type="text" id= "Name" name="Name" class="input-style">
                             <input type="number" id= "Price" name="Price" class="input-style">
-                            <input list="Type" id="Category" name="Category" class="input-style">
-                            <datalist id="Type">
-                                <option value="Furniture">
-                                <option value="Electronices">
-                            </datalist>
                             <textarea id="Description" name="Description" class="textarea-style"></textarea>
                         </div>
                     </div>
