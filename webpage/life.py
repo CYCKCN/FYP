@@ -21,15 +21,25 @@ def home():
         itemInfo[str(counter)] = item
         itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][8:]
         counter += 1
-    print(itemInfo)
+    # print(itemInfo)
     if request.method == 'POST':
         sell = request.form.get('Sell')
+        buy = request.form.get('Request')
+        login = request.form.get('Login')
+        signup = request.form.get('Signup')
 
         # print(submit)
         if sell == "Sell": 
             return redirect(url_for('life.sell'))
-        
 
+        if buy == "Request": 
+            return redirect(url_for('life.buy'))
+        
+        if login == "Login": 
+            return redirect(url_for('auth.login'))
+        
+        if signup == "Signup": 
+            return redirect(url_for('auth.signup'))
 
     return render_template('home.html', itemInfo=itemInfo)
 
@@ -43,13 +53,13 @@ def sell():
         price = request.form.get('Price')
         category = request.form.get('Category')
         info = request.form.get('Description')
-        print(request.files)
+        # print(request.files)
         if "upload_cont_img" in request.files: file = request.files['upload_cont_img']
         else: file = None
         image_path = ""
 
-        print(name, price, category, info)
-        print(submit)
+        # print(name, price, category, info)
+        # print(submit)
 
         if home == "Home": 
             return redirect(url_for('life.home'))
@@ -58,7 +68,7 @@ def sell():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
-        print(image_path)
+        # print(image_path)
         if submit == "new-contract":
             itemdb.createItem('-1', name, price, category, info, image_path)
             return redirect(url_for('life.home'))
@@ -87,3 +97,8 @@ def item(itemID):
 
     return render_template('item.html', item_name=name, item_category=cate, item_price=price, item_description=des, \
                            item_image="../../" + path[8:], item_seller_name="default", item_pickup_info="default")
+
+@life.route('/request', methods=['POST', 'GET'])
+# @check_login
+def buy():
+    return render_template('request.html')
