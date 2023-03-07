@@ -68,12 +68,13 @@ class Item(object):
 #         self.orderStatus = orderStatus # "R" -> Reserved / "S" -> Solved
 
 class Request(object):
-    def __init__(self, id, user, title, category, info):
+    def __init__(self, id, user, title, category, info, time):
         self.requestID = id # random 12 numbers
         self.requestUser = user # "33872" / "-1"
         self.requestTitle = title
         self.requestInfo = info
         self.requestCate = category
+        self.requestTime = time
 
 class RequestForm(FlaskForm):
     title = wtforms.StringField('Name', validators=[InputRequired(), Length(max=30)])

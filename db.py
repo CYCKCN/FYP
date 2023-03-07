@@ -3,6 +3,7 @@ from pymongo.mongo_client import MongoClient
 from utils import Account, User, Item, Request, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
     
 def connection(dbname):
     addr = "mongodb+srv://admin:admin@life2.dwrako7.mongodb.net/?retryWrites=true&w=majority"
@@ -20,10 +21,10 @@ class AccountDB():
     def findUser(self, accountEmail):
         return self.db.find_one({"accountEmail": accountEmail})
     
-    # def findUserName(self, accountID):
-    #     account = self.db.find_one({"accountID": accountID})
-    #     if account is None: return "Err: Not Registered!"
-    #     return account["accountName"]
+    def findUserName(self, accountEmail):
+        account = self.db.find_one({"accountEmail": accountEmail})
+        if account is None: return "Err: Not Registered!"
+        return account["accountName"]
     
     def login(self, accountEmail, accountPw):
         account = self.db.find_one({"accountEmail": accountEmail})
@@ -90,7 +91,9 @@ class RequestDB():
     def createRequest(self, user, title, category, info):
         requestID = randomID(IDLENGTH)
         while (self.db.find_one({"requestID": requestID})): requestID = randomID(IDLENGTH)
-        newRequest = Request(requestID, user, title, category, info)
+        now = datetime.now()
+        time = now.strftime("YYYY.MM.DD HH:MM")
+        newRequest = Request(requestID, user, title, category, info, time)
         self.db.insert_one(newRequest.__dict__)
         return "Info: New Request Added"
 
@@ -101,8 +104,8 @@ class RequestDB():
         for request in requestList:
             # print(request)
             requestInfo[str(counter)] = request
+            requestInfo[str(counter)]["userName"] = accountdb.findUserName(request.requestUser)
             counter += 1
-        print(requestInfo)
         return requestInfo
 
 db = connection("LIFE2")
