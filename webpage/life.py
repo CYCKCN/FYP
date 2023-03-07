@@ -30,7 +30,7 @@ def home():
 
         if apply: return redirect(url_for("life.home", cate=cate))
 
-    return render_template('home.html', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
+    return render_template('home.html', selected=cate if cate else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
@@ -137,11 +137,11 @@ def requestList(requestID):
 def profile():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
-    
+    user = accountdb.findUser(current_user.email)
     if request.method == 'POST':
         logout = request.form.get('logout')
 
         if logout == "logout": 
             return redirect(url_for('auth.logout'))
         
-    return render_template('profile.html')
+    return render_template('profile.html', user=user)
