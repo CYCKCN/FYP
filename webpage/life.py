@@ -139,6 +139,8 @@ def profile():
         return redirect(url_for('auth.login'))
     user = accountdb.findUser(current_user.email)
     if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
         logout = request.form.get('logout')
 
         if logout == "logout": 
