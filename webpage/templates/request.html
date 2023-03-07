@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        <form method="POST" enctype="multipart/form-data" autocomplete="on">
+        <form method="POST" enctype="multipart/form-data">
             <div class="page-frame">
                 <div class="home-top">
                     <div class="top-buttons">
@@ -31,7 +31,6 @@
                         </div>
                         <div class="item-input-div">
                             <!-- <input type="text" id= "Name" name="Name" class="input-style"> -->
-                            <p class="input-style">TITLE</p>
                             {{ form.title(class_='input-style') }}
                             <select name="Category" class="input-style">
                                 <option value="">- Choose a category -</option>
@@ -43,8 +42,7 @@
                                 <p style="color: red;">You didn't select the category!</p>
                             {% endif %}
                             <!-- <textarea id="Description" name="Description" class="textarea-style"></textarea> -->
-                            <p class="input-style">Description</p>
-                            {{ form.info(class_='input-style') }}
+                            {{ form.info(class_='textarea-style') }}
                         </div>
                     </div>
                     <button name="create-request" value="create-request" class="create-style">Publish Request</button> 

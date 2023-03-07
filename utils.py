@@ -78,8 +78,8 @@ class Request(object):
         self.requestTime = time
 
 class RequestForm(FlaskForm):
-    title = wtforms.StringField('Name', validators=[InputRequired(), Length(max=30)])
-    info = wtforms.StringField('Description', validators=[InputRequired(), Length(max=5000)])
+    title = wtforms.StringField('Name', validators=[Length(max=30)])
+    info = wtforms.StringField('Description', validators=[Length(max=5000)])
 
 def randomID(length):
     id = str()
