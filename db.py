@@ -63,9 +63,14 @@ class ItemDB():
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
-    def getItemList(self, cate=""):
-        if cate == "": itemList = self.db.find()
-        else: itemList = self.db.find({"itemCate": cate})
+    def getItemList(self, cate="", maxprice="", minprice=""):
+        selection = {}
+        if cate != "": selection["itemCate"] = cate
+        if maxprice != "" and minprice != "": selection["itemPrice"] = {"$lte": maxprice, "$gte": minprice}
+        elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": maxprice}
+        elif maxprice == "" and minprice != "": selection["itemPrice"] = {"$gte": minprice}
+        print(selection)
+        itemList = self.db.find(selection)
         itemInfo = {}
         counter = 0
         for item in itemList:

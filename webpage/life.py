@@ -15,8 +15,10 @@ def home():
     else: userStatus = False
 
     cate = request.args.get('cate')
-    if cate: itemInfo = itemdb.getItemList(cate)
-    else: itemInfo = itemdb.getItemList()
+    maxprice = request.args.get('maxprice')
+    minprice = request.args.get('minprice')
+    # print(cate, maxprice, minprice)
+    itemInfo = itemdb.getItemList(cate if cate else "", maxprice if maxprice else "", minprice if minprice else "")
 
     requestInfo = requestdb.getRequestList()
 
@@ -27,8 +29,17 @@ def home():
 
         apply = request.form.get('Apply')
         cate = request.form.get("Category")
+        price = request.form.get("Price")
 
-        if apply: return redirect(url_for("life.home", cate=cate))
+        if price == 'Less than 50': maxprice, minprice = '50', '0'
+        elif price == 'Between 50 - 100': maxprice, minprice = '100', '50'
+        elif price == 'Between 100 - 200': maxprice, minprice = '200', '100'
+        elif price == 'More than 200': maxprice, minprice = '', '200'
+        else: maxprice, minprice = '', ''
+
+        print(cate, maxprice, minprice)
+
+        if apply: return redirect(url_for("life.home", cate=cate, maxprice=maxprice, minprice=minprice))
 
     return render_template('home.html', selected=cate if cate else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
 

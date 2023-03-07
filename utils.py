@@ -54,7 +54,7 @@ class Item(object):
         self.itemID = id # random 12 numbers
         self.itemOwner = owner # "33872" / "-1"
         self.itemName = name
-        self.itemPrice = price
+        self.itemPrice = float(price)
         self.itemCate = category
         self.itemInfo = info
         self.itemImg = image_path
