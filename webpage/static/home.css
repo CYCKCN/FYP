@@ -12,6 +12,11 @@ a { color: inherit; }
     display: flex;
     flex-direction: column;
 }
+hr.rounded {
+    border-top: 1px solid #bbb;
+    border-radius: 1px;
+}
+  
 .home-top {
     position: absolute;
     min-width: 100%;
@@ -22,6 +27,15 @@ a { color: inherit; }
     padding-left: 0px;
     padding-top: 0px;
     background: white;
+}
+.header {
+    width: 100%;
+    height: fit-content;
+    background-color: gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    margin-top: 50px;
 }
 .top-buttons {
     position: absolute;
@@ -34,6 +48,28 @@ a { color: inherit; }
     background: none;
     display: flex;
     flex-direction: row-reverse;
+}
+.request-list {
+    width: 380px;
+    height: 100%;
+    background: none;
+    position: fixed;
+    right: 0px;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.request-link {
+    width: 100%;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .user-title {
     font-family: 'Alatsi';
@@ -68,20 +104,14 @@ a { color: inherit; }
     color: black;
 }
 .scroll-div {
-    margin-top: 50px;
+    margin-top: 0px;
     position: relative;
     overflow-y: scroll;
     height: 794px;
     width: 100%;
     background: none;
 }
-.header {
-    width: 100%;
-    height: fit-content;
-    background-color: gray;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+
 .sticky {
     position: fixed;
     top: 0;
@@ -163,7 +193,7 @@ a { color: inherit; }
     grid-template-columns: 340px 340px 340px;
     column-gap: 10px;
     row-gap: 10px;
-    background: red;
+    background: none;
     width: fit-content;
 }
 .display-row {
