@@ -197,7 +197,7 @@ hr.rounded {
     display: grid;
     grid-template-columns: 340px 340px 340px;
     column-gap: 10px;
-    row-gap: 10px;
+    row-gap: 0px;
     background: none;
     width: fit-content;
 }
@@ -216,7 +216,7 @@ hr.rounded {
 
 .on-sale-block {
     display: table-cell;
-    background: var(--mainGreen3);
+    background: var(--mainGrey2);
     position: relative;
     width: 340px;
     height: 380px;
@@ -237,7 +237,7 @@ hr.rounded {
 .display-text {
     font-family: 'Alatsi';
     font-size: 14px;
-    color: white;
+    color: black;
     padding-left: 15px;
 }
 .account-style {
