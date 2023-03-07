@@ -111,4 +111,13 @@ def buy():
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
 def profile():
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
+    
+    if request.method == 'POST':
+        logout = request.form.get('logout')
+
+        if logout == "logout": 
+            return redirect(url_for('auth.logout'))
+        
     return render_template('profile.html')

@@ -22,7 +22,7 @@ def login():
         home = request.form.get('Home')
         signup = request.form.get('Sign up')
 
-        # print(email, password, submit)
+        # print(signup)
 
         if submit == "Submit": 
             loginInfo = accountdb.login(email, password)
@@ -37,7 +37,7 @@ def login():
             return redirect(url_for('life.home'))
         
         if signup == "Sign Up": 
-            return redirect(url_for('life.signup'))
+            return redirect(url_for('auth.signup'))
 
     return render_template('login.html')
 
@@ -69,11 +69,11 @@ def signup():
             return redirect(url_for('life.home'))
         
         if login == "Log In": 
-            return redirect(url_for('life.login'))
+            return redirect(url_for('auth.login'))
             
     return render_template('signup.html')
 
 @auth.route('/logout', methods=['GET', 'POST'])
 def logout():
     logout_user()
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('life.home'))
