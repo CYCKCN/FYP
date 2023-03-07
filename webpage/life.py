@@ -4,8 +4,8 @@ from flask import Blueprint, request, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY
-from db import itemdb
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, RequestForm
+from db import itemdb, requestdb
 
 life = Blueprint('life',__name__)
 
@@ -116,12 +116,36 @@ def buy():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
     
+    requestForm = RequestForm()
     if request.method == 'POST':
+        # print(requestForm.data)
         home = request.form.get('Home')
+        create = request.form.get('create-request')
+        cate = request.form.get('Category')
+    
+        title = requestForm.title.data
+        info = requestForm.info.data
+
+        # print(home, create, cate, title, info)
 
         if home == "Home": 
             return redirect(url_for('auth.logout'))
-    return render_template('request.html')
+        if create == "create-request": 
+            if cate == "": 
+                return render_template('request.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
+            else: 
+                requestdb.createRequest(current_user.email, title, cate, info)
+                return redirect(url_for('life.home'))
+                
+    return render_template('request.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
+
+@life.route('/request/<requestID>', methods=['POST', 'GET'])
+# @check_login
+def requestList(requestID):
+    if requestID == "ALL":
+        return render_template('requestall.html')
+    else:
+        return render_template('requestdetail.html')
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login

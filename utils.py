@@ -67,9 +67,17 @@ class Item(object):
 #         self.orderEndTime = etime # "202212171030"
 #         self.orderStatus = orderStatus # "R" -> Reserved / "S" -> Solved
 
-# class LoginForm(FlaskForm):
-#     id = wtforms.StringField('id', validators=[InputRequired(), Length(max=30)])
-#     password = wtforms.PasswordField('password', validators=[InputRequired(), Length(min=8, max=32)])
+class Request(object):
+    def __init__(self, id, user, title, category, info):
+        self.requestID = id # random 12 numbers
+        self.requestUser = user # "33872" / "-1"
+        self.requestTilte = title
+        self.requestInfo = info
+        self.requestCate = category
+
+class RequestForm(FlaskForm):
+    title = wtforms.StringField('Name', validators=[InputRequired(), Length(max=30)])
+    info = wtforms.StringField('Description', validators=[InputRequired(), Length(max=5000)])
 
 def randomID(length):
     id = str()
