@@ -7,16 +7,18 @@
   </head>
 
   <body>
+    <form method="POST">
     <div class="page-frame">
         <div class="home-top">
             <div class="top-buttons">
-                <form method="POST">
-                    <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                    <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
-                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
-                    <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
-                    <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
-                </form>
+                <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
+                <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                {% if userStatus == True %}
+                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                {% else %}
+                <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
+                <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                {% endif %}
             </div>
         </div>
 
@@ -35,6 +37,7 @@
             
         </div>
     </div>
+    </form>
     </body>
     <script>
         window.onscroll = function() {myFunction()};
