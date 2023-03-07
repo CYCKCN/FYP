@@ -17,6 +17,17 @@
             </div>
         </div>
 
+        <div class="section-bar">
+            <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
+            <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
+            <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
+        </div>
+
+        {% if section == "Request" %}
+        <p>Request</p>
+        {% else if section == "Item" %}
+        <p>Item</p>
+        {% else %}
         <div class="content">
             <div class="inputs-div">
                 <div class="lable-div">
@@ -30,8 +41,10 @@
                     <p class="user-style2">{{user.accountEmail}}</p>        
                 </div>
             </div>
+            <button name="logout" value="logout" class="account-style">Log out</button>
         </div>
-        <button name="logout" value="logout" class="account-style">Log out</button>
+        {% endif %}
+        
     </div>
     </form>
   </body>
