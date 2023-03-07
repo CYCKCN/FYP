@@ -139,6 +139,14 @@ def buy():
                 
     return render_template('request.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
 
+@life.route('/request/<requestID>', methods=['POST', 'GET'])
+# @check_login
+def requestList(requestID):
+    if requestID == "ALL":
+        return render_template('requestall.html')
+    else:
+        return render_template('requestdetail.html')
+
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
 def profile():
