@@ -21,17 +21,15 @@
         </div>
 
         <div class="scroll-div">
-            <p class="item-image"><img src="{{item_image}}" height="400"/></p>
             <div class="info-pack">
                 <div class="question-box">
-                    <p class="welcoming">{{item_name}}</p>
-                    <p class="welcoming">{{item_category}}</p>
-                    <p class="welcoming">{{item_price}}</p>
-                    <p class="welcoming">{{item_description}}</p>
+                    <p class="welcoming">{{requestInfo.requestTitle}}</p>
+                    <p class="welcoming">{{requestInfo.requestCate}}</p>
+                    <p class="welcoming">{{requestInfo.requestInfo}}</p>
                 </div>   
                 <div class="seller-info">
-                    <p class="welcoming">{{item_seller_name}}</p>
-                    <p class="welcoming">{{item_pickup_info}}</p>
+                    <p class="welcoming">{{requestInfo.userName}}</p>
+                    <p class="welcoming">{{requestInfo.requestTime}}</p>
                 </div>
             </div>
             
