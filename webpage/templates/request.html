@@ -10,22 +10,16 @@
     </head>
 
     <body>
-        <ul class="nav justify-content-end bg-dark">
-            <li class="nav-item">
-              <a class="nav-link active text-light" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Sell</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Request</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Profile</a>
-            </li>
-          </ul>
         <form method="POST" enctype="multipart/form-data">
             <div class="page-frame">
+                <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
+                    <button class="individual-button" type="submit" name="Request" value="Request">Home</button>
+                    {% if userStatus == "login" %}
+                        <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
+                        <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                    {% else %}
+                        <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                    {% endif %}
                 <div class="question-box">
                     <p class="sell-title">Item Information</p>
                     <div class="inputs-div">
