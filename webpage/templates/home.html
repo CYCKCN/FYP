@@ -10,9 +10,6 @@
   </head>
 
   <body>
-    <!-- <script>
-      print(userStatus)
-    </script> -->
     <div class="page-frame">
         <div class="home-top">
             <div class="top-buttons">
@@ -28,31 +25,33 @@
                 </form>
             </div>
         </div>
-        <div class="scroll-div">
-            <div class="header" id="myHeader">
-                <div class="search-div">
-                    <input class="search" type="search" name="search-keyword" placeholder="Search now" required />
-                    <i class="material-icons icon-search" style="font-size: 20px;">search</i>
-                </div>
 
-                <div class="filter-div">
-                    <select class="button-option">
-                        <option value="" selected>- ALL -</option>
-                        {% for c in itemCategories %}
-                        <option value="{{c}}">{{c}}</option>
-                        {% endfor %}
-                    </select>
-                    <select class="button-option">
-                        <option value="Donation" selected>Price</option>
-                        <option value="Sale">Less than 50</option>
-                        <option value="Sale">Between 50 - 100</option>
-                        <option value="Sale">Between 100 - 200</option>
-                        <option value="Sale">More than 200</option>
-                    </select>
-                </div>
+        <div class="header" id="myHeader">
+            <div class="search-div">
+                <input class="search" type="search" name="search-keyword" placeholder="Search now" required />
+                <i class="material-icons icon-search" style="font-size: 20px;">search</i>
             </div>
-            
 
+            <div class="filter-div">
+                <select class="button-option">
+                    <option value="" selected>- ALL -</option>
+                    {% for c in itemCategories %}
+                    <option value="{{c}}">{{c}}</option>
+                    {% endfor %}
+                </select>
+                <select class="button-option">
+                    <option value="Donation" selected>Price</option>
+                    <option value="Sale">Less than 50</option>
+                    <option value="Sale">Between 50 - 100</option>
+                    <option value="Sale">Between 100 - 200</option>
+                    <option value="Sale">More than 200</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="scroll-div">
+             
+            <div style="display:flex; flex-direction: row; width: 100%;">
                 <div class="display-table">
                     {% for k, v in itemInfo.items() %}
                     <a href="item/{{v.itemID}}" style="text-decoration:none">
@@ -64,7 +63,14 @@
                     </a>
                     {% endfor %}
                 </div>
-
+                <div class="request-list">
+                    <hr class="rounded">
+                    {% for k, v in requestInfo.items() %}
+                        <a class="request-link"><span style="color: blue; margin-right: 10px;">{{v.requestCategory}}</span>{{v.requestTitle}}</a>
+                        <hr class="rounded">
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 
