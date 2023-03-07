@@ -63,7 +63,14 @@ class ItemDB():
         return "Info: New Item Added"
 
     def getItemList(self):
-        return self.db.find()
+        itemList = self.db.find()
+        itemInfo = {}
+        counter = 0
+        for item in itemList:
+            itemInfo[str(counter)] = item
+            itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][8:]
+            counter += 1
+        return itemInfo
 
 
 class OrderDB():
@@ -88,7 +95,14 @@ class RequestDB():
         return "Info: New Request Added"
 
     def getRequestList(self):
-        return self.db.find()
+        requestList = self.db.find()
+        requestInfo = {}
+        counter = 0
+        for request in requestList:
+            requestInfo[str(counter)]['requestCategory'] = request["requestCate"]
+            requestInfo[str(counter)]['requestTitle'] = request["requestTitle"]
+            counter += 1
+        return requestInfo
 
 db = connection("LIFE2")
 accountdb = AccountDB(db)
