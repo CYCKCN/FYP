@@ -18,7 +18,7 @@ class AccountDB():
         self.db.delete_many({})
 
     def findUser(self, accountEmail):
-        return self.db.find_one({"accountID": accountEmail})
+        return self.db.find_one({"accountEmail": accountEmail})
     
     # def findUserName(self, accountID):
     #     account = self.db.find_one({"accountID": accountID})
@@ -35,10 +35,10 @@ class AccountDB():
             return "Info: Login successfully!"
         
     def signup(self, accountName, accountPw, accountEmail, accountUni):
-        print(accountName, accountPw, accountEmail, accountUni)
+        # print(accountName, accountPw, accountEmail, accountUni)
         if self.db.find_one({"accountEmail": accountEmail}):
             return "Err: Account Exists!"
-        print(UNIADDR[accountUni])
+        # print(UNIADDR[accountUni])
         if UNIADDR[accountUni] not in accountEmail:
             return "Err: Email Invalid!"
         newAccount = Account(accountName, generate_password_hash(accountPw), accountEmail, accountUni, tel="", intro="")

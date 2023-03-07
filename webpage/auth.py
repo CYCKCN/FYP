@@ -12,13 +12,15 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+
+    print(current_user.is_authenticated)
     
     if request.method == 'POST':
         email = request.form.get('usermail')
         password = request.form.get('password')
         submit = request.form.get('submit-button')
 
-        # print(id, password, submit)
+        print(email, password, submit)
 
         if submit == "Submit": 
             loginInfo = accountdb.login(email, password)
@@ -26,6 +28,7 @@ def login():
             if "Login successfully!" in loginInfo:
                 # username = accountdb.findUserName(email)
                 login_user(User(email))
+                print(current_user.is_authenticated())
                 return redirect(url_for('life.home'))
 
     return render_template('login.html')
@@ -42,13 +45,14 @@ def signup():
 
         account = accountdb.findUser(email)
 
-        if account is None:
-            signupInfo = accountdb.signup(name, password, email, uni)
-            if "Err" not in signupInfo: login_user(User(email=email))
-            return redirect(url_for('life.home'))
-        else:
-            # login_user(User(email=email))
-            return "User Exists"
+        if submit == "Submit":
+            if account is None:
+                signupInfo = accountdb.signup(name, password, email, uni)
+                if "Err" not in signupInfo: login_user(User(email))
+                return redirect(url_for('life.home'))
+            else:
+                # login_user(User(email=email))
+                return "User Exists"
             
     return render_template('signup.html')
 

@@ -38,8 +38,11 @@ def home():
         
         if signup == "Signup": 
             return redirect(url_for('auth.signup'))
+    
+    if current_user.is_authenticated: userStatus = True
+    else: userStatus = False
 
-    return render_template('home.html', itemInfo=itemInfo, userStatus=current_user.is_authenticated)
+    return render_template('home.html', itemInfo=itemInfo, userStatus=userStatus)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
