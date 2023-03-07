@@ -111,4 +111,10 @@ def buy():
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
 def profile():
+    if request.method == 'POST':
+        logout = request.form.get('create-contract')
+
+        if logout == "create-contract": 
+            return redirect(url_for('auth.logout'))
+        
     return render_template('profile.html')
