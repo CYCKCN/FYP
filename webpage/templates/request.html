@@ -15,12 +15,7 @@
                 <div class="home-top">
                     <div class="top-buttons">
                         <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                        {% if userStatus == True %}
                         <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                        {% else %}
-                        <button class="individual-button" type="submit" name="Login" value="Login">{{userStatus}}</button>
-                        <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
-                        {% endif %}
                     </div>
                 </div>
                 <div class="question-box">
@@ -33,11 +28,12 @@
                         </div>
                         <div class="item-input-div">
                             <input type="text" id= "Name" name="Name" class="input-style">
-                            <input list="Type" id="Category" name="Category" class="input-style">
-                                <datalist id="Type">
-                                    <option value="Furniture">
-                                    <option value="Electronices">
-                                </datalist>
+                            <select name="Category" class="input-style">
+                                <option value="">- Choose a category -</option>
+                                {% for c in itemCategories %}
+                                <option value="{{c}}">{{c}}</option>
+                                {% endfor %}
+                            </select>
                             <textarea id="Description" name="Description" class="textarea-style"></textarea>
                         </div>
                     </div>
