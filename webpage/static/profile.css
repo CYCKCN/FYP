@@ -7,6 +7,27 @@
   input[type=checkbox] {
     display: none;
   }
+  .top-buttons {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    right: 0%;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .individual-button {
+    background: none;
+    border: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin: 20px;
+    color: black;
+  }
   .radio-button {
       height: 40px;
       display: flex;
@@ -88,8 +109,8 @@
     overflow: hidden;
   }
   .page-frame {
-    width: 390px;
-    height: 844px;
+    width: 100%;
+    height: 100%;
     background: var(--mainGrey2);
     opacity: 1;
     position: relative;
@@ -98,7 +119,7 @@
     overflow: hidden;
   }
   .home-top {
-    width: 390px;
+    width: 100%;
     position: absolute;
     height: 50px;
     left: 0px;
@@ -108,15 +129,25 @@
     background: white;
   }
   .content {
-      width: 390px;
-      height: 100px;
+      width: 80%;
+      height: 300px;
       margin-top: 50px;
       padding-top: 20px;
       padding-left: 25px;
       padding-right: 25px;
+      left: 10%;
       position: relative;
       font-family: 'Alatsi';
-      color: black;   
+      color: black; 
+  }
+  .inputs-div {
+    position: relative;
+    width: 60%;
+    left: 20%;
+    top: 0px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
   }
   .main-div {
     width: 390px;
@@ -932,15 +963,7 @@
     display: flex;
     flex-direction: column;
   }
-  .inputs-div {
-    position: relative;
-    width: 370px;
-    left: 0px;
-    top: 0px;
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-  }
+  
   .contract-info-div {
     position: relative;
     width: 370px;
@@ -994,7 +1017,7 @@
   }
   .lable-div {
     position: relative;
-    width: 280px;
+    width: 50%;
     left: 0px;
     top: 0px;
     height: fit-content;
@@ -1142,11 +1165,11 @@
     background: var(--mainBlue1);
     color: white;
     font-family: 'Alatsi';
-    width: 370px;
+    width: 60%;
     height: 40px;
     border-radius: 10px;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 20%;
   }
   .account-add {
     position: absolute;
