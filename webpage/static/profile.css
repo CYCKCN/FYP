@@ -98,20 +98,11 @@
     background-color: var(--mainGreen2);
     color: white;
   }
-  .page-frame-login {
-    width: 390px;
-    height: 844px;
-    background: white;
-    opacity: 1;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
-  }
+
   .page-frame {
     width: 100%;
-    height: 100%;
-    background: var(--mainGrey2);
+    height: 650px;
+    background: white;
     opacity: 1;
     position: relative;
     top: 0px;
@@ -129,22 +120,39 @@
     background: white;
   }
   .content {
-      width: 80%;
-      height: 300px;
+      width: 82%;
+      height: 100%;
       margin-top: 50px;
       padding-top: 20px;
       padding-left: 25px;
       padding-right: 25px;
-      left: 10%;
-      position: relative;
+      right: 0%;
+      position: absolute;
       font-family: 'Alatsi';
       color: black; 
+  }
+  .section-bar {
+    position: absolute;
+    background: var(--mainGrey2);
+    width: 200px;
+    height: 100%;
+    margin-top: 50px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+  .section-btn {
+    border: none;
+    background: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin-bottom: 20px;
   }
   .inputs-div {
     position: relative;
     width: 60%;
-    left: 20%;
-    top: 0px;
+    left: 25%;
+    top: 100px;
     height: 200px;
     display: flex;
     flex-direction: row;
@@ -1158,7 +1166,7 @@
   }
   .account-style {
     position: absolute;
-    bottom: 20px;
+    margin-top: 280px;
     text-align: center;
     line-height: 40px;
     border: none;
