@@ -64,11 +64,15 @@
                     {% endfor %}
                 </div>
                 <div class="request-list">
+
+                    <a href="request/all" class="request-all">See All</a>
                     <hr class="rounded">
+                    
                     {% for k, v in requestInfo.items() %}
-                        <a class="request-link"><span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>{{v.requestTitle}}</a>
+                        <a href="request/{{v.requestID}}" class="request-link"><span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>{{v.requestTitle}}</a>
                         <hr class="rounded">
                     {% endfor %}
+                    
                 </div>
             </div>
         </div>
