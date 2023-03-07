@@ -51,8 +51,12 @@ def home():
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
 def sell():
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
+    
     if request.method == 'POST':
         home = request.form.get('Home')
+        profile = request.form.get('Profile')
         submit = request.form.get('create-contract')
         name = request.form.get('Name')
         price = request.form.get('Price')
@@ -68,6 +72,9 @@ def sell():
 
         if home == "Home": 
             return redirect(url_for('life.home'))
+        
+        if profile == "Profile": 
+            return redirect(url_for('life.profile'))
         
         if file and file.filename != "" and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -106,6 +113,14 @@ def item(itemID):
 @life.route('/request', methods=['POST', 'GET'])
 # @check_login
 def buy():
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
+    
+    if request.method == 'POST':
+        home = request.form.get('Home')
+
+        if home == "Home": 
+            return redirect(url_for('auth.logout'))
     return render_template('request.html')
 
 @life.route('/profile', methods=['POST', 'GET'])
