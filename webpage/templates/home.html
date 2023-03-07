@@ -37,10 +37,9 @@
 
                 <div class="filter-div">
                     <select class="button-option">
-                        <option value="Donation" selected>Category</option>
-                        <option value="Sale">Toy</option>
-                        <option value="Sale">Stationary</option>
-                        <option value="Sale">Clothes</option>
+                        {% for c in itemCategories %}
+                        <option value="{{c}}" selected>{{c}}</option>
+                        {% endif %}
                     </select>
                     <select class="button-option">
                         <option value="Donation" selected>Price</option>
