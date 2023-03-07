@@ -136,13 +136,36 @@ def buy():
 
 @life.route('/request/<requestID>', methods=['POST', 'GET'])
 # @check_login
-def requestList(requestID):
+def requestList(requestID):    
     if requestID == "all":
         requestInfo = requestdb.getRequestList()
         return render_template('requestall.html', requestInfo=requestInfo)
     else:
         requestInfo = requestdb.findRequest(requestID)
         requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
+        if request.method == 'POST':
+            sell = request.form.get('Sell')
+            buy = request.form.get('Request')
+            login = request.form.get('Login')
+            signup = request.form.get('Signup')
+            profile = request.form.get('Profile')
+
+            # print(submit)
+            if sell == "Sell": 
+                return redirect(url_for('life.sell'))
+
+            if buy == "Request": 
+                return redirect(url_for('life.buy'))
+            
+            if login == "Login": 
+                return redirect(url_for('auth.login'))
+            
+            if signup == "Signup": 
+                return redirect(url_for('auth.signup'))
+
+            if profile == "Profile": 
+                return redirect(url_for('life.profile'))
+            
         return render_template('requestdetail.html', requestInfo=requestInfo)
 
 @life.route('/profile', methods=['POST', 'GET'])
