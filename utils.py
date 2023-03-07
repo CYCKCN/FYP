@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 import wtforms
 import random
 from wtforms.validators import InputRequired, Email, Length, Regexp
+from flask import Blueprint, request, redirect, render_template, url_for
 
 time = ["0800", "0815", "0830", "0845", "0900", "0915", "0930", "0945", "1000", "1015", "1030", "1045", \
         "1100", "1115", "1130", "1145", "1200", "1215", "1230", "1245", "1300", "1315", "1330", "1345", \
@@ -84,3 +85,30 @@ def randomID(length):
     id = str()
     for i in range(length): id += str(random.randint(0, 9))
     return id
+
+def buttonCheck(form):
+    home = form.get('Home')
+    sell = form.get('Sell')
+    buy = form.get('Request')
+    login = form.get('Login')
+    signup = form.get('Signup')
+    profile = form.get('Profile')
+
+    print(home)
+    if home == "Home": 
+        return redirect(url_for('life.home'))
+    
+    if sell == "Sell": 
+        return redirect(url_for('life.sell'))
+
+    if buy == "Request": 
+        return redirect(url_for('life.buy'))
+    
+    if login == "Login": 
+        return redirect(url_for('auth.login'))
+    
+    if signup == "Signup": 
+        return redirect(url_for('auth.signup'))
+
+    if profile == "Profile": 
+        return redirect(url_for('life.profile'))
