@@ -63,8 +63,9 @@ class ItemDB():
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
-    def getItemList(self, cate="", maxprice="", minprice=""):
+    def getItemList(self, user="", cate="", maxprice="", minprice=""):
         selection = {}
+        if user != "": selection["itemOwner"] = user
         if cate != "": selection["itemCate"] = cate
         if maxprice != "" and minprice != "": selection["itemPrice"] = {"$lte": int(maxprice), "$gte": int(minprice)}
         elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": int(maxprice)}
@@ -103,8 +104,10 @@ class RequestDB():
         self.db.insert_one(newRequest.__dict__)
         return "Info: New Request Added"
 
-    def getRequestList(self):
-        requestList = self.db.find()
+    def getRequestList(self, user=""):
+        selection = {}
+        if user != "": selection["requestUser"] = user
+        requestList = self.db.find(selection)
         requestInfo = {}
         counter = 0
         for request in requestList:

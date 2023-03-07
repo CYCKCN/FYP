@@ -136,6 +136,9 @@ def buy():
 def requestList(requestID):    
     if requestID == "all":
         requestInfo = requestdb.getRequestList()
+        if request.method == 'POST':
+            button = buttonCheck(request.form)
+            if button: return button
         return render_template('requestall.html', requestInfo=requestInfo)
     else:
         requestInfo = requestdb.findRequest(requestID)
@@ -156,6 +159,9 @@ def profile():
         return redirect(url_for('auth.login'))
     section = request.args.get('section')
     user = accountdb.findUser(current_user.email)
+    itemInfo = itemdb.getItemList(user=current_user.email)
+    requestInfo = requestdb.getRequestList(user=current_user.email)
+
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -168,4 +174,4 @@ def profile():
         if section:
             return redirect(url_for('life.profile', section=section))
         
-    return render_template('profile.html', user=user, section=section if section else "Info")
+    return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo)
