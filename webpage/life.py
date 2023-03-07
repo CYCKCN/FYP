@@ -25,6 +25,7 @@ def home():
         buy = request.form.get('Request')
         login = request.form.get('Login')
         signup = request.form.get('Signup')
+        profile = request.form.get('Profile')
 
         # print(submit)
         if sell == "Sell": 
@@ -38,6 +39,9 @@ def home():
         
         if signup == "Signup": 
             return redirect(url_for('auth.signup'))
+
+        if profile == "Profile": 
+            return redirect(url_for('life.profile'))
     
     if current_user.is_authenticated: userStatus = True
     else: userStatus = False
@@ -103,3 +107,8 @@ def item(itemID):
 # @check_login
 def buy():
     return render_template('request.html')
+
+@life.route('/profile', methods=['POST', 'GET'])
+# @check_login
+def profile():
+    return render_template('profile.html')

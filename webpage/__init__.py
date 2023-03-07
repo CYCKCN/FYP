@@ -22,9 +22,7 @@ login_manager.init_app(webpage)
 
 @login_manager.user_loader
 def user_loader(user_id):
-    print(user_id)
     account = accountdb.findUser(user_id)
-    print(account)
     if not account: return None
     return User(email=account["accountEmail"])
 
