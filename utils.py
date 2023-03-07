@@ -75,9 +75,9 @@ class Request(object):
         self.requestInfo = info
         self.requestCate = category
 
-# class LoginForm(FlaskForm):
-#     id = wtforms.StringField('id', validators=[InputRequired(), Length(max=30)])
-#     password = wtforms.PasswordField('password', validators=[InputRequired(), Length(min=8, max=32)])
+class RequestForm(FlaskForm):
+    title = wtforms.StringField('Name', validators=[InputRequired(), Length(max=30)])
+    info = wtforms.StringField('Description', validators=[InputRequired(), Length(max=5000)])
 
 def randomID(length):
     id = str()

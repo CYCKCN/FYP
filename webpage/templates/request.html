@@ -30,7 +30,9 @@
                             <label for="Description" class="lable-style2">Description</label>
                         </div>
                         <div class="item-input-div">
-                            <input type="text" id= "Name" name="Name" class="input-style">
+                            <!-- <input type="text" id= "Name" name="Name" class="input-style"> -->
+                            <p class="input-style">TITLE</p>
+                            {{ form.title(class_='input-style') }}
                             <select name="Category" class="input-style">
                                 <option value="">- Choose a category -</option>
                                 {% for c in itemCategories %}
@@ -40,7 +42,9 @@
                             {% if categoryInvalid == True %}
                                 <p style="color: red;">You didn't select the category!</p>
                             {% endif %}
-                            <textarea id="Description" name="Description" class="textarea-style"></textarea>
+                            <!-- <textarea id="Description" name="Description" class="textarea-style"></textarea> -->
+                            <p class="input-style">Description</p>
+                            {{ form.info(class_='input-style') }}
                         </div>
                     </div>
                     <button name="create-request" value="create-request" class="create-style">Publish Request</button> 
