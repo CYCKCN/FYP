@@ -15,6 +15,10 @@
   input[type=checkbox] {
     display: none;
   }
+  hr.rounded {
+    border-top: 1px solid #bbb;
+    border-radius: 1px;
+    }
   .request-list {
     width: 70%;
     height: 100%;

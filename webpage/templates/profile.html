@@ -24,9 +24,35 @@
         </div>
 
         {% if section == "Request" %}
-        <p>Request</p>
+        <div class="content">
+            <p>Request</p>
+            <hr class="rounded">
+            {% for k, v in requestInfo.items() %}
+            <a href="/request/{{v.requestID}}" class="request-link">
+                <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>
+                {{v.requestTitle}}
+                <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span>
+                <span style="color: red; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestTime}}</span>
+                <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span>
+            </a>
+            <hr class="rounded">
+            {% endfor %}
+        </div>
         {% elif section == "Item" %}
-        <p>Item</p>
+        <div class="content">
+            <p>Item</p>
+            <div class="display-table">
+                {% for k, v in itemInfo.items() %}
+                <a href="item/{{v.itemID}}" style="text-decoration:none">
+                    <div class="on-sale-block">
+                        <img src={{v.itemImg}} width="340" class="display-image"/>
+                        <p class="display-text">{{v.itemName}}</p>
+                        <p class="display-text">{{v.itemInfo}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
         {% else %}
         <div class="content">
             <div class="inputs-div">

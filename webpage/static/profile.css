@@ -109,6 +109,21 @@
     left: 0px;
     overflow: hidden;
   }
+  .request-link {
+    width: 100%;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.request-all {
+    text-align: end;
+    text-decoration: none;
+    font-family: 'Alatsi';
+}
   .home-top {
     width: 100%;
     position: absolute;
@@ -119,6 +134,17 @@
     padding-top: 5px;
     background: white;
   }
+  .display-table {
+    display: table;
+    position: relative;
+    border-spacing:10px;
+    display: grid;
+    grid-template-columns: 340px 340px 340px;
+    column-gap: 10px;
+    row-gap: 0px;
+    background: none;
+    width: fit-content;
+}
   .content {
       width: 82%;
       height: 100%;
@@ -130,6 +156,7 @@
       position: absolute;
       font-family: 'Alatsi';
       color: black; 
+      overflow-y: scroll;
   }
   .section-bar {
     position: absolute;
