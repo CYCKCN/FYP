@@ -118,10 +118,20 @@ def buy():
     
     if request.method == 'POST':
         home = request.form.get('Home')
+        title = request.form.get('Name')
+        cate = request.form.get('Category')
+        info = request.form.get('Description')
+        create = request.form.get('create-request')
 
         if home == "Home": 
             return redirect(url_for('auth.logout'))
-    return render_template('request.html')
+        if create == "create-request": 
+            if cate == "": 
+                return render_template('request.html', itemCategories=CATEGORY, categoryInvalid=True)
+            else: 
+                requestdb.createRequest(current_user.email, title, cate, info)
+                return redirect(url_for('life.home'))
+    return render_template('request.html', itemCategories=CATEGORY, categoryInvalid=False)
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
