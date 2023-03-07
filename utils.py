@@ -17,10 +17,8 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 class User(UserMixin):
-    def __init__(self, id, name, auth):
-        self.id = id
-        self.name = name
-        self.auth = auth
+    def __init__(self, email):
+        self.email = email
 
     @staticmethod
     def is_authenticated():
@@ -35,15 +33,16 @@ class User(UserMixin):
         return False
 
     def get_id(self):
-        return self.id
+        return self.email
     
 class Account(object):
-    def __init__(self, name, password, id, auth="USER", QRcode=None):
-        self.accountName = name # "example@example.com"
+    def __init__(self, name, password, email, uni, tel, intro):
+        self.accountName = name # "name"
+        self.accountEmail = email # "university email"
+        self.accountUni = uni
         self.accountPw = password # "examplePW"
-        self.accountID = id # 00310
-        self.accountAuth = auth # "USER" / "STAFF"
-        self.accountQRcode = QRcode
+        self.accountTel = tel
+        self.accountIntro = intro
 
 class Item(object):
     def __init__(self, id, owner, name, price, category, info, image_path):
@@ -55,14 +54,14 @@ class Item(object):
         self.itemInfo = info
         self.itemImg = image_path
 
-class Order(object):
-    def __init__(self, id, stime, etime, orderType="SELL", itemid=None, orderStatus="R"):
-        self.orderID = id # "3387220221217"
-        self.orderItemID = itemid # None / "3387220221217003"
-        self.orderType = orderType # "SELL" / "BUY"
-        self.orderStartTime = stime # "202212171000"
-        self.orderEndTime = etime # "202212171030"
-        self.orderStatus = orderStatus # "R" -> Reserved / "S" -> Solved
+# class Order(object):
+#     def __init__(self, id, stime, etime, orderType="SELL", itemid=None, orderStatus="R"):
+#         self.orderID = id # "3387220221217"
+#         self.orderItemID = itemid # None / "3387220221217003"
+#         self.orderType = orderType # "SELL" / "BUY"
+#         self.orderStartTime = stime # "202212171000"
+#         self.orderEndTime = etime # "202212171030"
+#         self.orderStatus = orderStatus # "R" -> Reserved / "S" -> Solved
 
 # class LoginForm(FlaskForm):
 #     id = wtforms.StringField('id', validators=[InputRequired(), Length(max=30)])
