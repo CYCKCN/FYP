@@ -8,37 +8,48 @@ from utils import User
 from db import accountdb
 
 auth = Blueprint('auth', __name__)
-
-# def check_login():
-#     if not current_user.is_authenticated: 
-#         return redirect(url_for('auth.login'))
     
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-
-    if current_user.is_authenticated: 
-        return redirect(url_for('home.main'))
     
-    # if request.method == 'POST':
-    #     id = request.form.get('username')
-    #     password = request.form.get('password')
-    #     submit = request.form.get('submit-button')
+    if request.method == 'POST':
+        email = request.form.get('usermail')
+        password = request.form.get('password')
+        submit = request.form.get('submit-button')
 
-    #     print(id, password, submit)
+        # print(id, password, submit)
 
-    #     if submit == "Submit": 
-    #         loginInfo = accountdb.login(id, password, "STAFF")
-    #         print(loginInfo)
-    #         if "Login successfully!" in loginInfo:
-    #             username = accountdb.findUserName(id)
-    #             login_user(User(id, username, "STAFF"))
-    #             return redirect(url_for('staff.main'))
+        if submit == "Submit": 
+            loginInfo = accountdb.login(email, password)
+            print(loginInfo)
+            if "Login successfully!" in loginInfo:
+                # username = accountdb.findUserName(email)
+                login_user(User(email))
+                return redirect(url_for('life.home'))
 
     return render_template('login.html')
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
+    
+    if request.method == 'POST':
+        email = request.form.get('usermail')
+        password = request.form.get('password')
+        name = request.form.get('username')
+        uni = request.form.get('Universities')
+        submit = request.form.get('submit-button')
+
+        account = accountdb.findUser(email)
+
+        if account is None:
+            signupInfo = accountdb.signup(name, password, email, uni)
+            if "Err" not in signupInfo: login_user(User(email=email))
+            return redirect(url_for('life.home'))
+        else:
+            # login_user(User(email=email))
+            return "User Exists"
+            
     return render_template('signup.html')
 
 @auth.route('/logout', methods=['GET', 'POST'])

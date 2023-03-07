@@ -1,6 +1,6 @@
 
 from pymongo.mongo_client import MongoClient
-from utils import Account, User, Item, randomID, IDLENGTH
+from utils import Account, User, Item, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
     
@@ -19,6 +19,31 @@ class AccountDB():
 
     def findUser(self, accountEmail):
         return self.db.find_one({"accountID": accountEmail})
+    
+    # def findUserName(self, accountID):
+    #     account = self.db.find_one({"accountID": accountID})
+    #     if account is None: return "Err: Not Registered!"
+    #     return account["accountName"]
+    
+    def login(self, accountEmail, accountPw):
+        account = self.db.find_one({"accountEmail": accountEmail})
+        if account is None: 
+            return "Err: Not Registered!"
+        elif check_password_hash(account["accountPw"], accountPw) == False:
+            return "Err: Wrong Password!"
+        else:
+            return "Info: Login successfully!"
+        
+    def signup(self, accountName, accountPw, accountEmail, accountUni):
+        print(accountName, accountPw, accountEmail, accountUni)
+        if self.db.find_one({"accountEmail": accountEmail}):
+            return "Err: Account Exists!"
+        print(UNIADDR[accountUni])
+        if UNIADDR[accountUni] not in accountEmail:
+            return "Err: Email Invalid!"
+        newAccount = Account(accountName, generate_password_hash(accountPw), accountEmail, accountUni, tel="", intro="")
+        self.db.insert_one(newAccount.__dict__)
+        return "Info: Register USER Account Successfully"
 
 class ItemDB():
     def __init__(self, db):

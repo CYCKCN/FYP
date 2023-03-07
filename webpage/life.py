@@ -11,8 +11,7 @@ life = Blueprint('life',__name__)
 
 @life.route('/home', methods=['POST', 'GET'])
 def home():
-    # if not current_user.is_authenticated: 
-    #     return redirect(url_for('auth.login'))
+    
     itemList = itemdb.getItemList()
     itemInfo = {}
     counter = 0

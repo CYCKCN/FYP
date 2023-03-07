@@ -9,6 +9,8 @@ time = ["0800", "0815", "0830", "0845", "0900", "0915", "0930", "0945", "1000", 
         "1400", "1415", "1430", "1445", "1500", "1515", "1530", "1545", "1600", "1615", "1630", "1645", \
         "1700", "1715", "1730", "1745", "1800"]
 
+UNIADDR = {"HKUST": "ust.hk", "CUHK": "cuhk.edu.hk"}
+
 IDLENGTH = 12 
 UPLOAD_FOLDER = 'webpage/static/data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
