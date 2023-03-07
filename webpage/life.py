@@ -137,7 +137,7 @@ def buy():
 @life.route('/request/<requestID>', methods=['POST', 'GET'])
 # @check_login
 def requestList(requestID):
-    if requestID == "ALL":
+    if requestID == "all":
         return render_template('requestall.html')
     else:
         return render_template('requestdetail.html')

@@ -71,6 +71,11 @@ hr.rounded {
     overflow: hidden;
     white-space: nowrap;
 }
+.request-all {
+    text-align: end;
+    text-decoration: none;
+    
+}
 .user-title {
     font-family: 'Alatsi';
     font-size: 20px;
