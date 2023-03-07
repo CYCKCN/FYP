@@ -23,11 +23,13 @@ def home():
         counter += 1
     print(itemInfo)
     if request.method == 'POST':
-        submit = request.form.get('Sell')
+        sell = request.form.get('Sell')
 
         # print(submit)
-        if submit == "Sell": 
+        if sell == "Sell": 
             return redirect(url_for('life.sell'))
+        
+
 
     return render_template('home.html', itemInfo=itemInfo)
 
