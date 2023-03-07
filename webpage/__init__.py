@@ -3,7 +3,7 @@ import secrets
 from flask import Flask, redirect, url_for
 from flask_login import LoginManager
 
-from db import connection, accountdb, User
+from db import connection, accountdb, itemdb, User
 from utils import UPLOAD_FOLDER
 
 class ConfigClass(object):

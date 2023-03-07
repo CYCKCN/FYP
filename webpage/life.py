@@ -11,16 +11,24 @@ life = Blueprint('life',__name__)
 
 @life.route('/home', methods=['POST', 'GET'])
 def home():
-    
-    itemInfo = itemdb.getItemList()
-    requestInfo = requestdb.getRequestList()
-    
     if current_user.is_authenticated: userStatus = True
     else: userStatus = False
 
+    cate = request.args.get('cate')
+    if cate: itemInfo = itemdb.getItemList(cate)
+    else: itemInfo = itemdb.getItemList()
+
+    requestInfo = requestdb.getRequestList()
+
     if request.method == 'POST':
+        
         button = buttonCheck(request.form)
         if button: return button
+
+        apply = request.form.get('Apply')
+        cate = request.form.get("Category")
+
+        if apply: return redirect(url_for("life.home", cate=cate))
 
     return render_template('home.html', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
 
@@ -48,19 +56,16 @@ def sell():
         button = buttonCheck(request.form)
         if button: return button
         
-        if profile == "Profile": 
-            return redirect(url_for('life.profile'))
-        
         if file and file.filename != "" and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
         # print(image_path)
         if submit == "new-contract":
-            itemdb.createItem('-1', name, price, category, info, image_path)
+            itemdb.createItem(current_user.email, name, price, category, info, image_path)
             return redirect(url_for('life.home'))
 
-    return render_template('sell.html')
+    return render_template('sell.html', itemCategories=CATEGORY)
     # return "Sell Page"
 
 @life.route('/item/<itemID>', methods=['POST', 'GET'])

@@ -39,11 +39,12 @@
                         <div class="item-input-div">
                             <input type="text" id= "Name" name="Name" class="input-style">
                             <input type="number" id= "Price" name="Price" class="input-style">
-                            <input list="Type" id="Category" name="Category" class="input-style">
-                            <datalist id="Type">
-                                <option value="Furniture">
-                                <option value="Electronices">
-                            </datalist>
+                            <select name="Category" class="input-style">
+                                <option value="">- Choose a category -</option>
+                                {% for c in itemCategories %}
+                                <option value="{{c}}">{{c}}</option>
+                                {% endfor %}
+                            </select>
                             <textarea id="Description" name="Description" class="textarea-style"></textarea>
                         </div>
                     </div>

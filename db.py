@@ -63,8 +63,9 @@ class ItemDB():
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
-    def getItemList(self):
-        itemList = self.db.find()
+    def getItemList(self, cate=""):
+        if cate == "": itemList = self.db.find()
+        else: itemList = self.db.find({"itemCate": cate})
         itemInfo = {}
         counter = 0
         for item in itemList:
