@@ -32,11 +32,14 @@
             </div>
 
             <div class="filter-div">
-               <button class="individual-button" type="submit" name="Apply" value="Apply">Apply</button>
                 <select name="Category" class="button-option">
-                    <option value="" selected>- ALL -</option>
+                    <option value="">- ALL -</option>
                     {% for c in itemCategories %}
-                    <option value="{{c}}">{{c}}</option>
+                        {% if selected == c %}
+                            <option value="{{c}}" selected>{{c}}</option>
+                        {% else %}
+                            <option value="{{c}}">{{c}}</option>
+                        {% endif%}
                     {% endfor %}
                 </select>
                 <select class="button-option">
@@ -46,6 +49,7 @@
                     <option value="Sale">Between 100 - 200</option>
                     <option value="Sale">More than 200</option>
                 </select>
+                <button class="button-option" type="submit" name="Apply" value="Apply">Apply</button>
             </div>
         </div>
 
