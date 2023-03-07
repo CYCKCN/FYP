@@ -10,11 +10,11 @@
     <form method="POST">
     <div class="page-frame">
         <div class="home-top">
-            <p class="user-title">My Account</p>
-
-            <button class="home-logout" type="submit" name="backward" value="back">
-                <i class="material-icons" style="font-size: 30px; color:black;">menu</i>
-            </button>
+            <div class="top-buttons">
+                    <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                    <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
+                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+            </div>
         </div>
 
         <div class="content">
@@ -25,10 +25,9 @@
                     <p class="user-style2">User Email</p>
                 </div>
                 <div class="item-input-div">
-                    <p class="user-style1">{{username}}</p>
-                    <p class="user-style2">{{universities}}</p>
-                    <p class="user-style2">{{usermail}}</p>
-                    
+                    <p class="user-style1">{{user.accountName}}</p>
+                    <p class="user-style2">{{user.accountUni}}</p>
+                    <p class="user-style2">{{user.accountEmail}}</p>        
                 </div>
             </div>
         </div>
