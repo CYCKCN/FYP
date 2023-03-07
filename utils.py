@@ -17,6 +17,7 @@ UPLOAD_FOLDER = 'webpage/static/data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 CATEGORY = ["toy", "electronics"]
+PRICERANGE = ["Less than 50", "Between 50 - 100", "Between 100 - 200", "More than 200"]
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
