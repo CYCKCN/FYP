@@ -16,8 +16,12 @@
                 <form method="POST">
                     <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
                     <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
-                    <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
-                    <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                    {% if userStatus == "login" %}
+                        <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
+                        <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                    {% else %}
+                        <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                    {% endif %}
                 </form>
             </div>
         </div>
