@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/static/user.css">
+    <link rel="stylesheet" href="/static/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
@@ -20,18 +20,13 @@
             <div class="inputs-div">
                 <div class="lable-div">
                     <p class="user-style1">Username</p>
-                    <p class="user-style2">User ID</p>
-                    <label for="item-type" class="user-style2">Receiving Account QR Code</label>
+                    <p class="user-style2">Univeristy</p>
+                    <p class="user-style2">User Email</p>
                 </div>
                 <div class="item-input-div">
-                    <p class="user-style1">Alice-7</p>
-                    <p class="user-style2">824376283</p>
-                    <div class="uploading">
-                        <p class="user-style2 not-uploaded">Not Uploaded</p>
-                        <button class="go-back" type="submit" name="logout-button" value="logout">
-                            <i class="material-icons upload-icon" style="font-size: 30px;">chevron_right</i>
-                        </button>
-                    </div>
+                    <p class="user-style1">{{username}}</p>
+                    <p class="user-style2">{{universities}}</p>
+                    <p class="user-style2">{{usermail}}</p>
                     
                 </div>
             </div>
