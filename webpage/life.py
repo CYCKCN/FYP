@@ -143,7 +143,11 @@ def requestList(requestID):
     else:
         requestInfo = requestdb.findRequest(requestID)
         requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
+        if current_user.is_authenticated: userStatus = True
+        else: userStatus = False
+
         if request.method == 'POST':
+            home = request.form.get('Home')
             sell = request.form.get('Sell')
             buy = request.form.get('Request')
             login = request.form.get('Login')
@@ -151,6 +155,9 @@ def requestList(requestID):
             profile = request.form.get('Profile')
 
             # print(submit)
+            if home == "Home": 
+                return redirect(url_for('life.home'))
+            
             if sell == "Sell": 
                 return redirect(url_for('life.sell'))
 
@@ -166,7 +173,7 @@ def requestList(requestID):
             if profile == "Profile": 
                 return redirect(url_for('life.profile'))
             
-        return render_template('requestdetail.html', requestInfo=requestInfo)
+        return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus)
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
