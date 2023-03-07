@@ -71,7 +71,7 @@ class Request(object):
     def __init__(self, id, user, title, category, info):
         self.requestID = id # random 12 numbers
         self.requestUser = user # "33872" / "-1"
-        self.requestTilte = title
+        self.requestTitle = title
         self.requestInfo = info
         self.requestCate = category
 

@@ -99,9 +99,10 @@ class RequestDB():
         requestInfo = {}
         counter = 0
         for request in requestList:
-            requestInfo[str(counter)]['requestCategory'] = request["requestCate"]
-            requestInfo[str(counter)]['requestTitle'] = request["requestTitle"]
+            # print(request)
+            requestInfo[str(counter)] = request
             counter += 1
+        print(requestInfo)
         return requestInfo
 
 db = connection("LIFE2")
