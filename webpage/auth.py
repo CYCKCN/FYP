@@ -13,7 +13,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
 
-    print(current_user.is_authenticated)
+    # print(current_user.is_authenticated)
     
     if request.method == 'POST':
         email = request.form.get('usermail')
@@ -22,15 +22,15 @@ def login():
         home = request.form.get('Home')
         signup = request.form.get('Sign up')
 
-        print(email, password, submit)
+        # print(email, password, submit)
 
         if submit == "Submit": 
             loginInfo = accountdb.login(email, password)
-            print(loginInfo)
+            # print(loginInfo)
             if "Login successfully!" in loginInfo:
                 # username = accountdb.findUserName(email)
                 login_user(User(email))
-                print(current_user.is_authenticated())
+                # print(current_user.is_authenticated())
                 return redirect(url_for('life.home'))
         
         if home == "Home": 
