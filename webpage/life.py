@@ -5,7 +5,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from werkzeug.utils import secure_filename
 
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, RequestForm
-from db import itemdb, requestdb
+from db import itemdb, requestdb, accountdb
 
 life = Blueprint('life',__name__)
 
@@ -141,7 +141,9 @@ def requestList(requestID):
         requestInfo = requestdb.getRequestList()
         return render_template('requestall.html', requestInfo=requestInfo)
     else:
-        return render_template('requestdetail.html')
+        requestInfo = requestdb.findRequest(requestID)
+        requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
+        return render_template('requestdetail.html', requestInfo=requestInfo)
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
