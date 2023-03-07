@@ -9,19 +9,16 @@ from db import accountdb
 
 auth = Blueprint('auth', __name__)
 
-def check_login(f):
-    @wraps(f)
-    def wrapper(*args, **kwargs):
-        if not current_user.is_authenticated: 
-            return redirect(url_for('auth.login'))
-        return f(*args, **kwargs)
-    return wrapper
+# def check_login():
+#     if not current_user.is_authenticated: 
+#         return redirect(url_for('auth.login'))
+    
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
 
-    # if current_user.is_authenticated: 
-    #     return redirect(url_for('staff.main'))
+    if current_user.is_authenticated: 
+        return redirect(url_for('home.main'))
     
     # if request.method == 'POST':
     #     id = request.form.get('username')

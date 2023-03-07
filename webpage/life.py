@@ -4,16 +4,15 @@ from flask import Blueprint, request, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from .auth import check_login
-
 from utils import User, allowed_file, UPLOAD_FOLDER
 from db import itemdb
 
 life = Blueprint('life',__name__)
 
 @life.route('/home', methods=['POST', 'GET'])
-# @check_login
 def home():
+    # if not current_user.is_authenticated: 
+    #     return redirect(url_for('auth.login'))
     itemList = itemdb.getItemList()
     itemInfo = {}
     counter = 0
@@ -41,7 +40,7 @@ def home():
         if signup == "Signup": 
             return redirect(url_for('auth.signup'))
 
-    return render_template('home.html', itemInfo=itemInfo)
+    return render_template('home.html', itemInfo=itemInfo, userStatus=current_user.is_authenticated)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
