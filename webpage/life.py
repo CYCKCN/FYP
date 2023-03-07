@@ -5,7 +5,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from werkzeug.utils import secure_filename
 
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY
-from db import itemdb
+from db import itemdb, requestdb
 
 life = Blueprint('life',__name__)
 

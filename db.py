@@ -1,6 +1,6 @@
 
 from pymongo.mongo_client import MongoClient
-from utils import Account, User, Item, randomID, IDLENGTH, UNIADDR
+from utils import Account, User, Item, Request, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
     
@@ -70,7 +70,28 @@ class OrderDB():
     def __init__(self, db):
         self.db = db["order"]
 
+class RequestDB():
+    def __init__(self, db):
+        self.db = db["request"]
+
+    def cleardb(self):
+        self.db.delete_many({})
+
+    def findRequest(self, requestID):
+        return self.db.find_one({"requestID": requestID})
+    
+    def createRequest(self, user, title, category, info):
+        requestID = randomID(IDLENGTH)
+        while (self.db.find_one({"requestID": requestID})): requestID = randomID(IDLENGTH)
+        newRequest = Request(requestID, user, title, category, info)
+        self.db.insert_one(newRequest.__dict__)
+        return "Info: New Request Added"
+
+    def getRequestList(self):
+        return self.db.find()
+
 db = connection("LIFE2")
 accountdb = AccountDB(db)
 itemdb = ItemDB(db)
 orderdb = OrderDB(db)
+requestdb = RequestDB(db)
