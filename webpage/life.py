@@ -18,7 +18,7 @@ def home():
     maxprice = request.args.get('maxprice')
     minprice = request.args.get('minprice')
     # print(cate, maxprice, minprice)
-    itemInfo = itemdb.getItemList(cate if cate else "", maxprice if maxprice else "", minprice if minprice else "")
+    itemInfo = itemdb.getItemList(cate=cate if cate else "", maxprice=maxprice if maxprice else "", minprice=minprice if minprice else "")
 
     if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
     elif (maxprice, minprice) == ('100', '50'): price = 'Between 50 - 100'
