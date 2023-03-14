@@ -25,8 +25,11 @@
                 <p class="image-display"><img id="output" width="400"/></p>
                 <div class="img-div">
                     <label for="file-upload" class="custom-file-upload">Upload Image</label>
+                    {% if itemImg == "" %}
                     <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+                    {% else %}
                     <img src="{{itemImg}}" height="400"/>
+                    {% endif %}
                 </div>
                 <div class="question-box">
                     <p class="sell-title">Item Information</p>

@@ -95,6 +95,7 @@ def sell():
             image_path = os.path.join(UPLOAD_FOLDER, filename)
             itemImg = image_path
         else: invalidDict["img"] = True
+        print(itemImg)
         if category == "": invalidDict["cate"] = True
         if not name: invalidDict["name"] = True
         if not price: invalidDict["price"] = True
