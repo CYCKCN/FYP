@@ -50,15 +50,77 @@
       position: absolute;
       left: 30%;
       top: 50px;
-      height: 100%;
+      height: 90%;
       width: 600px;
       background: gray;
+      display: flex;
+      flex-direction: column;
+  }
+  .other-name {
+    background: var(--mainGrey2);
+    width: 100%;
+    height: 7%;
+    font-family: 'Alatsi';
+    text-align: center;
+    color: black;
+    padding-top: 15px;
+  }
+  .dialogue {
+    background: var(--mainGreen3);
+    width: 100%;
+    height: 86%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-bottom: 5px;
+  }
+  .dialogue::-webkit-scrollbar {
+    display: none;
+  }
+  .input-box {
+      width: 100%;
+      height: 7%;
+      background: var(--mainGrey2);
+      display: flex;
+      flex-direction: row;
+  }
+  .my-input {
+      margin: 5px 5px 5px 5px;
+      height: 40px;
+      width: 80%;
+      border-radius: 10px;
+  }
+  .send-btn {
+    margin: 5px 5px 5px 5px;
+    height: 40px;
+    width: 20%;
+    border-radius: 10px;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+
   }
   .other-pop {
-      background: black;
+      background: white;
       border-radius: 10px;
-      width: 100px;
-      height: 40px;
+      padding: 10px 10px 10px 10px;
+      width: 96%;
+      margin-left: 2%;
+      margin-top: 5px;
+      background: white;
+      height: fit-content;
+  }
+  .my-pop {
+    background: white;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 96%;
+    margin-left: 2%;
+    margin-top: 5px;
+    height: fit-content;
+}
+  .font-class {
+      font-family: 'Alatsi';
   }
 
   .individual-button {
