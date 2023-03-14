@@ -1306,12 +1306,12 @@
     position: relative;
     border-radius: 10px;
     border: none;
-    height: 100px;
+    height: 90px;
     font-family: 'Alatsi';
     font-size: 16px;
     color: black;
     padding: 10px;
-    margin-top: 0px;
+    margin-bottom: 20px;
   }
   .remark-style {
     position: relative;

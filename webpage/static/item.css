@@ -23,7 +23,7 @@ html, body {
 }
 .top-buttons {
     position: absolute;
-    width: 500px;
+    width: 600px;
     height: 50px;
     right: 0%;
     top: 0px;
@@ -33,11 +33,29 @@ html, body {
     display: flex;
     flex-direction: row-reverse;
 }
+.create-style {
+    width: 250px; 
+    height: 40px; 
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .create-style:hover {
+    background: var(--mainGreen3);
+  }
 .item-image {
     height: 400px;
     width: 100%;
     background-color: none;
-    text-align: center;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: row;
 }
 .user-title {
     font-family: 'Alatsi';
