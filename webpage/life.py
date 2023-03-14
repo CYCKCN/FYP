@@ -30,6 +30,7 @@ def home():
     else: price = ""
 
     requestInfo = requestdb.getRequestList()
+    print(requestInfo)
 
     if request.method == 'POST':
         
