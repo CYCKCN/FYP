@@ -20,7 +20,8 @@ def home():
     search = request.args.get('search')
 
     # print(cate, maxprice, minprice, search)
-    itemInfo = itemdb.getItemList(cate=cate if cate else "", maxprice=maxprice if maxprice else "", minprice=minprice if minprice else "")
+    itemInfo = itemdb.getItemList(cate=cate if cate else "", maxprice=maxprice if maxprice else "", \
+                                  minprice=minprice if minprice else "", search=search if search else "")
 
     if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
     elif (maxprice, minprice) == ('100', '50'): price = 'Between 50 - 100'
@@ -36,10 +37,11 @@ def home():
         if button: return button
 
         apply = request.form.get('Apply')
+        clear = request.form.get('Clear')
         cate = request.form.get("Category")
         price = request.form.get("Price")
         itemName = request.form.get("search-keyword")
-
+        if itemName == '' and search != '': itemName = search
         # itemName = searchForm.search.data
 
         if price == 'Less than 50': maxprice, minprice = '50', '0'
@@ -49,11 +51,15 @@ def home():
         else: maxprice, minprice = '', ''
 
         # print(cate, maxprice, minprice, itemName)
-        if apply or itemName:
-            return redirect(url_for("life.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
+
+        if clear == 'Clear':
+            return redirect(url_for("life.home", cate='', maxprice='', minprice='', search=''))
+
+        if apply == "Apply" or itemName:
+            return redirect(url_for("life.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))      
 
     # print(price)
-    return render_template('home.html', selected_cate=cate if cate else '', selected_price=price, itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
+    return render_template('home.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
 @life.route('/sell', methods=['POST', 'GET'])
 # @check_login
