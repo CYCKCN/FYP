@@ -93,7 +93,7 @@ def sell():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
-            itemImg = image_path
+            itemImg = "../../" + image_path[8:]
         else: invalidDict["img"] = True
         print(itemImg)
         if category == "": invalidDict["cate"] = True
@@ -101,7 +101,7 @@ def sell():
         if not price: invalidDict["price"] = True
         if not info: invalidDict["info"] = True
         if not pickup: invalidDict["pickup"] = True
-        print(invalidDict)
+        print(itemImg)
         if True in invalidDict.values():
             return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
         # print(image_path)
