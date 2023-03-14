@@ -7,21 +7,33 @@
   </head>
 
   <body>
+    <form method="POST">
     <div class="page-frame">
         <div class="home-top">
             <div class="top-buttons">
-                <form method="POST">
-                    <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                    <button class="individual-button" type="submit" name="Chat" value="Chat">Chat</button>
                     <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
                     <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                    <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                     <button class="individual-button" type="submit" name="Login" value="Login">Log In</button>
                     <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
-                </form>
+                
             </div>
         </div>
 
         <div class="scroll-div">
-            <p class="item-image"><img src="{{item_image}}" height="400"/></p>
+            <div class="item-image">
+                <div>
+                    <img src="{{item_image}}" height="400"/>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
+                    <button type="submit" name="Contact" value="Contact" class="create-style">Contact Seller</button>
+                    <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
+                </div>
+                
+            </div>
+
             <div class="info-pack">
                 <div class="question-box">
                     <p class="welcoming">{{item_name}}</p>
@@ -37,6 +49,7 @@
             
         </div>
     </div>
+    </form>
     </body>
     <script>
         window.onscroll = function() {myFunction()};

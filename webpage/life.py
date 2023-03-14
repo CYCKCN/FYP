@@ -181,3 +181,8 @@ def profile():
             return redirect(url_for('life.profile', section=section))
         
     return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo)
+
+@life.route('/chat', methods=['POST', 'GET'])
+# @check_login
+def chat():
+    return render_template('chat.html')

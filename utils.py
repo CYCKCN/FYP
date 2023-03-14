@@ -97,6 +97,7 @@ def buttonCheck(form):
     login = form.get('Login')
     signup = form.get('Signup')
     profile = form.get('Profile')
+    chat = form.get('Chat')
 
     # print(home)
     if home == "Home": 
@@ -116,3 +117,6 @@ def buttonCheck(form):
 
     if profile == "Profile": 
         return redirect(url_for('life.profile'))
+    
+    if chat == "Chat":
+        return redirect(url_for('life.chat'))
