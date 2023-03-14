@@ -113,18 +113,20 @@ def sell():
 # @check_login
 def item(itemID):
     item = itemdb.findItem(itemID)
-    if item:
-        name, cate, price, des, path, pickup, owner = item['itemName'], item['itemCate'], item['itemPrice'], item['itemInfo'], item['itemImg'], item['itemPickUp'], item['itemOwner']
-    else:
+    if not item:
         return "Record not found", 400
     
     if request.method == 'POST':
-
         button = buttonCheck(request.form)
         if button: return button
 
-    return render_template('item.html', item_name=name, item_category=cate, item_price=price, item_description=des, \
-                           item_image="../../" + path[8:], item_seller_name=owner, item_pickup_info=pickup)
+        reserve = request.form.get('Reserve')
+        if reserve == "Reserve":
+            itemdb.reserveItem(itemID, current_user.email)
+            item = itemdb.findItem(itemID)
+            return render_template('item.html', item=item)
+
+    return render_template('item.html', item=item)
 
 @life.route('/request', methods=['POST', 'GET'])
 # @check_login

@@ -54,7 +54,9 @@ class ItemDB():
         self.db.delete_many({})
 
     def findItem(self, itemID):
-        return self.db.find_one({"itemID": itemID})
+        item = self.db.find_one({"itemID": itemID})
+        item['itemImg'] = "../../" + item['itemImg'][8:]
+        return item
     
     def createItem(self, owner, name, price, category, info, image_path, pickup):
         itemID = randomID(IDLENGTH)
@@ -80,6 +82,9 @@ class ItemDB():
             itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][8:]
             counter += 1
         return itemInfo
+    
+    def reserveItem(self, itemID, reservedBy):
+        self.db.update_one({"itemID": itemID}, {'$set': {'itemReserve': reservedBy, 'itemStatus': 'Reserved'} })
 
 
 class OrderDB():

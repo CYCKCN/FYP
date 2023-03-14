@@ -51,7 +51,7 @@ class Account(object):
         self.accountIntro = intro
 
 class Item(object):
-    def __init__(self, id, owner, name, price, category, info, image_path, pickup_location):
+    def __init__(self, id, owner, name, price, category, info, image_path, pickup_location, status="Available", reservedby=""):
         self.itemID = id # random 12 numbers
         self.itemOwner = owner # "33872" / "-1"
         self.itemName = name
@@ -60,6 +60,8 @@ class Item(object):
         self.itemInfo = info
         self.itemImg = image_path
         self.itemPickUp = pickup_location
+        self.itemStatus = status
+        self.itemReserve = reservedby
 
 # class Order(object):
 #     def __init__(self, id, stime, etime, orderType="SELL", itemid=None, orderStatus="R"):
