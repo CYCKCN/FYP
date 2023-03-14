@@ -4,7 +4,7 @@ from flask import Blueprint, request, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, buttonCheck
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb
 
 life = Blueprint('life',__name__)
@@ -30,7 +30,7 @@ def home():
     else: price = ""
 
     requestInfo = requestdb.getRequestList()
-    print(requestInfo)
+    # print(requestInfo)
 
     if request.method == 'POST':
         
@@ -68,20 +68,22 @@ def sell():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
     
+    itemForm = ItemForm()
+    invalidDict = {"cate": False, "img": False, "name": False, "price": False, "info": False, "pickup": False}
     if request.method == 'POST':
-        profile = request.form.get('Profile')
         submit = request.form.get('create-contract')
-        name = request.form.get('Name')
-        price = request.form.get('Price')
         category = request.form.get('Category')
-        info = request.form.get('Description')
-        # print(request.files)
+
+        name = itemForm.name.data
+        price = itemForm.price.data
+        info = itemForm.description.data
+        pickup = itemForm.pickup.data
+
+        print(name, price, info, pickup)
+        
         if "upload_cont_img" in request.files: file = request.files['upload_cont_img']
         else: file = None
         image_path = ""
-
-        # print(name, price, category, info)
-        # print(submit)
 
         button = buttonCheck(request.form)
         if button: return button
@@ -90,12 +92,21 @@ def sell():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
+        else: invalidDict["img"] = True
+        if category == "": invalidDict["cate"] = True
+        if not name: invalidDict["name"] = True
+        if not price: invalidDict["price"] = True
+        if not info: invalidDict["info"] = True
+        if not pickup: invalidDict["pickup"] = True
+        print(invalidDict)
+        if True in invalidDict.values():
+            return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalid=invalidDict)
         # print(image_path)
         if submit == "new-contract":
-            itemdb.createItem(current_user.email, name, price, category, info, image_path)
+            itemdb.createItem(current_user.email, name, price, category, info, image_path, pickup)
             return redirect(url_for('life.home'))
 
-    return render_template('sell.html', itemCategories=CATEGORY)
+    return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalid=invalidDict)
     # return "Sell Page"
 
 @life.route('/item/<itemID>', methods=['POST', 'GET'])
@@ -103,7 +114,7 @@ def sell():
 def item(itemID):
     item = itemdb.findItem(itemID)
     if item:
-        name, cate, price, des, path = item['itemName'], item['itemCate'], item['itemPrice'], item['itemInfo'], item['itemImg']
+        name, cate, price, des, path, pickup, owner = item['itemName'], item['itemCate'], item['itemPrice'], item['itemInfo'], item['itemImg'], item['itemPickUp'], item['itemOwner']
     else:
         return "Record not found", 400
     
@@ -113,7 +124,7 @@ def item(itemID):
         if button: return button
 
     return render_template('item.html', item_name=name, item_category=cate, item_price=price, item_description=des, \
-                           item_image="../../" + path[8:], item_seller_name="default", item_pickup_info="default")
+                           item_image="../../" + path[8:], item_seller_name=owner, item_pickup_info=pickup)
 
 @life.route('/request', methods=['POST', 'GET'])
 # @check_login
