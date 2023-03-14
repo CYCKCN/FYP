@@ -26,6 +26,7 @@
                 <div class="img-div">
                     <label for="file-upload" class="custom-file-upload">Upload Image</label>
                     <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+                    <img src="{{itemImg}}" height="400"/>
                 </div>
                 <div class="question-box">
                     <p class="sell-title">Item Information</p>
@@ -37,7 +38,7 @@
                             <label for="Description" class="lable-style2">Description</label>
                             <br/><br/><br/>
                             <label for="Pickup" class="lable-style2">Pick-Up Location</label>
-                            {% for k, c in invalidDict.items() %}
+                            {% for k, c in invalid.items() %}
                                 {% if c == True %}
                                     <label class="lable-style2"></label>
                                 {% endif %}
@@ -51,14 +52,18 @@
                             <select name="Category" class="input-style">
                                 <option value="">- Choose a category -</option>
                                 {% for c in itemCategories %}
-                                <option value="{{c}}">{{c}}</option>
+                                    {% if selected_cate == c %}
+                                        <option value="{{c}}" selected>{{c}}</option>
+                                    {% else %}
+                                        <option value="{{c}}">{{c}}</option>
+                                    {% endif%}
                                 {% endfor %}
                             </select>
                             <!-- <textarea id="Description" name="Description" class="textarea-style"></textarea>
                             <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea> -->
                             {{ form.description(class_='textarea-style') }}
                             {{ form.pickup(class_='textarea-style') }}
-                            {% for k, c in invalidDict.item() %}
+                            {% for k, c in invalid.items() %}
                                 {% if c == True %}
                                     <p class="warning">Please fill in {{k}} !</p>
                                 {% endif %}
