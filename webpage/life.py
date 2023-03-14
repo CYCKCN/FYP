@@ -128,6 +128,11 @@ def item(itemID):
 
     return render_template('item.html', item=item)
 
+@life.route('/itemManager/<itemID>', methods=['POST', 'GET'])
+# @check_login
+def itemManager():
+    return render_template('itemmanage.html')
+
 @life.route('/request', methods=['POST', 'GET'])
 # @check_login
 def buy():
@@ -206,3 +211,4 @@ def profile():
 # @check_login
 def chat():
     return render_template('chat.html')
+
