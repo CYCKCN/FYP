@@ -58,7 +58,7 @@
                             <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea> -->
                             {{ form.description(class_='textarea-style') }}
                             {{ form.pickup(class_='textarea-style') }}
-                            {% for k, c in invalidDict.item() %}
+                            {% for k, c in invalidDict.items() %}
                                 {% if c == True %}
                                     <p class="warning">Please fill in {{k}} !</p>
                                 {% endif %}

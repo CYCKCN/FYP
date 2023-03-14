@@ -67,12 +67,13 @@ def home():
 def sell():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
-    
+    selected_cate = ""
+    itemImg = ""
     itemForm = ItemForm()
-    invalidDict = {"cate": False, "img": False, "name": False, "price": False, "info": False, "pickup": False}
+    invalidDict = {"name": False, "price": False, "info": False, "pickup": False, "cate": False, "img": False}
     if request.method == 'POST':
         submit = request.form.get('create-contract')
-        category = request.form.get('Category')
+        selected_cate = category = request.form.get('Category')
 
         name = itemForm.name.data
         price = itemForm.price.data
@@ -92,6 +93,7 @@ def sell():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
+            itemImg = image_path
         else: invalidDict["img"] = True
         if category == "": invalidDict["cate"] = True
         if not name: invalidDict["name"] = True
@@ -100,13 +102,13 @@ def sell():
         if not pickup: invalidDict["pickup"] = True
         print(invalidDict)
         if True in invalidDict.values():
-            return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalid=invalidDict)
+            return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
         # print(image_path)
         if submit == "new-contract":
             itemdb.createItem(current_user.email, name, price, category, info, image_path, pickup)
             return redirect(url_for('life.home'))
 
-    return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalid=invalidDict)
+    return render_template('sell.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, itemImg=itemImg, selected_cate=selected_cate)
     # return "Sell Page"
 
 @life.route('/item/<itemID>', methods=['POST', 'GET'])
