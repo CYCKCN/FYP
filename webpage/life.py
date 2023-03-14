@@ -17,7 +17,9 @@ def home():
     cate = request.args.get('cate')
     maxprice = request.args.get('maxprice')
     minprice = request.args.get('minprice')
-    # print(cate, maxprice, minprice)
+    search = request.args.get('search')
+
+    # print(cate, maxprice, minprice, search)
     itemInfo = itemdb.getItemList(cate=cate if cate else "", maxprice=maxprice if maxprice else "", minprice=minprice if minprice else "")
 
     if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
@@ -36,6 +38,9 @@ def home():
         apply = request.form.get('Apply')
         cate = request.form.get("Category")
         price = request.form.get("Price")
+        itemName = request.form.get("search-keyword")
+
+        # itemName = searchForm.search.data
 
         if price == 'Less than 50': maxprice, minprice = '50', '0'
         elif price == 'Between 50 - 100': maxprice, minprice = '100', '50'
@@ -43,10 +48,11 @@ def home():
         elif price == 'More than 200': maxprice, minprice = '', '200'
         else: maxprice, minprice = '', ''
 
-        print(cate, maxprice, minprice)
+        # print(cate, maxprice, minprice, itemName)
+        if apply or itemName:
+            return redirect(url_for("life.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
 
-        if apply: return redirect(url_for("life.home", cate=cate, maxprice=maxprice, minprice=minprice))
-    print(price)
+    # print(price)
     return render_template('home.html', selected_cate=cate if cate else '', selected_price=price, itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
 @life.route('/sell', methods=['POST', 'GET'])

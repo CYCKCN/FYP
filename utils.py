@@ -82,6 +82,9 @@ class RequestForm(FlaskForm):
     title = wtforms.StringField('Name', validators=[Length(max=30)])
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
 
+# class SearchForm(FlaskForm):
+#     search = wtforms.StringField('Search', validators=[Length(max=30)])
+
 def randomID(length):
     id = str()
     for i in range(length): id += str(random.randint(0, 9))
@@ -95,7 +98,7 @@ def buttonCheck(form):
     signup = form.get('Signup')
     profile = form.get('Profile')
 
-    print(home)
+    # print(home)
     if home == "Home": 
         return redirect(url_for('life.home'))
     

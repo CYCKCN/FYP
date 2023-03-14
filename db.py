@@ -70,7 +70,7 @@ class ItemDB():
         if maxprice != "" and minprice != "": selection["itemPrice"] = {"$lte": int(maxprice), "$gte": int(minprice)}
         elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": int(maxprice)}
         elif maxprice == "" and minprice != "": selection["itemPrice"] = {"$gte": int(minprice)}
-        print(selection)
+        # print(selection)
         itemList = self.db.find(selection)
         itemInfo = {}
         counter = 0
