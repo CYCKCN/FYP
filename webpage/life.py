@@ -130,7 +130,7 @@ def item(itemID):
 
 @life.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 # @check_login
-def itemManager():
+def itemManager(itemID):
     return render_template('itemmanage.html')
 
 @life.route('/request', methods=['POST', 'GET'])
