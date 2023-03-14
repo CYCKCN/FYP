@@ -116,6 +116,9 @@ def item(itemID):
     if not item:
         return "Record not found", 400
     
+    if item["itemOwner"] == current_user.email:
+        return redirect(url_for('life.itemManager', itemID=itemID))
+    
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -135,9 +138,21 @@ def itemManager(itemID):
     if not item:
         return "Record not found", 400
     
+    if item["itemOwner"] != current_user.email:
+        return "No Acess", 400
+    
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
+
+        deal = request.form.get('deal')
+        deny = request.form.get('decline')
+
+        if deal == "deal":
+            itemdb.dealItem(itemID)
+        
+        if deny == "decline":
+            itemdb.denyItem(itemID)
         
     return render_template('itemmanage.html', item=item)
 
