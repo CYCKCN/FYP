@@ -29,8 +29,11 @@
                 
                 <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
                     <button type="submit" name="Contact" value="Contact" class="create-style">Contact Seller</button>
-                    
-                    <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
+                    {% if item["itemStatus"] == "Available" %}
+                        <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
+                    {% else %}
+                        <button name="Reserve" value="Reserve" class="create-style" disabled>Reserve</button>
+                    {% endif %}
                 </div>
                 
             </div>
