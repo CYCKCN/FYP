@@ -32,15 +32,16 @@
                     <div class="inputs-div">
                         <div class="lable-div">
                             <label for="Name" class="lable-style1">Name</label>
-                            
-                            {% if invalidDict == True %}
-                            <label class="lable-style2"></label>
-                            {% endif %}
                             <label for="Price" class="lable-style2">Price</label>
                             <label for="Category" class="lable-style2">Type</label>
                             <label for="Description" class="lable-style2">Description</label>
                             <br/><br/><br/>
                             <label for="Pickup" class="lable-style2">Pick-Up Location</label>
+                            {% for k, c in invalidDict.items() %}
+                                {% if c == True %}
+                                    <label class="lable-style2"></label>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                         <div class="item-input-div">
                             <!-- <input type="text" id= "Name" name="Name" class="input-style"> -->
@@ -57,6 +58,11 @@
                             <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea> -->
                             {{ form.description(class_='textarea-style') }}
                             {{ form.pickup(class_='textarea-style') }}
+                            {% for k, c in invalidDict.item() %}
+                                {% if c == True %}
+                                    <p class="warning">Please fill in {{k}} !</p>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button> 

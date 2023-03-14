@@ -55,17 +55,15 @@
                 </div>
             </div>
 
-            {% if item["itemStatus"] != "Available" %}
+            {% if item["itemStatus"] == "Reserved" %}
             <div class="reserved-info">
                 <div style="width: 80%;">
                     <p class="font-class">{{item["itemReserveTime"]}}</p>
                     <p class="font-class">{{item["itemReserve"]}}</p>
                 </div>
                 <div style="display: flex; flex-direction: column;">
-                    {% if item["itemStatus"] == "Reserved" %}
                     <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
                     <button type="submit" class="create-style" name="decline" value="decline">Decline</button>
-                    {% endif %}
                 </div>
                 
             </div>

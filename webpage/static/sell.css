@@ -11,6 +11,10 @@
     min-width: 100%;
     font-size: 14px;
   }
+  .warning {
+    font-family: 'Alatsi';
+    color: red;
+  }
   input[type=checkbox] {
     display: none;
   }
