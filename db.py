@@ -56,10 +56,10 @@ class ItemDB():
     def findItem(self, itemID):
         return self.db.find_one({"itemID": itemID})
     
-    def createItem(self, owner, name, price, category, info, image_path):
+    def createItem(self, owner, name, price, category, info, image_path, pickup):
         itemID = randomID(IDLENGTH)
         while (self.db.find_one({"itemID": itemID})): itemID = randomID(IDLENGTH)
-        newItem = Item(itemID, owner, name, price, category, info, image_path)
+        newItem = Item(itemID, owner, name, price, category, info, image_path, pickup)
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 

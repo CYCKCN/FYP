@@ -36,19 +36,23 @@
                             <label for="Category" class="lable-style2">Type</label>
                             <label for="Description" class="lable-style2">Description</label>
                             <br/><br/><br/>
-                            <label for="Description" class="lable-style2">Pick-Up Location</label>
+                            <label for="Pickup" class="lable-style2">Pick-Up Location</label>
                         </div>
                         <div class="item-input-div">
-                            <input type="text" id= "Name" name="Name" class="input-style">
-                            <input type="number" id= "Price" name="Price" class="input-style">
+                            <!-- <input type="text" id= "Name" name="Name" class="input-style"> -->
+                            <!-- <input type="number" id= "Price" name="Price" class="input-style"> -->
+                            {{ form.name(class_='input-style') }}
+                            {{ form.price(class_='input-style') }}                            
                             <select name="Category" class="input-style">
                                 <option value="">- Choose a category -</option>
                                 {% for c in itemCategories %}
                                 <option value="{{c}}">{{c}}</option>
                                 {% endfor %}
                             </select>
-                            <textarea id="Description" name="Description" class="textarea-style"></textarea>
-                            <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea>
+                            <!-- <textarea id="Description" name="Description" class="textarea-style"></textarea>
+                            <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea> -->
+                            {{ form.description(class_='textarea-style') }}
+                            {{ form.pickup(class_='textarea-style') }}
                         </div>
                     </div>
                     <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button> 

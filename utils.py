@@ -51,7 +51,7 @@ class Account(object):
         self.accountIntro = intro
 
 class Item(object):
-    def __init__(self, id, owner, name, price, category, info, image_path):
+    def __init__(self, id, owner, name, price, category, info, image_path, pickup_location):
         self.itemID = id # random 12 numbers
         self.itemOwner = owner # "33872" / "-1"
         self.itemName = name
@@ -59,6 +59,7 @@ class Item(object):
         self.itemCate = category
         self.itemInfo = info
         self.itemImg = image_path
+        self.itemPickUp = pickup_location
 
 # class Order(object):
 #     def __init__(self, id, stime, etime, orderType="SELL", itemid=None, orderStatus="R"):
@@ -82,8 +83,11 @@ class RequestForm(FlaskForm):
     title = wtforms.StringField('Name', validators=[Length(max=30)])
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
 
-class SearchForm(FlaskForm):
-    search = wtforms.StringField('Search', validators=[Length(max=30)])
+class ItemForm(FlaskForm):
+    name = wtforms.StringField('Name', validators=[Length(max=30)])
+    price = wtforms.FloatField('Price')
+    description = wtforms.StringField('Description', validators=[Length(max=30)])
+    pickup = wtforms.StringField('Pick-Up', validators=[Length(max=30)])
 
 def randomID(length):
     id = str()
