@@ -63,13 +63,14 @@ class ItemDB():
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
-    def getItemList(self, user="", cate="", maxprice="", minprice=""):
+    def getItemList(self, user="", cate="", maxprice="", minprice="", search=""):
         selection = {}
         if user != "": selection["itemOwner"] = user
         if cate != "": selection["itemCate"] = cate
         if maxprice != "" and minprice != "": selection["itemPrice"] = {"$lte": int(maxprice), "$gte": int(minprice)}
         elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": int(maxprice)}
         elif maxprice == "" and minprice != "": selection["itemPrice"] = {"$gte": int(minprice)}
+        if search != "": selection["itemName"] = {'$regex': search}
         # print(selection)
         itemList = self.db.find(selection)
         itemInfo = {}

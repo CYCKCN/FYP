@@ -82,8 +82,8 @@ class RequestForm(FlaskForm):
     title = wtforms.StringField('Name', validators=[Length(max=30)])
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
 
-# class SearchForm(FlaskForm):
-#     search = wtforms.StringField('Search', validators=[Length(max=30)])
+class SearchForm(FlaskForm):
+    search = wtforms.StringField('Search', validators=[Length(max=30)])
 
 def randomID(length):
     id = str()
