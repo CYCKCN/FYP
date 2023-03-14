@@ -65,6 +65,9 @@ html, body {
   .create-style:hover {
     background: var(--mainGreen3);
   }
+  .create-style:disabled {
+      background: var(--mainGreen3);
+  }
 .item-image {
     height: 400px;
     width: 100%;
