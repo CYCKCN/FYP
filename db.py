@@ -108,7 +108,7 @@ class RequestDB():
     def getRequestList(self, user=""):
         selection = {}
         if user != "": selection["requestUser"] = user
-        requestList = self.db.find(selection)
+        requestList = self.db.find(selection).sort('_id', -1).limit(10)
         requestInfo = {}
         counter = 0
         for request in requestList:
