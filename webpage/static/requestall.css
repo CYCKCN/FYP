@@ -19,6 +19,15 @@
     border-top: 1px solid #bbb;
     border-radius: 1px;
     }
+  .header {
+      width: 100%;
+      height: fit-content;
+      background-color: gray;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      position: relative;
+      margin-top: 50px;
+  }
   .request-list {
     width: 70%;
     height: 100%;
@@ -34,6 +43,9 @@
     flex-direction: column;
     background: white;
     overflow-y: scroll;
+}
+.request-list::-webkit-scrollbar {
+  display: none;
 }
 .request-link {
     width: 100%;
@@ -120,14 +132,16 @@
   }
   .button-option {
     height: 30px;
-    width: 300px;
+    width: 180px;
     background: white;
-    border-radius: 10px;
     text-align: center;
-    padding-top: 2px;
+    border-radius: 20px;
+    padding-left: 10px;
+    margin-left: 10px;
     border: none;
     font-family: 'Alatsi';
     cursor: pointer;
+    border-right: 10px solid transparent
   }
   .radio-button input[type="radio"] {
     display: none;
@@ -787,8 +801,8 @@
     overflow: hidden;
   }
   .search {
-    width: 360px;
-    height: 48px;
+    width: 96%;
+    height: 30px;
     font-family: 'Alatsi';
     color: var(--mainGrey1);
     background: white;
@@ -803,26 +817,24 @@
   }
   .icon-search {
     color: var(--mainGrey1);
-    position: absolute;
-    left: 10px;
-    top: 9px;
+    position: relative;
+    margin-left: 15px;
+    margin-top: 6px;
   }
   .search-div {
-    width: 360px;
-    height: 48px;
+    width: 100%;
+    height: 30px;
     position: relative;
-    left: 10px;
-    margin-top: 20px;
+    left: 2%;
+    margin-top: 10px;
   }
   .filter-div {
-    width: 360px;
-    height: 48px;
+    width: 100%;
+    height: 30px;
     position: relative;
-    left: 10px;
-    margin-top: 20px;
-    padding-left: 15px;
-    border-radius: 20px;
-    background: white;
+    left: 1%;
+    margin-top: 10px;
+    background: none;
     display: flex;
     flex-direction: row;
   }
