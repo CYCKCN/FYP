@@ -128,6 +128,19 @@ def item(itemID):
 
     return render_template('item.html', item=item)
 
+@life.route('/itemManager/<itemID>', methods=['POST', 'GET'])
+# @check_login
+def itemManager(itemID):
+    item = itemdb.findItem(itemID)
+    if not item:
+        return "Record not found", 400
+    
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+        
+    return render_template('itemmanage.html', item=item)
+
 @life.route('/request', methods=['POST', 'GET'])
 # @check_login
 def buy():
@@ -206,3 +219,4 @@ def profile():
 # @check_login
 def chat():
     return render_template('chat.html')
+
