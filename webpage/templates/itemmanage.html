@@ -24,13 +24,21 @@
         <div class="scroll-div">
             <div class="item-image">
                 <div>
-                    <img src="{{item['itemImg']}}" height="400"/>
+                    <img src="{{item['itemImg']}}" height="400" width="400"/>
                 </div>
                 
+                
                 <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
-                    <button type="submit" name="Contact" value="Contact" class="create-style">Delete Item</button>
-                    <button name="Reserve" value="Reserve" class="create-style">Edit Info</button>
+                    {% if item["itemStatus"] != "Sold" %}
+                        <button type="submit" name="Contact" value="Contact" class="create-style">Delete Item</button>
+                        <button name="Reserve" value="Reserve" class="create-style">Edit Info</button>
+                    {% else %}
+                        <p class="font-class">Sold Out</p>
+                    {% endif %}
                 </div>
+                
+
+
                 
             </div>
 
@@ -47,12 +55,19 @@
                 </div>
             </div>
 
-            {% if item["itemStatus"] == "Reserved" %}
+            {% if item["itemStatus"] != "Available" %}
             <div class="reserved-info">
-                <p>{{item["itemReserveTime"]}}</p>
-                <p>{{item["itemReserve"]}}</p>
-                <button type="submit">Deal</button>
-                <button type="submit">Decline</button>
+                <div style="width: 80%;">
+                    <p class="font-class">{{item["itemReserveTime"]}}</p>
+                    <p class="font-class">{{item["itemReserve"]}}</p>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    {% if item["itemStatus"] == "Reserved" %}
+                    <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
+                    <button type="submit" class="create-style" name="decline" value="decline">Decline</button>
+                    {% endif %}
+                </div>
+                
             </div>
             {% endif %}
             
