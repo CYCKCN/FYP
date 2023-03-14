@@ -131,7 +131,15 @@ def item(itemID):
 @life.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 # @check_login
 def itemManager(itemID):
-    return render_template('itemmanage.html')
+    item = itemdb.findItem(itemID)
+    if not item:
+        return "Record not found", 400
+    
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+        
+    return render_template('itemmanage.html', item=item)
 
 @life.route('/request', methods=['POST', 'GET'])
 # @check_login
