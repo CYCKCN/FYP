@@ -84,8 +84,9 @@ class ItemDB():
         return itemInfo
     
     def reserveItem(self, itemID, reservedBy):
-        self.db.update_one({"itemID": itemID}, {'$set': {'itemReserve': reservedBy, 'itemStatus': 'Reserved'} })
-
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        self.db.update_one({"itemID": itemID}, {'$set': {'itemReserve': reservedBy, 'itemStatus': 'Reserved', 'itemReserveTime': time}})
 
 class OrderDB():
     def __init__(self, db):
