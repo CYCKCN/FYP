@@ -2,6 +2,22 @@ html, body {
     min-height: 100%;
     min-width: 100%;
 }
+.info-pack {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    position: relative;
+}
+.reserved-info {
+    width: 80%;
+    margin-left: 10%;
+    height: fit-content;
+    padding: 20px;
+    position: relative;
+    margin-top: 0px;
+    background: var(--mainGrey2);
+    border-radius: 10px;
+}
 .page-frame {
     opacity: 1;
     position: relative;
@@ -132,10 +148,7 @@ html, body {
     height: 794px;
     background: none;
 }
-.info-pack {
-    display: flex;
-    flex-direction: row;
-}
+
 .sticky {
     position: fixed;
     top: 0;

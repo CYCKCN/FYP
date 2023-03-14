@@ -46,6 +46,15 @@
                     <p class="welcoming">{{item["itemPickUp"]}}</p>
                 </div>
             </div>
+
+            {% if item["itemStatus"] == "Reserved" %}
+            <div class="reserved-info">
+                <p>{{item["itemReserveTime"]}}</p>
+                <p>{{item["itemReserve"]}}</p>
+                <button type="submit">Deal</button>
+                <button type="submit">Decline</button>
+            </div>
+            {% endif %}
             
         </div>
     </div>
