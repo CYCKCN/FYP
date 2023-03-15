@@ -21,6 +21,7 @@
             <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
             <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
             <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
+            <input class="section-btn" type="submit" id="chat" name="section" value="Chat">
         </div>
 
         {% if section == "Request" %}
@@ -52,6 +53,26 @@
                 </a>
                 {% endfor %}
             </div>
+        </div>
+        {% elif section == "Chat" %}
+        <div class="content">
+            <p>Chat</p>
+            <button type="submit" class="chat-block" name="item" value="item1">
+                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
+                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
+            </button>
+            <button type="submit" class="chat-block" name="item" value="item1">
+                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
+                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
+            </button>
+            <button type="submit" class="chat-block" name="item" value="item1">
+                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
+                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
+            </button>
+            <button type="submit" class="chat-block" name="item" value="item1">
+                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
+                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
+            </button>
         </div>
         {% else %}
         <div class="content">

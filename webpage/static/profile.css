@@ -7,6 +7,109 @@
   input[type=checkbox] {
     display: none;
   }
+  .chat-block {
+    width: 100%;
+    height: 100px;
+    border: none;
+    background: none;
+    border-radius: 10px;
+  }
+  .chat-block:hover{
+    background: var(--mainGrey2);
+  }
+  .section-bar {
+    position: absolute;
+    background: none;
+    width: 200px;
+    height: 100%;
+    margin-top: 50px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+  .section-btn {
+    border: none;
+    background: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .chat-box {
+      position: absolute;
+      left: 30%;
+      top: 50px;
+      height: 90%;
+      width: 600px;
+      background: gray;
+      display: flex;
+      flex-direction: column;
+  }
+  .other-name {
+    background: var(--mainGrey2);
+    width: 100%;
+    height: 7%;
+    font-family: 'Alatsi';
+    text-align: center;
+    color: black;
+    padding-top: 15px;
+  }
+  .dialogue {
+    background: var(--mainGreen3);
+    width: 100%;
+    height: 86%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-bottom: 5px;
+  }
+  .dialogue::-webkit-scrollbar {
+    display: none;
+  }
+  .input-box {
+      width: 100%;
+      height: 7%;
+      background: var(--mainGrey2);
+      display: flex;
+      flex-direction: row;
+  }
+  .my-input {
+      margin: 5px 5px 5px 5px;
+      height: 40px;
+      width: 80%;
+      border-radius: 10px;
+  }
+  .send-btn {
+    margin: 5px 5px 5px 5px;
+    height: 40px;
+    width: 20%;
+    border-radius: 10px;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+
+  }
+  .other-pop {
+      background: white;
+      border-radius: 10px;
+      padding: 10px 10px 10px 10px;
+      width: 96%;
+      margin-left: 2%;
+      margin-top: 5px;
+      background: white;
+      height: fit-content;
+  }
+  .my-pop {
+    background: white;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 96%;
+    margin-left: 2%;
+    margin-top: 5px;
+    height: fit-content;
+}
+  .font-class {
+      font-family: 'Alatsi';
+  }
   .top-buttons {
     position: absolute;
     width: 400px;
