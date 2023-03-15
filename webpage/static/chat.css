@@ -127,6 +127,7 @@
     flex-direction: row;
     height: 300px;
     position: relative;
+    background: red;
 }
   .individual-button {
     background: none;
