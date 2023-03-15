@@ -239,6 +239,15 @@ hr.rounded {
     font-size: 14px;
     color: black;
     padding-left: 15px;
+    width: 200px;
+}
+.right-align {
+    font-family: 'Alatsi';
+    font-size: 18px;
+    color: orange;
+    padding-left: 15px;
+    text-align: right;
+    width: 125px;
 }
 .account-style {
     position: relative;
