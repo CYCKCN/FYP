@@ -11,28 +11,28 @@
     <div class="page-frame">
         <div class="home-top">
             <div class="top-buttons">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
-                <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
                 {% if userStatus == True %}
                 <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
                 {% else %}
                 <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
                 <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
                 {% endif %}
+                <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
             </div>
         </div>
 
         <div class="scroll-div">
             <div class="info-pack">
                 <div class="question-box">
-                    <p class="welcoming">{{requestInfo.requestTitle}}</p>
-                    <p class="welcoming">{{requestInfo.requestCate}}</p>
-                    <p class="welcoming">{{requestInfo.requestInfo}}</p>
+                    <p class="welcoming"><span style="color: grey;">Requested item name: </span>{{requestInfo.requestTitle}}</p>
+                    <p class="welcoming"><span style="color: grey;">Request category: </span>{{requestInfo.requestCate}}</p>
+                    <p class="welcoming"><span style="color: grey;">Request description: </span>{{requestInfo.requestInfo}}</p>
                 </div>   
                 <div class="seller-info">
-                    <p class="welcoming">{{requestInfo.userName}}</p>
-                    <p class="welcoming">{{requestInfo.requestTime}}</p>
+                    <p class="welcoming"><span style="color: grey;">Request by: </span>{{requestInfo.userName}}</p>
+                    <p class="welcoming"><span style="color: grey;">Request time:</span> {{requestInfo.requestTime}}</p>
                 </div>
             </div>
             

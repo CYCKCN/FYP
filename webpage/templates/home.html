@@ -14,16 +14,16 @@
     <div class="page-frame">
         <div class="home-top">
             <div class="top-buttons">
-                    <input type="submit" hidden />
-                    <button class="individual-button" type="submit" name="Chat" value="Chat">Chat</button>
-                    <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
-                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
                     {% if userStatus == True %}
                     <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
                     {% else %}
-                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
                     <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
                     {% endif %}
+                    <button class="individual-button" type="submit" name="Chat" value="Chat">Chat</button>
+                    <button class="individual-button" type="submit" name="Request" value="Request">Request</button>
+                    <button class="individual-button" type="submit" name="Sell" value="Sell">Sell</button>
+                    
             </div>
         </div>
 
@@ -68,7 +68,10 @@
                         <div class="on-sale-block">
                             <img src={{v.itemImg}} width="340" class="display-image"/>
                             <p class="display-text">{{v.itemName}}</p>
-                            <p class="display-text">{{v.itemInfo}}</p>
+                            <div style="display: flex; flex-direction: row;">
+                                <p class="display-text">{{v.itemInfo}}</p>
+                                <p class="right-align">HKD {{v.itemPrice}}</p>
+                            </div>
                         </div>
                     </a>
                     {% endfor %}
