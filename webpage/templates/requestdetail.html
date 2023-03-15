@@ -37,7 +37,7 @@
             </div>
 
             <div class="display-table">
-                {% for k, v in itemInfo.items() %}
+                {% for v in itemList %}
                 <a href="item/{{v.itemID}}" style="text-decoration:none">
                     <div class="on-sale-block">
                         <img src={{v.itemImg}} width="340" class="display-image"/>
@@ -55,7 +55,7 @@
             <div style="display: flex; flex-direction: row;">
                 <div class="suggest-pack">
 
-                    {% for k, v in itemInfo.items() %}             
+                    {% for v in myItemList.items() %}             
                     <input class="checkbox-tools" type="radio" name="selectedItem" id="{{v.itemID}}" value="{{v.itemID}}">
                     <label class="for-checkbox-tools" for="{{v.itemID}}">
                         <p class="font-class">{{v.itemName}}</p>

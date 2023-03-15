@@ -226,8 +226,12 @@ def requestList(requestID):
         if request.method == 'POST':
             button = buttonCheck(request.form)
             if button: return button
+            myItemList = itemdb.getItemList(user=current_user.email)
+            itemID = request.form.get('selectedItem')
+            if itemID:
+                requestdb.addRequestItemList(requestInfo['requestID'], itemID)
             
-        return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus)
+        return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus, itemList=requestInfo["requestItemList"], myItemList=myItemList)
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login

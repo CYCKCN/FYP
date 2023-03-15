@@ -130,6 +130,12 @@ class RequestDB():
             counter += 1
         return requestInfo
     
+    def addRequestItemList(self, requestID, itemID):
+        request = self.findRequest(requestID)
+        item = itemdb.findItem(itemID)
+        request["requestItemList"].append(item)
+        self.db.update_one({"requestID": requestID}, {'$set': {'requestItemList': request["requestItemList"]}})
+    
 class ChatDB():
     def __init__(self, db):
         self.db = db["chat"]
