@@ -118,10 +118,11 @@ def item(itemID):
     item = itemdb.findItem(itemID)
     if current_user.is_authenticated: userStatus = True
     else: userStatus = False
+
     if not item:
         return "Record not found", 400
     
-    if item["itemOwner"] == current_user.email:
+    if userStatus and item["itemOwner"] == current_user.email:
         return redirect(url_for('life.itemManager', itemID=itemID))
     
     if request.method == 'POST':
@@ -129,7 +130,7 @@ def item(itemID):
         if button: return button
 
         reserve = request.form.get('Reserve')
-        if reserve == "Reserve":
+        if reserve == "Reserve" and userStatus:
             itemdb.reserveItem(itemID, current_user.email)
             item = itemdb.findItem(itemID)
             return render_template('item.html', item=item, userStatus=userStatus)
