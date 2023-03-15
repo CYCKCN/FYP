@@ -473,11 +473,10 @@ mark{
 	position: relative;
 	display: inline-block;
 	padding: 20px;
-	width: 90%;
+	width: 95%;
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: 1px;
-	margin: 0 auto;
 	margin-left: 5%;
 	margin-bottom: 10px;
 	text-align: center;
