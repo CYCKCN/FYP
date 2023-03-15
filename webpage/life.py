@@ -116,6 +116,8 @@ def sell():
 # @check_login
 def item(itemID):
     item = itemdb.findItem(itemID)
+    if current_user.is_authenticated: userStatus = True
+    else: userStatus = False
     if not item:
         return "Record not found", 400
     
@@ -130,9 +132,9 @@ def item(itemID):
         if reserve == "Reserve":
             itemdb.reserveItem(itemID, current_user.email)
             item = itemdb.findItem(itemID)
-            return render_template('item.html', item=item)
+            return render_template('item.html', item=item, userStatus=userStatus)
 
-    return render_template('item.html', item=item)
+    return render_template('item.html', item=item, userStatus=userStatus)
 
 @life.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 # @check_login
