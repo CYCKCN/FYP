@@ -122,7 +122,12 @@
   .font-class {
       font-family: 'Alatsi';
   }
-
+  .info-pack {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    position: relative;
+}
   .individual-button {
     background: none;
     border: none;
@@ -288,7 +293,7 @@
   .question-box {
     width: 370px;
     height: fit-content;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-left: 10px;
     border-radius: 10px;
     padding-top: 10px;
