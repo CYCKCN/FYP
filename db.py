@@ -158,17 +158,17 @@ class ChatDB():
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
         if type == "buyer":
-            chat["chatInfo"].append({"sendBy": buyerEmail, "sendTxt": chattxt, "sendTime": time})
+            chat["chatInfo"].append({"sendBy": buyerEmail, "sendTo": ownerEmail, "sendTxt": chattxt, "sendTime": time})
         if type == "owner":
-            chat["chatInfo"].append({"sendBy": ownerEmail, "sendTxt": chattxt, "sendTime": time})
+            chat["chatInfo"].append({"sendBy": ownerEmail, "sendTo": buyerEmail, "sendTxt": chattxt, "sendTime": time})
         self.db.update_one({"chatItem": itemID, "chatBuyer": buyerEmail}, {'$set': {'chatInfo': chat["chatInfo"]}})
 
-    def getBuyerChatList(self, buyerEmail):
-        chatList = self.db.find({"buyerEmail": buyerEmail})
+    def getChatList(self, user):
+        chatList = self.db.find({"chatBuyer": buyerEmail})
         chatInfo = {}
         counter = 0
         for chat in chatList:
-            itemID = chat["itemID"]
+            itemID = chat["chatItem"]
             item = itemdb.findItem(itemID)
             chatInfo[str(counter)] = item
             chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][8:]

@@ -238,7 +238,7 @@ def profile():
     user = accountdb.findUser(current_user.email)
     itemInfo = itemdb.getItemList(user=current_user.email)
     requestInfo = requestdb.getRequestList(user=current_user.email)
-    chatInfo = chatdb.getBuyerChatList(buyerEmail=current_user.email)
+    chatInfo = chatdb.getChatList(user=current_user.email)
 
     if request.method == 'POST':
         button = buttonCheck(request.form)
