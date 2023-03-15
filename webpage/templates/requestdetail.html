@@ -50,7 +50,7 @@
 
                     {% if userStatus and identity == "owner" %}
                     <div style="display: flex; flex-direction: column;">
-                        {% if sold != True %}
+                        {% if requestInfo['requestSold'] != True %}
                         <button type="submit" class="create-style" name="deal" value="{{v.itemID}}">Deal</button>
                         <button type="submit" class="create-style" name="decline" value="{{v.itemID}}">Decline</button>
                         {% endif %}

@@ -81,6 +81,7 @@ class Request(object):
         self.requestInfo = info
         self.requestCate = category
         self.requestTime = time
+        self.requestSold = False
         self.requestItemList = []
 
 class Chat(object):
