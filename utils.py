@@ -83,7 +83,7 @@ class Request(object):
         self.requestTime = time
 
 class Chat(object):
-    def __init__(self, chatID, itemID, buyerEmail, created_time, chatInfo=""):
+    def __init__(self, chatID, itemID, buyerEmail, created_time, chatInfo=[]):
         self.chatID = chatID
         self.chatItem = itemID
         self.chatBuyer = buyerEmail

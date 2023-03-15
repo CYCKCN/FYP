@@ -142,7 +142,9 @@ def item(itemID):
         if contact == "Contact":
             if userStatus:
                 chat = chatdb.findChat(itemID, current_user.email)
+                # print(chat)
                 if not chat:
+                    # print("no chat")
                     chat = chatdb.createChat(itemID, current_user.email)
                 return redirect(url_for('life.chat', chatID=chat["chatID"]))
             else:
@@ -278,7 +280,7 @@ def chat(chatID):
 
         if sendBtn == 'Send' and sendTxt:
             chatdb.sendChat(item["itemID"], chat["chatBuyer"], item["itemOwner"], sendTxt, status)
-            return redirect(url_for('life.profile', chatID=chatID))
+            return redirect(url_for('life.chat', chatID=chatID))
         
     return render_template('chat.html', item=item, chat=chat)
 
