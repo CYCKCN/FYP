@@ -208,7 +208,8 @@ def buy():
 
 @life.route('/request/<requestID>', methods=['POST', 'GET'])
 # @check_login
-def requestList(requestID):    
+def requestList(requestID):
+    sold = request.args.get("sold")
     if requestID == "all":
         if current_user.is_authenticated: userStatus = True
         else: userStatus = False
@@ -245,14 +246,14 @@ def requestList(requestID):
 
             if deal:
                 requestdb.dealRequestItem(requestID, deal)
-                return redirect(url_for('life.requestList', requestID=requestID))
+                return redirect(url_for('life.requestList', requestID=requestID, sold=True))
 
             if decline:
                 requestdb.declineRequestItem(requestID, decline)
                 return redirect(url_for('life.requestList', requestID=requestID))
             
-        # print(userStatus, identity)
-        return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
+        print(userStatus, identity)
+        return render_template('requestdetail.html', sold=sold if sold else False, requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
