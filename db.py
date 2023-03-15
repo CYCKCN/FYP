@@ -157,7 +157,7 @@ class ChatDB():
         return self.db.find_one({"chatID": chatID})
     
     def sendChat(self, itemID, buyerEmail, ownerEmail, chattxt, type="buyer"):
-        chat = self.findChat(itemID, buyerEmail)
+        chat = self.findChatByBuyer(itemID, buyerEmail)
         print(itemID, buyerEmail, chat["chatInfo"])
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
