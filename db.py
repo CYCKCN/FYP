@@ -139,7 +139,7 @@ class RequestDB():
     def dealRequestItem(self, requestID, itemID):
         request = self.findRequest(requestID)
         item = itemdb.findItem(itemID)
-        self.db.update_one({"requestID": requestID}, {'$set': {'requestItemList': [item]}})
+        self.db.update_one({"requestID": requestID}, {'$set': {'requestItemList': [item], 'requestSold': True}})
     
     def declineRequestItem(self, requestID, itemID):
         request = self.findRequest(requestID)
