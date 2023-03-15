@@ -50,8 +50,10 @@
 
                     {% if userStatus and identity == "owner" %}
                     <div style="display: flex; flex-direction: column;">
+                        {% if sold != True %}
                         <button type="submit" class="create-style" name="deal" value="{{v.itemID}}">Deal</button>
                         <button type="submit" class="create-style" name="decline" value="{{v.itemID}}">Decline</button>
+                        {% endif %}
                     </div>
                     {% endif%}
                 </a>
@@ -60,8 +62,6 @@
             
 
             {% if userStatus and identity == "seller" %}
-            
-            
             <button class="suggest-btn" type="submit" name="suggest" value="suggest">Suggest my item</button>
             <div style="display: flex; flex-direction: row;">
                 <div class="suggest-pack">
