@@ -61,7 +61,7 @@
             </div>
             
 
-            {% if userStatus and identity == "seller" %}
+            {% if userStatus and identity == "seller" and requestInfo['requestSold'] != True %}
             <button class="suggest-btn" type="submit" name="suggest" value="suggest">Suggest my item</button>
             <div style="display: flex; flex-direction: row;">
                 <div class="suggest-pack">
