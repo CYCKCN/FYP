@@ -241,15 +241,15 @@ def requestList(requestID):
             decline = request.form.get('decline')
             if submit and itemID:
                 requestdb.addRequestItemList(requestID, itemID)
-                return redirect(url_for('life.request', requestID=requestID))
+                return redirect(url_for('life.requestList', requestID=requestID))
 
             if deal:
                 requestdb.dealRequestItem(requestID, deal)
-                return redirect(url_for('life.request', requestID=requestID))
+                return redirect(url_for('life.requestList', requestID=requestID))
 
             if decline:
                 requestdb.declineRequestItem(requestID, decline)
-                return redirect(url_for('life.request', requestID=requestID))
+                return redirect(url_for('life.requestList', requestID=requestID))
             
         # print(userStatus, identity)
         return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
