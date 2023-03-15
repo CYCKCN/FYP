@@ -137,8 +137,11 @@ class ChatDB():
     def cleardb(self):
         self.db.delete_many({})
 
-    def findChat(self, itemID, buyerEmail):
+    def findChatByBuyer(self, itemID, buyerEmail):
         return self.db.find_one({"chatItem": itemID, "chatBuyer": buyerEmail})
+    
+    def findChatByOwner(self, itemID, ownerEmail):
+        return self.db.find_one({"chatItem": itemID, "chatOwner": ownerEmail})
     
     def findChatByID(self, chatID):
         return self.db.find_one({"chatID": chatID})
@@ -148,7 +151,8 @@ class ChatDB():
         while (self.db.find_one({"chatID": chatID})): chatID = randomID(IDLENGTH)
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
-        newChat = Chat(chatID, itemID, buyerEmail, time)
+        item = itemdb.findItem(itemID)
+        newChat = Chat(chatID, itemID, item["itemOwner"], buyerEmail, time)
         self.db.insert_one(newChat.__dict__)
         return self.db.find_one({"chatID": chatID})
     
@@ -164,15 +168,25 @@ class ChatDB():
         self.db.update_one({"chatItem": itemID, "chatBuyer": buyerEmail}, {'$set': {'chatInfo': chat["chatInfo"]}})
 
     def getChatList(self, user):
-        chatList = self.db.find({"chatBuyer": buyerEmail})
+        chatOwnerList = self.db.find({"chatOwner": user})
+        chatBuyerList = self.db.find({"chatBuyer": user})
         chatInfo = {}
         counter = 0
-        for chat in chatList:
+        for chat in chatOwnerList:
             itemID = chat["chatItem"]
             item = itemdb.findItem(itemID)
             chatInfo[str(counter)] = item
             chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][8:]
             for k, v in chat.items(): chatInfo[str(counter)][k] = v
+            chatInfo[str(counter)]["sendTo"] = chat["chatBuyer"]
+            counter += 1
+        for chat in chatBuyerList:
+            itemID = chat["chatItem"]
+            item = itemdb.findItem(itemID)
+            chatInfo[str(counter)] = item
+            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][8:]
+            for k, v in chat.items(): chatInfo[str(counter)][k] = v
+            chatInfo[str(counter)]["sendTo"] = chat["chatOwner"]
             counter += 1
         return chatInfo
 
