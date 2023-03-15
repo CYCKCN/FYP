@@ -1,6 +1,6 @@
 
 from pymongo.mongo_client import MongoClient
-from utils import Account, User, Item, Request, randomID, IDLENGTH, UNIADDR
+from utils import Account, User, Item, Request, Chat, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -129,9 +129,52 @@ class RequestDB():
             requestInfo[str(counter)]["userName"] = accountdb.findUserName(request['requestUser'])
             counter += 1
         return requestInfo
+    
+class ChatDB():
+    def __init__(self, db):
+        self.db = db["chat"]
+
+    def cleardb(self):
+        self.db.delete_many({})
+
+    def findChat(self, itemID, buyerEmail):
+        return self.db.find_one({"itemID": itemID, "buyerEmail": buyerEmail})
+    
+    def createChat(self, itemID, buyerEmail):
+        chatID = randomID(IDLENGTH)
+        while (self.db.find_one({"chatID": chatID})): chatID = randomID(IDLENGTH)
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        newRequest = Chat(chatID, itemID, buyerEmail, time)
+        self.db.insert_one(newRequest.__dict__)
+        return chatdb.findChat(itemID, buyerEmail)
+    
+    def sendChat(self, itemID, buyerEmail, ownerEmail, chattxt, type="buyer"):
+        chat = self.findChat(itemID, buyerEmail)
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        if type == "buyer":
+            chat["chatInfo"].append({"sendBy": buyerEmail, "sendTxt": chattxt, "sendTime": time})
+        if type == "owner":
+            chat["chatInfo"].append({"sendBy": ownerEmail, "sendTxt": chattxt, "sendTime": time})
+        self.db.update_one({"itemID": itemID, "buyerEmail": buyerEmail}, {'$set': {'chatInfo': chat["chatInfo"]}})
+
+    def getBuyerChatList(self, buyerEmail):
+        chatList = self.db.find({"buyerEmail": buyerEmail})
+        chatInfo = {}
+        counter = 0
+        for chat in chatList:
+            itemID = chat["itemID"]
+            item = itemdb.findItem(itemID)
+            chatInfo[str(counter)] = item
+            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][8:]
+            for k, v in chat.items(): chatInfo[str(counter)][k] = v
+            counter += 1
+        return chatInfo
 
 db = connection("LIFE2")
 accountdb = AccountDB(db)
 itemdb = ItemDB(db)
 orderdb = OrderDB(db)
 requestdb = RequestDB(db)
+chatdb = ChatDB(db)
