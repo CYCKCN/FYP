@@ -140,14 +140,17 @@ class ChatDB():
     def findChat(self, itemID, buyerEmail):
         return self.db.find_one({"itemID": itemID, "buyerEmail": buyerEmail})
     
+    def findChatByID(self, chatID):
+        return self.db.find_one({"chatID": chatID})
+    
     def createChat(self, itemID, buyerEmail):
         chatID = randomID(IDLENGTH)
         while (self.db.find_one({"chatID": chatID})): chatID = randomID(IDLENGTH)
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
-        newRequest = Chat(chatID, itemID, buyerEmail, time)
-        self.db.insert_one(newRequest.__dict__)
-        return chatdb.findChat(itemID, buyerEmail)
+        newChat = Chat(chatID, itemID, buyerEmail, time)
+        self.db.insert_one(newChat.__dict__)
+        return self.db.find_one({"chatID": chatID})
     
     def sendChat(self, itemID, buyerEmail, ownerEmail, chattxt, type="buyer"):
         chat = self.findChat(itemID, buyerEmail)
