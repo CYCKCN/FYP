@@ -22,16 +22,16 @@
         </div>
         <div class="info-pack">
             <div class="question-box">
-                <img src="" width="200"/>
-                <p class="welcoming">item["itemName"]</p>
-                <p class="welcoming">item["itemCate"]</p>
-                <p class="welcoming">item["itemPrice"]</p>
-                <p class="welcoming">item["itemInfo"]</p>
+                <img src="{{item['itemImg']}}" width="200"/>
+                <p class="welcoming">{{item["itemName"]}}</p>
+                <p class="welcoming">{{item["itemCate"]}}</p>
+                <p class="welcoming">{{item["itemPrice"]}}</p>
+                <p class="welcoming">{{item["itemInfo"]}}</p>
             </div>   
         </div>
         <div class="chat-box">
             <div class="other-name">
-                Alice
+                {{chat["sendTo"]}}
             </div>
             <div class="dialogue">
                 <div class="other-pop">
@@ -107,7 +107,7 @@
             </div>
             <div class="input-box">
                 <input class="my-input" type="text" name="send-text">
-                <button class="send-btn">Send</button>
+                <button class="send-btn" name="send-btn" value="Send">Send</button>
             </div>
             
         </div>

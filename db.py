@@ -140,6 +140,9 @@ class ChatDB():
     def findChat(self, itemID, buyerEmail):
         return self.db.find_one({"itemID": itemID, "buyerEmail": buyerEmail})
     
+    def findChatByID(self, chatID):
+        return self.db.find_one({"chatID": chatID})
+    
     def createChat(self, itemID, buyerEmail):
         chatID = randomID(IDLENGTH)
         while (self.db.find_one({"chatID": chatID})): chatID = randomID(IDLENGTH)

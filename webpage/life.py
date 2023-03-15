@@ -255,5 +255,29 @@ def profile():
 @life.route('/chat/<chatID>', methods=['POST', 'GET'])
 # @check_login
 def chat(chatID):
-    return render_template('chat.html')
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
+    
+    chat = chatdb.findChatByID(chatID)
+    item = itemdb.findItem(chat["chatItem"])
+    chat["sendBy"] = current_user.email
+    if chat["chatBuyer"] == current_user.email:
+        chat["sendTo"] = accountdb.findUserName(item["itemOwner"])
+        status = "buyer"
+    else:
+        chat["sendTo"] = accountdb.findUserName(chat["chatBuyer"])
+        status = "owner"
+    if request.method == "Post":
+
+        button = buttonCheck(request.form)
+        if button: return button
+        
+        sendTxt = request.form.get("send-text")
+        sendBtn = request.form.get("send-btn")
+
+        if sendBtn == 'Send' and sendTxt:
+            chatdb.sendChat(item["itemID"], chat["chatBuyer"], item["itemOwner"], sendTxt, status)
+            return redirect(url_for('life.profile', chatID=chatID))
+        
+    return render_template('chat.html', item=item, chat=chat)
 
