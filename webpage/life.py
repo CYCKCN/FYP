@@ -222,20 +222,24 @@ def requestList(requestID):
         requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
         if current_user.is_authenticated: userStatus = True
         else: userStatus = False
+
         myItem = myItemList = {}
-        if userStatus: myItem = itemdb.getItemList(user=current_user.email)
-        for k, v in myItem.items():
-            if v not in requestInfo["requestItemList"]:
-                myItemList[k] = v
-        if request.method == 'POST':
-            button = buttonCheck(request.form)
-            if button: return button
-            submit = request.form.get('submit')
-            itemID = request.form.get('selectedItem')
-            if submit and itemID:
-                requestdb.addRequestItemList(requestInfo['requestID'], itemID)
+        if userStatus:
+            if current_user.email == requestInfo["requestUser"]: identity = "owner"
+            else: identity = "seller"
+            myItem = itemdb.getItemList(user=current_user.email)
+            for k, v in myItem.items():
+                if v not in requestInfo["requestItemList"]:
+                    myItemList[k] = v
+            if request.method == 'POST':
+                button = buttonCheck(request.form)
+                if button: return button
+                submit = request.form.get('submit')
+                itemID = request.form.get('selectedItem')
+                if submit and itemID:
+                    requestdb.addRequestItemList(requestInfo['requestID'], itemID)
             
-        return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus, itemList=requestInfo["requestItemList"], myItemList=myItemList)
+        return render_template('requestdetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
 
 @life.route('/profile', methods=['POST', 'GET'])
 # @check_login
