@@ -47,9 +47,20 @@
                             <p class="right-align">HKD {{v.itemPrice}}</p>
                         </div>
                     </div>
+
+                    {% if userStatus and identity == "owner" %}
+                    <div style="display: flex; flex-direction: column;">
+                        <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
+                        <button type="submit" class="create-style" name="decline" value="decline">Decline</button>
+                    </div>
+                    {% endif%}
                 </a>
                 {% endfor %}
             </div>
+            
+
+            {% if userStatus and identity == "seller" %}
+            
             
             <button class="suggest-btn" type="submit" name="suggest" value="suggest">Suggest my item</button>
             <div style="display: flex; flex-direction: row;">
@@ -68,7 +79,7 @@
                 <button class="suggest-post" type="submit" name="submit" value="Submit">Suggest</button>
             </div>
 
-            
+            {% endif%}
 
         </div>
     </div>
