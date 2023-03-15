@@ -12,7 +12,25 @@ html, body {
     position: relative;
 }
 .suggest-pack {
-    
+    margin-left: 5%;
+    margin-top: 20px;
+    width: 70%;
+    height: 400px;
+    border-radius: 10px;
+    background: yellow;
+    overflow-y: scroll;
+}
+.suggest-post {
+    margin-top: 20px;
+    width: 20%;
+}
+.individual-suggest {
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 5px;
+    height: 80px;
+    border-radius: 10px;
+    background: red;
 }
 .reserved-info {
     width: 80%;
@@ -76,6 +94,22 @@ html, body {
   .create-style:disabled {
       background: var(--mainGreen3);
   }
+.suggest-btn {
+    width: 90%; 
+    height: 40px; 
+    margin-left: 5%;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    border-radius: 10px;
+    cursor: pointer;
+}
+.suggest-btn:hover {
+    background: var(--mainGreen3);
+}
 .item-image {
     height: 400px;
     width: 100%;
