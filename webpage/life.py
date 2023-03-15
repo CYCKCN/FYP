@@ -267,11 +267,12 @@ def chat(chatID):
     else:
         chat["sendTo"] = accountdb.findUserName(chat["chatBuyer"])
         status = "owner"
-    if request.method == "Post":
+
+    if request.method == 'POST':
 
         button = buttonCheck(request.form)
         if button: return button
-        
+
         sendTxt = request.form.get("send-text")
         sendBtn = request.form.get("send-btn")
 
