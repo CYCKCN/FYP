@@ -34,13 +34,14 @@
                 {{chat["sendTo"]}}
             </div>
             <div class="dialogue">
+                {% for chatInfo in chat["chatInfo"] %}
                 <div class="other-pop">
                     <p>
-                        <span class="font-class" style="color: green; margin-right: 10px;">18:23</span>
-                        <span class="font-class" style="color: red;">Mar 14 2023</span>
+                        <span class="font-class" style="color: green; margin-right: 10px;">{{chatInfo[sendTime]}}</span>
                     </p>
                     <p class="font-class">Hi, I want to buy your cup</p>
                 </div>
+                {% endfor %}
                 <div class="my-pop">
                     <p style="text-align: right;">
                         <span class="font-class" style="color: green; margin-right: 10px;">18:23</span>
