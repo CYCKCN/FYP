@@ -141,7 +141,7 @@ def item(itemID):
         contact = request.form.get('Contact')
         if contact == "Contact":
             if userStatus:
-                chat = chatdb.findChat(itemID, current_user.email)
+                chat = chatdb.findChatByBuyer(itemID, current_user.email)
                 # print(chat)
                 if not chat:
                     # print("no chat")
@@ -238,19 +238,28 @@ def profile():
     user = accountdb.findUser(current_user.email)
     itemInfo = itemdb.getItemList(user=current_user.email)
     requestInfo = requestdb.getRequestList(user=current_user.email)
-    chatInfo = chatdb.getBuyerChatList(buyerEmail=current_user.email)
+    chatInfo = chatdb.getChatList(user=current_user.email)
 
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
         section = request.form.get('section')
         logout = request.form.get('logout')
+        itemID = request.form.get('item')
 
         if logout == "logout": 
             return redirect(url_for('auth.logout'))
         
         if section:
             return redirect(url_for('life.profile', section=section))
+        
+        if itemID:
+            item = itemdb.findItem(itemID)
+            if current_user.email == item['itemOwner']:
+                chat = chatdb.findChatByOwner(itemID, current_user.email)
+            else:
+                chat = chatdb.findChatByBuyer(itemID, current_user.email)
+            return redirect(url_for('life.chat', chatID=chat["chatID"]))
         
     return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, chatInfo=chatInfo)
 
