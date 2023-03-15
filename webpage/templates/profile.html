@@ -57,22 +57,11 @@
         {% elif section == "Chat" %}
         <div class="content">
             <p>Chat</p>
+            {% for c in chatInfo %}
             <button type="submit" class="chat-block" name="item" value="item1">
-                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
-                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
+                <p class="font-class" style="text-align: left; margin-left: 20px;">{{c["chatItem"]["itemName"]}}</p>
             </button>
-            <button type="submit" class="chat-block" name="item" value="item1">
-                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
-                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
-            </button>
-            <button type="submit" class="chat-block" name="item" value="item1">
-                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
-                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
-            </button>
-            <button type="submit" class="chat-block" name="item" value="item1">
-                <p class="font-class" style="text-align: left; margin-left: 20px;">itemName</p>
-                <p class="font-class" style="text-align: left; margin-left: 20px;">userName</p>
-            </button>
+            {% endfor %}
         </div>
         {% else %}
         <div class="content">
