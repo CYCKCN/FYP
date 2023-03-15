@@ -192,11 +192,13 @@ def buy():
 # @check_login
 def requestList(requestID):    
     if requestID == "all":
+        if current_user.is_authenticated: userStatus = True
+        else: userStatus = False
         requestInfo = requestdb.getRequestList()
         if request.method == 'POST':
             button = buttonCheck(request.form)
             if button: return button
-        return render_template('requestall.html', requestInfo=requestInfo)
+        return render_template('requestall.html', requestInfo=requestInfo, userStatus=userStatus)
     else:
         requestInfo = requestdb.findRequest(requestID)
         requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
