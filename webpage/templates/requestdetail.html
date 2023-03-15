@@ -36,41 +36,36 @@
                 </div>
             </div>
 
+            <div class="display-table">
+                {% for k, v in itemInfo.items() %}
+                <a href="item/{{v.itemID}}" style="text-decoration:none">
+                    <div class="on-sale-block">
+                        <img src={{v.itemImg}} width="340" class="display-image"/>
+                        <p class="display-text">{{v.itemName}}</p>
+                        <div style="display: flex; flex-direction: row;">
+                            <p class="display-text">{{v.itemInfo}}</p>
+                            <p class="right-align">HKD {{v.itemPrice}}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            
             <button class="suggest-btn" type="submit" name="suggest" value="suggest">Suggest my item</button>
             <div style="display: flex; flex-direction: row;">
                 <div class="suggest-pack">
-                    <input class="checkbox-tools" type="radio" name="tools" id="tool-5">
-                    <label class="for-checkbox-tools" for="tool-5">
-                        brush
+
+                    {% for k, v in itemInfo.items() %}             
+                    <input class="checkbox-tools" type="radio" name="selectedItem" id="{{v.itemID}}" value="{{v.itemID}}">
+                    <label class="for-checkbox-tools" for="{{v.itemID}}">
+                        <p class="font-class">{{v.itemName}}</p>
+                        <p class="font-class">{{v.itemPrice}}</p>
+                        <p class="font-class">{{v.itemInfo}}</p>
                     </label>
-                    <input class="checkbox-tools" type="radio" name="tools" id="tool-4">
-                    <label class="for-checkbox-tools" for="tool-4">
-                        test
-                    </label>
-                    <input class="checkbox-tools" type="radio" name="tools" id="tool-3">
-                    <label class="for-checkbox-tools" for="tool-3">
-                        yeah
-                    </label>
-                    <input class="individual-suggest" type="radio" name="itemName" value="item1">
+                    {% endfor %}
 
-                    </input>
-                    <div class="individual-suggest">
-
-                    </div>
-                    <div class="individual-suggest">
-
-                    </div>
-                    <div class="individual-suggest">
-
-                    </div>
-                    <div class="individual-suggest">
-
-                    </div>
-                    <div class="individual-suggest">
-
-                    </div>
                 </div>
-                <button class="suggest-post">Suggest</button>
+                <button class="suggest-post" type="submit" value="Submit">Suggest</button>
             </div>
 
             
