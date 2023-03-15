@@ -138,7 +138,7 @@ class ChatDB():
         self.db.delete_many({})
 
     def findChat(self, itemID, buyerEmail):
-        return self.db.find_one({"itemID": itemID, "buyerEmail": buyerEmail})
+        return self.db.find_one({"chatItem": itemID, "chatBuyer": buyerEmail})
     
     def findChatByID(self, chatID):
         return self.db.find_one({"chatID": chatID})
@@ -154,13 +154,14 @@ class ChatDB():
     
     def sendChat(self, itemID, buyerEmail, ownerEmail, chattxt, type="buyer"):
         chat = self.findChat(itemID, buyerEmail)
+        print(itemID, buyerEmail, chat["chatInfo"])
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
         if type == "buyer":
             chat["chatInfo"].append({"sendBy": buyerEmail, "sendTxt": chattxt, "sendTime": time})
         if type == "owner":
             chat["chatInfo"].append({"sendBy": ownerEmail, "sendTxt": chattxt, "sendTime": time})
-        self.db.update_one({"itemID": itemID, "buyerEmail": buyerEmail}, {'$set': {'chatInfo': chat["chatInfo"]}})
+        self.db.update_one({"chatItem": itemID, "chatBuyer": buyerEmail}, {'$set': {'chatInfo': chat["chatInfo"]}})
 
     def getBuyerChatList(self, buyerEmail):
         chatList = self.db.find({"buyerEmail": buyerEmail})
