@@ -5,7 +5,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from werkzeug.utils import secure_filename
 
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
-from db import itemdb, requestdb, accountdb
+from db import itemdb, requestdb, accountdb, chatdb
 
 life = Blueprint('life',__name__)
 
@@ -130,10 +130,23 @@ def item(itemID):
         if button: return button
 
         reserve = request.form.get('Reserve')
-        if reserve == "Reserve" and userStatus:
-            itemdb.reserveItem(itemID, current_user.email)
-            item = itemdb.findItem(itemID)
-            return render_template('item.html', item=item, userStatus=userStatus)
+        if reserve == "Reserve":
+            if userStatus:
+                itemdb.reserveItem(itemID, current_user.email)
+                item = itemdb.findItem(itemID)
+                return render_template('item.html', item=item, userStatus=userStatus)
+            else:
+                return redirect(url_for('auth.login'))
+        
+        contact = request.form.get('Contact')
+        if contact == "Contact":
+            if userStatus:
+                chat = chatdb.findChat(itemID, current_user.email)
+                if not chat:
+                    chat = chatdb.createChat(itemID, current_user.email)
+                return redirect(url_for('life.chat', chatID=chat["chatID"]))
+            else:
+                return redirect(url_for('auth.login'))
 
     return render_template('item.html', item=item, userStatus=userStatus)
 
@@ -223,6 +236,7 @@ def profile():
     user = accountdb.findUser(current_user.email)
     itemInfo = itemdb.getItemList(user=current_user.email)
     requestInfo = requestdb.getRequestList(user=current_user.email)
+    chatInfo = chatdb.getRequestList(user=current_user.email)
 
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -236,10 +250,10 @@ def profile():
         if section:
             return redirect(url_for('life.profile', section=section))
         
-    return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo)
+    return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, chatInfo=chatInfo)
 
-@life.route('/chat', methods=['POST', 'GET'])
+@life.route('/chat/<chatID>', methods=['POST', 'GET'])
 # @check_login
-def chat():
+def chat(chatID):
     return render_template('chat.html')
 

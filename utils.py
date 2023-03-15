@@ -82,6 +82,14 @@ class Request(object):
         self.requestCate = category
         self.requestTime = time
 
+class Chat(object):
+    def __init__(self, chatID, itemID, buyerEmail, created_time, chatInfo=""):
+        self.chatID = chatID
+        self.chatItem = itemID
+        self.chatBuyer = buyerEmail
+        self.chatCreated = created_time
+        self.chatInfo = chatInfo
+
 class RequestForm(FlaskForm):
     title = wtforms.StringField('Name', validators=[Length(max=30)])
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
