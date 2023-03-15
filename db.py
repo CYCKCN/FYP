@@ -133,6 +133,7 @@ class RequestDB():
     def addRequestItemList(self, requestID, itemID):
         request = self.findRequest(requestID)
         item = itemdb.findItem(itemID)
+        item['itemImg'] = "../../" + item['itemImg'][8:]
         request["requestItemList"].append(item)
         self.db.update_one({"requestID": requestID}, {'$set': {'requestItemList': request["requestItemList"]}})
     

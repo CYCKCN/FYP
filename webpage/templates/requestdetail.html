@@ -55,7 +55,7 @@
             <div style="display: flex; flex-direction: row;">
                 <div class="suggest-pack">
 
-                    {% for v in myItemList.items() %}             
+                    {% for k, v in myItemList.items() %}             
                     <input class="checkbox-tools" type="radio" name="selectedItem" id="{{v.itemID}}" value="{{v.itemID}}">
                     <label class="for-checkbox-tools" for="{{v.itemID}}">
                         <p class="font-class">{{v.itemName}}</p>
@@ -65,7 +65,7 @@
                     {% endfor %}
 
                 </div>
-                <button class="suggest-post" type="submit" value="Submit">Suggest</button>
+                <button class="suggest-post" type="submit" name="submit" value="Submit">Suggest</button>
             </div>
 
             
