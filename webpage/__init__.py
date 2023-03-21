@@ -29,10 +29,16 @@ def user_loader(user_id):
 
 from .auth import auth
 from .life import life
+from .lifeverse import lifeverse
+from .lifebase import lifebase
+from .lifeboard import lifeboard
 
-webpage.register_blueprint(life, url_prefix='/')
+webpage.register_blueprint(life, url_prefix='/life')
 webpage.register_blueprint(auth, url_prefix='/auth')
+webpage.register_blueprint(lifeverse, url_prefix='/lifeverse')
+webpage.register_blueprint(lifebase, url_prefix='/lifebase')
+webpage.register_blueprint(lifeboard, url_prefix='/lifeboard')
 
 @webpage.route("/")
 def main():
-    return redirect(url_for('life.home'))
+    return redirect(url_for('lifeverse.home'))
