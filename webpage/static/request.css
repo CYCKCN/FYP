@@ -27,6 +27,18 @@
       padding-left: 20px;
       padding-top: 20px;
   }
+  .top-buttons-left {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 0%;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
   .top-buttons {
     position: absolute;
     width: 400px;
