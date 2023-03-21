@@ -11,6 +11,23 @@ life = Blueprint('life',__name__)
 
 @life.route('/', methods=['POST', 'GET'])
 def home():
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+
+        lifeverse = request.form.get('lifeverse')
+        lifeboard = request.form.get('lifeboard')
+        lifebase = request.form.get('lifebase')
+
+        if lifeverse == "lifeverse": 
+            return redirect(url_for('lifeverse.home'))
+        
+        if lifeverse == "lifeboard": 
+            return redirect(url_for('lifeboard.home'))
+        
+        if lifeverse == "lifebase": 
+            return redirect(url_for('lifebase.home'))
+        
     return render_template('home.html')
 
 @life.route('/profile', methods=['POST', 'GET'])
