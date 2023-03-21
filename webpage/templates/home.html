@@ -26,66 +26,33 @@
             </div>
         </div>
 
-        <div class="header" id="myHeader">
-            <div class="search-div">
-                <input class="search" type="search" name="search-keyword" placeholder="{{search}}"/>
-                <i class="material-icons icon-search" style="font-size: 20px;">search</i>
-            </div>
-
-            <div class="filter-div">
-                <select name="Category" class="button-option">
-                    <option value="">- ALL -</option>
-                    {% for c in itemCategories %}
-                        {% if selected_cate == c %}
-                            <option value="{{c}}" selected>{{c}}</option>
-                        {% else %}
-                            <option value="{{c}}">{{c}}</option>
-                        {% endif%}
-                    {% endfor %}
-                </select>
-                <select name="Price" class="button-option">
-                  <option value="">- Price -</option>
-                    {% for c in priceRange %}
-                        {% if selected_price == c %}
-                            <option value="{{c}}" selected>{{c}}</option>
-                        {% else %}
-                            <option value="{{c}}">{{c}}</option>
-                        {% endif%}
-                    {% endfor %}
-                </select>
-                <button class="button-option" type="submit" name="Apply" value="Apply">Apply</button>
-                <button class="button-option" type="submit" name="Clear" value="Clear">Clear</button>
-            </div>
-        </div>
-
         <div class="scroll-div">
              
             <div style="display:flex; flex-direction: row; width: 100%;">
-                <div class="display-table">
-                    {% for k, v in itemInfo.items() %}
-                    <a href="item/{{v.itemID}}" style="text-decoration:none">
-                        <div class="on-sale-block">
-                            <img src={{v.itemImg}} width="340" class="display-image"/>
-                            <p class="display-text">{{v.itemName}}</p>
-                            <div style="display: flex; flex-direction: row;">
-                                <p class="display-text">{{v.itemInfo}}</p>
-                                <p class="right-align">HKD {{v.itemPrice}}</p>
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-                <div class="request-list">
+                <button class="lifeverse" name="lifeverse" value="lifeverse">
 
-                    <a href="request/all" class="request-all">See All</a>
+                    <a class="request-all">Lifeverse</a>
                     <hr class="rounded">
+
+                    <p class="font-class">Description</p>
                     
-                    {% for k, v in requestInfo.items() %}
-                        <a href="request/{{v.requestID}}" class="request-link"><span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>{{v.requestTitle}}</a>
-                        <hr class="rounded">
-                    {% endfor %}
                     
-                </div>
+                </button>
+                <button class="lifeboard" name="lifeboard" value="lifeboard">
+
+                    <a href="request/all" class="request-all">Lifeboard</a>
+                    <hr class="rounded">
+                    <p class="font-class">Description</p>
+                    
+                </button>
+                <button class="lifebase" name="lifebase" value="lifebase">
+
+                    <a href="request/all" class="request-all">Lifebase</a>
+                    <hr class="rounded">
+                    <p class="font-class">Description</p>
+                    
+                    
+                </button>
             </div>
         </div>
     </div>

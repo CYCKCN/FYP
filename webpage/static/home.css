@@ -16,7 +16,9 @@ hr.rounded {
     border-top: 1px solid #bbb;
     border-radius: 1px;
 }
-  
+.font-class {
+    font-family: 'Alatsi';
+}
 .home-top {
     position: absolute;
     min-width: 100%;
@@ -49,17 +51,59 @@ hr.rounded {
     display: flex;
     flex-direction: row-reverse;
 }
-.request-list {
-    width: 380px;
+.lifeverse {
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 10px;
     height: 100%;
     background: none;
-    position: fixed;
+    position: relative;
     right: 0px;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
     flex-direction: column;
+    background: var(--mainGrey2);
+    border-radius: 10px;
+    border: none;
+}
+.lifebase {
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 10px;
+    height: 100%;
+    background: none;
+    position: relative;
+    right: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    background: var(--mainGrey2);
+    border-radius: 10px;
+    border: none;
+}
+.lifeboard {
+    width: 32%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 10px;
+    height: 100%;
+    background: none;
+    position: relative;
+    right: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    background: var(--mainGrey2);
+    border-radius: 10px;
+    border: none;
 }
 .request-link {
     width: 100%;
@@ -72,9 +116,10 @@ hr.rounded {
     white-space: nowrap;
 }
 .request-all {
-    text-align: end;
+    text-align: start;
     text-decoration: none;
     font-family: 'Alatsi';
+    font-size: 20px;
 }
 .user-title {
     font-family: 'Alatsi';
@@ -109,7 +154,7 @@ hr.rounded {
     color: black;
 }
 .scroll-div {
-    margin-top: 0px;
+    margin-top: 50px;
     position: relative;
     overflow-y: scroll;
     height: 794px;
