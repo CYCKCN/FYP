@@ -15,18 +15,18 @@ def home():
         button = buttonCheck(request.form)
         if button: return button
 
-        lifeverse = request.form.get('lifeverse')
-        lifeboard = request.form.get('lifeboard')
-        lifebase = request.form.get('lifebase')
+        market = request.form.get('market')
+        plazza = request.form.get('plazza')
+        demand = request.form.get('demand')
 
-        if lifeverse == "lifeverse": 
-            return redirect(url_for('lifeverse.home'))
+        if market == "market": 
+            return redirect(url_for('market.home'))
         
-        if lifeverse == "lifeboard": 
-            return redirect(url_for('lifeboard.home'))
+        if plazza == "plazza": 
+            return redirect(url_for('plazza.home'))
         
-        if lifeverse == "lifebase": 
-            return redirect(url_for('lifebase.home'))
+        if demand == "demand": 
+            return redirect(url_for('demand.home'))
         
     return render_template('home.html')
 
