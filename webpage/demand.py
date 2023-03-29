@@ -17,6 +17,9 @@ def home():
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
+        create = request.form.get("Create")
+        if create == 'Create':
+            return redirect(url_for('demand.demandcreate'))
     return render_template('demandall.html', requestInfo=requestInfo, userStatus=userStatus)
 
 

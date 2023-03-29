@@ -41,6 +41,7 @@ def home():
         clear = request.form.get('Clear')
         cate = request.form.get("Category")
         price = request.form.get("Price")
+        create = request.form.get("Create")
         itemName = request.form.get("search-keyword")
         if itemName == '' and search != '': itemName = search
         # itemName = searchForm.search.data
@@ -57,7 +58,10 @@ def home():
             return redirect(url_for("market.home", cate='', maxprice='', minprice='', search=''))
 
         if apply == "Apply" or itemName:
-            return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))      
+            return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
+
+        if create == 'Create':
+            return redirect(url_for('market.giveitem'))
 
     # print(price)
     return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
