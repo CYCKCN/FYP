@@ -66,7 +66,7 @@ def home():
 # @check_login
 def giveitem():
     if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth.login', addr=request.full_path))
     selected_cate = ""
     itemImg = ""
     itemForm = ItemForm()
@@ -136,7 +136,7 @@ def item(itemID):
                 item = itemdb.findItem(itemID)
                 return render_template('item.html', item=item, userStatus=userStatus)
             else:
-                return redirect(url_for('auth.login'))
+                return redirect(url_for('auth.login', addr=request.full_path))
         
         contact = request.form.get('Contact')
         if contact == "Contact":
@@ -148,7 +148,7 @@ def item(itemID):
                     chat = chatdb.createChat(itemID, current_user.email)
                 return redirect(url_for('life.chat', chatID=chat["chatID"]))
             else:
-                return redirect(url_for('auth.login'))
+                return redirect(url_for('auth.login', addr=request.full_path))
 
     return render_template('item.html', item=item, userStatus=userStatus)
 
