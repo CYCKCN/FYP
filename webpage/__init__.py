@@ -30,13 +30,13 @@ def user_loader(user_id):
 from .auth import auth
 from .life import life
 from .market import market
-from .plazza import plazza
+from .piazza import piazza
 from .demand import demand
 
 webpage.register_blueprint(life, url_prefix='/life')
 webpage.register_blueprint(auth, url_prefix='/auth')
 webpage.register_blueprint(market, url_prefix='/market')
-webpage.register_blueprint(plazza, url_prefix='/plazza')
+webpage.register_blueprint(piazza, url_prefix='/piazza')
 webpage.register_blueprint(demand, url_prefix='/demand')
 
 @webpage.route("/")

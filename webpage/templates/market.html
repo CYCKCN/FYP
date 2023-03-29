@@ -15,9 +15,9 @@
         <div class="home-top">
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <button class="individual-button" type="submit" name="Lifeverse" value="Lifeverse">Lifeverse</button>
-                <button class="individual-button" type="submit" name="Lifeboard" value="Lifeboard">Lifeboard</button>
-                <button class="individual-button" type="submit" name="Lifebase" value="Lifebase">Lifebase</button>
+                <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
+                <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
+                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
             </div>
             <div class="top-buttons">
                     {% if userStatus == True %}
@@ -26,6 +26,7 @@
                     <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
                     <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
                     {% endif %}
+                    <button class="individual-button" type="submit" name="Create" value="Create">Create</button>
             </div>
         </div>
 
@@ -77,17 +78,6 @@
                         </div>
                     </a>
                     {% endfor %}
-                </div>
-                <div class="request-list">
-
-                    <a href="request/all" class="request-all">See All</a>
-                    <hr class="rounded">
-                    
-                    {% for k, v in requestInfo.items() %}
-                        <a href="request/{{v.requestID}}" class="request-link"><span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>{{v.requestTitle}}</a>
-                        <hr class="rounded">
-                    {% endfor %}
-                    
                 </div>
             </div>
         </div>
