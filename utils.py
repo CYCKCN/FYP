@@ -110,8 +110,9 @@ def randomID(length):
 
 def buttonCheck(form):
     home = form.get('Home')
-    sell = form.get('Sell')
-    buy = form.get('Request')
+    market = form.get('Market')
+    demand = form.get('Demand')
+    piazza = form.get('Piazza')
     login = form.get('Login')
     signup = form.get('Signup')
     profile = form.get('Profile')
@@ -121,11 +122,14 @@ def buttonCheck(form):
     if home == "Home": 
         return redirect(url_for('life.home'))
     
-    if sell == "Sell": 
-        return redirect(url_for('life.sell'))
+    if market == "Market": 
+        return redirect(url_for('market.home'))
 
-    if buy == "Request": 
-        return redirect(url_for('life.buy'))
+    if demand == "Demand": 
+        return redirect(url_for('demand.home'))
+    
+    if piazza == "Piazza": 
+        return redirect(url_for('piazza.home'))
     
     if login == "Login": 
         return redirect(url_for('auth.login'))
