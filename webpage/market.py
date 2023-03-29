@@ -177,32 +177,3 @@ def itemManager(itemID):
         
     return render_template('itemmanage.html', item=item)
 
-@market.route('/takeitem', methods=['POST', 'GET'])
-# @check_login
-def takeitem():
-    if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
-    
-    requestForm = RequestForm()
-    if request.method == 'POST':
-        # print(requestForm.data)
-        create = request.form.get('create-request')
-        cate = request.form.get('Category')
-    
-        title = requestForm.title.data
-        info = requestForm.info.data
-
-        # print(home, create, cate, title, info)
-
-        button = buttonCheck(request.form)
-        if button: return button
-
-        if create == "create-request": 
-            if cate == "": 
-                return render_template('takeitem.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
-            else: 
-                requestdb.createRequest(current_user.email, title, cate, info)
-                return redirect(url_for('market.home'))
-                
-    return render_template('takeitem.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
-

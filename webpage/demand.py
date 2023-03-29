@@ -20,7 +20,7 @@ def home():
     return render_template('demandall.html', requestInfo=requestInfo, userStatus=userStatus)
 
 
-@market.route('/<requestID>', methods=['POST', 'GET'])
+@demand.route('/<requestID>', methods=['POST', 'GET'])
 # @check_login
 def demanddetail(requestID):
 
