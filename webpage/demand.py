@@ -7,8 +7,8 @@ from werkzeug.utils import secure_filename
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
-lifeboard = Blueprint('lifeboard',__name__)
+demand = Blueprint('demand',__name__)
 
-@lifeboard.route('/', methods=['POST', 'GET'])
+@demand.route('/', methods=['POST', 'GET'])
 def home():
-    return render_template('lifeboard.html')
+    return render_template('demand.html')

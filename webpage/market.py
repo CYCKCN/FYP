@@ -7,9 +7,9 @@ from werkzeug.utils import secure_filename
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
-lifeverse = Blueprint('lifeverse',__name__)
+market = Blueprint('market',__name__)
 
-@lifeverse.route('/', methods=['POST', 'GET'])
+@market.route('/', methods=['POST', 'GET'])
 def home():
     if current_user.is_authenticated: userStatus = True
     else: userStatus = False
@@ -54,15 +54,15 @@ def home():
         # print(cate, maxprice, minprice, itemName)
 
         if clear == 'Clear':
-            return redirect(url_for("lifeverse.home", cate='', maxprice='', minprice='', search=''))
+            return redirect(url_for("market.home", cate='', maxprice='', minprice='', search=''))
 
         if apply == "Apply" or itemName:
-            return redirect(url_for("lifeverse.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))      
+            return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))      
 
     # print(price)
-    return render_template('lifeverse.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
+    return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
-@lifeverse.route('/to-be-bearer', methods=['POST', 'GET'])
+@market.route('/to-be-bearer', methods=['POST', 'GET'])
 # @check_login
 def to_be_bearer():
     if not current_user.is_authenticated:
@@ -107,12 +107,12 @@ def to_be_bearer():
         # print(image_path)
         if submit == "new-contract":
             itemdb.createItem(current_user.email, name, price, category, info, image_path, pickup)
-            return redirect(url_for('lifeverse.home'))
+            return redirect(url_for('market.home'))
 
     return render_template('to_be_bearer.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, itemImg=itemImg, selected_cate=selected_cate)
     # return "Sell Page"
 
-@lifeverse.route('/item/<itemID>', methods=['POST', 'GET'])
+@market.route('/item/<itemID>', methods=['POST', 'GET'])
 # @check_login
 def item(itemID):
     item = itemdb.findItem(itemID)
@@ -123,7 +123,7 @@ def item(itemID):
         return "Record not found", 400
     
     if userStatus and item["itemOwner"] == current_user.email:
-        return redirect(url_for('lifeverse.itemManager', itemID=itemID))
+        return redirect(url_for('market.itemManager', itemID=itemID))
     
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -152,7 +152,7 @@ def item(itemID):
 
     return render_template('item.html', item=item, userStatus=userStatus)
 
-@lifeverse.route('/itemManager/<itemID>', methods=['POST', 'GET'])
+@market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 # @check_login
 def itemManager(itemID):
     item = itemdb.findItem(itemID)
@@ -177,7 +177,7 @@ def itemManager(itemID):
         
     return render_template('itemmanage.html', item=item)
 
-@lifeverse.route('/to-be-carer', methods=['POST', 'GET'])
+@market.route('/to-be-carer', methods=['POST', 'GET'])
 # @check_login
 def to_be_carer():
     if not current_user.is_authenticated:
@@ -202,11 +202,11 @@ def to_be_carer():
                 return render_template('to_be_carer.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
             else: 
                 requestdb.createRequest(current_user.email, title, cate, info)
-                return redirect(url_for('lifeverse.home'))
+                return redirect(url_for('market.home'))
                 
     return render_template('to_be_carer.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
 
-@lifeverse.route('/lifecarer/<requestID>', methods=['POST', 'GET'])
+@market.route('/lifecarer/<requestID>', methods=['POST', 'GET'])
 # @check_login
 def lifecarer(requestID):
     # sold = request.args.get("sold")
@@ -242,15 +242,15 @@ def lifecarer(requestID):
             decline = request.form.get('decline')
             if submit and itemID:
                 requestdb.addRequestItemList(requestID, itemID)
-                return redirect(url_for('lifeverse.lifecarer', requestID=requestID))
+                return redirect(url_for('market.lifecarer', requestID=requestID))
 
             if deal:
                 requestdb.dealRequestItem(requestID, deal)
-                return redirect(url_for('lifeverse.lifecarer', requestID=requestID))
+                return redirect(url_for('market.lifecarer', requestID=requestID))
 
             if decline:
                 requestdb.declineRequestItem(requestID, decline)
-                return redirect(url_for('lifeverse.lifecarer', requestID=requestID))
+                return redirect(url_for('market.lifecarer', requestID=requestID))
             
         # print(userStatus, identity, sold)
         return render_template('lifecarerdetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
