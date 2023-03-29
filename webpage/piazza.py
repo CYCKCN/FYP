@@ -7,8 +7,8 @@ from werkzeug.utils import secure_filename
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
-plazza = Blueprint('plazza',__name__)
+piazza = Blueprint('piazza',__name__)
 
-@plazza.route('/', methods=['POST', 'GET'])
+@piazza.route('/', methods=['POST', 'GET'])
 def home():
-    return render_template('plazza.html')
+    return render_template('piazza.html')

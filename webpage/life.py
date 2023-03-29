@@ -16,14 +16,14 @@ def home():
         if button: return button
 
         market = request.form.get('market')
-        plazza = request.form.get('plazza')
+        piazza = request.form.get('piazza')
         demand = request.form.get('demand')
 
         if market == "market": 
             return redirect(url_for('market.home'))
         
-        if plazza == "plazza": 
-            return redirect(url_for('plazza.home'))
+        if piazza == "piazza": 
+            return redirect(url_for('piazza.home'))
         
         if demand == "demand": 
             return redirect(url_for('demand.home'))
