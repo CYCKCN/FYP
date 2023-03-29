@@ -11,4 +11,51 @@ demand = Blueprint('demand',__name__)
 
 @demand.route('/', methods=['POST', 'GET'])
 def home():
-    return render_template('demand.html')
+    if current_user.is_authenticated: userStatus = True
+    else: userStatus = False
+    requestInfo = requestdb.getRequestList()
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+    return render_template('demandall.html', requestInfo=requestInfo, userStatus=userStatus)
+
+
+@market.route('/<requestID>', methods=['POST', 'GET'])
+# @check_login
+def demanddetail(requestID):
+
+    requestInfo = requestdb.findRequest(requestID)
+    requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
+    if current_user.is_authenticated: userStatus = True
+    else: userStatus = False
+
+    myItem = myItemList = {}
+    identity = ""
+    if userStatus:
+        if current_user.email == requestInfo["requestUser"]: identity = "owner"
+        else: identity = "seller"
+        myItem = itemdb.getItemList(user=current_user.email)
+        for k, v in myItem.items():
+            if v not in requestInfo["requestItemList"]:
+                myItemList[k] = v
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+        submit = request.form.get('submit')
+        itemID = request.form.get('selectedItem')
+        deal = request.form.get('deal')
+        decline = request.form.get('decline')
+        if submit and itemID:
+            requestdb.addRequestItemList(requestID, itemID)
+            return redirect(url_for('demand.demanddetail', requestID=requestID))
+
+        if deal:
+            requestdb.dealRequestItem(requestID, deal)
+            return redirect(url_for('demand.demanddetail', requestID=requestID))
+
+        if decline:
+            requestdb.declineRequestItem(requestID, decline)
+            return redirect(url_for('demand.demanddetail', requestID=requestID))
+        
+    # print(userStatus, identity, sold)
+    return render_template('demanddetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
