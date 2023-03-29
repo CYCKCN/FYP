@@ -59,3 +59,33 @@ def demanddetail(requestID):
         
     # print(userStatus, identity, sold)
     return render_template('demanddetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
+
+@demand.route('/demandcreate', methods=['POST', 'GET'])
+# @check_login
+def demandcreate():
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
+    
+    requestForm = RequestForm()
+    if request.method == 'POST':
+        # print(requestForm.data)
+        create = request.form.get('create-request')
+        cate = request.form.get('Category')
+    
+        title = requestForm.title.data
+        info = requestForm.info.data
+
+        # print(home, create, cate, title, info)
+
+        button = buttonCheck(request.form)
+        if button: return button
+
+        if create == "create-request": 
+            if cate == "": 
+                return render_template('demandcreate.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
+            else: 
+                requestdb.createRequest(current_user.email, title, cate, info)
+                return redirect(url_for('demand.home'))
+                
+    return render_template('demandcreate.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
+
