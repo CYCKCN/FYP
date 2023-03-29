@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/lifeverse.css">
+    <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <form method="POST" enctype="multipart/form-data">
+    <div class="page-frame">
+        <div class="home-top">
+            <div class="top-buttons-left">
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                <button class="individual-button" type="submit" name="Lifeverse" value="Lifeverse">Lifeverse</button>
+                <button class="individual-button" type="submit" name="Lifeboard" value="Lifeboard">Lifeboard</button>
+                <button class="individual-button" type="submit" name="Lifebase" value="Lifebase">Lifebase</button>
+            </div>
+            <div class="top-buttons">
+                    {% if userStatus == True %}
+                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                    {% else %}
+                    <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
+                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
+                    {% endif %}
+            </div>
+        </div>
+
+        <div class="header" id="myHeader">
+            <div class="search-div">
+                <input class="search" type="search" name="search-keyword" placeholder="{{search}}"/>
+                <i class="material-icons icon-search" style="font-size: 20px;">search</i>
+            </div>
+
+            <div class="filter-div">
+                <select name="Category" class="button-option">
+                    <option value="">- ALL -</option>
+                    {% for c in itemCategories %}
+                        {% if selected_cate == c %}
+                            <option value="{{c}}" selected>{{c}}</option>
+                        {% else %}
+                            <option value="{{c}}">{{c}}</option>
+                        {% endif%}
+                    {% endfor %}
+                </select>
+                <select name="Price" class="button-option">
+                  <option value="">- Price -</option>
+                    {% for c in priceRange %}
+                        {% if selected_price == c %}
+                            <option value="{{c}}" selected>{{c}}</option>
+                        {% else %}
+                            <option value="{{c}}">{{c}}</option>
+                        {% endif%}
+                    {% endfor %}
+                </select>
+                <button class="button-option" type="submit" name="Apply" value="Apply">Apply</button>
+                <button class="button-option" type="submit" name="Clear" value="Clear">Clear</button>
+            </div>
+        </div>
+
+        <div class="scroll-div">
+             
+            <div style="display:flex; flex-direction: row; width: 100%;">
+                <div class="request-list">
+
+                    <a href="request/all" class="request-all">See All</a>
+                    <hr class="rounded">
+                    
+                    {% for k, v in requestInfo.items() %}
+                        <a href="request/{{v.requestID}}" class="request-link"><span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>{{v.requestTitle}}</a>
+                        <hr class="rounded">
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </form>  
+  </body>
+</html>
