@@ -64,7 +64,7 @@ def demanddetail(requestID):
 # @check_login
 def demandcreate():
     if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth.login', addr=request.full_path))
     
     requestForm = RequestForm()
     if request.method == 'POST':

@@ -31,7 +31,7 @@ def login():
                 # username = accountdb.findUserName(email)
                 login_user(User(email))
                 # print(current_user.is_authenticated())
-                return redirect(url_for('life.home'))
+                return redirect(request.args.get('addr', url_for('life.home')))
         
         if home == "Home": 
             return redirect(url_for('life.home'))

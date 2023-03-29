@@ -34,7 +34,7 @@ def home():
 # @check_login
 def profile():
     if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth.login', addr=request.full_path))
     section = request.args.get('section')
     user = accountdb.findUser(current_user.email)
     itemInfo = itemdb.getItemList(user=current_user.email)
@@ -68,7 +68,7 @@ def profile():
 # @check_login
 def chat(chatID):
     if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth.login', addr=request.full_path))
     
     chat = chatdb.findChatByID(chatID)
     item = itemdb.findItem(chat["chatItem"])
