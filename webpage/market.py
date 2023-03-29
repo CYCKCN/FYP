@@ -62,9 +62,9 @@ def home():
     # print(price)
     return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
-@market.route('/to-be-bearer', methods=['POST', 'GET'])
+@market.route('/giveitem', methods=['POST', 'GET'])
 # @check_login
-def to_be_bearer():
+def giveitem():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
     selected_cate = ""
@@ -103,13 +103,13 @@ def to_be_bearer():
         if not pickup: invalidDict["pickup"] = True
         print(itemImg)
         if True in invalidDict.values():
-            return render_template('to_be_bearer.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
+            return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
         # print(image_path)
         if submit == "new-contract":
             itemdb.createItem(current_user.email, name, price, category, info, image_path, pickup)
             return redirect(url_for('market.home'))
 
-    return render_template('to_be_bearer.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, itemImg=itemImg, selected_cate=selected_cate)
+    return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, itemImg=itemImg, selected_cate=selected_cate)
     # return "Sell Page"
 
 @market.route('/item/<itemID>', methods=['POST', 'GET'])
@@ -177,9 +177,9 @@ def itemManager(itemID):
         
     return render_template('itemmanage.html', item=item)
 
-@market.route('/to-be-carer', methods=['POST', 'GET'])
+@market.route('/takeitem', methods=['POST', 'GET'])
 # @check_login
-def to_be_carer():
+def takeitem():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
     
@@ -199,60 +199,10 @@ def to_be_carer():
 
         if create == "create-request": 
             if cate == "": 
-                return render_template('to_be_carer.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
+                return render_template('takeitem.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
             else: 
                 requestdb.createRequest(current_user.email, title, cate, info)
                 return redirect(url_for('market.home'))
                 
-    return render_template('to_be_carer.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
-
-@market.route('/lifecarer/<requestID>', methods=['POST', 'GET'])
-# @check_login
-def lifecarer(requestID):
-    # sold = request.args.get("sold")
-    if requestID == "all":
-        if current_user.is_authenticated: userStatus = True
-        else: userStatus = False
-        requestInfo = requestdb.getRequestList()
-        if request.method == 'POST':
-            button = buttonCheck(request.form)
-            if button: return button
-        return render_template('lifecarerall.html', requestInfo=requestInfo, userStatus=userStatus)
-    else:
-        requestInfo = requestdb.findRequest(requestID)
-        requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
-        if current_user.is_authenticated: userStatus = True
-        else: userStatus = False
-
-        myItem = myItemList = {}
-        identity = ""
-        if userStatus:
-            if current_user.email == requestInfo["requestUser"]: identity = "owner"
-            else: identity = "seller"
-            myItem = itemdb.getItemList(user=current_user.email)
-            for k, v in myItem.items():
-                if v not in requestInfo["requestItemList"]:
-                    myItemList[k] = v
-        if request.method == 'POST':
-            button = buttonCheck(request.form)
-            if button: return button
-            submit = request.form.get('submit')
-            itemID = request.form.get('selectedItem')
-            deal = request.form.get('deal')
-            decline = request.form.get('decline')
-            if submit and itemID:
-                requestdb.addRequestItemList(requestID, itemID)
-                return redirect(url_for('market.lifecarer', requestID=requestID))
-
-            if deal:
-                requestdb.dealRequestItem(requestID, deal)
-                return redirect(url_for('market.lifecarer', requestID=requestID))
-
-            if decline:
-                requestdb.declineRequestItem(requestID, decline)
-                return redirect(url_for('market.lifecarer', requestID=requestID))
-            
-        # print(userStatus, identity, sold)
-        return render_template('lifecarerdetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
-
+    return render_template('takeitem.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
 
