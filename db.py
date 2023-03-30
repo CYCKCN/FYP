@@ -229,6 +229,7 @@ class StoryDB():
         for story in storyList:
             item = itemdb.findItem(story['storyItem'])
             storyInfo[str(counter)] = story
+            storyInfo[str(counter)]['storyImg'] = "../../" + storyInfo[str(counter)]['storyImg'][8:]
             storyInfo[str(counter)]["userName"] = accountdb.findUserName(story['storyUser'])
             storyInfo[str(counter)]["itemName"] = item['itemName']
             counter += 1
