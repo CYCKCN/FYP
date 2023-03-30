@@ -33,23 +33,24 @@
                 </div>
 
                 <div class="main-content">
+                    {% for k, v in storyList.items() %}
                     <div class="story-block">
                         <div class="story-info">
-                            <p class="font-class">Username</p>
-                            <p class="font-class story-time">Time</p>
+                            <p class="font-class">{{v.userName}}</p>
+                            <p class="font-class story-time">{{v.storyTime}}</p>
                         </div>
                         <div class="story-img"> story image
-                            <img src=""/>
+                            <img src="{{v.storyImg}}"/>
                         </div>
                         <div class="story-ita">
-                            <button class="story-item font-class" name="story-item" value="story-item">
-                                (button that link to item page) Item Name
-                            </button>
+                            <a href="/market/item/{{v.storyItem}}" style="text-decoration:none">
+                                <p class="display-text">{{v.itemName}}</p>
+                            </a>
                         </div>
                         <div class="story-txt font-class">
-                            Story details
+                            {{v.storyIntro}}
                         </div>
-
+                    {% endfor %}
                     </div>
                 </div>
                 
