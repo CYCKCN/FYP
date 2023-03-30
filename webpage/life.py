@@ -3,7 +3,7 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
 life = Blueprint('life',__name__)
@@ -33,8 +33,10 @@ def home():
     return render_template('home.html', userStatus=userStatus)
 
 @life.route('/profile', methods=['POST', 'GET'])
-@login_required
 def profile():
+    if "email" not in session:
+        return redirect(url_for('auth.login', addr=request.full_path))
+    
     section = request.args.get('section')
     user = accountdb.findUser(session["email"])
     itemInfo = itemdb.getItemList(user=session["email"])
@@ -65,8 +67,9 @@ def profile():
     return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, chatInfo=chatInfo)
 
 @life.route('/chat/<chatID>', methods=['POST', 'GET'])
-@login_required
 def chat(chatID):
+    if "email" not in session:
+        return redirect(url_for('auth.login', addr=request.full_path))
     
     chat = chatdb.findChatByID(chatID)
     item = itemdb.findItem(chat["chatItem"])

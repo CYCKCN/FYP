@@ -3,7 +3,7 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
 market = Blueprint('market',__name__)
@@ -66,8 +66,10 @@ def home():
     return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
 @market.route('/giveitem', methods=['POST', 'GET'])
-@login_required
 def giveitem():
+    if "email" not in session:
+        return redirect(url_for('auth.login', addr=request.full_path))
+    
     selected_cate = ""
     itemImg = ""
     itemForm = ItemForm()
@@ -153,8 +155,10 @@ def item(itemID):
     return render_template('item.html', item=item, userStatus=userStatus)
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
-@login_required
 def itemManager(itemID):
+    if "email" not in session:
+        return redirect(url_for('auth.login', addr=request.full_path))
+    
     item = itemdb.findItem(itemID)
     if not item:
         return "Record not found", 400

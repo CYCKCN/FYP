@@ -3,7 +3,7 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
 demand = Blueprint('demand',__name__)
@@ -62,8 +62,9 @@ def demanddetail(requestID):
     return render_template('demanddetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
 
 @demand.route('/demandcreate', methods=['POST', 'GET'])
-@login_required
 def demandcreate():
+    if "email" not in session:
+        return redirect(url_for('auth.login', addr=request.full_path))
     
     requestForm = RequestForm()
     if request.method == 'POST':

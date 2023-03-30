@@ -37,7 +37,7 @@ def login():
             # print(loginInfo)
             if "Login successfully!" in loginInfo:
                 # username = accountdb.findUserName(email)
-                login_user(User(email))
+                # login_user(User(email))
                 # print(current_user.is_authenticated())
                 return redirect(request.args.get('addr', url_for('life.home')))
         
@@ -72,7 +72,7 @@ def callback():
 
     account = accountdb.findUser(session["email"])
     if not account: signupInfo = accountdb.signup(session["name"], session["email"])
-    return redirect(url_for('life.home'))
+    return redirect(request.args.get('addr', url_for('life.home')))
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
