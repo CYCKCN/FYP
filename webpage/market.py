@@ -67,6 +67,7 @@ def home():
 
 @market.route('/giveitem', methods=['POST', 'GET'])
 def giveitem():
+    print(url_for('auth.login', addr=request.full_path))
     if "email" not in session:
         return redirect(url_for('auth.login', addr=request.full_path))
     

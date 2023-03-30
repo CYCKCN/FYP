@@ -15,6 +15,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/google_login', methods=['GET', 'POST'])
 def google_login():
     authorization_url, state = flow.authorization_url()
+    print(authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 
@@ -90,9 +91,9 @@ def signup():
 
         if submit == "Submit":
             if account is None:
-                signupInfo = accountdb.signup(name, password, email, uni)
-                if "Err" not in signupInfo: login_user(User(email))
-                else: return signupInfo
+                # signupInfo = accountdb.signup(name, password, email, uni)
+                # if "Err" not in signupInfo: login_user(User(email))
+                # else: return signupInfo
                 return redirect(url_for('life.home'))
             else:
                 # login_user(User(email=email))
