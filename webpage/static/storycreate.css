@@ -86,10 +86,15 @@ font-size: 14px;
     padding-top: 10px;
     padding-left: 20px;
 }
+.story-img {
+    height: 70%;
+    width: 90%;
+    margin-left: 5%;
+}
 .story-input {
     width: 50%;
     height: 100%;
-    background: red;
+    background: var(--mainGrey2);
     display: flex;
     flex-direction: column;
 
@@ -97,8 +102,7 @@ font-size: 14px;
 .story-txt {
     width: 90%;
     margin-left: 5%;
-    margin-top: 80%;
-    height: 30%;
+    height: 40%;
     background-color: gray;
     border-radius: 10px;
     padding-top: 20px;
@@ -107,57 +111,75 @@ font-size: 14px;
     padding-bottom: 10px;
     font-family: 'Alatsi';
     color: black;   
-    background: var(--mainGrey2);
+    background: white;
     display: flex;
     flex-direction: column;
+    border: none;
 }
 .story-btn {
     margin-top: 5%;
     height: 10%;
     width: 100%;
-    background: black;
+    background: none;
 }
 .font-class {
     font-family: 'Alatsi';
 }
-.img-div {
+.img-btn {
     position: relative;
-    width: 500px;
-    left: 10%;
-    top: 200px;
-    height: 80px;
-    background: none;
+    width: 100%;
+    padding-top: 20px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
 }
 .custom-file-upload {
-text-align: center;
-line-height: 40px;
-border: none;
-background: var(--mainGreen1);
-color: white;
-font-family: 'Alatsi';
-width: 100%;
-height: 40px;
-left: 10%;
-border-radius: 10px;
-transition: 0.5s;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 90%;
+    margin-left: 5%;
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.5s;
 }
-.image-display {
-    position: absolute;
-    top: 250px;
-    left: 13%;
+.img-display {
     text-align: center;
     line-height: 40px;
     border-color: var(--mainGreen1);
     background: none;
     color: black;
     font-family: 'Alatsi';
-    width: 400px;
-    height: 200px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    height: 80%;
     border-radius: 10px;
-    margin-left: 10px;
     padding-top: 20px;
+
+}
+.publish-btn {
+    width: 90%; 
+    height: 40px; 
+    margin-left: 5%;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    border-radius: 10px;
+    cursor: pointer;
+}
+.publish-btn:hover {
+background: var(--mainGreen3);
+}
+.publish-btn:disabled {
+    background: var(--mainGreen3);
 }
 .checkbox:checked ~ .background-color{
 	background-color: var(--white);
