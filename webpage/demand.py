@@ -1,7 +1,6 @@
 import os
 from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required

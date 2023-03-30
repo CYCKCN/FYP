@@ -7,7 +7,6 @@ import google.auth.transport.requests
 from google.oauth2 import id_token
 
 from functools import wraps
-from flask_login import LoginManager, login_user, logout_user, current_user
 from utils import User, flow, GOOGLE_CLIENT_ID, buttonCheck
 from db import accountdb
 
