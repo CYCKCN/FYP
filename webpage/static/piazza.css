@@ -65,7 +65,7 @@ background: var(--mainGrey2);
     margin: 20px;
     color: black;
 }
-.header {
+.main-content {
     width: 40%;
     margin-left: 30%;
     overflow-y: scroll;
