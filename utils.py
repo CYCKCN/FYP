@@ -124,7 +124,6 @@ class RequestForm(FlaskForm):
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
 
 class StoryForm(FlaskForm):
-    title = wtforms.StringField('Name', validators=[Length(max=30)])
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
 
 class ItemForm(FlaskForm):
