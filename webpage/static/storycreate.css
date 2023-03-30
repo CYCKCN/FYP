@@ -1,0 +1,1442 @@
+* {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+    min-width: 100%;
+  }
+  body {
+    min-height: 100%;
+    min-width: 100%;
+    font-size: 14px;
+  }
+  input[type=checkbox] {
+    display: none;
+  }
+  .warning {
+      width: 300px;
+      height: 180px;
+      position: absolute;
+      top: 200px;
+      left: 250px;
+      background: red;
+      border-radius: 10px;
+      font-family: 'Alatsi';
+      color: white;
+      padding-left: 20px;
+      padding-top: 20px;
+  }
+  .top-buttons-left {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 0%;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+  .top-buttons {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    right: 0%;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .individual-button {
+    background: none;
+    border: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    margin: 20px;
+    color: black;
+  }
+  .radio-button {
+      height: 40px;
+      display: flex;
+      flex-direction: row;
+  }
+  .sell-title{
+    font-family: 'Alatsi';
+    font-size: 20px;
+    color: black;
+    text-align: center;
+  }
+  .payment-radio {
+    margin-top: 0px;
+    position: relative;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+  }
+  .payment {
+      margin-top: 20px;
+      margin-left: 10px;
+  }
+  .payment input[type="radio"] {
+    top: 10px;
+    position: relative;
+  }  
+  .blank {
+    height: 30px;
+    width: 20px;
+  }
+  .estimation {
+      color: var(--mainOrgange);
+      font-size: 24px;
+      text-align: center;
+  }
+  .done-icon {
+      color: var(--mainGreen2);
+      margin-left: 120px;
+      margin-top: 130px;
+      margin-bottom: 50px;
+  }
+  .sucessful-reserve {
+      margin-left: 10px;
+  }
+  .link-here {
+      color: var(--mainOrgange);
+  }
+  .button-option {
+    height: 30px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 2px;
+    border: none;
+    font-family: 'Alatsi';
+    cursor: pointer;
+  }
+  .radio-button input[type="radio"] {
+    display: none;
+  }      
+  .radio-button label {
+    height: 30px;
+    width: 163px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 6px;
+    border: none;
+    font-family: 'Alatsi';
+    cursor: pointer;
+  }      
+  .radio-button input[type="radio"]:checked+label {
+    background-color: var(--mainGreen2);
+    color: white;
+  }
+  .page-frame-login {
+    width: 390px;
+    height: 844px;
+    background: white;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+
+  .page-frame {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+  .home-top {
+    min-width: 100%;
+    position: absolute;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 5px;
+    background: white;
+  }
+  .content {
+      width: 390px;
+      height: 100px;
+      margin-top: 50px;
+      padding-top: 20px;
+      padding-left: 25px;
+      padding-right: 25px;
+      position: relative;
+      font-family: 'Alatsi';
+      color: black;   
+  }
+  .main-div {
+    width: 50%;
+    height: 80%;
+    left: 45%;
+    margin-top: 60px;
+    position: relative;
+    background: none;
+}
+.num-option {
+    display: flex;
+    flex-direction: row;
+    width:320px;
+}
+.num-items {
+    width: 300px;
+    height: 30px;
+    font-size: 25px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 0px;
+    padding-left: 10px;
+    font-family: 'Alatsi';
+}
+
+.description-block {
+  width: 300px;
+  height: 200px;
+  font-size: 25px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 0px;
+  padding-left: 10px;
+  font-family: 'Alatsi';
+}
+
+  .question-box {
+    margin-top: 70px;
+    width: 410px;
+    height: 550px;
+    left: 60%;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    font-family: 'Alatsi';
+    color: black;   
+    background: var(--mainGrey2);
+    display: flex;
+    flex-direction: column;
+  }
+  .go-back {
+    background: none;
+    border: none;
+  }
+  .code-detail {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 5px;
+    top: 60px;
+  }
+  .td-style {
+    width: 180px;
+    height: 60px;
+    padding-left: 10px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+  }
+  .tr-style {
+    display: flex;
+    flex-direction: row;
+    margin-top: 8px;
+  }
+  .home-logout {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+  }
+  .home-icons {
+    color: var(--mainOrgange);
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .reservation-name {
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+  }
+  .reservation-date {
+    font-family: 'Alatsi';
+    font-size: 14px;
+    color: black;
+  }
+  .reservation-time {
+    font-family: 'Alatsi';
+    font-size: 24px;
+    color: black;
+  }
+  .info-div {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    width: 290px;
+    padding-left: 10px;
+    padding-top: 25px;
+    text-align: left;
+  }
+  .info-div-left {
+    position: relative;
+    top: 5px;
+    height: 50px;
+    width: 190px;
+    padding-left: 10px;
+    padding-top: 17px;
+    text-align: left;
+  }
+  .info-div-right {
+    position: relative;
+    top: 5px;
+    height: 50px;
+    width: 120px;
+    padding-top: 17px;
+    padding-right: 20px;
+    color: var(--mainOrgange);
+    text-align: right;
+
+  }
+  .name-txt {
+    font-family: 'Alatsi';
+    font-size: 20px;
+  }
+  .category-txt {
+    font-family: 'Alatsi';
+    font-size: 12px;
+    color: white;
+    border: var(--mainGreen2);
+    border-radius: 10px;
+    background: var(--mainGreen2);
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .price-txt {
+    font-family: 'Alatsi';
+    font-size: 20px;
+  }
+  #bar-icons-div {
+    position: absolute;
+    width: 350px;
+    left: 10px;
+    top: 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+  }
+  #bar-icons-div button {
+    margin-left: 12px;
+    padding-top: 5px;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  .home-subtitle {
+    font-family: 'Alatsi';
+    font-size: 12px;
+    color: black;
+  }
+  .subtitle1 {
+    margin-left: 35%;
+  }
+  .subtitle2 {
+    margin-left: 27%;
+  }
+  .subtitle3 {
+    margin-left: 20%;
+  }
+  .icon1 {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 20px;
+  }
+  .home-bottom-bar {
+    position: absolute;
+    width: 370px;
+    left: 10px;
+    top: 20px;
+    height: 50px;
+  }
+  .home-reservation {
+    position: absolute;
+    width: 370px;
+    left: 10px;
+    top: 150px;
+    height: 560px;
+    overflow-y: scroll;
+  }
+  .contract-scroll {
+    position: relative;
+    width: 370px;
+    left: 10px;
+    margin-top: 20px;
+    height: 480px;
+    overflow-y: scroll;
+  }
+  .contract-div-scroll {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 30px;
+    height: 384px;
+    overflow-y: scroll;
+  }
+  .canvas-style {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position:relative;
+    border:2px solid;
+    left: 10px;
+    width: 350px;
+  }
+  .canvas-clear {
+    margin-left: 10px;
+    width: 350px;
+    font-family: 'Alatsi';
+    font-size: 12px;
+    border:1px solid var(--mainGreen3);
+  }
+  .contract-div1-scroll {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 30px;
+    height: 550px;
+    overflow-y: scroll;
+  }
+  .contract-div4-scroll {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 30px;
+    height: 384px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .home-reservation::-webkit-scrollbar {
+    display: none;
+  }
+  .contract-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .contract-div-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  .items-block {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 195px;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+    border: none;
+  }
+  .payments-block {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 142px;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+    border: none;
+  }
+  .payment-display {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+    border: none;
+  }
+  .image-div {
+    position: absolute;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 200px;
+    border-radius: 20px 20px 0px 0px;
+    background-image: url('userweb/image/sample-sofa.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+  }
+  .pay-div {
+    position: relative;
+    margin-top: 10px;
+    padding-top: 0px;
+    margin-left: 10px;
+    height: 40px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+  }
+  .ali-div {
+    background-image: url('userweb/image/alipay.png');
+  }
+  .wechat-div {
+    background-image: url('userweb/image/wechatpay.png');
+  }
+  .paypal-div {
+    background-image: url('userweb/image/paypal.png');
+  }
+  .payme-div {
+    background-image: url('userweb/image/payme.jpeg');
+  }
+  .code-div {
+    position: absolute;
+    width: 120px;
+    right: 60px;
+    top: 10px;
+    height: 163px;
+    background-image: url('userweb/image/sample-receiving.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+  }
+  .method-name {
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: var(--mainBlue1);
+    top: 0px;
+    margin-left: 10px;
+    position: absolute;
+  }
+  .receiving-div {
+    position: relative;
+    width: 200px;
+    left: 0px;
+    top: 0px;
+    height: 200px;
+    border-radius: 20px 20px 20px 20px;
+    background-image: url('userweb/image/sample-receiving.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+  }
+  .description-div {
+    position: absolute;
+    width: 370px;
+    left: 0px;
+    top: 190px;
+    height: 50px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+  }
+  .single-reservation {
+    width: 360px;
+    position: relative;
+    top: 0px;
+    height: 100px;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+  }
+  .give-reservation {
+    display: flex;
+    flex-direction: row;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 100px;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+    border: none;
+  }
+
+  .take-reservation {
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 100px;
+    background: var(--mainBlue2);
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+  }
+  .icon-in {
+    color: var(--mainGreen2);
+  }
+  .icon-out {
+    color: var(--mainBlue2);
+  }
+  .icon-onsale {
+    color: var(--mainGreen2);
+  }
+  .icon-instock {
+    color: var(--mainGreen1);
+  }
+  .icon-soldout {
+    color: var(--mainGreen3);
+  }
+  .icon-in-txt {
+    text-align: center;
+  }
+  .icon-txt0 {
+    color: white;
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .icon-txt1 {
+    color: var(--mainGreen2);
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .icon-txt2 {
+    color: var(--mainBlue2);
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .icon-txt3 {
+    color: var(--mainGreen1);
+    font-family: 'Alatsi';
+    font-size: 10px;
+  }
+  .icon-txt4 {
+    color: var(--mainGreen2);
+    font-family: 'Alatsi';
+    font-size: 10px;
+  }
+  .icon-txt5 {
+    color: var(--mainGreen3);
+    font-family: 'Alatsi';
+    font-size: 10px;
+  }
+  .icon-div {
+    width: 50px;
+    height: 70px;
+    position: relative;
+    top: 0px;
+    padding-top: 25px;
+    left: 10px;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  .home-head{
+    color:black;
+    font-family: 'Alatsi';
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .bottom-div {
+    width: 390px;
+    height: 718px;
+    background: var(--mainGrey2);
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .reservation-bottom-div {
+    width: 390px;
+    height: 618px;
+    background: var(--mainGrey2);
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .week-div {
+    width: 371px;
+    height: 60px;
+    background: none;
+    position: absolute;
+    left: 9.5px;
+    top: 130px;
+    display: flex;
+    flex-direction: row;
+  }
+  .week-module {
+    width: 53px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+  }
+  .login-button {
+    width: 328px;
+    height: 40px;
+    font-family: 'Alatsi';
+    color: white;
+    background: var(--mainGreen1);
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    top: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  .logo {
+    width: 156px;
+    height: 96px;
+    opacity: 1;
+    position: absolute;
+    top: 216px;
+    left: 135px;
+    overflow: hidden;
+  }
+  .logo-life {
+    width: 139px;
+    color: var(--mainGreen1);
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-family: 'Alatsi';
+    font-weight: Bold;
+    font-size: 64px;
+    opacity: 1;
+    text-align: center;
+  }
+  .logo-2 {
+    width: 16px;
+    color: var(--mainGreen1);
+    position: absolute;
+    top: 0px;
+    left: 110px;
+    font-family: 'Alatsi';
+    font-weight: Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: center;
+  }
+  .login-div {
+    width: 328px;
+    height: 300px;
+    opacity: 1;
+    position: absolute;
+    top: 345px;
+    left: 30px;
+    overflow: hidden;
+  }
+  .login-input1 {
+    width: 328px;
+    height: 48px;
+    font-family: 'Alatsi';
+    color: var(--mainGrey1);
+    background: none;
+    padding-left: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 0.6px solid var(--mainBlue1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .search {
+    width: 360px;
+    height: 48px;
+    font-family: 'Alatsi';
+    color: var(--mainGrey1);
+    background: white;
+    padding-left: 50px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+  }
+  .icon-search {
+    color: var(--mainGrey1);
+    position: absolute;
+    left: 10px;
+    top: 9px;
+  }
+  .search-div {
+    width: 360px;
+    height: 48px;
+    position: relative;
+    left: 10px;
+    margin-top: 20px;
+  }
+  .filter-div {
+    width: 360px;
+    height: 48px;
+    position: relative;
+    left: 10px;
+    margin-top: 20px;
+    padding-left: 15px;
+    border-radius: 20px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+  }
+  .filter-module {
+    width: 100px;
+    height: 48px;
+    padding-top: 15px;
+    margin-left: 5px;
+  }
+  .lable-txt {
+    color: var(--mainGreen1);
+    font-family: 'Alatsi';
+    font-size: 14px;
+  }
+  .login-input2 {
+    width: 328px;
+    height: 48px;
+    font-family: 'Alatsi';
+    color: var(--mainGrey1);
+    background: none;
+    padding-left: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 59px;
+    left: 0px;
+    border: 0.6px solid var(--mainBlue1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .forget-password {
+    width: 150px;
+    color: var(--mainGreen1);
+    position: absolute;
+    top: 111px;
+    left: 221px;
+    font-family: 'Alatsi';
+    border: none;
+    background: none;
+    font-weight: Regular;
+    font-size: 13px;
+    opacity: 1;
+    text-align: left;
+  }
+  .bottom-bar {
+    width: 390px;
+    height: 140px;
+    background: var(--mainGreen2);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .abondon1 {
+    width: 390px;
+    height: 140px;
+    background: var(--mainGreen2);
+    opacity: 0.8500000238418579;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .bottom-head {
+    width: 242px;
+    color: white;
+    position: absolute;
+    top: 24px;
+    left: 29px;
+    font-family: 'Alatsi';
+    font-weight: Bold;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .home-hi {
+    width: 343px;
+    color: white;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    font-family: 'Alatsi';
+    font-weight: Light;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+  }
+  .home-username {
+    width: 343px;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    font-family: 'Alatsi';
+    font-weight: Light;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+  .bottom-body {
+    width: 343px;
+    color: white;
+    position: absolute;
+    top: 65px;
+    left: 29px;
+    font-family: 'Alatsi';
+    font-weight: Light;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+  }
+  .top-bar {
+    width: 70px;
+    height: 8px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 288px;
+    overflow: hidden;
+  }
+  .circle1 {
+    border-radius: 50%;
+    position: absolute;
+    width: 445px;
+    height: 406px;
+    left: -37px;
+    top: -210px;
+    background: #4B8173;
+    opacity: 0.2;
+  }
+  .circle2 {
+    border-radius: 50%;
+    position: absolute;
+    width: 342px;
+    height: 342px;
+    left: 207px;
+    top: -175px;
+    background: #4B8173;
+    opacity: 0.2;
+  }
+  .form-div {
+    position: absolute;
+    width: 370px;
+    left: 10px;
+    top: 20px;
+    height: 708px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .item-form-div {
+    position: absolute;
+    width: 370px;
+    left: 0px;
+    top: 20px;
+    height: 708px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-scroll {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 10px;
+    height: 500px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .image-display {
+    position: absolute;
+    top: 250px;
+    left: 13%;
+    text-align: center;
+    line-height: 40px;
+    border-color: var(--mainGreen1);
+    background: none;
+    color: black;
+    font-family: 'Alatsi';
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+  }
+  .img-div {
+    position: relative;
+    width: 500px;
+    left: 10%;
+    top: 200px;
+    height: 80px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .custom-file-upload {
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 100%;
+    height: 40px;
+    left: 10%;
+    border-radius: 10px;
+    transition: 0.5s;
+  }
+  .video-check-div {
+    position: relative;
+    border-radius: 10px;
+    border: none;
+    width: 242px;
+    height: 60px;
+    left: 0px;
+    top:0px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .inputs-div {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+  }
+  .contract-info-div {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top:0px;
+    height: fit-content;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 10px;
+    border: none;
+  }
+  .contract-item {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 0px;
+    height: fit-content;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 0px;
+    border: none;
+  }
+  .agreements-div {
+    position: relative;
+    width: 370px;
+    left: 0px;
+    top: 10px;
+    height: 100px;
+    top: 10px;
+    padding-left: 10px;
+    padding-right: 20px;
+    background: none;
+    margin-top: 0px;
+    border: none;
+    color: black;
+    font-family: 'Alatsi';
+    font-size: 14px;
+    overflow-y: scroll;
+  }
+  .whole-division {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .dividing-line {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: 2px;
+    width: 370px;
+    background: var(--mainGreen3);
+    border-radius: 5px 5px 5px 5px;
+  }
+  .user-style1 {
+    margin-top: 20px;
+    padding-left: 0px;
+  }
+  .user-style2 {
+    margin-top: 30px;
+    padding-left: 0px;
+  }
+  .lable-style1 {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  .lable-style2 {
+    margin-top: 40px;
+    padding-left: 20px;
+  }
+  .contract-lable0 {
+    margin-bottom: 20px;
+  }
+  .contract-lable1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .input-field-div {
+    position: relative;
+    width: 250px;
+    left: 40px;
+    top: 0px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-family: 'Alatsi';
+    font-size: 16px;
+  }
+  .item-input-div {
+    position: relative;
+    width: 250px;
+    left: 10px;
+    top: 0px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-family: 'Alatsi';
+    font-size: 16px;
+  }
+  .lable-div {
+    position: relative;
+    width: 100px;
+    left: 0px;
+    top: 0px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Alatsi';
+    font-size: 12px;
+    color: black;
+    padding-left: 0px;
+    text-align: left;
+  }
+  .not-uploaded {
+      color: var(--mainOrgange);
+  }
+  .upload-icon {
+    margin-top: 15px;
+    color:var(--mainBlue1);
+  }
+  .upload-icon:active {
+    border: none;
+  }
+  .uploading {
+      display: flex;
+      flex-direction: row;
+  }
+  .submit-style {
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 370px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .item-add-style {
+    position: absolute;
+    top: 30%;
+    left: 80px;
+    text-align: center;
+    line-height: 40px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--mainGreen1);
+    background: none;
+    color: black;
+    font-family: 'Alatsi';
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+  }
+  
+  .user-title {
+      font-family: 'Alatsi';
+      font-size: 20px;
+      color: black;
+      margin-left: 20px;
+      margin-top: 10px;
+  }
+  .create-style {
+    position: absolute;
+    left: 10%;
+    bottom: 20px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainGreen1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 0px;
+  }
+  .account-style {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainBlue1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 370px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .account-add {
+    position: absolute;
+    top: 70px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainBlue1);
+    color: white;
+    font-family: 'Alatsi';
+    width: 370px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .account-list {
+      position: absolute;
+      top: 120px;
+      height:fit-content;
+      width: 370px;
+      margin-left: 10px;
+  }
+  .payment-list {
+    position: absolute;
+    top: 50px;
+    height:fit-content;
+    width: 370px;
+    margin-left: 10px;
+}
+  .create-style:active {
+    background: var(--mainGreen3);
+  }
+  .account-style:active {
+    background: var(--mainBlue2);
+  }
+  .account-add:active {
+    background: var(--mainBlue2);
+  }
+  .item-id-style {
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: none;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+  }
+  .input-style {
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: none;
+    height: 40px;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+    padding: 10px;
+  }
+  .contract-input {
+    position: relative;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: none;
+    height: 40px;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+    padding: 10px;
+  }
+  .textarea-style {
+    position: relative;
+    border-radius: 10px;
+    border: none;
+    height: 100px;
+    font-family: 'Alatsi';
+    font-size: 12px;
+    color: black;
+    padding-left: 10px;
+    margin-top: 0px;
+    word-break: break-word;
+  }
+  .remark-style {
+    position: relative;
+    border-radius: 10px;
+    border: none;
+    height: 60px;
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: black;
+    padding: 10px;
+    margin-top: 0px;
+  }
+  .video-check-style {
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainBlue2);
+    color: white;
+    font-family: 'Alatsi';
+    width: 242px;
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.5s;
+  }
+  .photo-check-style {
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--mainBlue2);
+    color: white;
+    font-family: 'Alatsi';
+    width: 370px;
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.5s;
+  }
+  .normal-txt {
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: var(--mainGreen2);
+  }
+  .heading-txt {
+    font-family: 'Alatsi';
+    font-size: 24px;
+    color: var(--mainGreen2);
+  }
+  .content-txt {
+    font-family: 'Alatsi';
+    font-size: 16px;
+    color: var(--mainGreen2);
+    margin-top: 5px;
+  }
+  .item-id {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .icon-in-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 165px;
+    margin-right: 165px;
+  }
+  .contract-item-id {
+    margin-bottom: 10px;
+  }
+  .heading {
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+  .custom-file-upload:hover {
+    background: var(--mainGreen3);
+  }
+  .video-check-style:hover {
+    background: var(--mainGrey1);
+  }
+  .photo-check-style:hover {
+    background: var(--mainGrey1);
+  }
+  .item-add-style:hover {
+    background: var(--mainGrey2);
+  }
+  .create-style:hover {
+    background: var(--mainGreen3);
+  }
+  canvas {
+    position: absolute;
+    border: 2px solid;
+  }
+  :root {
+    --mainGreen1: #274E45;
+    --mainGreen2: #4B8173;
+    --mainGreen3: #B1CFC9;
+    --mainBlue1: #222E3C;
+    --mainBlue2: #455D74;
+    --mainOrgange: #F26542;
+    --mainYellow: #FEE44C;
+    
+    --mainGrey1: #6C6A6A;
+    --mainGrey2: #F2F2F2;
+  }
+
