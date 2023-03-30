@@ -222,14 +222,15 @@ class StoryDB():
     
     def getStoryList(self, user=""):
         selection = {}
-        if user != "": selection["userEmail"] = user
+        if user != "": selection["storyUser"] = user
         storyList = self.db.find(selection).sort('_id', -1)
         storyInfo = {}
         counter = 0
         for story in storyList:
-            # print(request)
+            item = itemdb.findItem(story['storyItem'])
             storyInfo[str(counter)] = story
-            storyInfo[str(counter)]["userName"] = accountdb.findUserName(story['userEmail'])
+            storyInfo[str(counter)]["userName"] = accountdb.findUserName(story['storyUser'])
+            storyInfo[str(counter)]["itemName"] = item['itemName']
             counter += 1
         return storyInfo
     

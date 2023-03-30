@@ -12,14 +12,14 @@ piazza = Blueprint('piazza',__name__)
 def home():
     if "email" in session: userStatus = True
     else: userStatus = False
-
+    storyList = storydb.getStoryList()
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
         create = request.form.get("Create")
         if create == 'Create':
             return redirect(url_for('piazza.storycreate'))
-    return render_template('piazza.html', userStatus=userStatus)
+    return render_template('piazza.html', userStatus=userStatus, storyList=storyList)
 
 @piazza.route('/storycreate', methods=['POST', 'GET'])
 def storycreate():
