@@ -110,7 +110,20 @@ class Chat(object):
         self.chatCreated = created_time
         self.chatInfo = chatInfo
 
+class Story(object):
+    def __init__(self, storyID, itemID, useremail, created_time, image_path, intro):
+        self.storyID = storyID
+        self.storyItem = itemID
+        self.storyUser = useremail
+        self.storyTime = created_time
+        self.storyImg = image_path
+        self.storyIntro = intro
+
 class RequestForm(FlaskForm):
+    title = wtforms.StringField('Name', validators=[Length(max=30)])
+    info = wtforms.StringField('Description', validators=[Length(max=5000)])
+
+class StoryForm(FlaskForm):
     title = wtforms.StringField('Name', validators=[Length(max=30)])
     info = wtforms.StringField('Description', validators=[Length(max=5000)])
 

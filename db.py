@@ -1,6 +1,6 @@
 
 from pymongo.mongo_client import MongoClient
-from utils import Account, User, Item, Request, Chat, randomID, IDLENGTH, UNIADDR
+from utils import Account, User, Item, Request, Chat, Story, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -203,10 +203,40 @@ class ChatDB():
             chatInfo[str(counter)]["sendTo"] = chat["chatOwner"]
             counter += 1
         return chatInfo
+    
+class StoryDB():
+    def __init__(self, db):
+        self.db = db["story"]
 
+    def cleardb(self):
+        self.db.delete_many({})
+    
+    def createStory(self, itemID, userEmail, img, intro):
+        storyID = randomID(IDLENGTH)
+        while (self.db.find_one({"storyID": storyID})): storyID = randomID(IDLENGTH)
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        newStory = Story(storyID, itemID, userEmail, time, img, intro)
+        self.db.insert_one(newStory.__dict__)
+        return self.db.find_one({"storyID": storyID})
+    
+    def getStoryList(self, user=""):
+        selection = {}
+        if user != "": selection["userEmail"] = user
+        storyList = self.db.find(selection).sort('_id', -1)
+        storyInfo = {}
+        counter = 0
+        for story in storyList:
+            # print(request)
+            storyInfo[str(counter)] = story
+            storyInfo[str(counter)]["userName"] = accountdb.findUserName(story['userEmail'])
+            counter += 1
+        return storyInfo
+    
 db = connection("LIFE2")
 accountdb = AccountDB(db)
 itemdb = ItemDB(db)
 orderdb = OrderDB(db)
 requestdb = RequestDB(db)
 chatdb = ChatDB(db)
+story = StoryDB(db)
