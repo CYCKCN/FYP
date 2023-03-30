@@ -64,7 +64,8 @@ def demanddetail(requestID):
 @demand.route('/demandcreate', methods=['POST', 'GET'])
 def demandcreate():
     if "email" not in session:
-        return redirect(url_for('auth.login', addr=request.full_path))
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
     
     requestForm = RequestForm()
     if request.method == 'POST':

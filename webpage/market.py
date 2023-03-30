@@ -68,7 +68,8 @@ def home():
 @market.route('/giveitem', methods=['POST', 'GET'])
 def giveitem():
     if "email" not in session:
-        return redirect(url_for('auth.login', addr=request.full_path))
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
     
     selected_cate = ""
     itemImg = ""
@@ -138,7 +139,8 @@ def item(itemID):
                 item = itemdb.findItem(itemID)
                 return render_template('item.html', item=item, userStatus=userStatus)
             else:
-                return redirect(url_for('auth.login', addr=request.full_path))
+                session['oauth_origin'] = request.full_path
+                return redirect(url_for('auth.google_login'))
         
         contact = request.form.get('Contact')
         if contact == "Contact":
@@ -150,14 +152,16 @@ def item(itemID):
                     chat = chatdb.createChat(itemID, session["email"])
                 return redirect(url_for('life.chat', chatID=chat["chatID"]))
             else:
-                return redirect(url_for('auth.login', addr=request.full_path))
+                session['oauth_origin'] = request.full_path
+                return redirect(url_for('auth.google_login'))
 
     return render_template('item.html', item=item, userStatus=userStatus)
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 def itemManager(itemID):
     if "email" not in session:
-        return redirect(url_for('auth.login', addr=request.full_path))
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
     
     item = itemdb.findItem(itemID)
     if not item:

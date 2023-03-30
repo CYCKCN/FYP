@@ -149,7 +149,7 @@ def buttonCheck(form):
         return redirect(url_for('piazza.home'))
     
     if login == "Login": 
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth.google_login'))
     
     if signup == "Signup": 
         return redirect(url_for('auth.signup'))
