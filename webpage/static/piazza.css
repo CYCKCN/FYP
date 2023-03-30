@@ -83,11 +83,21 @@ background: var(--mainGrey2);
     background: yellow;
     display: flex;
     flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.story-time {
+    margin-left: 10px;
+    color: gray;
 }
 .story-info {
     width: 100%;
-    height: 50px;
-    background: black;
+    height: 25px;
+    background: peru;
+    display: flex;
+    flex-direction: row;
 }
 .story-img {
     width: 100%;
@@ -98,11 +108,25 @@ background: var(--mainGrey2);
     width: 100%;
     height: 50px;
     background: orange;
+    display: flex;
+    flex-direction: row;
+}
+.story-item {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 .story-txt {
     width: 100%;
     height: 100px;
     background: pink;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.font-class {
+    font-family: 'Alatsi';
 }
 :root {
 --mainGreen1: #274E45;
