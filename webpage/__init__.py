@@ -1,7 +1,13 @@
+import os
+import pathlib
+
 import flask
 import secrets
-from flask import Flask, redirect, url_for
-from flask_login import LoginManager
+from flask import Flask, session, redirect, url_for
+
+from google.oauth2 import id_token
+from google_auth_oauthlib.flow import Flow
+import google.auth.transport.requests
 
 from db import connection, accountdb, itemdb, User
 from utils import UPLOAD_FOLDER
@@ -17,15 +23,14 @@ class ConfigClass(object):
 webpage = Flask(__name__)
 webpage.config.from_object(ConfigClass)
 
-login_manager = LoginManager()
-login_manager.init_app(webpage)
+# login_manager = LoginManager()
+# login_manager.init_app(webpage)
 
-@login_manager.user_loader
-def user_loader(user_id):
-    account = accountdb.findUser(user_id)
-    if not account: return None
-    return User(email=account["accountEmail"])
-
+# @login_manager.user_loader
+# def user_loader(user_id):
+#     account = accountdb.findUser(user_id)
+#     if not account: return None
+#     return User(email=account["accountEmail"])
 
 from .auth import auth
 from .life import life

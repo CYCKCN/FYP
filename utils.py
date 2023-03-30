@@ -1,9 +1,17 @@
+import os
+import pathlib
+
+from google.oauth2 import id_token
+from google_auth_oauthlib.flow import Flow
+import google.auth.transport.requests
+
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
 import wtforms
 import random
+from functools import wraps
 from wtforms.validators import InputRequired, Email, Length, Regexp
-from flask import Blueprint, request, redirect, render_template, url_for
+from flask import Blueprint, request, session, redirect, render_template, url_for
 
 time = ["0800", "0815", "0830", "0845", "0900", "0915", "0930", "0945", "1000", "1015", "1030", "1045", \
         "1100", "1115", "1130", "1145", "1200", "1215", "1230", "1245", "1300", "1315", "1330", "1345", \
@@ -19,8 +27,28 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 CATEGORY = ["toy", "electronics"]
 PRICERANGE = ["Less than 50", "Between 50 - 100", "Between 100 - 200", "More than 200"]
 
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+GOOGLE_CLIENT_ID = "327261233442-5mnnd27s8f3m6ltcfqifmp201b9rvr05.apps.googleusercontent.com"
+client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
+
+flow = Flow.from_client_secrets_file(
+    client_secrets_file=client_secrets_file,
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
+    redirect_uri="http://127.0.0.1:8000/auth/callback"
+)
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def login_required(function):
+    @wraps(function)
+    def wrapper(*args, **kwargs):
+        if "email" not in session:
+            return redirect(url_for('auth.login', addr=request.full_path))
+        else:
+            return function()
+    return wrapper
 
 class User(UserMixin):
     def __init__(self, email):
@@ -42,13 +70,11 @@ class User(UserMixin):
         return self.email
     
 class Account(object):
-    def __init__(self, name, password, email, uni, tel, intro):
+    def __init__(self, name, email):
         self.accountName = name # "name"
         self.accountEmail = email # "university email"
-        self.accountUni = uni
-        self.accountPw = password # "examplePW"
-        self.accountTel = tel
-        self.accountIntro = intro
+        self.accountTel = ""
+        self.accountIntro = ""
 
 class Item(object):
     def __init__(self, id, owner, name, price, category, info, image_path, pickup_location, status="Available", reservedby="", reservedtime=''):

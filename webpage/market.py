@@ -1,17 +1,17 @@
 import os
 from flask import Flask
-from flask import Blueprint, request, redirect, render_template, url_for
+from flask import Blueprint, request, session, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
 from db import itemdb, requestdb, accountdb, chatdb
 
 market = Blueprint('market',__name__)
 
 @market.route('/', methods=['POST', 'GET'])
 def home():
-    if current_user.is_authenticated: userStatus = True
+    if "email" in session: userStatus = True
     else: userStatus = False
 
     cate = request.args.get('cate')
@@ -67,10 +67,8 @@ def home():
     return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
 
 @market.route('/giveitem', methods=['POST', 'GET'])
-# @check_login
+@login_required
 def giveitem():
-    if not current_user.is_authenticated:
-        return redirect(url_for('auth.login', addr=request.full_path))
     selected_cate = ""
     itemImg = ""
     itemForm = ItemForm()
@@ -110,23 +108,22 @@ def giveitem():
             return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
         # print(image_path)
         if submit == "new-contract":
-            itemdb.createItem(current_user.email, name, price, category, info, image_path, pickup)
+            itemdb.createItem(session["email"], name, price, category, info, image_path, pickup)
             return redirect(url_for('market.home'))
 
     return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, itemImg=itemImg, selected_cate=selected_cate)
     # return "Sell Page"
 
 @market.route('/item/<itemID>', methods=['POST', 'GET'])
-# @check_login
 def item(itemID):
     item = itemdb.findItem(itemID)
-    if current_user.is_authenticated: userStatus = True
+    if "email" in session: userStatus = True
     else: userStatus = False
 
     if not item:
         return "Record not found", 400
     
-    if userStatus and item["itemOwner"] == current_user.email:
+    if userStatus and item["itemOwner"] == session["email"]:
         return redirect(url_for('market.itemManager', itemID=itemID))
     
     if request.method == 'POST':
@@ -136,7 +133,7 @@ def item(itemID):
         reserve = request.form.get('Reserve')
         if reserve == "Reserve":
             if userStatus:
-                itemdb.reserveItem(itemID, current_user.email)
+                itemdb.reserveItem(itemID, session["email"])
                 item = itemdb.findItem(itemID)
                 return render_template('item.html', item=item, userStatus=userStatus)
             else:
@@ -145,11 +142,11 @@ def item(itemID):
         contact = request.form.get('Contact')
         if contact == "Contact":
             if userStatus:
-                chat = chatdb.findChatByBuyer(itemID, current_user.email)
+                chat = chatdb.findChatByBuyer(itemID, session["email"])
                 # print(chat)
                 if not chat:
                     # print("no chat")
-                    chat = chatdb.createChat(itemID, current_user.email)
+                    chat = chatdb.createChat(itemID, session["email"])
                 return redirect(url_for('life.chat', chatID=chat["chatID"]))
             else:
                 return redirect(url_for('auth.login', addr=request.full_path))
@@ -157,13 +154,13 @@ def item(itemID):
     return render_template('item.html', item=item, userStatus=userStatus)
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
-# @check_login
+@login_required
 def itemManager(itemID):
     item = itemdb.findItem(itemID)
     if not item:
         return "Record not found", 400
     
-    if item["itemOwner"] != current_user.email:
+    if item["itemOwner"] != session["email"]:
         return "No Acess", 400
     
     if request.method == 'POST':
