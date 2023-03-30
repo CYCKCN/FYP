@@ -66,18 +66,43 @@ background: var(--mainGrey2);
     color: black;
 }
 .header {
-    width: 60%;
-    margin-left: 20%;
+    width: 40%;
+    margin-left: 30%;
     overflow-y: scroll;
     height: fit-content;
     background-color: gray;
-    padding-top: 10px;
-    padding-bottom: 10px;
     position: relative;
     margin-top: 50px;
 }
 .header::-webkit-scrollbar {
     display: none;
+}
+.story-block {
+    width: 100%;
+    height: 700px;
+    background: yellow;
+    display: flex;
+    flex-direction: column;
+}
+.story-info {
+    width: 100%;
+    height: 50px;
+    background: black;
+}
+.story-img {
+    width: 100%;
+    height: 500px;
+    background: green;
+}
+.story-ita {
+    width: 100%;
+    height: 50px;
+    background: orange;
+}
+.story-txt {
+    width: 100%;
+    height: 100px;
+    background: pink;
 }
 :root {
 --mainGreen1: #274E45;
