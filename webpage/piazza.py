@@ -3,7 +3,7 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
 from db import itemdb, requestdb, accountdb, chatdb
 
 piazza = Blueprint('piazza',__name__)
@@ -22,6 +22,28 @@ def home():
     return render_template('piazza.html', userStatus=userStatus)
 
 @piazza.route('/storycreate', methods=['POST', 'GET'])
-@login_required
 def storycreate():
+    if "email" not in session:
+        return redirect(url_for('auth.login', addr=request.full_path))
+    
+    requestForm = RequestForm()
+    if request.method == 'POST':
+        # print(requestForm.data)
+        create = request.form.get('create-request')
+        cate = request.form.get('Category')
+    
+        title = requestForm.title.data
+        info = requestForm.info.data
+
+        # print(home, create, cate, title, info)
+
+        button = buttonCheck(request.form)
+        if button: return button
+
+        if create == "create-request": 
+            if cate == "": 
+                return render_template('storycreate.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
+            else: 
+                requestdb.createRequest(session["email"], title, cate, info)
+                return redirect(url_for('piazza.home'))
     return render_template('storycreate.html')

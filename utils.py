@@ -41,15 +41,6 @@ flow = Flow.from_client_secrets_file(
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def login_required(function):
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        if "email" not in session:
-            return redirect(url_for('auth.login', addr=request.full_path))
-        else:
-            return function()
-    return wrapper
-
 class User(UserMixin):
     def __init__(self, email):
         self.email = email
