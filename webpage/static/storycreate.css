@@ -79,7 +79,7 @@ font-size: 14px;
 .item-suggest {
     width: 50%;
     height: 100%;
-    background: yellow;
+    background: var(--mainGrey2);
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
