@@ -1,40 +1,42 @@
 import os
 from flask import Flask
-from flask import Blueprint, request, redirect, render_template, url_for
+from flask import Blueprint, request, session, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
 from db import itemdb, requestdb, accountdb, chatdb
 
 demand = Blueprint('demand',__name__)
 
 @demand.route('/', methods=['POST', 'GET'])
 def home():
-    if current_user.is_authenticated: userStatus = True
+    if "email" in session: userStatus = True
     else: userStatus = False
     requestInfo = requestdb.getRequestList()
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
+        create = request.form.get("Create")
+        if create == 'Create':
+            return redirect(url_for('demand.demandcreate'))
     return render_template('demandall.html', requestInfo=requestInfo, userStatus=userStatus)
 
 
 @demand.route('/<requestID>', methods=['POST', 'GET'])
-# @check_login
 def demanddetail(requestID):
 
     requestInfo = requestdb.findRequest(requestID)
     requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
-    if current_user.is_authenticated: userStatus = True
+    if "email" in session: userStatus = True
     else: userStatus = False
 
     myItem = myItemList = {}
     identity = ""
     if userStatus:
-        if current_user.email == requestInfo["requestUser"]: identity = "owner"
+        if session["email"] == requestInfo["requestUser"]: identity = "owner"
         else: identity = "seller"
-        myItem = itemdb.getItemList(user=current_user.email)
+        myItem = itemdb.getItemList(user=session["email"])
         for k, v in myItem.items():
             if v not in requestInfo["requestItemList"]:
                 myItemList[k] = v
@@ -61,10 +63,8 @@ def demanddetail(requestID):
     return render_template('demanddetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
 
 @demand.route('/demandcreate', methods=['POST', 'GET'])
-# @check_login
+@login_required
 def demandcreate():
-    if not current_user.is_authenticated:
-        return redirect(url_for('auth.login', addr=request.full_path))
     
     requestForm = RequestForm()
     if request.method == 'POST':
@@ -84,7 +84,7 @@ def demandcreate():
             if cate == "": 
                 return render_template('demandcreate.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=True)
             else: 
-                requestdb.createRequest(current_user.email, title, cate, info)
+                requestdb.createRequest(session["email"], title, cate, info)
                 return redirect(url_for('demand.home'))
                 
     return render_template('demandcreate.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)

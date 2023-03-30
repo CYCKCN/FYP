@@ -1,16 +1,18 @@
 import os
 from flask import Flask
-from flask import Blueprint, request, redirect, render_template, url_for
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, login_required
 from db import itemdb, requestdb, accountdb, chatdb
 
 life = Blueprint('life',__name__)
 
 @life.route('/', methods=['POST', 'GET'])
 def home():
+    if "email" in session: userStatus = True
+    else: userStatus = False
+
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -28,18 +30,16 @@ def home():
         if demand == "demand": 
             return redirect(url_for('demand.home'))
         
-    return render_template('home.html')
+    return render_template('home.html', userStatus=userStatus)
 
 @life.route('/profile', methods=['POST', 'GET'])
-# @check_login
+@login_required
 def profile():
-    if not current_user.is_authenticated:
-        return redirect(url_for('auth.login', addr=request.full_path))
     section = request.args.get('section')
-    user = accountdb.findUser(current_user.email)
-    itemInfo = itemdb.getItemList(user=current_user.email)
-    requestInfo = requestdb.getRequestList(user=current_user.email)
-    chatInfo = chatdb.getChatList(user=current_user.email)
+    user = accountdb.findUser(session["email"])
+    itemInfo = itemdb.getItemList(user=session["email"])
+    requestInfo = requestdb.getRequestList(user=session["email"])
+    chatInfo = chatdb.getChatList(user=session["email"])
 
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -56,24 +56,22 @@ def profile():
         
         if itemID:
             item = itemdb.findItem(itemID)
-            if current_user.email == item['itemOwner']:
-                chat = chatdb.findChatByOwner(itemID, current_user.email)
+            if session["email"] == item['itemOwner']:
+                chat = chatdb.findChatByOwner(itemID, session["email"])
             else:
-                chat = chatdb.findChatByBuyer(itemID, current_user.email)
+                chat = chatdb.findChatByBuyer(itemID, session["email"])
             return redirect(url_for('life.chat', chatID=chat["chatID"]))
         
     return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, chatInfo=chatInfo)
 
 @life.route('/chat/<chatID>', methods=['POST', 'GET'])
-# @check_login
+@login_required
 def chat(chatID):
-    if not current_user.is_authenticated:
-        return redirect(url_for('auth.login', addr=request.full_path))
     
     chat = chatdb.findChatByID(chatID)
     item = itemdb.findItem(chat["chatItem"])
-    chat["sendBy"] = current_user.email
-    if chat["chatBuyer"] == current_user.email:
+    chat["sendBy"] = session["email"]
+    if chat["chatBuyer"] == session["email"]:
         chat["sendTo"] = accountdb.findUserName(item["itemOwner"])
         status = "buyer"
     else:

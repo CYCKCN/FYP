@@ -35,14 +35,11 @@ class AccountDB():
         else:
             return "Info: Login successfully!"
         
-    def signup(self, accountName, accountPw, accountEmail, accountUni):
+    def signup(self, accountName, accountEmail):
         # print(accountName, accountPw, accountEmail, accountUni)
         if self.db.find_one({"accountEmail": accountEmail}):
             return "Err: Account Exists!"
-        # print(UNIADDR[accountUni])
-        if UNIADDR[accountUni] not in accountEmail:
-            return "Err: Email Invalid!"
-        newAccount = Account(accountName, generate_password_hash(accountPw), accountEmail, accountUni, tel="", intro="")
+        newAccount = Account(accountName, accountEmail)
         self.db.insert_one(newAccount.__dict__)
         return "Info: Register USER Account Successfully"
 

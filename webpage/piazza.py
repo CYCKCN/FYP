@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask import Blueprint, request, redirect, render_template, url_for
+from flask import Blueprint, request, session, redirect, render_template, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.utils import secure_filename
 
@@ -11,4 +11,10 @@ piazza = Blueprint('piazza',__name__)
 
 @piazza.route('/', methods=['POST', 'GET'])
 def home():
-    return render_template('piazza.html')
+    if "email" in session: userStatus = True
+    else: userStatus = False
+
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+    return render_template('piazza.html', userStatus=userStatus)

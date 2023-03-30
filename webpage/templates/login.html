@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/static/login.css">
-    <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
-  </head>
 
-  <body>
-    <div class="home-top">
-      <div class="top-buttons-left">
-        <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-        <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-        <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
-        <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
-      </div>
-      <div class="top-buttons">
-          <form method="POST">
-              <button class="individual-button" type="submit" name="signup" value="signup">Sign Up</button>
-          </form>
-      </div>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/login.css">
+  <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
+  <meta name="google-signin-client_id"
+    content="327261233442-5mnnd27s8f3m6ltcfqifmp201b9rvr05.apps.googleusercontent.com">
+</head>
+
+<body>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <a href='/auth/google_login'><button>Google Login</button></a>
+  <form method="POST">
+  <div class="home-top">
+    <div class="top-buttons-left">
+      
+      <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+      <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
+      <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
+      <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
+      
     </div>
-    <div class="page-frame-login">
-      <div class="logo">
-        <span class="logo-life">LIFE</span>
-        <span class="logo-2">2</span>
-      </div>
-			
-      <div class="login-div">
-        <form method="POST">
-          <input class="login-input1" type="text" name="usermail" placeholder="Email" required />
-          <input class="login-input2" type="password" name="password" placeholder="Password" required />
-          
-          <button class="login-button" type="submit" name="submit-button" value="Submit">Login</button>
-        </form>
-      </div>
+    <div class="top-buttons">
+      <form method="POST">
+        <button class="individual-button" type="submit" name="signup" value="signup">Sign Up</button>
+      </form>
     </div>
-  </body>
+  </div>
+  <div class="page-frame-login">
+    <div class="logo">
+      <span class="logo-life">LIFE</span>
+      <span class="logo-2">2</span>
+    </div>
+    
+    <div class="login-div">
+      
+      
+        
+        <!-- <input class="login-input1" type="text" name="usermail" placeholder="Email" required />
+        <input class="login-input2" type="password" name="password" placeholder="Password" required />
+
+        <button class="login-button" type="submit" name="submit-button" value="Submit">Login</button> -->
+
+        <!-- <a href="/auth/google_login" class="g-signin2" style="text-decoration:none;"></a> -->
+        
+      
+    </div>
+  </div>
+</form>
+</body>
+
 </html>
