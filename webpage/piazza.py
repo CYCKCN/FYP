@@ -24,7 +24,8 @@ def home():
 @piazza.route('/storycreate', methods=['POST', 'GET'])
 def storycreate():
     if "email" not in session:
-        return redirect(url_for('auth.login', addr=request.full_path))
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.login'))
     
     requestForm = RequestForm()
     if request.method == 'POST':

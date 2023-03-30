@@ -15,7 +15,6 @@ auth = Blueprint('auth', __name__)
 @auth.route('/google_login', methods=['GET', 'POST'])
 def google_login():
     authorization_url, state = flow.authorization_url()
-    print(authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 
@@ -40,7 +39,8 @@ def login():
                 # username = accountdb.findUserName(email)
                 # login_user(User(email))
                 # print(current_user.is_authenticated())
-                return redirect(request.args.get('addr', url_for('life.home')))
+                if 'oauth_origin' in session: return redirect(session['oauth_origin'])
+                else: return redirect( url_for('life.home'))
         
         if home == "Home": 
             return redirect(url_for('life.home'))
@@ -73,7 +73,8 @@ def callback():
 
     account = accountdb.findUser(session["email"])
     if not account: signupInfo = accountdb.signup(session["name"], session["email"])
-    return redirect(request.args.get('addr', url_for('life.home')))
+    if 'oauth_origin' in session: return redirect(session['oauth_origin'])
+    else: return redirect( url_for('life.home'))
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():

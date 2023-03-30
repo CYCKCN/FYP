@@ -35,7 +35,8 @@ def home():
 @life.route('/profile', methods=['POST', 'GET'])
 def profile():
     if "email" not in session:
-        return redirect(url_for('auth.login', addr=request.full_path))
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
     
     section = request.args.get('section')
     user = accountdb.findUser(session["email"])
@@ -69,7 +70,8 @@ def profile():
 @life.route('/chat/<chatID>', methods=['POST', 'GET'])
 def chat(chatID):
     if "email" not in session:
-        return redirect(url_for('auth.login', addr=request.full_path))
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
     
     chat = chatdb.findChatByID(chatID)
     item = itemdb.findItem(chat["chatItem"])
