@@ -90,3 +90,71 @@ def demandcreate():
                 
     return render_template('demandcreate.html', form=requestForm, itemCategories=CATEGORY, categoryInvalid=False)
 
+@demand.route('/item/<itemID>', methods=['POST', 'GET'])
+def item(itemID):
+    item = itemdb.findItem(itemID)
+    if "email" in session: userStatus = True
+    else: userStatus = False
+
+    if not item:
+        return "Record not found", 400
+    
+    if userStatus and item["itemOwner"] == session["email"]:
+        return redirect(url_for('market.itemManager', itemID=itemID))
+    
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+
+        reserve = request.form.get('Reserve')
+        if reserve == "Reserve":
+            if userStatus:
+                itemdb.reserveItem(itemID, session["email"])
+                item = itemdb.findItem(itemID)
+                return render_template('item.html', item=item, userStatus=userStatus)
+            else:
+                session['oauth_origin'] = request.full_path
+                return redirect(url_for('auth.google_login'))
+        
+        contact = request.form.get('Contact')
+        if contact == "Contact":
+            if userStatus:
+                chat = chatdb.findChatByBuyer(itemID, session["email"])
+                # print(chat)
+                if not chat:
+                    # print("no chat")
+                    chat = chatdb.createChat(itemID, session["email"])
+                return redirect(url_for('life.chat', chatID=chat["chatID"]))
+            else:
+                session['oauth_origin'] = request.full_path
+                return redirect(url_for('auth.google_login'))
+
+    return render_template('item.html', item=item, userStatus=userStatus)
+
+@demand.route('/itemManager/<itemID>', methods=['POST', 'GET'])
+def itemManager(itemID):
+    if "email" not in session:
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
+    
+    item = itemdb.findItem(itemID)
+    if not item:
+        return "Record not found", 400
+    
+    if item["itemOwner"] != session["email"]:
+        return "No Acess", 400
+    
+    if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+
+        deal = request.form.get('deal')
+        deny = request.form.get('decline')
+
+        if deal == "deal":
+            itemdb.dealItem(itemID)
+        
+        if deny == "decline":
+            itemdb.denyItem(itemID)
+        
+    return render_template('itemmanage.html', item=item)

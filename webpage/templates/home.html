@@ -12,6 +12,27 @@
   <body>
     <form method="POST" enctype="multipart/form-data">
     <div class="page-frame">
+
+        <div class="scroll-div">   
+            <div style="display:flex; flex-direction: row; width: 100%;">
+                <button class="lifeverse" name="market" value="market">
+                    <a class="request-all">Market</a>
+                    <hr class="rounded">
+                    <p class="font-class">Where potential takers browse givers' items</p>
+                </button>
+                <button class="lifeboard" name="piazza" value="piazza">
+                    <p class="request-all">Piazza</p>
+                    <hr class="rounded">
+                    <p class="font-class">Where users can browse and share item stories</p>  
+                </button>
+                <button class="lifebase" name="demand" value="demand">
+                    <p class="request-all">Demand</p>
+                    <hr class="rounded">
+                    <p class="font-class">Where givers find potential takers</p>      
+                </button>
+            </div>
+        </div>
+
         <div class="home-top">
             <div class="top-buttons">
                     {% if userStatus == True %}
@@ -20,36 +41,6 @@
                     <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
                     {% endif %}
                     
-            </div>
-        </div>
-
-        <div class="scroll-div">
-             
-            <div style="display:flex; flex-direction: row; width: 100%;">
-                <button class="lifeverse" name="market" value="market">
-
-                    <a class="request-all">Market</a>
-                    <hr class="rounded">
-
-                    <p class="font-class">Description</p>
-                    
-                    
-                </button>
-                <button class="lifeboard" name="piazza" value="piazza">
-
-                    <p class="request-all">Piazza</p>
-                    <hr class="rounded">
-                    <p class="font-class">Description</p>
-                    
-                </button>
-                <button class="lifebase" name="demand" value="demand">
-
-                    <p class="request-all">Demand</p>
-                    <hr class="rounded">
-                    <p class="font-class">Description</p>
-                    
-                    
-                </button>
             </div>
         </div>
     </div>
