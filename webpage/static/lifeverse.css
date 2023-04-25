@@ -263,7 +263,7 @@ hr.rounded {
     color: black;
 }
 .scroll-div {
-    margin-top: 150px;
+    margin-top: 30px;
     position: relative;
     overflow-y: scroll;
     height: 794px;
