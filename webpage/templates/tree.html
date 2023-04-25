@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>My first scene.js app</title>
+		<link rel="stylesheet" href="/static/tree.css">
+		<link rel="icon" href="data:,">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	
+	<body>
+		<form method="POST" enctype="multipart/form-data">
+			<div class="intro-div">
+				<img class="intro-bg" src="/static/data/landing-bg.jpeg"/>
+				<div class="intro-txt">
+					<p class="intro-txt-title">Make money while making a difference - Our recommerce platform is designed for HKUST students who care about the environment.</p>
+					<p class="intro-txt-subtitle">Sign in with your SSO and start saving the money while making some money.</p>
+					<button class="intro-login" type="submit" name="Login" value="Login">Log in with SSO</button>
+				</div>
+			</div>
+
+			<div class="category-div">
+				<p class="section-title">categories</p>
+				<div class="category-all-btn">
+					<i class="material-icons category-icon">grid_on</i>
+					<a href="" class="category-txt">See all categories</a>
+				</div>
+				<div class="category-three">
+					<button class="category-block-left" name="Electronics" value="Electronics">Electronics</button>
+					<button class="category-block-middle" name="Fashion" value="Fashion">Fashion</button>
+					<button class="category-block-right" name="Furnitures" value="Furnitures">Furnitures</button>
+				</div>
+			</div>
+
+			<div class="community-div">
+				<p class="section-title">community</p>
+				<div class="community-split">
+					<div class="community-intro">
+						<p class="community-txt">At our recommerce platform, we believe that every little bit counts when it comes to building a more sustainable world. That's why we're passionate about reducing waste, promoting circular consumption, and facilitating hassle-free transactions for HKUST students. Through our platform, we're striving to create a better future for ourselves, our communities, and our planet</p>
+					</div>
+					<div class="transaction-update">
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="scroll-div">   
+				<button class="lifeverse" name="market" value="market">
+					<a class="request-all">Market</a>
+					<hr class="rounded">
+					<p class="font-class">Where potential takers browse givers' items</p>
+				</button>
+				<button class="lifeboard" name="piazza" value="piazza">
+					<p class="request-all">Piazza</p>
+					<hr class="rounded">
+					<p class="font-class">Where users can browse and share item stories</p>  
+				</button>
+				<button class="lifebase" name="demand" value="demand">
+					<p class="request-all">Demand</p>
+					<hr class="rounded">
+					<p class="font-class">Where givers find potential takers</p>      
+				</button>
+			</div>
+			<div class="top-bar">
+				<div class="top-logo">
+					<img src="/static/data/ReUST-logo.jpeg"/>
+					<p class="logo-font">ReUST</p>
+				</div>
+				<div class="top-buttons">
+						{% if userStatus == True %}
+						<button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+						{% else %}
+						<button class="individual-button" type="submit" name="Login" value="Login">Login</button>
+						{% endif %}
+						
+				</div>
+			</div>
+		
+		
+		</form>
+	</body>
+</html>
