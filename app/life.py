@@ -21,6 +21,10 @@ def home():
         # piazza = request.form.get('piazza')
         demand = request.form.get('demand')
 
+        electronics = request.form.get('Electronics')
+        clothing = request.form.get('Clothing')
+        furnitures = request.form.get('Furnitures')
+
         if market == "market": 
             return redirect(url_for('market.home'))
         
@@ -29,6 +33,15 @@ def home():
         
         if demand == "demand": 
             return redirect(url_for('demand.home'))
+        
+        if electronics == 'Electronics':
+            return redirect(url_for('market.home', cate='Electronics'))
+        
+        if clothing == 'Clothing':
+            return redirect(url_for('market.home', cate='Clothing'))
+        
+        if furnitures == 'Furnitures':
+            return redirect(url_for('market.home', cate='Furnitures'))
         
     return render_template('tree.html', userStatus=userStatus)
 

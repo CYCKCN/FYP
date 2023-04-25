@@ -24,12 +24,12 @@ IDLENGTH = 12
 UPLOAD_FOLDER = 'webpage/static/data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
-CATEGORY = ["toy", "electronics"]
+CATEGORY = ['Electronics', 'Clothing', 'Personal Care', 'Furnitures', 'Toys', 'Sports']
 PRICERANGE = ["Less than 50", "Between 50 - 100", "Between 100 - 200", "More than 200"]
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
-GOOGLE_CLIENT_ID = "327261233442-5mnnd27s8f3m6ltcfqifmp201b9rvr05.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID = "332552845298-u5ejfour55akd8q2d73i2be5odrmah07.apps.googleusercontent.com"
 client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
 
 flow = Flow.from_client_secrets_file(
