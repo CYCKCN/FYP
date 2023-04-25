@@ -5,251 +5,78 @@
 		<title>My first scene.js app</title>
 		<link rel="stylesheet" href="/static/tree.css">
 		<link rel="icon" href="data:,">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	
 	<body>
 		<form method="POST" enctype="multipart/form-data">
-		<script src="//daybrush.com/scenejs/release/latest/dist/scene.min.js"></script>
+			<div class="intro-div">
+				<img class="intro-bg" src="/static/data/landing-bg.jpeg"/>
+				<div class="intro-txt">
+					<p class="intro-txt-title">Make money while making a difference - Our recommerce platform is designed for HKUST students who care about the environment.</p>
+					<p class="intro-txt-subtitle">Sign in with your SSO and start saving the money while making some money.</p>
+					<button class="intro-login" type="submit" name="Login" value="Login">Log in with SSO</button>
+				</div>
+			</div>
 
-		<div class="background">
+			<div class="category-div">
+				<p class="section-title">categories</p>
+				<div class="category-all-btn">
+					<i class="material-icons category-icon">grid_on</i>
+					<a href="" class="category-txt">See all categories</a>
+				</div>
+				<div class="category-three">
+					<button class="category-block-left" name="Electronics" value="Electronics">Electronics</button>
+					<button class="category-block-middle" name="Fashion" value="Fashion">Fashion</button>
+					<button class="category-block-right" name="Furnitures" value="Furnitures">Furnitures</button>
+				</div>
+			</div>
 
-			<div class="flower roundpetal petal5 flower1">
-			  <div class="petal">
-				<div class="petal">
-				  <div class="petal">
-				  </div>
-				</div>
-			  </div>
-			</div>
-			<div class="flower roundpetal petal5 flower2 blueflower">
-			  <div class="petal">
-				<div class="petal">
-				  <div class="petal">
-				  </div>
-				</div>
-			  </div>
-			</div>
-			<div class="flower roundpetal petal5 flower3 yellowflower">
-			  <div class="petal">
-				<div class="petal">
-				  <div class="petal">
-				  </div>
-				</div>
-			  </div>
-			</div>
-			<div class="flower roundpetal petal5 flower4 purpleflower">
-			  <div class="petal">
-				<div class="petal">
-				  <div class="petal">
-				  </div>
-				</div>
-			  </div>
-			</div>
-			<div class="slope"></div>
-			<div class="tree" onclick="animation()">
-			  <div class="leaf leaf1"></div>
-			  <div class="leaf leaf2"></div>
-		  
-		  
-			  <div class="branch left branch1">
-				<div class="branch left branch-inner1">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="heart flower1 blueflower">
-				  </div>
-				</div>
-				<div class="branch left branch-inner2">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="tulip flower1 redflower">
-					<div class="peak"></div>
-				  </div>
-				</div>
-				<div class="branch left branch-inner3">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>
-				</div>
-				<div class="flower petal5 flower1 redflower">
-				  <div class="petal">
-					<div class="petal">
-					  <div class="petal">
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <div class="branch right branch2">
-				<div class="branch left branch-inner1">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>        
-				  <div class="leaf leaf3"></div>
-				  <div class="flower petal5 flower1 blueflower">
-					<div class="petal">
-					  <div class="petal">
-						<div class="petal">
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-				<div class="branch right branch-inner2">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="tulip flower1 greenflower">
-					<div class="peak"></div>
-				  </div>
-				</div>
-				<div class="branch right branch-inner3">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>
-				  <div class="leaf leaf3"></div>
-				  <div class="branch left branch-inner4">
-					<div class="leaf leaf1"></div>
-					<div class="flower petal5 flower1 yellowflower">
-					  <div class="petal">
-						<div class="petal">
-						  <div class="petal">
-						  </div>
-						</div>
-					  </div>
-					</div>
-				  </div>
-				  <div class="tulip flower1 purpleflower">
-					<div class="peak"></div>
-				  </div>
-				</div>
-				<div class="flower petal5 roundpetal flower1">
-				  <div class="petal">
-					<div class="petal">
-					  <div class="petal">
-						<div class="petal">
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <div class="branch left branch3">
-				<div class="branch right branch-inner1">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="heart flower1">
-				  </div>
-				</div>
-				<div class="branch left branch-inner2">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="tulip flower1">
-					<div class="peak"></div>
-				  </div>
-				</div>
-				<div class="leaf leaf1"></div>
-				<div class="leaf leaf2"></div>
-				<div class="flower roundpetal petal5 flower1 purpleflower">
-				  <div class="petal">
-					<div class="petal">
-					  <div class="petal">
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <div class="branch right branch4">
-				<div class="branch left branch-inner1">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>        
-				  <div class="leaf leaf3"></div>
-				  <div class="flower petal5 flower1 yellowflower">
-					<div class="petal">
-					  <div class="petal">
-						<div class="petal">
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-				<div class="branch right branch-inner2">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="tulip tulip1 flower1 purpleflower">
-					<div class="peak"></div>
-				  </div>
-				</div>
-				<div class="flower petal5 roundpetal flower1">
-				  <div class="petal">
-					<div class="petal">
-					  <div class="petal">
-						<div class="petal">
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <div class="branch left branch5">
-				<div class="branch right branch-inner1">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="heart flower1">
-				  </div>
-				</div>
-				<div class="branch left branch-inner2">
-				  <div class="leaf leaf1"></div>
-				  <div class="leaf leaf2"></div>                
-				  <div class="leaf leaf3"></div>
-				  <div class="tulip flower1 greenflower">
-					<div class="peak"></div>
-				  </div>
-				</div>
-				<div class="flower roundpetal petal5 flower1 blueflower">
-				  <div class="petal">
-					<div class="petal">
-					  <div class="petal">
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
+			<div class="community-div">
+				<p class="section-title">community</p>
+				<div class="community-split">
+					<div class="community-intro">
 
-		<div class="home-top">
-            <div class="top-buttons">
-                    {% if userStatus == True %}
-                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    {% else %}
-                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
-                    {% endif %}
-                    
-            </div>
-		</div>
+					</div>
+					<div class="transaction-update">
+
+					</div>
+				</div>
+			</div>
+			
+			<div class="scroll-div">   
+				<button class="lifeverse" name="market" value="market">
+					<a class="request-all">Market</a>
+					<hr class="rounded">
+					<p class="font-class">Where potential takers browse givers' items</p>
+				</button>
+				<button class="lifeboard" name="piazza" value="piazza">
+					<p class="request-all">Piazza</p>
+					<hr class="rounded">
+					<p class="font-class">Where users can browse and share item stories</p>  
+				</button>
+				<button class="lifebase" name="demand" value="demand">
+					<p class="request-all">Demand</p>
+					<hr class="rounded">
+					<p class="font-class">Where givers find potential takers</p>      
+				</button>
+			</div>
+			<div class="top-bar">
+				<div class="top-logo">
+					<img src="/static/data/ReUST-logo.jpeg"/>
+					<p class="logo-font">ReUST</p>
+				</div>
+				<div class="top-buttons">
+						{% if userStatus == True %}
+						<button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+						{% else %}
+						<button class="individual-button" type="submit" name="Login" value="Login">Login</button>
+						{% endif %}
+						
+				</div>
+			</div>
 		
-		<div class="scroll-div">   
-			<button class="lifeverse" name="market" value="market">
-				<a class="request-all">Market</a>
-				<hr class="rounded">
-				<p class="font-class">Where potential takers browse givers' items</p>
-			</button>
-			<button class="lifeboard" name="piazza" value="piazza">
-				<p class="request-all">Piazza</p>
-				<hr class="rounded">
-				<p class="font-class">Where users can browse and share item stories</p>  
-			</button>
-			<button class="lifebase" name="demand" value="demand">
-				<p class="request-all">Demand</p>
-				<hr class="rounded">
-				<p class="font-class">Where givers find potential takers</p>      
-			</button>
-		</div>
-	</form>
+		
+		</form>
 	</body>
-	<script src="/static/js/tree.js">
-	</script>
 </html>
