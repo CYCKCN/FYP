@@ -97,7 +97,7 @@ def giveitem():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             image_path = os.path.join(UPLOAD_FOLDER, filename)
-            itemImg = "../../" + image_path[8:]
+            itemImg = "../../" + image_path[4:]
         else: invalidDict["img"] = True
         print(itemImg)
         if category == "": invalidDict["cate"] = True
