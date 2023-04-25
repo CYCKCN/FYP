@@ -1,5 +1,5 @@
 body {
-    background : #FEFDE3;
+    background : white;
     min-height: 100%;
     min-width: 100%;
 }        
@@ -875,7 +875,7 @@ hr.rounded {
 .font-class {
     font-family: sans-serif;
 }
-.home-top {
+.top-bar {
     position: fixed;
     min-width: 100%;
     height: 50px;
@@ -897,6 +897,24 @@ hr.rounded {
     background: none;
     display: flex;
     flex-direction: row-reverse;
+}
+.top-logo {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 0%;
+    top: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+.logo-font {
+    font-family: sans-serif;
+    color: var(--logoGreen);
+    font-size: 18px;
+    margin-left: 10px;
 }
 .lifeverse {
     width: 30%;
@@ -990,9 +1008,10 @@ hr.rounded {
     background: none;
     border: none;
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 600;
     margin: 20px;
-    color: black;
+    color: var(--fontGrey);
 }
 .welcoming {
     font-family: sans-serif;
@@ -1001,15 +1020,169 @@ hr.rounded {
     color: black;
 }
 .scroll-div {
-    margin-top: 50px;
-    position: fixed;
+    margin-top: 500px;
+    left: 0%;
+    margin-left: 0;
+    position: relative;
     height: fit-content;
     width: 100%;
     display:flex; 
     flex-direction: row; 
-    width: 100%;
+    background: red;
 }
-
+.intro-div {
+    margin-top: 50px;
+    height: fit-content;
+    width: 100%;
+    position: relative;
+}
+.intro-bg {
+    height: fit-content;
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 0px;
+}
+.intro-txt {
+    width: 40%;
+    height: fit-content;
+    left: 10%;
+    top: 200px;
+    position: absolute;
+}
+.intro-txt-title {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 35px;
+}
+.intro-txt-subtitle {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+}
+.intro-login {
+    font-size: 15px;
+    background: #F4EFBA;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+.category-div {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+.section-title {
+    padding-top: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    height: fit-content;
+}
+.category-all-btn {
+    padding-top: 20px;
+    position: absolute;
+    right: 150px;
+    top: 0px;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+}
+.category-icon {
+    color: black;
+    font-size: 10px;
+    margin-right: 5px;
+    padding-top: 2px;
+}
+.category-txt {
+    font-size: 14px;
+    line-height: 25px;
+}
+.category-three {
+    margin-top: 20px;
+    height: 500px;
+    width: 80%;
+    padding-top: 0%;
+    margin-left: 10%;
+    position: absolute;
+}
+.category-block-left {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0%;
+    padding-top: 0%;
+    margin-top: 0%;
+    left: 10%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/b896/22e4/d9f86533ffc0ca4f8857e3e4e42b8895?Expires=1683504000&Signature=GJ8e4NP8dkIFNWs3WcxfmIZqUIqfrlLukoq4bOYRFmfN3-Fsoxo2bxuFRlXNvFdsjRvEM6JApxxx4gzKpucnqiCTlGjC1DmZAcRp-TjB2WYk~eEyDQCfUNwdfr4Ka2icWAAYv1oMx7s3OjM5-nvu1fkjmg7LWpNuVjIDyESHScVmTCCEQY2h-v-G5D1IGjARFt78exJiMOH-6sveydAE3n3tznOwthi6lwinghvKl5P-WMynLIjpXzGahZj1PvG7yngMqhiguyz9HFaxNB6vNGZUSHQMyUZ-RG42uNlSMgxp00cvdbzHtRDvn~pVVCc4dnqEnFbcqc8eGNWgqaGQ3A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    filter: brightness(80%);
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+.category-block-middle {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-image: url("https://s3-alpha-sig.figma.com/img/9fdc/1d02/818c26b59f7f84c4bb9f4208de0ca9f7?Expires=1683504000&Signature=IY3rhuffPU~OfDzkazzGX0oiC7nt0zia9GJLB-7CAVpzDcVoR2ft-0Cc7bAdXUvKelWnSEFNr-p7HszACczOcfP8HgdX8WVSYN6Llhc8ncqfWBUML0tPc8~ld~eT~38o9I2roaJxEWWkX3RwVtx8HCu0oDnTef8mbKWoSr7Jh-h18r50VNllpuAdHq6A5pdSntM8WTiTDLJyP5JZsfBi-a9iR9QwLb2R3QVfpOWHxnkq-QihL6BMApOToXbTyslXJ5ufoFU5jtXq6Fscpfd7BmJcCmd8IkS8SgaFkKGkxj9HzwzL4UnsFbNmEw9KGGl7ZLz1T3kJ-I~ljSQmYX~3wg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    filter: brightness(80%);
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+.category-block-right {
+    width: 300px;
+    height: 300px;
+    background: black;
+    border-radius: 5px;
+    position: absolute;
+    right: 10%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/2fd9/157f/d9e02e88e1440fc39c817ec4bf03151c?Expires=1683504000&Signature=DmSFwhHmwEpe5ltdB6wBEkrZQm4LkgB6BbB7ezAogM4FGwJqsQZtjIEdDHdibcWyrCAY4kn59KayiBc1~NXFPNkrV63kE8tPuV9COntX5XUa0HJjTMlPocTs3jk9ETAXxQhBhPolvn3WgnI9Hj9YUqjfstZhHPU3ccYaWqs083PReJhbsxGVsYxQK6j5ZYqcFMPlR~6pE8m90U4p9VMJlDrHeyZ~3SrOgB6ga2r6EapKJBzQJMVy1wvN6ZWdbva6rAXFO5eoRJR2exUQsqvXjNgXsj0MJOGhgbMc0GT-RWTNJan3iRXoxIQY0TljvPCSvFQIwKSNPxy0XmVMTn2NPA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    filter: brightness(80%);
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+.community-div {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.community-split {
+    display: flex;
+    flex-direction: column;
+}
+.transaction-update {
+    width: 100%;
+    height: 100%;
+    background: red;
+}
 .search-div {
     width: 100%;
     height: 30px;
@@ -1047,12 +1220,7 @@ hr.rounded {
     font-family: sans-serif;
     font-size: 14px;
 }
-.icon-search {
-    color: var(--mainGrey1);
-    position: relative;
-    margin-left: 15px;
-    margin-top: 6px;
-}
+
 .button-option {
     height: 30px;
     width: 180px;
@@ -1164,4 +1332,7 @@ hr.rounded {
     
     --mainGrey1: #6C6A6A;
     --mainGrey2: #F2F2F2;
+
+    --logoGreen: #73A8AC;
+    --fontGrey: #373737;
 }

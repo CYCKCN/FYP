@@ -28,7 +28,7 @@ hr.rounded {
     margin-left: 0px;
     padding-left: 0px;
     padding-top: 0px;
-    background: none;
+    background: red;
 }
 .top-buttons {
     position: absolute;
@@ -38,7 +38,7 @@ hr.rounded {
     top: 0px;
     padding-left: 0px;
     padding-top: 0px;
-    background: none;
+    background: yellow;
     display: flex;
     flex-direction: row-reverse;
 }
