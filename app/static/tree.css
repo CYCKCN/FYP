@@ -1176,12 +1176,43 @@ hr.rounded {
 }
 .community-split {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin-top: 20px;
+    height: 500px;
+    width: 80%;
+    padding-top: 0%;
+    margin-left: 10%;
+    position: absolute;
+}
+.community-intro {
+    width: 50%;
+    height: 100%;
+    background: yellow;
+    
+}
+.community-txt {
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 90%;
+    color: black;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 .transaction-update {
-    width: 100%;
+    width: 50%;
     height: 100%;
-    background: red;
+    border-radius: 5px;
+    background: #8FC7AB;
+    display: flex;
+    flex-direction: column;
+}
+.transaction-block {
+    height: 80px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+    background: white;
 }
 .search-div {
     width: 100%;
