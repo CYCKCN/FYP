@@ -55,7 +55,7 @@ def home():
 
         if clear == 'Clear':
             return redirect(url_for("market.home", cate='', maxprice='', minprice='', search=''))
-
+        
         if apply == "Apply" or itemName:
             return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
 

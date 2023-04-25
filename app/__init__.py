@@ -20,8 +20,8 @@ class ConfigClass(object):
     # USER_ENABLE_USERNAME = True  
     # USER_REQUIRE_RETYPE_PASSWORD = False  
 
-webpage = Flask(__name__)
-webpage.config.from_object(ConfigClass)
+app = Flask(__name__)
+app.config.from_object(ConfigClass)
 
 # login_manager = LoginManager()
 # login_manager.init_app(webpage)
@@ -35,15 +35,15 @@ webpage.config.from_object(ConfigClass)
 from .auth import auth
 from .life import life
 from .market import market
-from .piazza import piazza
+# from .piazza import piazza
 from .demand import demand
 
-webpage.register_blueprint(life, url_prefix='/life')
-webpage.register_blueprint(auth, url_prefix='/auth')
-webpage.register_blueprint(market, url_prefix='/market')
-webpage.register_blueprint(piazza, url_prefix='/piazza')
-webpage.register_blueprint(demand, url_prefix='/demand')
+app.register_blueprint(life, url_prefix='/life')
+app.register_blueprint(auth, url_prefix='/auth')
+app.register_blueprint(market, url_prefix='/market')
+# webpage.register_blueprint(piazza, url_prefix='/piazza')
+app.register_blueprint(demand, url_prefix='/demand')
 
-@webpage.route("/")
+@app.route("/")
 def main():
     return redirect(url_for('life.home'))
