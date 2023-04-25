@@ -1171,7 +1171,7 @@ hr.rounded {
 }
 .community-div {
     width: 100%;
-    height: 500px;
+    height: 600px;
     position: relative;
 }
 .community-split {
@@ -1187,14 +1187,17 @@ hr.rounded {
 .community-intro {
     width: 50%;
     height: 100%;
-    background: yellow;
-    
+}
+.community-img {
+    height: fit-content;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 20px;
 }
 .community-txt {
-    margin-top: 10px;
-    margin-left: 30px;
-    margin-right: 30px;
-    width: 90%;
+    margin-top: 30px;
+    margin-left: 15%;
+    width: 70%;
     color: black;
     font-family: sans-serif;
     font-size: 14px;
@@ -1207,13 +1210,46 @@ hr.rounded {
     display: flex;
     flex-direction: column;
 }
-.transaction-block {
-    height: 80px;
+.transaction-block-0 {
+    height: 70px;
     width: 80%;
     margin-left: 10%;
-    margin-top: 10px;
+    margin-top: 35px;
     background: white;
+    border-radius: 5px;
 }
+.transaction-block {
+    height: 70px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    background: white;
+    border-radius: 5px;
+}
+.transaction-time {
+    color: var(--fontGrey);
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 200;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.transaction-txt {
+    color: black;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 200;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.item-div {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
 .search-div {
     width: 100%;
     height: 30px;
