@@ -52,7 +52,7 @@ class ItemDB():
 
     def findItem(self, itemID):
         item = self.db.find_one({"itemID": itemID})
-        item['itemImg'] = "../../" + item['itemImg'][8:]
+        item['itemImg'] = "../../" + item['itemImg'][4:]
         return item
     
     def createItem(self, owner, name, price, category, info, image_path, pickup):
@@ -76,7 +76,7 @@ class ItemDB():
         counter = 0
         for item in itemList:
             itemInfo[str(counter)] = item
-            itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][8:]
+            itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][4:]
             counter += 1
         return itemInfo
     
@@ -190,7 +190,7 @@ class ChatDB():
             itemID = chat["chatItem"]
             item = itemdb.findItem(itemID)
             chatInfo[str(counter)] = item
-            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][8:]
+            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][4:]
             for k, v in chat.items(): chatInfo[str(counter)][k] = v
             chatInfo[str(counter)]["sendTo"] = chat["chatBuyer"]
             counter += 1
@@ -198,7 +198,7 @@ class ChatDB():
             itemID = chat["chatItem"]
             item = itemdb.findItem(itemID)
             chatInfo[str(counter)] = item
-            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][8:]
+            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][4:]
             for k, v in chat.items(): chatInfo[str(counter)][k] = v
             chatInfo[str(counter)]["sendTo"] = chat["chatOwner"]
             counter += 1
@@ -229,7 +229,7 @@ class StoryDB():
         for story in storyList:
             item = itemdb.findItem(story['storyItem'])
             storyInfo[str(counter)] = story
-            storyInfo[str(counter)]['storyImg'] = "../../" + storyInfo[str(counter)]['storyImg'][8:]
+            storyInfo[str(counter)]['storyImg'] = "../../" + storyInfo[str(counter)]['storyImg'][4:]
             storyInfo[str(counter)]["userName"] = accountdb.findUserName(story['storyUser'])
             storyInfo[str(counter)]["itemName"] = item['itemName']
             counter += 1
