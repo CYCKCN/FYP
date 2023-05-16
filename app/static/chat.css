@@ -4,6 +4,30 @@
   body {
     font-size: 14px;
   }
+  .welcoming {
+    font-family: sans-serif;
+    line-height: 0%;
+    margin-top: 5px;
+  }
+  .top-logo {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 0%;
+    top: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+.logo-font {
+    font-family: sans-serif;
+    color: var(--logoGreen);
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 17px;
+}
   input[type=checkbox] {
     display: none;
   }
@@ -17,11 +41,11 @@
     left: 0px;
     overflow: hidden;
   }
-  .top-buttons-left {
+.top-buttons-left {
     position: absolute;
     width: 500px;
     height: 50px;
-    left: 0%;
+    margin-left: 150px;
     top: 0px;
     padding-left: 0px;
     padding-top: 0px;
@@ -141,14 +165,14 @@
     position: relative;
     background: red;
 }
-  .individual-button {
-    background: none;
-    border: none;
-    font-family: 'Alatsi';
-    font-size: 16px;
-    margin: 20px;
-    color: black;
-  }
+.individual-button {
+  background: none;
+  border: none;
+  font-family: 'Alatsi';
+  font-size: 16px;
+  margin: 20px;
+  color: black;
+}
   .radio-button {
       height: 40px;
       display: flex;
@@ -316,7 +340,6 @@
     position: relative;
     font-family: 'Alatsi';
     color: black;   
-    background: var(--mainGreen3);
   }
   .go-back {
     background: none;
@@ -1487,4 +1510,7 @@
     
     --mainGrey1: #6C6A6A;
     --mainGrey2: #F2F2F2;
+
+    --logoGreen: #73A8AC;
+    --fontGrey: #373737;
   }

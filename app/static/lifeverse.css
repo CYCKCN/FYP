@@ -51,7 +51,7 @@ hr.rounded {
     border-radius: 1px;
 }
 .font-class {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
 }
 .home-top {
     position: fixed;
@@ -146,7 +146,7 @@ hr.rounded {
     position: absolute;
     width: 500px;
     height: 50px;
-    left: 0%;
+    margin-left: 150px;
     top: 0px;
     padding-left: 0px;
     padding-top: 0px;
@@ -216,7 +216,7 @@ hr.rounded {
 }
 .request-link {
     width: 100%;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
     text-decoration: none;
@@ -227,11 +227,11 @@ hr.rounded {
 .request-all {
     text-align: start;
     text-decoration: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 20px;
 }
 .user-title {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 20px;
     color: black;
     margin-left: 20px;
@@ -243,21 +243,41 @@ hr.rounded {
     top: 10px;
     background: none;
     border: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     margin: 20px;
     color: black;
+}
+.top-logo {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 0%;
+    top: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+.logo-font {
+    font-family: sans-serif;
+    color: var(--logoGreen);
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 17px;
 }
 .individual-button {
     background: none;
     border: none;
-    font-family: 'Alatsi';
-    font-size: 16px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
     margin: 20px;
     color: black;
 }
 .welcoming {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     margin: 20px;
     color: black;
@@ -287,11 +307,11 @@ hr.rounded {
     margin-top: 10px;
 }
 .filter-div {
-    width: 100%;
+    width: 80%;
     height: 30px;
     position: relative;
-    left: 1%;
-    margin-top: 10px;
+    left: 10%;
+    margin-top: 20px;
     background: none;
     display: flex;
     flex-direction: row;
@@ -314,7 +334,7 @@ hr.rounded {
 }
 .lable-txt {
     color: var(--mainGreen1);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
 }
 .icon-search {
@@ -330,11 +350,12 @@ hr.rounded {
     text-align: center;
     border-radius: 20px;
     padding-left: 10px;
-    margin-left: 10px;
-    border: none;
-    font-family: 'Alatsi';
+    margin-right: 5px;
+    border: 1.5px solid var(--mainGrey2);
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 400;
     cursor: pointer;
-    border-right: 10px solid transparent
 }
 .table-div {
     background: none;
@@ -371,7 +392,7 @@ hr.rounded {
     border: none;
     background: var(--mainGreen1);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
@@ -394,4 +415,7 @@ hr.rounded {
     
     --mainGrey1: #6C6A6A;
     --mainGrey2: #F2F2F2;
+
+    --logoGreen: #73A8AC;
+    --fontGrey: #373737;
 }

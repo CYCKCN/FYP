@@ -10,10 +10,14 @@
     <form method="POST">
     <div class="page-frame">
         <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg"/>
+                <p class="logo-font">ReUST</p>
+            </div>
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                 <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
+                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
                 <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
             </div>
             <div class="top-buttons">
@@ -21,7 +25,6 @@
                     <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
                     {% else %}
                     <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
-                    <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
                     {% endif %}
             </div>
         </div>
@@ -45,14 +48,14 @@
 
             <div class="info-pack">
                 <div class="question-box">
-                    <p class="welcoming">{{item["itemName"]}}</p>
-                    <p class="welcoming">{{item["itemCate"]}}</p>
-                    <p class="welcoming">{{item["itemPrice"]}}</p>
-                    <p class="welcoming">{{item["itemInfo"]}}</p>
+                    <p class="item-name">{{item["itemName"]}}</p>
+                    <!-- <p class="">{{item["itemCate"]}}</p> -->
+                    <p class="item-price">HKD {{item["itemPrice"]}}</p>
+                    <p class="item-info">{{item["itemInfo"]}}</p>
                 </div>   
                 <div class="seller-info">
-                    <p class="welcoming">{{item["itemOwner"]}}</p>
-                    <p class="welcoming">{{item["itemPickUp"]}}</p>
+                    <p class="item-owner">Seller Email: <span style="font-weight: 600;">{{item["itemOwner"]}}</span></p>
+                    <p class="item-location">Pick-up Location: <span style="font-weight: 600;">{{item["itemPickUp"]}}</span></p>
                 </div>
             </div>
             

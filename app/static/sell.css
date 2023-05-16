@@ -11,6 +11,37 @@
     min-width: 100%;
     font-size: 14px;
   }
+  .top-buttons-left {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    margin-left: 150px;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+  .top-logo {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 0%;
+    top: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+.logo-font {
+    font-family: sans-serif;
+    color: var(--logoGreen);
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 17px;
+}
   .warning {
     font-family: 'Alatsi';
     color: red;
@@ -34,8 +65,10 @@
   .individual-button {
     background: none;
     border: none;
-    font-family: 'Alatsi';
-    font-size: 16px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 20px;
     margin: 20px;
     color: black;
   }
@@ -995,7 +1028,7 @@
     text-align: center;
     line-height: 40px;
     border: none;
-    background: var(--mainGreen1);
+    background: var(--logoGreen);
     color: white;
     font-family: 'Alatsi';
     width: 100%;
@@ -1213,7 +1246,7 @@
     text-align: center;
     line-height: 40px;
     border: none;
-    background: var(--mainGreen1);
+    background: var(--logoGreen);
     color: white;
     font-family: 'Alatsi';
     width: 80%;
@@ -1416,4 +1449,7 @@
     
     --mainGrey1: #6C6A6A;
     --mainGrey2: #F2F2F2;
+
+    --logoGreen: #73A8AC;
+    --fontGrey: #373737;
   }

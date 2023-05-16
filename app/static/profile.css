@@ -1,12 +1,28 @@
 * {
     box-sizing: border-box;
   }
-  body {
-    font-size: 14px;
-  }
   input[type=checkbox] {
     display: none;
   }
+.top-logo {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  left: 0%;
+  top: 0px;
+  padding-left: 10px;
+  padding-top: 0px;
+  background: none;
+  display: flex;
+  flex-direction: row;
+}
+.logo-font {
+  font-family: sans-serif;
+  color: var(--logoGreen);
+  font-size: 18px;
+  margin-left: 10px;
+  margin-top: 17px;
+}
   .chat-block {
     width: 100%;
     height: 100px;
@@ -21,8 +37,8 @@
     position: absolute;
     background: none;
     width: 200px;
-    height: 100%;
-    margin-top: 50px;
+    left: 0;
+    height: 500px;
     padding-top: 100px;
     display: flex;
     flex-direction: column;
@@ -30,8 +46,9 @@
   .section-btn {
     border: none;
     background: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
+    font-weight: 600;
     margin-bottom: 20px;
   }
   .chat-box {
@@ -48,7 +65,7 @@
     background: var(--mainGrey2);
     width: 100%;
     height: 7%;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     text-align: center;
     color: black;
     padding-top: 15px;
@@ -85,7 +102,7 @@
     border-radius: 10px;
     background: var(--mainGreen1);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
 
   }
   .other-pop {
@@ -108,19 +125,19 @@
     height: fit-content;
 }
   .font-class {
-      font-family: 'Alatsi';
+      font-family: sans-serif;
   }
-  .top-buttons-left {
-    position: absolute;
-    width: 500px;
-    height: 50px;
-    left: 0%;
-    top: 0px;
-    padding-left: 0px;
-    padding-top: 0px;
-    background: none;
-    display: flex;
-    flex-direction: row;
+.top-buttons-left {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  margin-left: 150px;
+  top: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  background: none;
+  display: flex;
+  flex-direction: row;
 }
   .top-buttons {
     position: absolute;
@@ -135,14 +152,15 @@
     flex-direction: row-reverse;
   }
 
-  .individual-button {
-    background: none;
-    border: none;
-    font-family: 'Alatsi';
-    font-size: 16px;
-    margin: 20px;
-    color: black;
-  }
+.individual-button {
+  background: none;
+  border: none;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 20px;
+  color: black;
+}
   .radio-button {
       height: 40px;
       display: flex;
@@ -192,7 +210,7 @@
     text-align: center;
     padding-top: 2px;
     border: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     cursor: pointer;
   }
   .radio-button input[type="radio"] {
@@ -206,38 +224,69 @@
     text-align: center;
     padding-top: 6px;
     border: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     cursor: pointer;
   }      
   .radio-button input[type="radio"]:checked+label {
     background-color: var(--mainGreen2);
     color: white;
   }
-
-  .page-frame {
-    width: 100%;
-    height: 650px;
-    background: white;
-    opacity: 1;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
-  }
-  .request-link {
-    width: 100%;
-    font-family: 'Alatsi';
-    font-size: 16px;
-    color: black;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+hr.rounded {
+  border-top: 1px solid var(--mainGrey2);
+  border-radius: 1px;
+}
+.page-frame {
+  width: 100%;
+  height: 850px;
+  background: white;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.display-image {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  left: 0px;
+  top: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border-radius: 5px 5px;
+  object-fit: cover;
+  object-position: 0px 0px;
+}
+.display-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: black;
+  padding-left: 0px;
+  width: fit-content;
+}
+.on-sale-block {
+  display: table-cell;
+  background: none;
+  position: relative;
+  width: 19%;
+  height: 250px;
+  border-radius: 10px;
+}
+.request-link {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .request-all {
     text-align: end;
     text-decoration: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
 }
   .home-top {
     width: 100%;
@@ -269,7 +318,7 @@
       padding-right: 25px;
       right: 0%;
       position: absolute;
-      font-family: 'Alatsi';
+      font-family: sans-serif;
       color: black; 
       overflow-y: scroll;
   }
@@ -286,7 +335,7 @@
   .section-btn {
     border: none;
     background: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     margin-bottom: 20px;
   }
@@ -319,7 +368,7 @@
     border-radius: 10px;
     margin-top: 0px;
     padding-left: 10px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
 }
 
   .question-box {
@@ -333,7 +382,7 @@
     padding-right: 25px;
     padding-bottom: 10px;
     position: relative;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     color: black;   
     background: var(--mainGreen3);
   }
@@ -374,17 +423,17 @@
     margin-top: 0px;
   }
   .reservation-name {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
   }
   .reservation-date {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
     color: black;
   }
   .reservation-time {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 24px;
     color: black;
   }
@@ -418,11 +467,11 @@
 
   }
   .name-txt {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 20px;
   }
   .category-txt {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 12px;
     color: white;
     border: var(--mainGreen2);
@@ -433,7 +482,7 @@
     padding-right: 5px;
   }
   .price-txt {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 20px;
   }
   #bar-icons-div {
@@ -456,7 +505,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   }
   .home-subtitle {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 12px;
     color: black;
   }
@@ -519,7 +568,7 @@
   .canvas-clear {
     margin-left: 10px;
     width: 350px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 12px;
     border:1px solid var(--mainGreen3);
   }
@@ -641,7 +690,7 @@
     border: none;
   }
   .method-name {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: var(--mainBlue1);
     top: 0px;
@@ -720,32 +769,32 @@
   }
   .icon-txt0 {
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
   }
   .icon-txt1 {
     color: var(--mainGreen2);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
   }
   .icon-txt2 {
     color: var(--mainBlue2);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
   }
   .icon-txt3 {
     color: var(--mainGreen1);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 10px;
   }
   .icon-txt4 {
     color: var(--mainGreen2);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 10px;
   }
   .icon-txt5 {
     color: var(--mainGreen3);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 10px;
   }
   .icon-div {
@@ -761,7 +810,7 @@
   }
   .home-head{
     color:black;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 18px;
     margin-left: 10px;
   }
@@ -810,7 +859,7 @@
   .login-button {
     width: 328px;
     height: 40px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     color: white;
     background: var(--mainGreen1);
     opacity: 1;
@@ -838,7 +887,7 @@
     position: relative;
     top: 0px;
     left: 0px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-weight: Bold;
     font-size: 64px;
     opacity: 1;
@@ -850,7 +899,7 @@
     position: absolute;
     top: 0px;
     left: 110px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-weight: Bold;
     font-size: 32px;
     opacity: 1;
@@ -868,7 +917,7 @@
   .login-input1 {
     width: 328px;
     height: 48px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     color: var(--mainGrey1);
     background: none;
     padding-left: 20px;
@@ -883,7 +932,7 @@
   .search {
     width: 360px;
     height: 48px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     color: var(--mainGrey1);
     background: white;
     padding-left: 50px;
@@ -928,13 +977,13 @@
   }
   .lable-txt {
     color: var(--mainGreen1);
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
   }
   .login-input2 {
     width: 328px;
     height: 48px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     color: var(--mainGrey1);
     background: none;
     padding-left: 20px;
@@ -952,7 +1001,7 @@
     position: absolute;
     top: 111px;
     left: 221px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     border: none;
     background: none;
     font-weight: Regular;
@@ -990,7 +1039,7 @@
     position: absolute;
     top: 24px;
     left: 29px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-weight: Bold;
     font-size: 22px;
     opacity: 1;
@@ -1002,7 +1051,7 @@
     position: absolute;
     top: 0px;
     left: 10px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-weight: Light;
     font-size: 12px;
     opacity: 1;
@@ -1014,7 +1063,7 @@
     position: absolute;
     top: 30px;
     left: 10px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-weight: Light;
     font-size: 22px;
     opacity: 1;
@@ -1026,7 +1075,7 @@
     position: absolute;
     top: 65px;
     left: 29px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-weight: Light;
     font-size: 12px;
     opacity: 1;
@@ -1161,7 +1210,7 @@
     margin-top: 0px;
     border: none;
     color: black;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 14px;
     overflow-y: scroll;
   }
@@ -1173,7 +1222,7 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: var(--mainBlue1);
     padding-left: 0px;
@@ -1226,7 +1275,7 @@
     display: flex;
     flex-direction: column;
     color: black;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
   }
   .item-input-div {
@@ -1238,7 +1287,7 @@
     display: flex;
     flex-direction: column;
     color: black;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
   }
   .not-uploaded {
@@ -1263,7 +1312,7 @@
     border: none;
     background: var(--mainGreen1);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
@@ -1277,7 +1326,7 @@
     border: none;
     background: var(--mainBlue2);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
@@ -1285,7 +1334,7 @@
     margin-left: 10px;
   }
   .user-title {
-      font-family: 'Alatsi';
+      font-family: sans-serif;
       font-size: 20px;
       color: black;
       margin-left: 20px;
@@ -1299,7 +1348,7 @@
     border: none;
     background: var(--mainGreen1);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
@@ -1312,9 +1361,9 @@
     text-align: center;
     line-height: 40px;
     border: none;
-    background: var(--mainBlue1);
+    background: var(--logoGreen);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 60%;
     height: 40px;
     border-radius: 10px;
@@ -1329,7 +1378,7 @@
     border: none;
     background: var(--mainBlue1);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
@@ -1364,7 +1413,7 @@
     border-radius: 10px;
     margin-bottom: 20px;
     border: none;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
   }
@@ -1374,7 +1423,7 @@
     margin-bottom: 20px;
     border: none;
     height: 40px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
     padding: 10px;
@@ -1385,7 +1434,7 @@
     margin-top: 20px;
     border: none;
     height: 40px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
     padding: 10px;
@@ -1395,7 +1444,7 @@
     border-radius: 10px;
     border: none;
     height: 100px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
     padding: 10px;
@@ -1406,7 +1455,7 @@
     border-radius: 10px;
     border: none;
     height: 60px;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: black;
     padding: 10px;
@@ -1418,7 +1467,7 @@
     border: none;
     background: var(--mainBlue2);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 242px;
     height: 40px;
     border-radius: 10px;
@@ -1430,24 +1479,24 @@
     border: none;
     background: var(--mainBlue2);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
     transition: 0.5s;
   }
   .normal-txt {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: var(--mainGreen2);
   }
   .heading-txt {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 24px;
     color: var(--mainGreen2);
   }
   .content-txt {
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     font-size: 16px;
     color: var(--mainGreen2);
     margin-top: 5px;
@@ -1476,7 +1525,7 @@
     border: none;
     background: var(--mainGreen1);
     color: white;
-    font-family: 'Alatsi';
+    font-family: sans-serif;
     width: 370px;
     height: 40px;
     border-radius: 10px;
@@ -1506,4 +1555,7 @@
     
     --mainGrey1: #6C6A6A;
     --mainGrey2: #F2F2F2;
+
+    --logoGreen: #73A8AC;
+    --fontGrey: #373737;
   }

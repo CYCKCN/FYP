@@ -10,10 +10,14 @@
     <form method="POST">
     <div class="page-frame">
         <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg"/>
+                <p class="logo-font">ReUST</p>
+            </div>
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                 <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
+                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
                 <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
             </div>
         </div>
@@ -27,28 +31,27 @@
 
         {% if section == "Request" %}
         <div class="content">
-            <p>Request</p>
             <hr class="rounded">
             {% for k, v in requestInfo.items() %}
             <a href="/demand/{{v.requestID}}" class="request-link">
-                <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span>
+                <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
+                <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
                 {{v.requestTitle}}
-                <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span>
-                <span style="color: red; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestTime}}</span>
-                <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span>
+                <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
+                <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
+                
             </a>
             <hr class="rounded">
             {% endfor %}
         </div>
         {% elif section == "Item" %}
         <div class="content">
-            <p>Item</p>
             <div class="display-table">
                 {% for k, v in itemInfo.items() %}
                 <a href="itemManager/{{v.itemID}}" style="text-decoration:none">
                     <div class="on-sale-block">
                         <img src={{v.itemImg}} width="340" class="display-image"/>
-                        <p class="display-text">{{v.itemName}}</p>
+                        <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
                         <p class="display-text">{{v.itemInfo}}</p>
                     </div>
                 </a>
@@ -57,10 +60,9 @@
         </div>
         {% elif section == "Chat" %}
         <div class="content">
-            <p>Chat</p>
             {% for c in chatInfo.values() %}
             <button type="submit" class="chat-block" name="item" value="{{c['itemID']}}">
-                <p class="font-class" style="text-align: left; margin-left: 20px;">{{c["itemName"]}}</p>
+                <p class="font-class" style="text-align: left; margin-left: 20px; font-weight: 600;">{{c["itemName"]}}</p>
                 <p class="font-class" style="text-align: left; margin-left: 20px;">{{c["sendTo"]}}</p>
             </button>
             {% endfor %}
@@ -70,12 +72,10 @@
             <div class="inputs-div">
                 <div class="lable-div">
                     <p class="user-style1">Username</p>
-                    <p class="user-style2">University</p>
                     <p class="user-style2">User Email</p>
                 </div>
                 <div class="item-input-div">
                     <p class="user-style1">{{user.accountName}}</p>
-                    <p class="user-style2">{{user.accountUni}}</p>
                     <p class="user-style2">{{user.accountEmail}}</p>        
                 </div>
             </div>

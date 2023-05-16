@@ -14,12 +14,15 @@
     <button class="send-btn" name="send-btn" value="Send" hidden>Send</button>
     <div class="page-frame">
         <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg"/>
+                <p class="logo-font">LIFE2</p>
+            </div>
             <div class="top-buttons-left">
                 <button class="send-btn" name="send-btn" value="Send" hidden>Send</button>
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                 <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
-                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
+                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
             </div>
             <div class="top-buttons">
                     <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
@@ -27,11 +30,11 @@
         </div>
         
             <div class="question-box">
-                <img src="{{item['itemImg']}}" width="200"/>
-                <p class="welcoming">{{item["itemName"]}}</p>
-                <p class="welcoming">{{item["itemCate"]}}</p>
-                <p class="welcoming">{{item["itemPrice"]}}</p>
-                <p class="welcoming">{{item["itemInfo"]}}</p>
+                <img src="{{item['itemImg']}}" width="300" style="margin-bottom: 10px;"/>
+                <p class="welcoming" style="font-weight: 600; font-size: 20px;">{{item["itemName"]}}</p>
+                <!-- <p class="welcoming">{{item["itemCate"]}}</p> -->
+                <p class="welcoming" style="font-weight: 400; font-size: 14px;">{{item["itemPrice"]}}</p>
+                <p class="welcoming" style="font-weight: 400; font-size: 14px;">{{item["itemInfo"]}}</p>
             </div>   
         
         <div class="chat-box">
@@ -61,7 +64,6 @@
                 <input class="my-input" type="text" name="send-text">
                 <button class="send-btn" name="send-btn" value="Send">Send</button>
             </div>
-            
         </div>
         
     </div>

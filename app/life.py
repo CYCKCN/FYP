@@ -193,8 +193,9 @@ def chat(chatID):
         session['oauth_origin'] = request.full_path
         return redirect(url_for('auth.google_login'))
     
-    chat = chatdb.findChatByID(chatID)
     item = itemdb.findItem(chat["chatItem"])
+
+    chat = chatdb.findChatByID(chatID)
     chat["sendBy"] = session["email"]
     if chat["chatBuyer"] == session["email"]:
         chat["sendTo"] = accountdb.findUserName(item["itemOwner"])

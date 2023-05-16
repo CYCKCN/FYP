@@ -1246,10 +1246,192 @@ hr.rounded {
 }
 .item-div {
     width: 100%;
-    height: 500px;
+    height: 600px;
     position: relative;
 }
-
+.item-block-div {
+    margin-top: 20px;
+    height: 500px;
+    width: 80%;
+    padding-top: 0%;
+    margin-left: 10%;
+    position: absolute;
+}
+.item-four {
+    display: flex;
+    flex-direction: row;
+}
+.item-block-0 {
+    width: 24.25%;
+    height: 430px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.item-block {
+    width: 24.25%;
+    margin-left: 1%;
+    height: 430px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.item-login-btn {
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #8FC7AB;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.item-owner-txt {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    line-height: 0%;
+}
+.item-owner-div {
+    height: fit-content;
+    width: 80%;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+.item-time-txt {
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+    color: var(--fontGrey);
+    line-height: 0%;
+}
+.item-img {
+    background-image: url(https://s3-alpha-sig.figma.com/img/49b0/45db/14976f3bc7f4449a9aacfbd92b5ac1ee?Expires=1683504000&Signature=VeNPpuYj~cC46dNXN8fI-Mlhc13kI6zUWqs5kOr9epPUNKrDIW3f9AEC0EUudnncenSI1~xPwQRP4BKOhqxPFk2Jh43yIdopVIFidk875oO0YjBHqOyAP8EHZgZge8SWM4H6H8SpIVmkagQ4VCuDg5IcW8yuWrufojmw4xASkqF1RR6sgRvcO1sooyBoK5cNvKVBHD9T8FpPPCHjseYLB0j17ciXnkX22PDLVT0khTNZNljK8U2W7o~KMYob7MAIM~koy4AeuxzGSXLOFfoDCoD5t0X9O0wyBUsZGtfLf89L9oIpXU273NW6SnA-IyNMdyBvZpqhvuPTiXS-4fIAMg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+    background-size: cover;
+    background-position: center;
+    height: 240px;
+    width: 240px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.item-info-div {
+    height: 80px;
+    width: 80%;
+    margin-left: 20px;
+}
+.item-title-txt {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--fontGrey);
+    line-height: 0%;
+}
+.item-price-txt {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 0%;
+    padding-top: 5px;
+}
+.item-condition-txt {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 0%;
+    padding-top: 5px;
+}
+.tutorial-div {
+    width: 100%;
+    height: 1550px;
+    position: relative;
+}
+.tutorial-steps-div {
+    margin-left: 10%;
+    width: 80%;
+    height: 1450px;
+}
+.tutorial-step-block {
+    height: 230px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.tutorial-img-1 {
+    width: 50%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/c1e4/de98/ce8658218b4469e798b3427e651485ad?Expires=1683504000&Signature=IgEjz7qIl9B6algUoynyZsWoLqnqr2G6oWJrTIPEVU6XtOVKIkKw1hGLEefXjs4BTpV6GTHJC8cEr3HZXXt~qkzZKFU81iqLKmpnR35rmfEXw3E5deomDPDKlUC6KR-LXdRIoJ6hYDKHONwCNzTVV~npNtHYM~-Pc0OL5bZwN5AUJK4YFzlyZC2w6PLhlxFrbf7hfSkU9ug3sSXDKLdNDXRjQH7qmgI9qxOwx52INFzwgQAPaRBobSHEnFR1vG-YD79IfAiORowCmcGlthZVaud7rcZTOHkbwq5~BENkeMucNyK4oMdqflhb1hROo4hXuIrJHSIoW-H9YQJGJQ~rtw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.tutorial-img-2 {
+    width: 50%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/ea1b/4a34/cae93dfd667b50ea66ffdbf6198d1639?Expires=1683504000&Signature=MOCdlrdL5wamb-bBCAuZXqF7bmtM68-0P6hNx9uy4v0poiUspM2U1pGxKvpWn08ur2iqkyynYyuLkf~LDs0Hcako~vGJcMAmwSp-0iTSRwb6dv9y4DU2uhMbVAYBJLMyQe5Y8Rt4uhiC6h4fMGHO18MOJoBXjUfW-I4~0-3tSdNDjtq3g62g5daooYbt0grpIyVXjpn6lST6Y0lCvQymB5aPtewqL-iUxseWiEOgRL0lsEEMKQC2ITTgKBo-k5CUFV~pz47IXFV3UJB3xhvh7oWw5fmpUCHU10zXOKpcRfFn2h2fDxp6Sh7wQUeLLx1ZIYLnO5o0JN3lh1ZUwcWvQA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.tutorial-img-3 {
+    width: 50%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/6c10/0be4/878b8d943dc8519ed7fc97e57443ba60?Expires=1683504000&Signature=KKHAkOng0qcv4IksJdv~~g~yLusQoFEAq9o1smrt2zyVczKXjJUCF3DgxeXPtNRzUdZ~1ulb5jz3Ft9HIjYx6f~cwvYJ19FqWqybnsFeKEFKePFcIMCop8~B0n2T7Zey8moDEFUaorlMpW0yZXu8vT5HarjF2VpkV24TxPxrTX7jhSQE2ew85GkApQn2t5UmxaPTrh0XpR8UhmSSipZnDgozIRgj13NjR2rEgNykqc9aQinKWp~CagLw05y9YmvQNjWwOp49dJ77lLCh8OJJdbRaa3yqrkXAmZi1vFsI2w7JNWGZV7zl5FsCGigqIkISjFXpFTFf-rKF6ss19JQSxg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.tutorial-img-4 {
+    width: 50%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/8127/00db/5bf602dc52c8d26d5f9723e9616d742a?Expires=1683504000&Signature=PUmjXgQ6uRsd5pZ92lbTkRtK1DXwTujQJFBPbAAC~K9IWurRrBuqhs7YaUa6LvjOCJA~JxQhTNK~sLRueh-f07NDW7mdid~Rzv5Q0bMbMPZfR7G0JqXTgCrVPtlHQ9oA55BQb7wPQ-ryFAee8ZPZbLNL8rNnvd5Kfov5tIgSUUsE~IDbxekS2t80LIElEe1Dw-08WYhWhTKXLEQIrHFOcpmyKIJKdJt-djG3V9TYQFtr9xUUiGh-6TSTXvRBvM2NPkfM-tPrSCMHSRyWjc2HzzeBrpYLmPDpHttqEHl00YAVgEZOmyagXM0DnefC61SJIGkihuH4X3HvTUuQJ36Jxw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.tutorial-img-5 {
+    width: 50%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/8498/18c6/2cf968eb1e9395428f4d46379485100b?Expires=1683504000&Signature=aBlzhCVUPLe16~bZ7~srIjqfUoOrjei3mHqXVbPaJk1Wd2kGq20cdmd~4GEYsXY9djJu5x0f8qJmbEGYOdzPsmaQUH2IeQaxbMRcThWH4Cp~y1uFH5t5TYyZSAlNOm5E4wHz2ggKBI-28z1gEar8BM3gn-sVCmsoRFyFPb0KHqpzpf7RB5YxRWJ8wgucgCQy1oHcPncNfgM7nBtrU1f9W0L~CgNKHi12cg-CVYxdHJsA9TAI52ttJxkWQaRAcevLiZRvPODBE5-zmrppKxB0335maLEZ5b1I~~nHiukufSXAfKmX3PyScEOK0SFdYtcCjnkgw2efPG2oooQV9XMpbw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.tutorial-img-6 {
+    width: 50%;
+    background-image: url("https://s3-alpha-sig.figma.com/img/ed5f/d869/29725311252bccbb689685cb3f05c532?Expires=1683504000&Signature=IFQ3hl8PgtOU3oyYVTlrdwJpeO7m4tjVQ3yIsBvF5cMzZPrwfS3Rlga68L2uXW9DySVEwfU873kxlgexLx7NjlVhno2spKVs4ZmxwF4FfCKq~VLig~MzEoSufqmWVSSEZ7w7D4Kacf678DYgHNziQbHKVz18On~XgXjBOMVlqvjbeTuGRcUiDTT8Wnd9vSUhp3yzpHwVZtNrAm1WFSqAIL6yNe97hAfHl7gmIIolwW8lzaVn1nIttfJPv0lJy9lWVHGX7WTSBUAbZ9GyV7Ly1NCo2sXQ1xQLgQzrU9D7P~5ZL4r8jEYEv2bOGiaixn86lgCW5aDPEgNp5sv-AwWFWA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0px 11px 20px 0px rgba(5, 16, 55, 0.1);
+}
+.tutorial-txt-div {
+    width: 50%;
+    padding-top: 50px;
+}
+.tutorial-title-txt {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.tutorial-content-txt {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.txt-right {
+    text-align: right;
+}
 .search-div {
     width: 100%;
     height: 30px;
