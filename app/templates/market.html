@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/lifeverse.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
   </head>
 
   <body>
@@ -14,19 +15,21 @@
     <div class="page-frame">
 
         <div class="scroll-div">
-            <img class="head-img" src="/static/data/tree.jpeg" />
+            <!-- <img class="head-img" src="/static/data/tree.jpeg" /> -->
             <div class="item-display-div">
                 {% for k, v in itemInfo.items() %}
                     <a href="item/{{v.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
                             <img src={{v.itemImg}} class="display-image"/>
                             <p class="display-name">{{v.itemName}}</p>
-                            <p class="display-price">HKD {{v.itemPrice}}</p>
-                            <div style="display: flex; flex-direction: row;">
-                                <i class="material-icons" style="font-size: 20px; color: green;">park</i>
-                                <progress id="file" value="32" max="100"> 32% </progress>
-                                <p class="progress-value">32%</p>
-                            </div>
+                            <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
+                            <p class="green-value">32</p>
+                            <span class="material-symbols-outlined green-icon" style="font-size: 35px;">
+                                psychiatry
+                            </span>
+                            <span class="material-symbols-outlined bargain-icon">
+                                gavel
+                            </span>
                         </div>
                     </a>
                     {% endfor %}
@@ -36,13 +39,12 @@
         <div class="home-top">
             <div class="top-logo">
                 <img src="/static/data/ReUST-logo.jpeg"/>
-                <p class="logo-font">ReUST</p>
+                <p class="logo-font">LIFE2</p>
             </div>
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                 <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
                 <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
-                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
             </div>
             <div class="top-buttons">
                     {% if userStatus == True %}

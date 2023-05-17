@@ -11,7 +11,10 @@ market = Blueprint('market',__name__)
 @market.route('/', methods=['POST', 'GET'])
 def home():
     if "email" in session: userStatus = True
-    else: userStatus = False
+    else: 
+        userStatus = False
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
 
     cate = request.args.get('cate')
     maxprice = request.args.get('maxprice')
@@ -120,7 +123,10 @@ def giveitem():
 def item(itemID):
     item = itemdb.findItem(itemID)
     if "email" in session: userStatus = True
-    else: userStatus = False
+    else: 
+        userStatus = False
+        session['oauth_origin'] = request.full_path
+        return redirect(url_for('auth.google_login'))
 
     if not item:
         return "Record not found", 400

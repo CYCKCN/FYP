@@ -3,7 +3,63 @@
   }
   body {
     font-size: 14px;
-    background-color: gray;
+    background-color: white;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .background-img {
+    position: absolute;
+    bottom: 0%;
+    right: -35px;
+    animation-name: slide-in;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes slide-in {
+    0%   {right: -300px;}
+    100% {right: -35px;}
+  }
+  .logo-img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    animation-name: show-up;
+    animation-duration: 1.5s;
+  }
+  @keyframes show-up {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  .login-button {
+    position: absolute;
+    font-size: 15px;
+    background: var(--logoGreen1);
+    color: white;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius: 5px;
+    border: none;
+    width: 40%;
+    margin-left: 5%;
+    top: 65%;
+    height: 40px;
+    cursor: pointer;
+    animation-name: show-up;
+    animation-duration: 1.5s;
+  }
+  .login-button:hover{
+    background: var(--logoGreen2);
+  }
+  .intro-txt{
+    position: absolute;
+    width: 30%;
+    margin-left: 10%;
+    top: 45%;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: black;
+    animation-name: show-up;
+    animation-duration: 1.5s;
   }
   .home-top {
     position: absolute;
@@ -246,22 +302,6 @@
     overflow: hidden;
     border-radius: 40px 40px 0px 0px;
   }
-  .login-button {
-    width: 328px;
-    height: 40px;
-    font-family: 'Alatsi';
-    color: white;
-    background: var(--mainGreen1);
-    opacity: 1;
-    position: absolute;
-    left: 0px;
-    top: 200px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    overflow: hidden;
-  }
   .logo {
     width: 156px;
     height: 96px;
@@ -461,4 +501,9 @@
     
     --mainGrey1: #6C6A6A;
     --mainGrey2: #F2F2F2;
+
+    --logoGreen1: #73A8AC;
+    --logoGreen2: #8FC7AB;
+    --logoGreen3: #C3DEA9;
+    --logoYellow: #F4EFBA;
   }

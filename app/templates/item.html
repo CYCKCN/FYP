@@ -8,31 +8,26 @@
 
   <body>
     <form method="POST">
-    <div class="page-frame">
-        <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg"/>
-                <p class="logo-font">ReUST</p>
-            </div>
-            <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
-                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
-            </div>
-            <div class="top-buttons">
-                    {% if userStatus == True %}
-                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    {% else %}
-                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
-                    {% endif %}
-            </div>
-        </div>
+        
 
+        <div class="item-info-card">
+            <img src="{{item['itemImg']}}" class="item-img"/>
+            <div>
+                <p class="item-name">{{item["itemName"]}}</p>
+            <!-- <p class="">{{item["itemCate"]}}</p> -->
+            <p class="item-price">HKD {{item["itemPrice"]}}</p>
+            <p class="item-info">{{item["itemInfo"]}}</p>
+            <p class="item-owner">Seller Email: <span style="font-weight: 600;">{{item["itemOwner"]}}</span></p>
+            <p class="item-location">Pick-up Location: <span style="font-weight: 600;">{{item["itemPickUp"]}}</span></p>
+            <p>Additional Information</p>
+            </div>
+            
+        </div>
         <div class="scroll-div">
+
             <div class="item-image">
                 <div>
-                    <img src="{{item['itemImg']}}" height="400"/>
+                    
                 </div>
                 
                 <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
@@ -45,22 +40,27 @@
                 </div>
                 
             </div>
-
-            <div class="info-pack">
-                <div class="question-box">
-                    <p class="item-name">{{item["itemName"]}}</p>
-                    <!-- <p class="">{{item["itemCate"]}}</p> -->
-                    <p class="item-price">HKD {{item["itemPrice"]}}</p>
-                    <p class="item-info">{{item["itemInfo"]}}</p>
-                </div>   
-                <div class="seller-info">
-                    <p class="item-owner">Seller Email: <span style="font-weight: 600;">{{item["itemOwner"]}}</span></p>
-                    <p class="item-location">Pick-up Location: <span style="font-weight: 600;">{{item["itemPickUp"]}}</span></p>
-                </div>
-            </div>
             
         </div>
-    </div>
+
+        <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg"/>
+                <p class="logo-font">LIFE2</p>
+            </div>
+            <div class="top-buttons-left">
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
+                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
+            </div>
+            <div class="top-buttons">
+                    {% if userStatus == True %}
+                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                    {% else %}
+                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
+                    {% endif %}
+            </div>
+        </div>
     </form>
     </body>
     <script>

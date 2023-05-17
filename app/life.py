@@ -10,7 +10,9 @@ life = Blueprint('life',__name__)
 
 @life.route('/', methods=['POST', 'GET'])
 def home():
-    if "email" in session: userStatus = True
+    if "email" in session: 
+        userStatus = True
+        return redirect(url_for('market.home'))
     else: userStatus = False
 
     if request.method == 'POST':
@@ -43,7 +45,7 @@ def home():
         if furnitures == 'Furnitures':
             return redirect(url_for('market.home', cate='Furnitures'))
         
-    return render_template('tree.html', userStatus=userStatus)
+    return render_template('login.html', userStatus=userStatus)
 
 @life.route('/profile', methods=['POST', 'GET'])
 def profile():
@@ -193,9 +195,10 @@ def chat(chatID):
         session['oauth_origin'] = request.full_path
         return redirect(url_for('auth.google_login'))
     
-    item = itemdb.findItem(chat["chatItem"])
+    
 
     chat = chatdb.findChatByID(chatID)
+    item = itemdb.findItem(chat["chatItem"])
     chat["sendBy"] = session["email"]
     if chat["chatBuyer"] == session["email"]:
         chat["sendTo"] = accountdb.findUserName(item["itemOwner"])

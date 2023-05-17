@@ -2,8 +2,42 @@ html, body {
     min-height: 100%;
     min-width: 100%;
 }
+body {
+    background: var(--logoGreen2);
+}
 a { color: inherit; } 
-
+.green-icon {
+    color: var(--logoGreen2);
+    position: absolute;
+    bottom: -5px;
+    right: 5px;
+}
+.bargain-icon {
+    color: black;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: white;
+    border-radius: 2px;
+}
+.display-name {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: 15px;
+    line-height: 0%;
+    color: black;
+    padding-left: 0px;
+    width: 100%;
+}
+.green-value {
+    position: absolute;
+    color: var(--logoGreen1);
+    bottom: 8px;
+    font-weight: 700;
+    right: 10px;
+}
 progress {
     border: 0;
     margin-top: 6px;
@@ -87,9 +121,8 @@ hr.rounded {
     width: 80%;
     margin-left: 10%;
     position: relative;
-    margin-top: 10px;
+    margin-top: 150px;
     height: fit-content;
-
     border-spacing:0px;
     display: grid;
     grid-template-columns: 19% 19% 19% 19% 19%;
@@ -98,7 +131,7 @@ hr.rounded {
 }
 .on-sale-block {
     display: table-cell;
-    background: none;
+    background: white;
     position: relative;
     width: 19%;
     height: 250px;
@@ -112,7 +145,7 @@ hr.rounded {
     top: 0px;
     margin-top: 0px;
     margin-bottom: 10px;
-    border-radius: 5px 5px;
+    border-radius: 5px 5px 0px 0px;
     object-fit: cover;
     object-position: 0px 0px;
 }
@@ -123,16 +156,7 @@ hr.rounded {
     padding-left: 0px;
     width: 100px;
 }
-.display-name {
-    font-family: sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    margin-top: 5px;
-    line-height: 0%;
-    color: black;
-    padding-left: 0px;
-    width: 100%;
-}
+
 .display-price {
     font-family: sans-serif;
     font-size: 12px;
@@ -418,4 +442,9 @@ hr.rounded {
 
     --logoGreen: #73A8AC;
     --fontGrey: #373737;
+
+    --logoGreen1: #73A8AC;
+    --logoGreen2: #8FC7AB;
+    --logoGreen3: #C3DEA9;
+    --logoYellow: #F4EFBA;
 }
