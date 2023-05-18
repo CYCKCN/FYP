@@ -3,7 +3,45 @@ html, body {
     min-width: 100%;
 }
 body {
-    background: var(--logoGreen2);
+    background: var(--logoGreen3);
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.collapsible {
+    background: none;
+    color: #777;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+.collapsible p {
+    padding-top: 18px;
+    padding-left: 3px;
+    padding-right: 10px;
+    line-height: 14px;
+    font-size: 14px;
+    width: fit-content;
+}
+.filter-icon {
+    padding: 10px;
+    border: none;
+}
+.active, .collapsible:hover {
+    color: var(--logoGreen3);
+}
+.content {
+    padding: 0 18px;
+    display: block;
+    overflow: hidden;
+    background-color: #f1f1f1;
 }
 a { color: inherit; } 
 .green-icon {
@@ -37,6 +75,123 @@ a { color: inherit; }
     bottom: 8px;
     font-weight: 700;
     right: 10px;
+}
+.individual-button {
+    background: none;
+    border: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 20px;
+    color: black;
+}
+.dropbtn {
+    background-color: var(--logoGreen1);
+    color: white;
+    padding: 16px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    width: 100px;
+    height: 50px;
+}
+.profile-icon {
+    color: black;
+    padding: 10px;
+    border: none;
+    width: 50px;
+    height: 50px;
+    background: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    background: none;
+}
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+.dropdown-content button {
+    width: 100%;
+    color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: none;
+}
+.dropdown-content button:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: var(--logoGreen3);}
+.dropdown:hover .profile-icon {color: var(--logoGreen3);}
+
+.header {
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    margin-top: 50px;
+    display: none;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes slide-in {
+    0%   {top: -100px;}
+    100% {top: 0px;}
+}
+.search-div {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    left: 10%;
+    background: none;
+}
+.filter-div {
+    width: 80%;
+    height: 30px;
+    position: relative;
+    left: 10%;
+    margin-top: 20px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+.scroll-div {
+    margin-top: 0px;
+    position: relative;
+    overflow-y: scroll;
+    height: 794px;
+    width: 100%;
+    background: none;
+}
+.scroll-div::-webkit-scrollbar {
+    display: none;
+}
+.item-display-div {
+    width: 80%;
+    margin-left: 10%;
+    position: relative;
+    margin-top: 60px;
+    height: fit-content;
+    border-spacing:0px;
+    display: grid;
+    grid-template-columns: 19% 19% 19% 19% 19%;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 progress {
     border: 0;
@@ -98,15 +253,7 @@ hr.rounded {
     padding-top: 0px;
     background: white;
 }
-.header {
-    width: 100%;
-    height: fit-content;
-    background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: fixed;
-    margin-top: 50px;
-}
+
 
 .head-img {
     margin-top: 130px;
@@ -117,18 +264,7 @@ hr.rounded {
     object-fit: cover;
     object-position: 0px 0px;
 }
-.item-display-div {
-    width: 80%;
-    margin-left: 10%;
-    position: relative;
-    margin-top: 150px;
-    height: fit-content;
-    border-spacing:0px;
-    display: grid;
-    grid-template-columns: 19% 19% 19% 19% 19%;
-    column-gap: 10px;
-    row-gap: 10px;
-}
+
 .on-sale-block {
     display: table-cell;
     background: white;
@@ -287,59 +423,28 @@ hr.rounded {
 .logo-font {
     font-family: sans-serif;
     color: var(--logoGreen);
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 20px;
     margin-left: 10px;
-    margin-top: 17px;
-}
-.individual-button {
+    margin-top: 15px;
     background: none;
-    border: none;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 20px;
-    color: black;
 }
+
 .welcoming {
     font-family: sans-serif;
     font-size: 16px;
     margin: 20px;
     color: black;
 }
-.scroll-div {
-    margin-top: 30px;
-    position: relative;
-    overflow-y: scroll;
-    height: 794px;
-    width: 100%;
-    background: none;
-}
+
 
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
 }
-.scroll-div::-webkit-scrollbar {
-    display: none;
-}
-.search-div {
-    width: 100%;
-    height: 30px;
-    position: relative;
-    left: 10%;
-    margin-top: 10px;
-}
-.filter-div {
-    width: 80%;
-    height: 30px;
-    position: relative;
-    left: 10%;
-    margin-top: 20px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-}
+
+
 .search {
     width: 80%;
     height: 40px;

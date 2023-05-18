@@ -62,8 +62,10 @@ def home():
         if apply == "Apply" or itemName:
             return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
 
-        if create == 'Create':
+        if create == 'Create-item':
             return redirect(url_for('market.giveitem'))
+        if create == 'Create-request':
+            return redirect(url_for('demand.demandcreate'))
 
     # print(price)
     return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
@@ -78,6 +80,7 @@ def giveitem():
     itemImg = ""
     itemForm = ItemForm()
     invalidDict = {"name": False, "price": False, "info": False, "pickup": False, "cate": False, "img": False}
+
     if request.method == 'POST':
         submit = request.form.get('create-contract')
         selected_cate = category = request.form.get('Category')

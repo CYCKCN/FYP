@@ -36,26 +36,6 @@
             </div>
         </div>
 
-        <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg"/>
-                <p class="logo-font">LIFE2</p>
-            </div>
-            <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
-            </div>
-            <div class="top-buttons">
-                    {% if userStatus == True %}
-                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    {% else %}
-                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
-                    {% endif %}
-                    <button class="individual-button" type="submit" name="Create" value="Create">Create</button>
-            </div>
-        </div>
-
         <div class="header" id="myHeader">
             <div class="search-div">
                 <input class="search" type="search" name="search-keyword" placeholder="{{search}}"/>
@@ -87,6 +67,61 @@
                 <button class="button-option" type="submit" name="Clear" value="Clear">Clear</button>
             </div>
         </div>
+
+        <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg" height="50px"/>
+                <p class="logo-font">LIFE2</p>
+            </div>
+            <!-- <div class="top-buttons-left">
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
+                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
+            </div> -->
+            <div class="top-buttons">
+                    {% if userStatus == True %}                  
+                    <div class="dropdown">
+                        <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                            <span class="material-symbols-outlined" style="font-size: 30px;">
+                                account_circle
+                            </span>
+                        </button>
+                    </div>
+                    {% endif %}
+                    <div class="dropdown">
+                        <button class="dropbtn">Create</button>
+                        <div class="dropdown-content">
+                            <button type="submit" name="Create" value="Create-item">I have!</button>
+                            <button type="submit" name="Create" value="Create-request">I need!</button>
+                        </div>
+                    </div>
+                    <button type="button" class="collapsible">
+                        <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
+                            tune
+                        </span>
+                        <p>Filtering...</p>
+                    </button>
+            </div>
+        </div>
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+            
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = document.getElementsByClassName("header");
+                var itemDisplay = document.getElementsByClassName("item-display-div");
+                if (content[0].style.display === "block") {
+                    content[0].style.display = "none";
+                    itemDisplay[0].style.marginTop = "60px";
+                } else {
+                    content[0].style.display = "block";
+                    itemDisplay[0].style.marginTop = "160px";
+                }
+              });
+            }
+        </script>
     </div>
 
     
