@@ -1295,6 +1295,7 @@
       margin-left: 20px;
       margin-top: 10px;
   }
+  
   .create-style {
     position: absolute;
     bottom: 20px;
@@ -1309,6 +1310,9 @@
     border-radius: 10px;
     cursor: pointer;
     margin-left: 10px;
+  }
+  .create-style:active {
+    background: var(--mainGreen3);
   }
   .account-style {
     position: absolute;
@@ -1354,9 +1358,7 @@
     width: 370px;
     margin-left: 10px;
 }
-  .create-style:active {
-    background: var(--mainGreen3);
-  }
+
   .account-style:active {
     background: var(--mainBlue2);
   }

@@ -31,6 +31,10 @@ def home():
 
     return render_template('login.html', userStatus=userStatus)
 
+@life.route('/aboutus', methods=['POST', 'GET'])
+def aboutus():
+    return render_template('tree.html')
+
 @life.route('/profile', methods=['POST', 'GET'])
 def profile():
     if "email" not in session:

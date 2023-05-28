@@ -6,6 +6,8 @@
     background-color: white;
     overflow-y: hidden;
     overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
   }
   .background-img {
     position: absolute;
@@ -14,6 +16,10 @@
     animation-name: slide-in;
     animation-duration: 1.5s;
     animation-timing-function: ease-in-out;
+  }
+  .life2-anim {
+    width: 100%;
+    /* height: 100%; */
   }
   @keyframes slide-in {
     0%   {right: -300px;}
