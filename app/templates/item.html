@@ -90,6 +90,15 @@ The owner will reply you in 8h42s.
                 </pre>
             </div>
 
+            <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
+                    
+                {% if item["itemStatus"] == "Available" %}
+                    <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
+                {% else %}
+                    <button name="Reserve" value="Reserve" class="create-style" disabled>Reserved</button>
+                {% endif %}
+            </div>
+            
             <div class="form-popup" id="myForm">
                 <!-- <form action="/action_page.php" class="form-container"> -->
 
