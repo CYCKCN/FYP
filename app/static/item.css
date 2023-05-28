@@ -7,11 +7,228 @@ html, body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 800px;
+    height: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+.life2-anim {
+    width: 200px;
+    /* height: 100%; */
+  }
+.user-div {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+.chat-icon {
+    background: none;
+    color: black;
+    border: none;
+    padding: 10px;
+    margin-left: 5px;
+    width: fit-content;
+    height: 50px;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.chat-icon:hover {
+    color: var(--logoGreen3);
+}
+.interactive-div {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+    height: 300px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+.green-value-div {
+    width: 30%;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    background: none;
+}
+.green-value {
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 600;
+    position: absolute;
+    margin-top: 60px;
+    left: 15%;
+    padding-left: 50px;
+    color: var(--logoGreen2);
+}
+.green-icon {
+    position: absolute;
+    left: 10%;
+    bottom: -5px;
+    width: fit-content;
+    height: fit-content;
+    background: none;
+    color: var(--logoGreen2);
+}
+.vl {
+    border-left: 6px solid green;
+    height: 50px;
+    position: relative;
+    margin-left: 100px;
+    margin-top: 0%;
+  }
+.price-div {
+    width: 50%;
+    background: var(--mainGrey2);
+    overflow-y: scroll;
+    display: none;
+}
+.price-block {
+    width: 90%;
+    margin-left: 5%;
+    height: 30px;
+    border-radius: 10px;
+    background: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.reject{
+    color: red;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 280px;
+}
+.item-price {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 20px;
+    color: black;
+    line-height: 16px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+    
+.price-div::-webkit-scrollbar {
+    display: none;
+}
+.interaction-div {
+    position: absolute;
+    right: 10%;
+    width: fit-content;
+    border: none;
+    background: none;
+    color: black;
+    cursor: pointer;
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+}
+.hand-icon:hover{
+    color: var(--logoGreen3);
+}
+.create-style {
+    width: 250px; 
+    height: 40px; 
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 40px;
+    border: none;
+    background: var(--logoGreen);
+    color: white;
+    font-family: 'Alatsi';
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .create-style:hover {
+    background: var(--mainGreen3);
+  }
+  .create-style:disabled {
+      background: var(--mainGreen3);
+  }
 .item-info-card {
     width: 80%;
     height: 400px;
     border-radius: 20px;
-    background: yellow;
+    background: var(--mainGrey2);
     margin-left: 10%;
     margin-top: 80px;
     position: relative;
@@ -24,6 +241,88 @@ html, body {
     border-radius: 20px 0px 0px 20px;
     object-fit: cover;
     object-position: 0px 0px;
+}
+.item-name{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    line-height: 20px;
+}
+.item-static-info {
+    margin: 20px;
+    height: max-content;
+    width: max-content;
+    background: none;
+}
+.tag-div {
+    display: flex;
+    flex-direction: row;
+}
+.item-quality-tag {
+    border: 1px solid var(--logoGreen1);
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: fit-content;
+    background: var(--logoGreen1);
+    color: white;
+}
+.item-cate-tag {
+    border: 1px solid var(--logoGreen3);
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 5px;
+    width: fit-content;
+    background: var(--logoGreen3);
+    color: black;
+}
+.item-info {
+    font-family: 'Alatsi';
+    font-size: 14px;
+    color: black;
+}
+.item-owner {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    line-height: 0%;
+}
+.item-location {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    color: black;
+    background: none;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+.location-div{
+    display: flex;
+    flex-direction: row;
+}
+.item-time {
+    font-size: 14px;
+    color: black;
+    font-family: sans-serif;
+    line-height: 14px;
+    font-weight: 600;
 }
 .font-class {
     font-family: 'Alatsi';
@@ -138,25 +437,7 @@ html, body {
     display: flex;
     flex-direction: row-reverse;
 }
-.create-style {
-    width: 250px; 
-    height: 40px; 
-    margin-bottom: 10px;
-    text-align: center;
-    line-height: 40px;
-    border: none;
-    background: var(--logoGreen);
-    color: white;
-    font-family: 'Alatsi';
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  .create-style:hover {
-    background: var(--mainGreen3);
-  }
-  .create-style:disabled {
-      background: var(--mainGreen3);
-  }
+
 .suggest-btn {
     width: 90%; 
     height: 40px; 
@@ -207,44 +488,10 @@ html, body {
     margin: 20px;
     color: black;
 }
-.item-info {
-    font-family: 'Alatsi';
-    font-size: 16px;
-    margin: 20px;
-    color: black;
-}
-.item-name{
-    font-family: sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin-left: 20px;
-    color: black;
-    line-height: 0%;
-}
-.item-price {
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    margin-left: 20px;
-    color: black;
-    line-height: 0%;
-}
-.item-owner {
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    margin-left: 20px;
-    color: black;
-    line-height: 0%;
-}
-.item-location {
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    margin-left: 20px;
-    color: black;
-    line-height: 0%;
-}
+
+
+
+
 .question-box {
     margin-top: 20px;
     width: 700px;
@@ -427,6 +674,11 @@ html, body {
     
     --logoGreen: #73A8AC;
     --fontGrey: #373737;
+
+    --logoGreen1: #73A8AC;
+    --logoGreen2: #8FC7AB;
+    --logoGreen3: #C3DEA9;
+    --logoYellow: #F4EFBA;
 }
 
 

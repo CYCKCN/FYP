@@ -22,6 +22,7 @@ def home():
         market = request.form.get('market')
         # piazza = request.form.get('piazza')
         demand = request.form.get('demand')
+        aboutus = request.form.get('AboutUs')
 
         electronics = request.form.get('Electronics')
         clothing = request.form.get('Clothing')
@@ -44,8 +45,14 @@ def home():
         
         if furnitures == 'Furnitures':
             return redirect(url_for('market.home', cate='Furnitures'))
+        if aboutus == 'AboutUs':
+            return redirect(url_for('life.aboutus', cate='Furnitures'))
         
     return render_template('login.html', userStatus=userStatus)
+
+@life.route('/aboutus', methods=['POST', 'GET'])
+def aboutus():
+    return render_template('tree.html')
 
 @life.route('/profile', methods=['POST', 'GET'])
 def profile():

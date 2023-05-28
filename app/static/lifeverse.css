@@ -3,7 +3,7 @@ html, body {
     min-width: 100%;
 }
 body {
-    background: var(--logoGreen3);
+    background: linear-gradient(180deg, rgba(143,199,171,1) 0%, rgba(195,222,169,1) 35%, rgba(244,239,186,1) 100%);
 }
 body::-webkit-scrollbar {
     display: none;
