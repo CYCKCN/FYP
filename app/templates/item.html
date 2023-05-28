@@ -84,6 +84,11 @@
                 
                 
             </div> -->
+            <div class="status-div" id="replyStatus">
+                <pre>You have submited one price at 12:39 on May 29.
+The owner will reply you in 8h42s.
+                </pre>
+            </div>
 
             <div class="form-popup" id="myForm">
                 <form action="/action_page.php" class="form-container">
@@ -94,12 +99,12 @@
                     <label for="user-notes"><b>Notes</b></label>
                     <input type="text" placeholder="Any notes for the owner?" name="user-notes">
 
-                    <button type="submit" class="btn">Submit</button>
+                    <button type="submit" class="btn" onclick="statusAfter()">Submit</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                 </form>
             </div>
                
-            <button class="interaction-div" onclick="openForm()">
+            <button class="interaction-div" id="priceButton" onclick="openForm()">
                 
                 <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
                     back_hand
@@ -114,6 +119,11 @@
 
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
+            }
+
+            function statusAfter() {
+                document.getElementById("priceButton").style.display = "none";
+                document.getElementById("replyStatus").style.display = "block";
             }
         </script>
         
