@@ -12,11 +12,11 @@ from db import accountdb
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/google_login', methods=['GET', 'POST'])
-def google_login():
-    authorization_url, state = flow.authorization_url()
-    session["state"] = state
-    return redirect(authorization_url)
+# @auth.route('/google_login', methods=['GET', 'POST'])
+# def google_login():
+#     authorization_url, state = flow.authorization_url()
+#     session["state"] = state
+#     return redirect(authorization_url)
 
 # @auth.route('/login', methods=['GET', 'POST'])
 # def login():
@@ -50,31 +50,31 @@ def google_login():
 
 #     return render_template('login.html')
 
-@auth.route("/callback")
-def callback():
-    flow.fetch_token(authorization_response=request.url)
+# @auth.route("/callback")
+# def callback():
+#     flow.fetch_token(authorization_response=request.url)
 
-    # if not session["state"] == request.args["state"]:
-    #     abort(500)  # State does not match!
+#     # if not session["state"] == request.args["state"]:
+#     #     abort(500)  # State does not match!
 
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
+#     credentials = flow.credentials
+#     request_session = requests.session()
+#     cached_session = cachecontrol.CacheControl(request_session)
+#     token_request = google.auth.transport.requests.Request(session=cached_session)
 
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID
-    )
+#     id_info = id_token.verify_oauth2_token(
+#         id_token=credentials._id_token,
+#         request=token_request,
+#         audience=GOOGLE_CLIENT_ID
+#     )
 
-    session["email"] = id_info.get("email")
-    session["name"] = id_info.get("name")
+#     session["email"] = id_info.get("email")
+#     session["name"] = id_info.get("name")
 
-    account = accountdb.findUser(session["email"])
-    if not account: signupInfo = accountdb.signup(session["name"], session["email"])
-    if 'oauth_origin' in session: return redirect(session['oauth_origin'])
-    else: return redirect(url_for('life.home'))
+#     account = accountdb.findUser(session["email"])
+#     if not account: signupInfo = accountdb.signup(session["name"], session["email"])
+#     if 'oauth_origin' in session: return redirect(session['oauth_origin'])
+#     else: return redirect(url_for('life.home'))
 
 # @auth.route('/signup', methods=['GET', 'POST'])
 # def signup():

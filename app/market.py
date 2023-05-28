@@ -4,7 +4,7 @@ from flask import Blueprint, request, session, redirect, render_template, url_fo
 from werkzeug.utils import secure_filename
 
 from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
-from db import itemdb, requestdb, accountdb, chatdb
+from db import itemdb, requestdb, accountdb, chatdb, bargaindb
 
 market = Blueprint('market',__name__)
 
@@ -14,7 +14,7 @@ def home():
     else: 
         userStatus = False
         session['oauth_origin'] = request.full_path
-        return redirect(url_for('auth.google_login'))
+        return redirect(url_for('life.login'))
 
     cate = request.args.get('cate')
     maxprice = request.args.get('maxprice')
@@ -129,7 +129,7 @@ def item(itemID):
     else: 
         userStatus = False
         session['oauth_origin'] = request.full_path
-        return redirect(url_for('auth.google_login'))
+        return redirect(url_for('life.login'))
 
     if not item:
         return "Record not found", 400
@@ -149,7 +149,7 @@ def item(itemID):
                 return render_template('item.html', item=item, userStatus=userStatus)
             else:
                 session['oauth_origin'] = request.full_path
-                return redirect(url_for('auth.google_login'))
+                return redirect(url_for('life.login'))
         
         contact = request.form.get('Contact')
         if contact == "Contact":
@@ -162,8 +162,19 @@ def item(itemID):
                 return redirect(url_for('life.chat', chatID=chat["chatID"]))
             else:
                 session['oauth_origin'] = request.full_path
-                return redirect(url_for('auth.google_login'))
-
+                return redirect(url_for('life.login'))
+        
+        price = request.form.get('user-price')
+        notes = request.form.get('user-notes')
+        submit = request.form.get('submit')
+        # print(price, notes, submit)
+        if submit == "submit":
+            # print(price, notes, submit)
+            bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
+            if not bargain:
+                bargaindb.createBargain(itemID, session['email'])
+            bargaindb.sendBargain(itemID, session['email'], session['email'], price, notes)
+                
     return render_template('item.html', item=item, userStatus=userStatus)
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])

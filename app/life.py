@@ -16,18 +16,20 @@ def home():
     else: userStatus = False
 
     if request.method == 'POST':
-    #     button = buttonCheck(request.form)
-    #     if button: return button
         login_btn = request.form.get('Login')
         email = request.form.get('email')
         if login_btn == "Login": 
             session['email'] = email
             userStatus = True
+
             account = accountdb.findUser(session["email"])
-            if not account: signupInfo = accountdb.signup(session["email"])
-            return redirect(url_for('market.home'))
-            # session['oauth_origin'] = request.full_path
-            # return redirect(url_for('auth.google_login'))
+            if not account: 
+                accountdb.signup(session["email"])
+                
+            if 'oauth_origin' in session: 
+                return redirect(session['oauth_origin'])
+            else: 
+                return redirect(url_for('market.home'))
 
     return render_template('login.html', userStatus=userStatus)
 
@@ -182,7 +184,6 @@ def chat(chatID):
     if "email" not in session:
         session['oauth_origin'] = request.full_path
         return redirect(url_for('auth.google_login'))
-    
     
 
     chat = chatdb.findChatByID(chatID)
