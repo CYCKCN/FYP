@@ -35,8 +35,7 @@ client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
-    # redirect_uri="http://www.life2.space/auth/callback"
-    redirect_uri="http://127.0.0.1:8000/auth/callback"
+    redirect_uri="http://life2.space/auth/callback"
 )
 
 def allowed_file(filename):
@@ -62,11 +61,8 @@ class User(UserMixin):
         return self.email
     
 class Account(object):
-    def __init__(self, name, email):
-        self.accountName = name # "name"
+    def __init__(self, email):
         self.accountEmail = email # "university email"
-        self.accountTel = ""
-        self.accountIntro = ""
 
 class Item(object):
     def __init__(self, id, owner, name, price, category, info, image_path, pickup_location, status="Available", reservedby="", reservedtime=''):
@@ -110,6 +106,13 @@ class Chat(object):
         self.chatBuyer = buyerEmail
         self.chatCreated = created_time
         self.chatInfo = chatInfo
+
+class Bargain(object):
+    def __init__(self, buyerEmail, itemID, created_time, bargainInfo=[]):
+        self.bargainFrom = buyerEmail
+        self.bargainItem = itemID
+        self.bargainCreated = created_time
+        self.bargainInfo = bargainInfo # [(sendby, create time, bargain price, notes)]
 
 class Story(object):
     def __init__(self, storyID, itemID, useremail, created_time, image_path, intro):

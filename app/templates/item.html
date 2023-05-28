@@ -91,7 +91,7 @@ The owner will reply you in 8h42s.
             </div>
 
             <div class="form-popup" id="myForm">
-                <form action="/action_page.php" class="form-container">
+                <!-- <form action="/action_page.php" class="form-container"> -->
 
                     <label for="user-price"><b>Price</b></label>
                     <input type="number" placeholder="Enter your intended price" name="user-price" required>
@@ -99,9 +99,9 @@ The owner will reply you in 8h42s.
                     <label for="user-notes"><b>Notes</b></label>
                     <input type="text" placeholder="Any notes for the owner?" name="user-notes">
 
-                    <button type="submit" class="btn" onclick="statusAfter()">Submit</button>
+                    <button type="submit" class="btn" name="submit" value="submit" onclick="statusAfter()">Submit</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                </form>
+                <!-- </form> -->
             </div>
                
             <button class="interaction-div" id="priceButton" onclick="openForm()">

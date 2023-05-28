@@ -42,7 +42,7 @@ app.register_blueprint(life, url_prefix='/life')
 app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(market, url_prefix='/market')
 # webpage.register_blueprint(piazza, url_prefix='/piazza')
-app.register_blueprint(demand, url_prefix='/demand')
+# app.register_blueprint(demand, url_prefix='/demand')
 
 @app.route("/")
 def main():

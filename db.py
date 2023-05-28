@@ -1,6 +1,6 @@
 
 from pymongo.mongo_client import MongoClient
-from utils import Account, User, Item, Request, Chat, Story, randomID, IDLENGTH, UNIADDR
+from utils import Account, User, Item, Request, Chat, Story, Bargain, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -26,20 +26,20 @@ class AccountDB():
         if account is None: return "Err: Not Registered!"
         return account["accountName"]
     
-    def login(self, accountEmail, accountPw):
-        account = self.db.find_one({"accountEmail": accountEmail})
-        if account is None: 
-            return "Err: Not Registered!"
-        elif check_password_hash(account["accountPw"], accountPw) == False:
-            return "Err: Wrong Password!"
-        else:
-            return "Info: Login successfully!"
+    # def login(self, accountEmail, accountPw):
+    #     account = self.db.find_one({"accountEmail": accountEmail})
+    #     if account is None: 
+    #         return "Err: Not Registered!"
+    #     elif check_password_hash(account["accountPw"], accountPw) == False:
+    #         return "Err: Wrong Password!"
+    #     else:
+    #         return "Info: Login successfully!"
         
-    def signup(self, accountName, accountEmail):
+    def signup(self, accountEmail):
         # print(accountName, accountPw, accountEmail, accountUni)
         if self.db.find_one({"accountEmail": accountEmail}):
             return "Err: Account Exists!"
-        newAccount = Account(accountName, accountEmail)
+        newAccount = Account(accountEmail)
         self.db.insert_one(newAccount.__dict__)
         return "Info: Register USER Account Successfully"
 
@@ -204,6 +204,30 @@ class ChatDB():
             counter += 1
         return chatInfo
     
+class BargainDB():
+    def __init__(self, db):
+        self.db = db["bargain"]
+
+    def cleardb(self):
+        self.db.delete_many({})
+
+    def findBargainByBuyer(self, itemID, buyerEmail):
+        return self.db.find_one({"bargainItem": itemID, "bargainFrom": buyerEmail})
+    
+    def createBargain(self, itemID, buyerEmail):
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        newB = Bargain(buyerEmail, itemID, time)
+        self.db.insert_one(newB.__dict__)
+        return self.db.find_one({"bargainItem": itemID, "bargainFrom": buyerEmail})
+    
+    def sendBargain(self, itemID, buyerEmail, userEmail, price, notes):
+        bargain = self.findBargainByBuyer(itemID, buyerEmail)
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes})
+        self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
+    
 class StoryDB():
     def __init__(self, db):
         self.db = db["story"]
@@ -241,4 +265,5 @@ itemdb = ItemDB(db)
 orderdb = OrderDB(db)
 requestdb = RequestDB(db)
 chatdb = ChatDB(db)
+bargaindb = BargainDB(db)
 storydb = StoryDB(db)

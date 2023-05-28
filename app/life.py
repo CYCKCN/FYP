@@ -8,7 +8,7 @@ from db import itemdb, requestdb, accountdb, chatdb
 
 life = Blueprint('life',__name__)
 
-@life.route('/', methods=['POST', 'GET'])
+@life.route('/login', methods=['POST', 'GET'])
 def home():
     if "email" in session: 
         userStatus = True
@@ -16,38 +16,21 @@ def home():
     else: userStatus = False
 
     if request.method == 'POST':
-        button = buttonCheck(request.form)
-        if button: return button
+        login_btn = request.form.get('Login')
+        email = request.form.get('email')
+        if login_btn == "Login": 
+            session['email'] = email
+            userStatus = True
 
-        market = request.form.get('market')
-        # piazza = request.form.get('piazza')
-        demand = request.form.get('demand')
-        aboutus = request.form.get('AboutUs')
+            account = accountdb.findUser(session["email"])
+            if not account: 
+                accountdb.signup(session["email"])
+                
+            if 'oauth_origin' in session: 
+                return redirect(session['oauth_origin'])
+            else: 
+                return redirect(url_for('market.home'))
 
-        electronics = request.form.get('Electronics')
-        clothing = request.form.get('Clothing')
-        furnitures = request.form.get('Furnitures')
-
-        if market == "market": 
-            return redirect(url_for('market.home'))
-        
-        # if piazza == "piazza": 
-        #     return redirect(url_for('piazza.home'))
-        
-        if demand == "demand": 
-            return redirect(url_for('demand.home'))
-        
-        if electronics == 'Electronics':
-            return redirect(url_for('market.home', cate='Electronics'))
-        
-        if clothing == 'Clothing':
-            return redirect(url_for('market.home', cate='Clothing'))
-        
-        if furnitures == 'Furnitures':
-            return redirect(url_for('market.home', cate='Furnitures'))
-        if aboutus == 'AboutUs':
-            return redirect(url_for('life.aboutus', cate='Furnitures'))
-        
     return render_template('login.html', userStatus=userStatus)
 
 @life.route('/aboutus', methods=['POST', 'GET'])
@@ -201,7 +184,6 @@ def chat(chatID):
     if "email" not in session:
         session['oauth_origin'] = request.full_path
         return redirect(url_for('auth.google_login'))
-    
     
 
     chat = chatdb.findChatByID(chatID)
