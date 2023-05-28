@@ -8,7 +8,7 @@ from db import itemdb, requestdb, accountdb, chatdb
 
 life = Blueprint('life',__name__)
 
-@life.route('/', methods=['POST', 'GET'])
+@life.route('/login', methods=['POST', 'GET'])
 def home():
     if "email" in session: 
         userStatus = True
@@ -16,35 +16,19 @@ def home():
     else: userStatus = False
 
     if request.method == 'POST':
-        button = buttonCheck(request.form)
-        if button: return button
-
-        market = request.form.get('market')
-        # piazza = request.form.get('piazza')
-        demand = request.form.get('demand')
-
-        electronics = request.form.get('Electronics')
-        clothing = request.form.get('Clothing')
-        furnitures = request.form.get('Furnitures')
-
-        if market == "market": 
+    #     button = buttonCheck(request.form)
+    #     if button: return button
+        login_btn = request.form.get('Login')
+        email = request.form.get('email')
+        if login_btn == "Login": 
+            session['email'] = email
+            userStatus = True
+            account = accountdb.findUser(session["email"])
+            if not account: signupInfo = accountdb.signup(session["email"])
             return redirect(url_for('market.home'))
-        
-        # if piazza == "piazza": 
-        #     return redirect(url_for('piazza.home'))
-        
-        if demand == "demand": 
-            return redirect(url_for('demand.home'))
-        
-        if electronics == 'Electronics':
-            return redirect(url_for('market.home', cate='Electronics'))
-        
-        if clothing == 'Clothing':
-            return redirect(url_for('market.home', cate='Clothing'))
-        
-        if furnitures == 'Furnitures':
-            return redirect(url_for('market.home', cate='Furnitures'))
-        
+            # session['oauth_origin'] = request.full_path
+            # return redirect(url_for('auth.google_login'))
+
     return render_template('login.html', userStatus=userStatus)
 
 @life.route('/profile', methods=['POST', 'GET'])

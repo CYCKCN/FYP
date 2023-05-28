@@ -26,20 +26,20 @@ class AccountDB():
         if account is None: return "Err: Not Registered!"
         return account["accountName"]
     
-    def login(self, accountEmail, accountPw):
-        account = self.db.find_one({"accountEmail": accountEmail})
-        if account is None: 
-            return "Err: Not Registered!"
-        elif check_password_hash(account["accountPw"], accountPw) == False:
-            return "Err: Wrong Password!"
-        else:
-            return "Info: Login successfully!"
+    # def login(self, accountEmail, accountPw):
+    #     account = self.db.find_one({"accountEmail": accountEmail})
+    #     if account is None: 
+    #         return "Err: Not Registered!"
+    #     elif check_password_hash(account["accountPw"], accountPw) == False:
+    #         return "Err: Wrong Password!"
+    #     else:
+    #         return "Info: Login successfully!"
         
-    def signup(self, accountName, accountEmail):
+    def signup(self, accountEmail):
         # print(accountName, accountPw, accountEmail, accountUni)
         if self.db.find_one({"accountEmail": accountEmail}):
             return "Err: Account Exists!"
-        newAccount = Account(accountName, accountEmail)
+        newAccount = Account(accountEmail)
         self.db.insert_one(newAccount.__dict__)
         return "Info: Register USER Account Successfully"
 
