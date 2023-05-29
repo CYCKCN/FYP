@@ -170,8 +170,89 @@ z-index: 1;
     display: flex;
     flex-direction: row;
 }
+
+.request-floating-div {
+    width: 95%;
+    background: var(--mainGrey2);
+    height: 100px;
+    display: block;
+}
+.request-text-div {
+    width: 100%;
+    background: none;
+    height: 100px;
+    display: none;
+    margin: 0%;
+    padding: 0%;
+    
+}
+
+.requestBtn {
+    width: 5%;
+    height: 100px;
+    background: white;
+    border: none;
+    color: black;
+}
+.requestBtns {
+    width: 5%;
+    background: none;
+    height: 100px;
+    border: none;
+    color: black;
+    display: none;
+    flex-direction: column;
+    background-color: none;
+}
+.request-input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 80px;
+    width: 500px;
+    position: relative;
+    float: right;
+}
+.request-cancel {
+    margin: 0%;
+    height: 50px;
+    width: 100%;
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+.request-cancel:hover {
+    background-color: var(--mainGrey1);
+}
+
+.request-send {
+    margin: 0%;
+    height: 50px;
+    width: 100%;
+    border: none;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+.request-send:hover {
+    background-color: var(--mainGrey1);
+}
+
+.add-icon {
+    background: none;
+    position: relative;
+    
+}
+
+.requestBtn:hover {
+    color: var(--mainGreen2);
+}
 .scroll-div {
-    margin-top: 0px;
+    margin-top: 150px;
     position: relative;
     overflow-y: scroll;
     height: 794px;
@@ -185,7 +266,7 @@ z-index: 1;
     width: 80%;
     margin-left: 10%;
     position: relative;
-    margin-top: 60px;
+    margin-top: 10px;
     height: fit-content;
     border-spacing:0px;
     display: grid;
@@ -252,6 +333,17 @@ hr.rounded {
     padding-left: 0px;
     padding-top: 0px;
     background: white;
+}
+.request-div {
+    width: 100%;
+    height: 100px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    margin-top: 50px;
+    left: 0px;
+    top: 0px;
 }
 
 

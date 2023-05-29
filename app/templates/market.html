@@ -13,7 +13,7 @@
   <body>
     <form method="POST" enctype="multipart/form-data">
     <div class="page-frame">
-
+        
         <div class="scroll-div">
             <!-- <img class="head-img" src="/static/data/tree.jpeg" /> -->
             <div class="item-display-div">
@@ -34,6 +34,27 @@
                     </a>
                     {% endfor %}
             </div>
+        </div>
+
+        <div class="request-div">
+            <div class="request-floating-div">
+                <p>Hi, here is for floating requests</p>
+            </div>
+            <div class="request-text-div">
+                <textarea maxlength="50" cols="3" name="request-congtent" class="request-input" required></textarea>
+                
+            </div>
+            <button type="button" class="requestBtn" id="requestBtn">
+                <span class="material-symbols-outlined add-icon" style="font-size: 30px;">
+                    add_circle
+                </span>
+            </button>
+
+            <div class="requestBtns" id="requestBtns">
+                <button class="request-cancel" id="request-cancel">Cancel</button>
+                <button class="request-send" name="request-send" value="request-send">Send</button>
+            </div>
+            
         </div>
 
         <div class="header" id="myHeader">
@@ -67,6 +88,8 @@
                 <button class="button-option" type="submit" name="Clear" value="Clear">Clear</button>
             </div>
         </div>
+
+        
 
         <div class="home-top">
             <div class="top-logo">
@@ -103,30 +126,65 @@
                     </button>
             </div>
         </div>
-        <script>
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
-            
-            for (i = 0; i < coll.length; i++) {
-              coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = document.getElementsByClassName("header");
-                var itemDisplay = document.getElementsByClassName("item-display-div");
-                if (content[0].style.display === "block") {
-                    content[0].style.display = "none";
-                    itemDisplay[0].style.marginTop = "60px";
-                } else {
-                    content[0].style.display = "block";
-                    itemDisplay[0].style.marginTop = "160px";
-                }
-              });
-            }
-        </script>
     </div>
 
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </form>  
+
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = document.getElementsByClassName("header");
+        var itemDisplay = document.getElementsByClassName("item-display-div");
+        var text = document.getElementsByClassName("request-text-div");
+        if (content[0].style.display == "block") {
+            content[0].style.display = "none";
+            text[0].style.display = "none";
+            // itemDisplay[0].style.marginTop = "60px";
+        } else {
+            content[0].style.display = "block";
+            // itemDisplay[0].style.marginTop = "160px";
+            text[0].style.display = "block";
+        }
+      });
+    }
+
+    document.getElementById("requestBtn").addEventListener("click", function() {
+            this.classList.toggle("active");
+            var floating = document.getElementsByClassName("request-floating-div");
+            var text = document.getElementsByClassName("request-text-div");
+            var btn = document.getElementById("requestBtn");
+            var btns = document.getElementById("requestBtns");
+            if (floating[0].style.display == "block") {
+                floating[0].style.display = "none";
+                btn.style.display = "none";
+                btns.style.display = "flex";
+                text[0].style.display = "block";
+            }else {
+                floating[0].style.display = "block";
+                text[0].style.display = "none";
+            }
+      });
+    
+      document.getElementById("request-cancel").addEventListener("click", function() {
+            this.classList.toggle("active");
+            var floating = document.getElementsByClassName("request-floating-div");
+            var text = document.getElementsByClassName("request-text-div");
+            var btn = document.getElementById("requestBtn");
+            var btns = document.getElementById("requestBtns");
+            if (text[0].style.display == "block") {
+                floating[0].style.display = "block";
+                btn.style.display = "block";
+                btns.style.display = "none";
+                text[0].style.display = "none";
+            }
+      });
+    </script>
   </body>
 </html>
