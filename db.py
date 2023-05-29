@@ -62,6 +62,9 @@ class ItemDB():
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
+    def deleteItem(self, itemID):
+        self.db.delete_one({"itemID": itemID})
+
     def getItemList(self, user="", cate="", maxprice="", minprice="", search=""):
         selection = {}
         if user != "": selection["itemOwner"] = user
