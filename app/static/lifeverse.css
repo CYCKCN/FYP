@@ -8,6 +8,20 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+.create-item {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 120px;
+    color: white;
+    background-color: var(--mainGreen1);
+}
+.create-item:hover{
+    background-color: var(--mainGreen3);
+}
 .collapsible {
     background: none;
     color: #777;

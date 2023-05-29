@@ -73,123 +73,29 @@
             </div>
         </div>
         
-        <div style="display: flex; flex-direction: row;">
-            {% for user in bargainUserList %}
-                <input class="section-btn" type="submit" name="section" id="{{user}}" value="{{user}}">
-            {% endfor %}
-            <div class="suggest-pack">
+        <div class="interactive-div">
+            <div class="user-list-div">
+                {% for user in bargainUserList %}
+                <input class="user-selection" type="submit" name="section" id="{{user}}" value="{{user}}">
+                {% endfor %}
+            </div>
+            <div class="bargain-list-div">
                 {% for i in range(bargainInfo | length) %}
                     <input class="checkbox-tools" type="radio" name="selectedItem" id="{{i}}" value="{{i}}">
-                    <label class="for-checkbox-tools" for="{{i}}">
+                    <label for="{{i}}">
                         <p class="font-class">{{bargainInfo[i].sendTime}}</p>
                         <p class="font-class">{{bargainInfo[i].price}}</p>
                         <p class="font-class">{{bargainInfo[i].notes}}</p>
                         <p class="font-class">{{bargainInfo[i].Status}}</p>
                     </label>
                 {% endfor %}
-                
-                <!-- <input class="checkbox-tools" type="radio" name="selectedItem" id="bargain" value="bargain">
-                <label class="for-checkbox-tools" for="bargain">
-                    <p class="font-class">Name</p>
-                    <p class="font-class">Price</p>
-                    <p class="font-class">Notes</p>
-                </label>
-
-                <input class="checkbox-tools" type="radio" name="selectedItem" id="bargain1" value="bargain">
-                <label class="for-checkbox-tools" for="bargain1">
-                    <p class="font-class">Name</p>
-                    <p class="font-class">Price</p>
-                    <p class="font-class">Notes</p>
-                </label>
-
-                <input class="checkbox-tools" type="radio" name="selectedItem" id="bargain2" value="bargain">
-                <label class="for-checkbox-tools" for="bargain2">
-                    <p class="font-class">Name</p>
-                    <p class="font-class">Price</p>
-                    <p class="font-class">Notes</p>
-                </label> -->
-                
-
             </div>
-            <div>
-                <textarea name="owner-notes"></textarea>
-                <button type="submit" name="agree" value="agree">Agree</button>
-                <button type="submit" name="decline" value="decline">Decline</button>
+            <div class="notes-list-div">
+                <textarea class="notes-textarea" cols="3" maxlength="50" name="owner-notes"></textarea>
+                <button class="agree-decline-btn green" type="submit" name="agree" value="agree">Agree</button>
+                <button class="agree-decline-btn red" type="submit" name="decline" value="decline">Decline</button>
             </div>
-            
         </div>
-        
-        <!-- {% for bargain in bargainList %}
-            <div class="reserved-info">
-                <div style="width: 80%;">
-                    <p class="font-class">{{bargain["bargainFrom"]}}</p>
-                </div>
-                <div style="width: 80%;">
-                    <p class="font-class">{{bargain["bargainInfo"]}}</p>
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
-                    <div class="form-popup" id="myForm">
-    
-                            <label for="user-price"><b>Price</b></label>
-                            <input type="number" placeholder="Enter your intended price" name="user-price">
-    
-                            <label for="user-notes"><b>Notes</b></label>
-                            <input type="text" placeholder="Any notes for the owner?" name="user-notes">
-    
-                            <button type="submit" class="btn" name="submit" value="submit">Submit</button>
-                            <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                        </form>
-                    </div>
-                    
-                    <button class="interaction-div" id="priceButton" onclick="openForm()">
-                        
-                        <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
-                            back_hand
-                        </span>
-                    </button>
-                </div>
-            </div>
-        {% endfor %} -->
-
-        
-        
-
-        
-
-        <script>
-            function myFunction(){
-                var x;
-                var r=confirm("Are you sure that you want to delete this item?");
-                if (r==true){
-                    x="YES";
-                }
-                else{
-                    x="NO";
-                }
-                document.getElementById("demo").innerHTML=x;
-            }
-            function openForm() {
-                document.getElementById("myForm").style.display = "block";
-            }
-
-            function closeForm() {
-                document.getElementById("myForm").style.display = "none";
-            }
-        </script>
-
-        <!-- <div class="owner-interactive-div">
-            <div class="item-accept-div">
-                <p style="color: black;" id="demo"></p>
-            </div>
-            <div class="item-waiting-div">
-
-            </div>
-            <div class="item-finish-div">
-                
-            </div>
-
-        </div> -->
         
     </form>
     </body>
