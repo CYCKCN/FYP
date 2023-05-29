@@ -179,7 +179,7 @@ z-index: 1;
 }
 .request-text-div {
     width: 100%;
-    background: none;
+    background: white;
     height: 100px;
     display: none;
     margin: 0%;
