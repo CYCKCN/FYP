@@ -57,49 +57,41 @@
                 </button>
                 {% endif %}
             </div>
-        </div>
-        <script>
-            function myFunction(){
-                var x;
-                var r=confirm("Are you sure that you want to delete this item?");
-                if (r==true){
-                    x="YES";
-                }
-                else{
-                    x="NO";
-                }
-                document.getElementById("demo").innerHTML=x;
-            }
-            </script>
-
-        <div class="owner-interactive-div">
-            <div class="item-accept-div">
-                <p style="color: black;" id="demo"></p>
-            </div>
-            <div class="item-waiting-div">
-
-            </div>
-            <div class="item-finish-div">
-                
-            </div>
-
-        </div>
-        <!-- {% if item["itemStatus"] == "Reserved" %} -->
-        <div class="reserved-info">
-            <div style="width: 80%;">
-                <!-- <p class="font-class">{{item["itemReserveTime"]}}</p>
-                <p class="font-class">{{item["itemReserve"]}}</p> -->
-                <p class="font-class">Time</p>
-                <p class="font-class">Name</p>
-                <p></p>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-                <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
-                <button type="submit" class="create-style" name="decline" value="decline">Decline</button>
-            </div>
             
         </div>
-        <!-- {% endif %} -->
+        {% for bargain in bargainList %}
+            <div class="reserved-info">
+                <div style="width: 80%;">
+                    <p class="font-class">{{bargain["bargainFrom"]}}</p>
+                </div>
+                <div style="width: 80%;">
+                    <p class="font-class">{{bargain["bargainInfo"]}}</p>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
+                    <div class="form-popup" id="myForm">
+                        <!-- <form action="/action_page.php" class="form-container"> -->
+    
+                            <label for="user-price"><b>Price</b></label>
+                            <input type="number" placeholder="Enter your intended price" name="user-price" required>
+    
+                            <label for="user-notes"><b>Notes</b></label>
+                            <input type="text" placeholder="Any notes for the owner?" name="user-notes">
+    
+                            <button type="submit" class="btn" name="submit" value="submit">Submit</button>
+                            <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+                        </form>
+                    </div>
+                    
+                    <button class="interaction-div" id="priceButton" onclick="openForm()">
+                        
+                        <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
+                            back_hand
+                        </span>
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
 
         <div class="home-top">
             <div class="top-logo">
@@ -120,6 +112,40 @@
             </div>
         </div>
 
+        <script>
+            function myFunction(){
+                var x;
+                var r=confirm("Are you sure that you want to delete this item?");
+                if (r==true){
+                    x="YES";
+                }
+                else{
+                    x="NO";
+                }
+                document.getElementById("demo").innerHTML=x;
+            }
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+
+        <!-- <div class="owner-interactive-div">
+            <div class="item-accept-div">
+                <p style="color: black;" id="demo"></p>
+            </div>
+            <div class="item-waiting-div">
+
+            </div>
+            <div class="item-finish-div">
+                
+            </div>
+
+        </div> -->
+        
     </form>
     </body>
 </html>

@@ -3,7 +3,7 @@ from pymongo.mongo_client import MongoClient
 from utils import Account, User, Item, Request, Chat, Story, Bargain, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, timedelta
     
 def connection(dbname):
     addr = "mongodb+srv://admin:admin@life2.dwrako7.mongodb.net/?retryWrites=true&w=majority"
@@ -214,6 +214,9 @@ class BargainDB():
     def findBargainByBuyer(self, itemID, buyerEmail):
         return self.db.find_one({"bargainItem": itemID, "bargainFrom": buyerEmail})
     
+    def findBargainByItem(self, itemID):
+        return self.db.find({"bargainItem": itemID})
+    
     def createBargain(self, itemID, buyerEmail):
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
@@ -225,8 +228,14 @@ class BargainDB():
         bargain = self.findBargainByBuyer(itemID, buyerEmail)
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
-        bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes})
+        bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes, "Status": "Pending"})
         self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
+
+    def checkTime(self, bargain):
+        for b in bargain["bargainInfo"]:
+            if b["Status"] == "Pending" and datetime.now() - datetime.strptime(b["sendTime"], "%Y.%m.%d %H:%M") > timedelta(days=1):
+                b["Status"] = "Unsolved"
+        self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
     
 class StoryDB():
     def __init__(self, db):

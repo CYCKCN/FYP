@@ -142,6 +142,9 @@ def item(itemID):
     if userStatus and item["itemOwner"] == session["email"]:
         return redirect(url_for('market.itemManager', itemID=itemID))
     
+    bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
+    if bargain: bargaindb.checkTime(bargain)
+    
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -179,14 +182,15 @@ def item(itemID):
             if not bargain:
                 bargaindb.createBargain(itemID, session['email'])
             bargaindb.sendBargain(itemID, session['email'], session['email'], price, notes)
+            return redirect(url_for('market.item', itemID=itemID))
                 
-    return render_template('item.html', item=item, userStatus=userStatus)
+    return render_template('item.html', item=item, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [])
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 def itemManager(itemID):
     if "email" not in session:
         session['oauth_origin'] = request.full_path
-        return redirect(url_for('auth.google_login'))
+        return redirect(url_for('life.login'))
     
     item = itemdb.findItem(itemID)
     if not item:
@@ -195,6 +199,9 @@ def itemManager(itemID):
     if item["itemOwner"] != session["email"]:
         return "No Acess", 400
     
+    bargainList = bargaindb.findBargainByItem(itemID)
+    for bargain in bargainList: bargaindb.checkTime(bargain)
+
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -208,5 +215,5 @@ def itemManager(itemID):
         if deny == "decline":
             itemdb.denyItem(itemID)
         
-    return render_template('itemmanage.html', item=item)
+    return render_template('itemmanage.html', item=item, bargainList=bargainList if bargainList else [])
 

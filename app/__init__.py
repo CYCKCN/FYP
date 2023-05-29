@@ -46,4 +46,4 @@ app.register_blueprint(demand, url_prefix='/demand')
 
 @app.route("/")
 def main():
-    return redirect(url_for('life.home'))
+    return redirect(url_for('life.login'))

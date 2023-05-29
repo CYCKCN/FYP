@@ -153,7 +153,7 @@ def buttonCheck(form):
 
     # print(home)
     if home == "Home": 
-        return redirect(url_for('life.home'))
+        return redirect(url_for('market.home'))
     
     if market == "Market": 
         return redirect(url_for('market.home'))
