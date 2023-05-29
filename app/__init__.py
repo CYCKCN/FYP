@@ -46,4 +46,4 @@ app.register_blueprint(market, url_prefix='/market')
 
 @app.route("/")
 def main():
-    return redirect(url_for('life.home'))
+    return redirect(url_for('life.login'))

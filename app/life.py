@@ -9,7 +9,7 @@ from db import itemdb, requestdb, accountdb, chatdb
 life = Blueprint('life',__name__)
 
 @life.route('/login', methods=['POST', 'GET'])
-def home():
+def login():
     if "email" in session: 
         userStatus = True
         return redirect(url_for('market.home'))
