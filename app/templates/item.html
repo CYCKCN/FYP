@@ -74,14 +74,14 @@
             <div class="bargain-timeline">
                 <div class="timeline">
                     {% for v in bargainInfo %}
-                        <!-- {% if user = buyer%} -->
+                        <!-- {% if user == buyer%} -->
                         <div class="container right">
                         <div class="content">
                             <h2 style="color: black;">HKD {{v.price}} <span style="font-size: small;">{{v.sendTime}}</span></h2>
                             <p style="color: black;">{{v.notes}}</p>
-                            {% if v.Status == “Pending” %}
+                            {% if v.Status == "Pending" %}
                                 <p style="color: orange;">{{v.Status}}</p>
-                            {% elif v.Status == “Decline” %}
+                            {% elif v.Status == "Decline" %}
                                 <p style="color: red;">{{v.Status}}</p>
                             {% elif v.Status == "Agree" %}
                                 <p style="color: green;">{{v.Status}}</p>
