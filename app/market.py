@@ -46,6 +46,9 @@ def home():
         create = request.form.get("Create")
         itemName = request.form.get("search-keyword")
 
+        test = request.form.get('requestBtn')
+        print(test)
+
         # demand = request.form.get("Demand")
         if itemName == '' and search != '': itemName = search
         # itemName = searchForm.search.data
