@@ -45,6 +45,8 @@ def home():
         price = request.form.get("Price")
         create = request.form.get("Create")
         itemName = request.form.get("search-keyword")
+
+        # demand = request.form.get("Demand")
         if itemName == '' and search != '': itemName = search
         # itemName = searchForm.search.data
 
@@ -55,6 +57,9 @@ def home():
         else: maxprice, minprice = '', ''
 
         # print(cate, maxprice, minprice, itemName)
+
+        # if demand == 'Demand':
+        #     return redirect(url_for('life.demand'))
 
         if clear == 'Clear':
             return redirect(url_for("market.home", cate='', maxprice='', minprice='', search=''))

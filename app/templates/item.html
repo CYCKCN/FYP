@@ -84,21 +84,23 @@
                 
                 
             </div> -->
+            {% if item["itemStatus"] == "Reserved" %}
             <div class="status-div" id="replyStatus">
                 <pre>You have submited one price at 12:39 on May 29.
 The owner will reply you in 8h42s.
                 </pre>
             </div>
+            {% endif %}
 
-            <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
+            <!-- <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
                     
                 {% if item["itemStatus"] == "Available" %}
                     <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
                 {% else %}
                     <button name="Reserve" value="Reserve" class="create-style" disabled>Reserved</button>
                 {% endif %}
-            </div>
-            
+            </div> -->
+
             <div class="form-popup" id="myForm">
                 <!-- <form action="/action_page.php" class="form-container"> -->
 
@@ -108,7 +110,7 @@ The owner will reply you in 8h42s.
                     <label for="user-notes"><b>Notes</b></label>
                     <input type="text" placeholder="Any notes for the owner?" name="user-notes">
 
-                    <button type="submit" class="btn" name="submit" value="submit" onclick="statusAfter()">Submit</button>
+                    <button type="submit" class="btn" name="submit" value="submit">Submit</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                 <!-- </form> -->
             </div>
@@ -129,11 +131,6 @@ The owner will reply you in 8h42s.
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
             }
-
-            function statusAfter() {
-                document.getElementById("priceButton").style.display = "none";
-                document.getElementById("replyStatus").style.display = "block";
-            }
         </script>
         
         <div class="scroll-div">
@@ -143,14 +140,14 @@ The owner will reply you in 8h42s.
                     
                 </div>
                 
-                <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
+                <!-- <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
                     
                     {% if item["itemStatus"] == "Available" %}
                         <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
                     {% else %}
                         <button name="Reserve" value="Reserve" class="create-style" disabled>Reserved</button>
                     {% endif %}
-                </div>
+                </div> -->
                 
             </div>
             
