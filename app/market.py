@@ -46,9 +46,6 @@ def home():
         create = request.form.get("Create")
         itemName = request.form.get("search-keyword")
 
-        test = request.form.get('requestBtn')
-        print(test)
-
         # demand = request.form.get("Demand")
         if itemName == '' and search != '': itemName = search
         # itemName = searchForm.search.data
@@ -74,6 +71,13 @@ def home():
             return redirect(url_for('market.giveitem'))
         if create == 'Create-request':
             return redirect(url_for('demand.demandcreate'))
+        
+        requestBtn = request.form.get('request-send')
+        requestCtx = request.form.get('request-congtent')
+        
+        if requestBtn and requestCtx:
+            requestdb.createRequest(session['email'], requestCtx)
+            return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
 
     # print(price)
     return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
@@ -179,7 +183,7 @@ def item(itemID):
         notes = request.form.get('user-notes')
         submit = request.form.get('submit')
         # print(price, notes, submit)
-        if submit == "submit":
+        if submit == "submit" and price:
             # print(price, notes, submit)
             bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
             if not bargain:

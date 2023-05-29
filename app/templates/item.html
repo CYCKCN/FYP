@@ -55,6 +55,21 @@
             </div>
         </div>
 
+        <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg" />
+                <p class="logo-font">LIFE2</p>
+            </div>
+            <div class="top-buttons-left">
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+            </div>
+            <div class="top-buttons">
+                {% if userStatus == True %}
+                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                {% endif %}
+            </div>
+        </div>
+
         <div class="interactive-div">
 
             <div class="status-div" id="replyStatus">
@@ -99,32 +114,19 @@
                 </span>
             </button>
         </div>
-        <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg" />
-                <p class="logo-font">LIFE2</p>
-            </div>
-            <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-            </div>
-            <div class="top-buttons">
-                {% if userStatus == True %}
-                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                {% endif %}
-            </div>
-        </div>
-
+        
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+    
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
 
     </form>
-    <script>
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-    </script>
+    
     
 </body>
 

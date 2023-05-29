@@ -21,10 +21,10 @@ class AccountDB():
     def findUser(self, accountEmail):
         return self.db.find_one({"accountEmail": accountEmail})
     
-    def findUserName(self, accountEmail):
-        account = self.db.find_one({"accountEmail": accountEmail})
-        if account is None: return "Err: Not Registered!"
-        return account["accountName"]
+    # def findUserName(self, accountEmail):
+    #     account = self.db.find_one({"accountEmail": accountEmail})
+    #     if account is None: return "Err: Not Registered!"
+    #     return account["accountName"]
     
     # def login(self, accountEmail, accountPw):
     #     account = self.db.find_one({"accountEmail": accountEmail})
@@ -105,12 +105,12 @@ class RequestDB():
     def findRequest(self, requestID):
         return self.db.find_one({"requestID": requestID})
     
-    def createRequest(self, user, title, category, info):
+    def createRequest(self, user, info):
         requestID = randomID(IDLENGTH)
         while (self.db.find_one({"requestID": requestID})): requestID = randomID(IDLENGTH)
         now = datetime.now()
         time = now.strftime("%Y.%m.%d %H:%M")
-        newRequest = Request(requestID, user, title, category, info, time)
+        newRequest = Request(requestID, user, info, time)
         self.db.insert_one(newRequest.__dict__)
         return "Info: New Request Added"
 
@@ -123,7 +123,6 @@ class RequestDB():
         for request in requestList:
             # print(request)
             requestInfo[str(counter)] = request
-            requestInfo[str(counter)]["userName"] = accountdb.findUserName(request['requestUser'])
             counter += 1
         return requestInfo
     
