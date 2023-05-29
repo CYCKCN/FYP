@@ -10,7 +10,6 @@
   <body>
     <form method="POST">
         
-
         <div class="item-info-card">
             <img src="{{item['itemImg']}}" class="item-img"/>
 
@@ -54,53 +53,32 @@
         </div>
 
         <div class="interactive-div">
-
             
-            <!-- <div class="green-value-div">
-                <p class="green-value">32</p>
-                <span class="material-symbols-outlined green-icon" style="font-size: 250px;">
-                    psychiatry
-                </span>
-            </div> -->
-            <!-- <div class="price-div">
-                
-                <div class="price-block">
-                    <p class="item-price">HKD 30</p>
-                    <p class="reject">Rejected on May 16</p>
-                </div>
-                <div class="price-block">
-                    <p class="item-price">HKD 25</p>
-                    <p class="reject">Rejected on May 15</p>
-                </div>
-                <div class="price-block">
-                    <p class="item-price">HKD 20</p>
-                    <p class="reject">Rejected on May 15</p>
-                </div>
-                <div class="price-block">
-                    <p class="item-price">HKD 15</p>
-                    <p class="reject">Rejected on May 14</p>
-                </div>
-                <div class="vl"></div>
-                
-                
-            </div> -->
             <div class="status-div" id="replyStatus">
-                <pre>You have submited one price at 12:39 on May 29.
-The owner will reply you in 8h42s.
-                </pre>
+                {% for v in bargainInfo %}
+                    <a href="item/{{v.itemID}}" style="text-decoration:none">
+                        <div class="on-sale-block">
+                            <p class="display-name">{{v.sendBy}}</p>
+                            <p class="display-name">{{v.sendTime}}</p>
+                            <p class="display-name">{{v.price}}</p>
+                            <p class="display-name">{{v.notes}}</p>
+                            <p class="display-name">{{v.Status}}</p>
+                            <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
+                            <p class="green-value">32</p>
+                            <span class="material-symbols-outlined green-icon" style="font-size: 35px;">
+                                psychiatry
+                            </span>
+                            <span class="material-symbols-outlined bargain-icon">
+                                gavel
+                            </span>
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
 
-            <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
-                    
-                {% if item["itemStatus"] == "Available" %}
-                    <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
-                {% else %}
-                    <button name="Reserve" value="Reserve" class="create-style" disabled>Reserved</button>
-                {% endif %}
-            </div>
-            
-            <!-- <div class="form-popup" id="myForm">
-                <form action="/action_page.php" class="form-container">
+
+            <div class="form-popup" id="myForm">
+                <!-- <form action="/action_page.php" class="form-container"> -->
 
                     <label for="user-price"><b>Price</b></label>
                     <input type="number" placeholder="Enter your intended price" name="user-price" required>
@@ -108,7 +86,7 @@ The owner will reply you in 8h42s.
                     <label for="user-notes"><b>Notes</b></label>
                     <input type="text" placeholder="Any notes for the owner?" name="user-notes">
 
-                    <button type="submit" class="btn" name="submit" value="submit" onclick="statusAfter()">Submit</button>
+                    <button type="submit" class="btn" name="submit" value="submit">Submit</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                 </form>
             </div>
@@ -118,44 +96,8 @@ The owner will reply you in 8h42s.
                 <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
                     back_hand
                 </span>
-            </button> -->
+            </button>
         </div>
-        
-        <script>
-            function openForm() {
-                document.getElementById("myForm").style.display = "block";
-            }
-
-            function closeForm() {
-                document.getElementById("myForm").style.display = "none";
-            }
-
-            function statusAfter() {
-                document.getElementById("priceButton").style.display = "none";
-                document.getElementById("replyStatus").style.display = "block";
-            }
-        </script>
-        
-        <!-- <div class="scroll-div">
-
-            <div class="item-image">
-                <div>
-                    
-                </div>
-                
-                <div style="display: flex; flex-direction: column; width: fit-content; margin-left: 250px; margin-top: 150px;">
-                    
-                    {% if item["itemStatus"] == "Available" %}
-                        <button name="Reserve" value="Reserve" class="create-style">Reserve</button>
-                    {% else %}
-                        <button name="Reserve" value="Reserve" class="create-style" disabled>Reserved</button>
-                    {% endif %}
-                </div>
-                
-            </div>
-            
-        </div> -->
-
         <div class="home-top">
             <div class="top-logo">
                 <img src="/static/data/ReUST-logo.jpeg"/>
@@ -163,17 +105,25 @@ The owner will reply you in 8h42s.
             </div>
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <!-- <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button> -->
             </div>
             <div class="top-buttons">
                     {% if userStatus == True %}
                     <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    <!-- {% else %}
-                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button> -->
                     {% endif %}
             </div>
         </div>
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+    
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+        
     </form>
+    
     </body>
+    
 </html>
