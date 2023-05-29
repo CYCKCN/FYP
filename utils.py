@@ -88,12 +88,10 @@ class Item(object):
 #         self.orderStatus = orderStatus # "R" -> Reserved / "S" -> Solved
 
 class Request(object):
-    def __init__(self, id, user, title, category, info, time):
+    def __init__(self, id, user, info, time):
         self.requestID = id # random 12 numbers
         self.requestUser = user # "33872" / "-1"
-        self.requestTitle = title
         self.requestInfo = info
-        self.requestCate = category
         self.requestTime = time
         self.requestSold = False
         self.requestItemList = []

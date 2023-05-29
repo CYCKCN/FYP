@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form method="POST">
+    <form id="form" method="POST">
 
         <div class="item-info-card">
             <img src="{{item['itemImg']}}" class="item-img" />
@@ -55,8 +55,20 @@
             </div>
         </div>
 
-        
-        
+        <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg" />
+                <p class="logo-font">LIFE2</p>
+            </div>
+            <div class="top-buttons-left">
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+            </div>
+            <div class="top-buttons">
+                {% if userStatus == True %}
+                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                {% endif %}
+            </div>
+        </div>
 
         <div class="interactive-div">
             <div class="bargain-timeline">
@@ -117,7 +129,7 @@
             <div class="form-popup" id="myForm">
 
                 <label for="user-price"><b>Price</b></label>
-                <input type="number" placeholder="Enter your intended price" name="user-price" required>
+                <input type="number" placeholder="Enter your intended price" name="user-price">
 
                 <label for="user-notes"><b>Notes</b></label>
                 <input type="text" placeholder="Any notes for the owner?" name="user-notes">
@@ -134,20 +146,7 @@
                 </span>
             </button>
         </div>
-        <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg" />
-                <p class="logo-font">LIFE2</p>
-            </div>
-            <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-            </div>
-            <div class="top-buttons">
-                {% if userStatus == True %}
-                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                {% endif %}
-            </div>
-        </div>
+        
         <script>
             function openForm() {
                 document.getElementById("myForm").style.display = "block";
@@ -159,6 +158,7 @@
         </script>
 
     </form>
+    
     
 </body>
 
