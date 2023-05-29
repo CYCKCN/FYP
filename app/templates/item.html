@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <link rel="stylesheet" href="/static/item.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  </head>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
 
-  <body>
+<body>
     <form method="POST">
-        
+
         <div class="item-info-card">
-            <img src="{{item['itemImg']}}" class="item-img"/>
+            <img src="{{item['itemImg']}}" class="item-img" />
 
             <div class="item-static-info">
                 <p class="item-name">{{item["itemName"]}}</p>
                 <div class="tag-div">
                     <p class="item-cate-tag">{{item["itemCate"]}}</p>
                     <p class="item-quality-tag">unexpendable | Used for 3 monthes</p>
-                </div>  
+                </div>
                 <div class="location-div">
                     <span class="material-symbols-outlined" style="font-size: 24px;">
                         location_on
@@ -37,7 +39,8 @@
             </div>
 
             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-            <lottie-player src="/static/js/Animation2_25.json"  background="transparent"  speed="1" class="life2-anim" loop autoplay></lottie-player>
+            <lottie-player src="/static/js/Animation2_25.json" background="transparent" speed="1" class="life2-anim"
+                loop autoplay></lottie-player>
 
             <div class="user-div">
                 <div>
@@ -53,46 +56,45 @@
         </div>
 
         <div class="interactive-div">
-            
+
             <div class="status-div" id="replyStatus">
                 {% for v in bargainInfo %}
-                    <a href="item/{{v.itemID}}" style="text-decoration:none">
-                        <div class="on-sale-block">
-                            <p class="display-name">{{v.sendBy}}</p>
-                            <p class="display-name">{{v.sendTime}}</p>
-                            <p class="display-name">{{v.price}}</p>
-                            <p class="display-name">{{v.notes}}</p>
-                            <p class="display-name">{{v.Status}}</p>
-                            <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
-                            <p class="green-value">32</p>
-                            <span class="material-symbols-outlined green-icon" style="font-size: 35px;">
-                                psychiatry
-                            </span>
-                            <span class="material-symbols-outlined bargain-icon">
-                                gavel
-                            </span>
-                        </div>
-                    </a>
+                <a href="item/{{v.itemID}}" style="text-decoration:none">
+                    <div class="on-sale-block">
+                        <p class="display-name">{{v.sendBy}}</p>
+                        <p class="display-name">{{v.sendTime}}</p>
+                        <p class="display-name">{{v.price}}</p>
+                        <p class="display-name">{{v.notes}}</p>
+                        <p class="display-name">{{v.Status}}</p>
+                        <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
+                        <p class="green-value">32</p>
+                        <span class="material-symbols-outlined green-icon" style="font-size: 35px;">
+                            psychiatry
+                        </span>
+                        <span class="material-symbols-outlined bargain-icon">
+                            gavel
+                        </span>
+                    </div>
+                </a>
                 {% endfor %}
             </div>
 
 
             <div class="form-popup" id="myForm">
-                <!-- <form action="/action_page.php" class="form-container"> -->
 
-                    <label for="user-price"><b>Price</b></label>
-                    <input type="number" placeholder="Enter your intended price" name="user-price" required>
+                <label for="user-price"><b>Price</b></label>
+                <input type="number" placeholder="Enter your intended price" name="user-price" required>
 
-                    <label for="user-notes"><b>Notes</b></label>
-                    <input type="text" placeholder="Any notes for the owner?" name="user-notes">
+                <label for="user-notes"><b>Notes</b></label>
+                <input type="text" placeholder="Any notes for the owner?" name="user-notes">
 
-                    <button type="submit" class="btn" name="submit" value="submit">Submit</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                </form>
+                <button type="submit" class="btn" name="submit" value="submit">Submit</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+
             </div>
-               
+
             <button class="interaction-div" id="priceButton" onclick="openForm()">
-                
+
                 <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
                     back_hand
                 </span>
@@ -100,16 +102,16 @@
         </div>
         <div class="home-top">
             <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg"/>
+                <img src="/static/data/ReUST-logo.jpeg" />
                 <p class="logo-font">LIFE2</p>
             </div>
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
             </div>
             <div class="top-buttons">
-                    {% if userStatus == True %}
-                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    {% endif %}
+                {% if userStatus == True %}
+                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+                {% endif %}
             </div>
         </div>
         <script>
@@ -121,9 +123,9 @@
                 document.getElementById("myForm").style.display = "none";
             }
         </script>
-        
+
     </form>
     
-    </body>
-    
+</body>
+
 </html>
