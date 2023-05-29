@@ -59,70 +59,64 @@
             </div>
             
         </div>
-        
-        <div class="interactive-div">
 
-            <div class="bargain-timeline">
-                <div class="timeline">
-                    {% for v in bargainInfo %}
-                        <!-- {% if user == buyer%} -->
-                        <div class="container right">
-                        <div class="content">
-                            <h2 style="color: black;">HKD {{v.price}} <span style="font-size: small;">{{v.sendTime}}</span></h2>
-                            <p style="color: black;">{{v.notes}}</p>
-                            <!-- {% if v.Status == "Pending" %}
-                                <p style="color: orange;">{{v.Status}}</p>
-                            {% elif v.Status == "Decline" %}
-                                <p style="color: red;">{{v.Status}}</p>
-                            {% elif v.Status == "Agree" %}
-                                <p style="color: green;">{{v.Status}}</p>
-                            {% else %}
-                                <p style="color: black;">{{v.Status}}</p>
-                            {% endif %} -->
-                        </div>
-
-                        </div>
-                        <!-- {% else %} -->
-                        <div class="container left">
-                            <div class="content">
-                                <h2 style="color: black;">HKD {{v.price}} <span style="font-size: small;">{{v.sendTime}}</span></h2>
-                                <p style="color: black;">{{v.notes}} {{v.Status}}</p>
-                            </div>
-                          </div>
-                          <!-- {% endif %} -->
-                    {% endfor %}
-                    <div class="container left">
-                      <div class="content">
-                        <h2 style="color: black;">2016</h2>
-                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-                      </div>
-                    </div>
-                    <div class="container right">
-                      <div class="content">
-                        <h2 style="color: black;">2015</h2>
-                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-                      </div>
-                    </div>
-                    <div class="container right">
-                      <div class="content">
-                        <h2 style="color: black;">2012</h2>
-                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-                      </div>
-                    </div>
-                    <div class="container right">
-                      <div class="content">
-                        <h2 style="color: black;">2011</h2>
-                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-                      </div>
-                    </div>
-                    <div class="container right">
-                      <div class="content">
-                        <h2 style="color: black;">2007</h2>
-                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-                      </div>
-                    </div>
-                  </div>
+        <div class="home-top">
+            <div class="top-logo">
+                <img src="/static/data/ReUST-logo.jpeg" />
+                <p class="logo-font">LIFE2</p>
             </div>
+            <div class="top-buttons-left">
+                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+            </div>
+            <div class="top-buttons">
+                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
+            </div>
+        </div>
+        
+        <div style="display: flex; flex-direction: row;">
+            {% for user in bargainUserList %}
+                <input class="section-btn" type="submit" name="section" id="{{user}}" value="{{user}}">
+            {% endfor %}
+            <div class="suggest-pack">
+                {% for i in range(bargainInfo | length) %}
+                    <input class="checkbox-tools" type="radio" name="selectedItem" id="{{i}}" value="{{i}}">
+                    <label class="for-checkbox-tools" for="{{i}}">
+                        <p class="font-class">{{bargainInfo[i].sendTime}}</p>
+                        <p class="font-class">{{bargainInfo[i].price}}</p>
+                        <p class="font-class">{{bargainInfo[i].notes}}</p>
+                        <p class="font-class">{{bargainInfo[i].Status}}</p>
+                    </label>
+                {% endfor %}
+                
+                <!-- <input class="checkbox-tools" type="radio" name="selectedItem" id="bargain" value="bargain">
+                <label class="for-checkbox-tools" for="bargain">
+                    <p class="font-class">Name</p>
+                    <p class="font-class">Price</p>
+                    <p class="font-class">Notes</p>
+                </label>
+
+                <input class="checkbox-tools" type="radio" name="selectedItem" id="bargain1" value="bargain">
+                <label class="for-checkbox-tools" for="bargain1">
+                    <p class="font-class">Name</p>
+                    <p class="font-class">Price</p>
+                    <p class="font-class">Notes</p>
+                </label>
+
+                <input class="checkbox-tools" type="radio" name="selectedItem" id="bargain2" value="bargain">
+                <label class="for-checkbox-tools" for="bargain2">
+                    <p class="font-class">Name</p>
+                    <p class="font-class">Price</p>
+                    <p class="font-class">Notes</p>
+                </label> -->
+                
+
+            </div>
+            <div>
+                <textarea name="owner-notes"></textarea>
+                <button type="submit" name="agree" value="agree">Agree</button>
+                <button type="submit" name="decline" value="decline">Decline</button>
+            </div>
+            
         </div>
         
         <!-- {% for bargain in bargainList %}
@@ -161,24 +155,7 @@
         
         
 
-        <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg"/>
-                <p class="logo-font">LIFE2</p>
-            </div>
-            <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                 <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
-            </div>
-            <div class="top-buttons">
-                    {% if userStatus == True %}
-                    <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                    <!-- {% else %}
-                    <button class="individual-button" type="submit" name="Login" value="Login">Login</button> -->
-                    {% endif %}
-            </div>
-        </div>
+        
 
         <script>
             function myFunction(){

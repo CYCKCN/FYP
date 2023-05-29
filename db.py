@@ -233,9 +233,18 @@ class BargainDB():
         bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes, "Status": "Pending"})
         self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
 
+    def replyBargain(self, itemID, buyerEmail, userEmail, status, notes, index):
+        bargain = self.findBargainByBuyer(itemID, buyerEmail)
+        now = datetime.now()
+        time = now.strftime("%Y.%m.%d %H:%M")
+        bargain["bargainInfo"][index]["Status"] = status
+        bargain["bargainInfo"].insert(index + 1, {"sendBy": userEmail, "sendTime": time, "notes": notes})
+        self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
+
+
     def checkTime(self, bargain):
         for b in bargain["bargainInfo"]:
-            if b["Status"] == "Pending" and datetime.now() - datetime.strptime(b["sendTime"], "%Y.%m.%d %H:%M") > timedelta(days=1):
+            if "Status" in b and b["Status"] == "Pending" and datetime.now() - datetime.strptime(b["sendTime"], "%Y.%m.%d %H:%M") > timedelta(days=1):
                 b["Status"] = "Unsolved"
         self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
     

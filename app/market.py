@@ -206,9 +206,18 @@ def itemManager(itemID):
     if item["itemOwner"] != session["email"]:
         return "No Acess", 400
     
+    bargainUserList = []
+    bargainInfo = []
     bargainList = bargaindb.findBargainByItem(itemID)
-    for bargain in bargainList: bargaindb.checkTime(bargain)
+    for bargain in bargainList: 
+        bargaindb.checkTime(bargain)
+        bargainUserList.append(bargain["bargainFrom"])
 
+    user = request.args.get('user')
+    if user:
+        bargainUser = bargaindb.findBargainByBuyer(itemID, user)
+        bargainInfo = bargainUser["bargainInfo"]
+    # print(bargainInfo)
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -227,5 +236,17 @@ def itemManager(itemID):
             itemdb.deleteItem(itemID)
             return redirect(url_for('market.home'))
         
-    return render_template('itemmanage.html', item=item, bargainList=bargainList if bargainList else [])
+        section = request.form.get('section')
+        if section:
+            return redirect(url_for('market.itemManager', itemID=itemID, user=section))
+        
+        selectedItem = request.form.get('selectedItem')
+        ownerNotes = request.form.get('owner-notes')
+        agree = request.form.get('agree')
+        decline = request.form.get('decline')
+        if selectedItem and ownerNotes and (agree or decline):
+            bargaindb.replyBargain(itemID, user, session['email'], agree if agree else decline, ownerNotes, int(selectedItem))
+            return redirect(url_for('market.itemManager', itemID=itemID, user=user))
+        
+    return render_template('itemmanage.html', item=item, bargainUserList=bargainUserList, bargainInfo=bargainInfo)
 

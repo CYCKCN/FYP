@@ -13,7 +13,8 @@ from db import connection, accountdb, itemdb, User
 from utils import UPLOAD_FOLDER
 
 class ConfigClass(object):
-    SECRET_KEY = secrets.token_hex(16)
+    # SECRET_KEY = secrets.token_hex(16)
+    SECRET_KEY = "d5fb8c4fa8bd46638dadc4e751e0d68d"
     USER_APP_NAME = "LIFE2"
     UPLOAD_FOLDER = UPLOAD_FOLDER
     # USER_ENABLE_EMAIL = False     

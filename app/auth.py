@@ -111,4 +111,4 @@ auth = Blueprint('auth', __name__)
 @auth.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.clear()
-    return redirect(url_for('life.home'))
+    return redirect(url_for('life.login'))
