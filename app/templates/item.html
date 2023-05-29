@@ -71,6 +71,26 @@
         </div>
 
         <div class="interactive-div">
+            <div class="form-popup" id="myForm">
+
+                <label for="user-price"><b>Price</b></label>
+                <input type="number" placeholder="Enter your intended price" name="user-price">
+
+                <label for="user-notes"><b>Notes</b></label>
+                <input type="text" placeholder="Any notes for the owner?" name="user-notes">
+
+                <button type="submit" class="btn" name="submit" value="submit">Submit</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+
+            </div>
+
+            <button class="interaction-div" id="priceButton" onclick="openForm()">
+
+                <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
+                    back_hand
+                </span>
+            </button>
+            
             <div class="bargain-timeline">
                 <div class="timeline">
                     {% for v in bargainInfo %}
@@ -126,25 +146,7 @@
             </div> -->
 
 
-            <div class="form-popup" id="myForm">
-
-                <label for="user-price"><b>Price</b></label>
-                <input type="number" placeholder="Enter your intended price" name="user-price">
-
-                <label for="user-notes"><b>Notes</b></label>
-                <input type="text" placeholder="Any notes for the owner?" name="user-notes">
-
-                <button type="submit" class="btn" name="submit" value="submit">Submit</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-
-            </div>
-
-            <button class="interaction-div" id="priceButton" onclick="openForm()">
-
-                <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
-                    back_hand
-                </span>
-            </button>
+            
         </div>
         
         <script>
