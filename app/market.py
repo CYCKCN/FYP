@@ -215,12 +215,17 @@ def itemManager(itemID):
 
         deal = request.form.get('deal')
         deny = request.form.get('decline')
+        delete = request.form.get('item-delete')
 
         if deal == "deal":
             itemdb.dealItem(itemID)
         
         if deny == "decline":
             itemdb.denyItem(itemID)
+
+        if delete == "item-delete":
+            itemdb.deleteItem(itemID)
+            return redirect(url_for('market.home'))
         
     return render_template('itemmanage.html', item=item, bargainList=bargainList if bargainList else [])
 
