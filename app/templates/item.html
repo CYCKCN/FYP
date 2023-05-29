@@ -55,9 +55,44 @@
             </div>
         </div>
 
-        <div class="interactive-div">
+        
+        
 
-            <div class="status-div" id="replyStatus">
+        <div class="interactive-div">
+            <div class="bargain-timeline">
+                <div class="timeline">
+                    {% for v in bargainInfo %}
+                        <!-- {% if user = buyer%} -->
+                        <div class="container right">
+                        <div class="content">
+                            <h2 style="color: black;">HKD {{v.price}} <span style="font-size: small;">{{v.sendTime}}</span></h2>
+                            <p style="color: black;">{{v.notes}}</p>
+                            {% if v.Status == “Pending” %}
+                                <p style="color: orange;">{{v.Status}}</p>
+                            {% elif v.Status == “Decline” %}
+                                <p style="color: red;">{{v.Status}}</p>
+                            {% elif v.Status == "Agree" %}
+                                <p style="color: green;">{{v.Status}}</p>
+                            {% else %}
+                                <p style="color: black;">{{v.Status}}</p>
+                            {% endif %}
+                        </div>
+
+                        </div>
+                        <!-- {% else %} -->
+                        <div class="container left">
+                            <div class="content">
+                                <h2 style="color: black;"><span style="font-size: small;">{{v.sendTime}}</span></h2>
+                                <p style="color: black;">{{v.notes}}</p>
+                            </div>
+                          </div>
+                        <!-- {% endif %} -->
+                    {% endfor %}
+            </div>
+
+            
+
+            <!-- <div class="status-div" id="replyStatus">
                 {% for v in bargainInfo %}
                 <a href="item/{{v.itemID}}" style="text-decoration:none">
                     <div class="on-sale-block">
@@ -66,7 +101,6 @@
                         <p class="display-name">{{v.price}}</p>
                         <p class="display-name">{{v.notes}}</p>
                         <p class="display-name">{{v.Status}}</p>
-                        <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
                         <p class="green-value">32</p>
                         <span class="material-symbols-outlined green-icon" style="font-size: 35px;">
                             psychiatry
@@ -77,7 +111,7 @@
                     </div>
                 </a>
                 {% endfor %}
-            </div>
+            </div> -->
 
 
             <div class="form-popup" id="myForm">

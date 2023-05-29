@@ -59,7 +59,71 @@
             </div>
             
         </div>
-        {% for bargain in bargainList %}
+        
+        <div class="interactive-div">
+            <div class="bargain-timeline">
+                <div class="timeline">
+                    {% for v in bargainInfo %}
+                        <!-- {% if user = buyer%} -->
+                        <div class="container right">
+                        <div class="content">
+                            <h2 style="color: black;">HKD {{v.price}} <span style="font-size: small;">{{v.sendTime}}</span></h2>
+                            <p style="color: black;">{{v.notes}}</p>
+                            <!-- {% if v.Status = “Pending” %}
+                                <p style="color: orange;">{{v.Status}}</p>
+                            {% elif v.Status = “Decline” %}
+                                <p style="color: red;">{{v.Status}}</p>
+                            {% elif v.Status = "Agree" %}
+                                <p style="color: green;">{{v.Status}}</p>
+                            {% else %}
+                                <p style="color: black;">{{v.Status}}</p>
+                            {% endif %} -->
+                        </div>
+
+                        </div>
+                        <!-- {% else %} -->
+                        <div class="container left">
+                            <div class="content">
+                                <h2 style="color: black;">HKD {{v.price}} <span style="font-size: small;">{{v.sendTime}}</span></h2>
+                                <p style="color: black;">{{v.notes}} {{v.Status}}</p>
+                            </div>
+                          </div>
+                    {% endfor %}
+                    <div class="container left">
+                      <div class="content">
+                        <h2 style="color: black;">2016</h2>
+                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+                      </div>
+                    </div>
+                    <div class="container right">
+                      <div class="content">
+                        <h2 style="color: black;">2015</h2>
+                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+                      </div>
+                    </div>
+                    <div class="container right">
+                      <div class="content">
+                        <h2 style="color: black;">2012</h2>
+                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+                      </div>
+                    </div>
+                    <div class="container right">
+                      <div class="content">
+                        <h2 style="color: black;">2011</h2>
+                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+                      </div>
+                    </div>
+                    <div class="container right">
+                      <div class="content">
+                        <h2 style="color: black;">2007</h2>
+                        <p style="color: black;">Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+        <!-- {% for bargain in bargainList %}
             <div class="reserved-info">
                 <div style="width: 80%;">
                     <p class="font-class">{{bargain["bargainFrom"]}}</p>
@@ -70,7 +134,6 @@
                 <div style="display: flex; flex-direction: column;">
                     <button type="submit" class="create-style" name="deal" value="deal">Deal</button>
                     <div class="form-popup" id="myForm">
-                        <!-- <form action="/action_page.php" class="form-container"> -->
     
                             <label for="user-price"><b>Price</b></label>
                             <input type="number" placeholder="Enter your intended price" name="user-price" required>
@@ -91,7 +154,7 @@
                     </button>
                 </div>
             </div>
-        {% endfor %}
+        {% endfor %} -->
 
         <div class="home-top">
             <div class="top-logo">
