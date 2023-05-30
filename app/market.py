@@ -191,7 +191,7 @@ def item(itemID):
             bargaindb.sendBargain(itemID, session['email'], session['email'], price, notes)
             return redirect(url_for('market.item', itemID=itemID))
                 
-    return render_template('item.html', item=item, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [])
+    return render_template('item.html', item=item, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 def itemManager(itemID):

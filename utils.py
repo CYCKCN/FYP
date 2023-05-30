@@ -24,7 +24,7 @@ IDLENGTH = 12
 UPLOAD_FOLDER = 'app/static/data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
-CATEGORY = ['Electronics', 'Clothing', 'Personal Care', 'Furnitures', 'Toys', 'Sports']
+CATEGORY = ['Electronics', 'Clothing', 'Personal Care', 'Furnitures', 'Toys', 'Sports', "Others"]
 PRICERANGE = ["Less than 50", "Between 50 - 100", "Between 100 - 200", "More than 200"]
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
