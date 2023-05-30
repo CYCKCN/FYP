@@ -46,18 +46,20 @@
 
         <div class="item-div">
             <div class="item-left">
-                <button class="section-btn" type="submit" id="basic_info" name="section" value="Info">
-                    Info
-                </button>
-                <button class="section-btn" type="submit" id="request_list" name="section" value="My Request">
-                    My Requests
+                <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserved Item">
+                    My Reserved Items
                 </button>
                 <button class="section-btn" type="submit" id="item_list" name="section" value="My Item">
                     My Items
                 </button>
-                <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserved Item">
-                    My Reserved Items
+                <!-- <button class="section-btn" type="submit" id="basic_info" name="section" value="Info">
+                    Info
+                </button> -->
+                <button class="section-btn" type="submit" id="request_list" name="section" value="My Request">
+                    My Requests
                 </button>
+                
+                
             </div>
 
             {% if section == "My Request" %}
@@ -74,19 +76,6 @@
                 </a>
                 <hr class="rounded">
                 {% endfor %}
-            {% elif section == "My Item" %}
-            <div class="item-right">
-                <div class="display-table">
-                    {% for k, v in itemInfo.items() %}
-                    <a href="/market/item/{{v.itemID}}" style="text-decoration:none">
-                        <div class="on-sale-block">
-                            <img src="/view/{{ v.itemImg }}" width="340" class="display-image"/>
-                            <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
-                            <p class="display-text">{{v.itemInfo}}</p>
-                        </div>
-                    </a>
-                    {% endfor %}
-            </div>
             {% elif section == "My Reserved Item" %}
             <div class="item-right">
                 <div class="display-table">
@@ -102,7 +91,7 @@
                 </div>
             </div>
             {% else %}
-            <div class="item-right">
+            <!-- <div class="item-right">
                 <div class="inputs-div">
                     <div class="lable-div">
                         <p class="user-style2">User Email</p>
@@ -112,12 +101,27 @@
                     </div>
                 </div>
                 <button name="logout" value="logout" class="account-style">Log out</button>
+            </div> -->
+            <div class="item-right">
+                <div class="display-table">
+                    {% for item in myReservedItem %}
+                    <a href="/market/item/{{item.itemID}}" style="text-decoration:none">
+                        <div class="on-sale-block">
+                            <img src="/view/{{ item.itemImg }}" width="340" class="display-image"/>
+                            <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
+                            <p class="display-text">{{item.itemInfo}}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
             </div>
             {% endif %}
-        </div>
-
             
-
+        </div>
+        <div style="width: 90%;">
+            <button name="logout" value="logout" class="logout-btn">Log out</button>
+        </div>
+        
         
     </div>
     </form>
