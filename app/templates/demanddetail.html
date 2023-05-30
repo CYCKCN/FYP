@@ -35,21 +35,21 @@
             <div class="display-table" id="display-table">
                 
                 {% for v in itemList %}
-                <a href="/market/itemManager/{{v.itemID}}" style="text-decoration:none">
+                <a href="/market/item/{{v.itemID}}" style="text-decoration:none">
 
                     <div class="request-item-block">
                         <img src={{v.itemImg}} class="display-image"/>
                         <p class="request-item-price">HKD {{v.itemPrice}}</p >
                     </div>
 
-                    {% if userStatus and identity == "owner" %}
+                    <!-- {% if userStatus and identity == "owner" %}
                     <div style="display: flex; flex-direction: column;">
                         {% if requestInfo['requestSold'] != True %}
                         <button type="submit" class="create-style" name="deal" value="{{v.itemID}}">Deal</button>
                         <button type="submit" class="create-style" name="decline" value="{{v.itemID}}">Decline</button>
                         {% endif %}
                     </div>
-                    {% endif%}
+                    {% endif%} -->
                 </a>
                 {% endfor %}
             </div>
