@@ -237,27 +237,42 @@ class BargainDB():
         self.db.insert_one(newB.__dict__)
         return self.db.find_one({"bargainItem": itemID, "bargainFrom": buyerEmail})
     
-    def sendBargain(self, itemID, buyerEmail, userEmail, price, notes):
-        bargain = self.findBargainByBuyer(itemID, buyerEmail)
+    def sendNotes(self, bargain, notes, userEmail):
         now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
-        bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes, "Status": "Pending"})
-        self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
-
-    def replyBargain(self, itemID, buyerEmail, userEmail, status, notes, index):
-        bargain = self.findBargainByBuyer(itemID, buyerEmail)
-        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
-        time = now.strftime("%Y.%m.%d %H:%M")
-        bargain["bargainInfo"][index]["Status"] = status
-        bargain["bargainInfo"].insert(index + 1, {"sendBy": userEmail, "sendTime": time, "notes": notes})
-        self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
-
-
-    def checkTime(self, bargain):
-        for b in bargain["bargainInfo"]:
-            if "Status" in b and b["Status"] == "Pending" and datetime.now() - datetime.strptime(b["sendTime"], "%Y.%m.%d %H:%M") > timedelta(days=1):
-                b["Status"] = "Unsolved"
+        bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "notes": notes})
         self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
+    
+    def changePrice(self, bargain, price):
+        self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainPrice': price}})    
+    
+    def agreePrice(self, bargain):
+        self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainDeal': True}})    
+    
+    def declinePrice(self, bargain):
+        self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainPrice': -1}})    
+    
+    # def sendBargain(self, itemID, buyerEmail, userEmail, price, notes):
+    #     bargain = self.findBargainByBuyer(itemID, buyerEmail)
+    #     now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
+    #     time = now.strftime("%Y.%m.%d %H:%M")
+    #     bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes, "Status": "Pending"})
+    #     self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
+
+    # def replyBargain(self, itemID, buyerEmail, userEmail, status, notes, index):
+    #     bargain = self.findBargainByBuyer(itemID, buyerEmail)
+    #     now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
+    #     time = now.strftime("%Y.%m.%d %H:%M")
+    #     bargain["bargainInfo"][index]["Status"] = status
+    #     bargain["bargainInfo"].insert(index + 1, {"sendBy": userEmail, "sendTime": time, "notes": notes})
+    #     self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
+
+
+    # def checkTime(self, bargain):
+    #     for b in bargain["bargainInfo"]:
+    #         if "Status" in b and b["Status"] == "Pending" and datetime.now() - datetime.strptime(b["sendTime"], "%Y.%m.%d %H:%M") > timedelta(days=1):
+    #             b["Status"] = "Unsolved"
+    #     self.db.update_one({"bargainItem": bargain['bargainItem'], "bargainFrom": bargain['bargainFrom']}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
     
 class StoryDB():
     def __init__(self, db):

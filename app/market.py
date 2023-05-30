@@ -172,7 +172,7 @@ def item(itemID):
         return redirect(url_for('market.itemManager', itemID=itemID))
     
     bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
-    if bargain: bargaindb.checkTime(bargain)
+    # if bargain: bargaindb.checkTime(bargain)
     
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -244,7 +244,7 @@ def itemManager(itemID):
     bargainInfo = []
     bargainList = bargaindb.findBargainByItem(itemID)
     for bargain in bargainList: 
-        bargaindb.checkTime(bargain)
+        # bargaindb.checkTime(bargain)
         bargainUserList.append(bargain["bargainFrom"])
 
     user = request.args.get('user')

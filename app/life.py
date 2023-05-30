@@ -112,6 +112,23 @@ def chat():
         bargainID = request.form.get('bargainID')
         if bargainID:
             return(redirect(url_for('life.chat', filter=filter, itemID=None, bargainName=bargainID)))
+        notes = request.form.get('search-keyword')
+        submit = request.form.get('Send')
+        if notes and submit and selected_bargain:
+            bargaindb.sendNotes(selected_bargain, notes, session['email'])
+            return(redirect(url_for('life.chat', filter=filter, itemID=itemID, bargainName=bargainName)))
+        priceChange = request.form.get('raise-price')
+        priceChangeBtn = request.form.get('price-btn')
+        if priceChange and priceChangeBtn and selected_bargain:
+            bargaindb.changePrice(selected_bargain, priceChange)
+            return(redirect(url_for('life.chat', filter=filter, itemID=itemID, bargainName=bargainName)))
+        acceptBtn = request.form.get('accept-btn')
+        if acceptBtn and selected_bargain:
+            if acceptBtn == "Accept": 
+                itemdb.reserveItem(selected_bargain["bargainItem"], selected_bargain['bargainFrom'])
+                bargaindb.agreePrice(selected_bargain)
+            else: bargaindb.declinePrice(selected_bargain)
+            return(redirect(url_for('life.chat', filter=filter, itemID=itemID, bargainName=bargainName)))
     # print(selected_bargain)
     return render_template('chat.html', userName=session['email'], selected_bargain=selected_bargain, selected_type=filter, infoList=infoList, itemCategories=CATEGORY)
 

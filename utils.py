@@ -116,11 +116,13 @@ class Chat(object):
         self.chatInfo = chatInfo
 
 class Bargain(object):
-    def __init__(self, buyerEmail, itemID, created_time, bargainInfo=[]):
+    def __init__(self, buyerEmail, itemID, created_time, bargainPrice=None, bargainInfo=[]):
         self.bargainFrom = buyerEmail
         self.bargainItem = itemID
         self.bargainCreated = created_time
-        self.bargainInfo = bargainInfo # [(sendby, create time, bargain price, notes)]
+        self.bargainPrice = bargainPrice
+        self.bargainDeal = False
+        self.bargainInfo = bargainInfo # [(sendby, create time, notes)]
 
 class Story(object):
     def __init__(self, storyID, itemID, useremail, created_time, image_path, intro):
