@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="home-top">
+        <!-- <div class="home-top">
             <div class="top-logo">
                 <img src="/static/data/ReUST-logo.jpeg" height="50px" />
                 <p class="logo-font">LIFE2</p>
@@ -60,18 +60,52 @@
 
             </div>
             {% endif %}
-        </div>
+        </div> -->
 
 
         <div class="search-div">
 
-            <i class="material-icons icon-search" style="font-size: 20px;">search</i>
-            <div style="display: flex; flex-direction: row;">
-                <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
-                <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
+            <div class="home-top">
+                <div class="top-logo">
+                    <img src="/static/data/ReUST-logo.jpeg" height="50px" />
+                    <p class="logo-font">LIFE2</p>
+                </div>
+                <div class="top-buttons-left">
+                    {% for c in itemCategories %}
+                    <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
+                    {% endfor %}
+                    <button class="individual-button" type="submit" name="category" value="All">All categories</button>
+                    <!-- <button type="button" class="collapsible">
+                        <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
+                            tune
+                        </span>
+                        <p>Filtering...</p>
+                    </button> -->
+                </div>
+                {% if userStatus == True %}
+                    <div class="top-buttons-right">
+                        <button class="give-item" name="Create" value="Create-item">Give</button>
+                        <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                            <span class="material-symbols-outlined" style="font-size: 34px;">
+                                account_circle
+                            </span>
+                            <p>{{userName}}</p>
+                        </button>
+                    </div>
+                {% endif %}
             </div>
+            
 
-        </div>
+            <div class="search-div">
+                
+                <i class="material-icons icon-search" style="font-size: 20px;">search</i>
+                <div style="display: flex; flex-direction: row;">
+                    <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
+                    <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
+                </div>
+                
+            </div>
+        <!-- </div> -->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

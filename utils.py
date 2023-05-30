@@ -139,7 +139,7 @@ class StoryForm(FlaskForm):
 class ItemForm(FlaskForm):
     name = wtforms.StringField('Name', validators=[Length(max=30)])
     price = wtforms.FloatField('Price')
-    description = wtforms.StringField('Description', validators=[Length(max=30)])
+    description = wtforms.TextAreaField('Description')
     pickup = wtforms.StringField('Pick-Up', validators=[Length(max=30)])
 
 def randomID(length):
