@@ -1,16 +1,18 @@
 import os
+import io
 import pathlib
 
 import flask
 import secrets
-from flask import Flask, session, redirect, url_for
+from flask import Flask, session, redirect, url_for, abort, send_file
 
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
-import google.auth.transport.requests
+import google.auth
+# from google.cloud import exceptions, ndb, storage
 
 from db import connection, accountdb, itemdb, User
-from utils import UPLOAD_FOLDER
+from utils import UPLOAD_FOLDER#, gcs_client, BUCKET
 
 class ConfigClass(object):
     # SECRET_KEY = secrets.token_hex(16)
@@ -48,3 +50,13 @@ app.register_blueprint(demand, url_prefix='/demand')
 @app.route("/")
 def main():
     return redirect(url_for('life.login'))
+
+# @app.route('/view/<path:fname>')
+# def view(fname):
+#     'view uploaded blob (GET) handler'
+#     blob = gcs_client.bucket(BUCKET).blob(fname)
+#     try:
+#         media = blob.download_as_bytes()
+#     except exceptions.NotFound:
+#         abort(404)
+#     return send_file(io.BytesIO(media), mimetype=blob.content_type)
