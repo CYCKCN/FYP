@@ -26,7 +26,8 @@ demand = Blueprint('demand',__name__)
 def demanddetail(requestID):
 
     requestInfo = requestdb.findRequest(requestID)
-    for item in requestInfo['requestItemList']:
+    for itemID in requestInfo['requestItemList']:
+        item = itemdb.findItem(itemID)
         if item["itemStatus"] == "Reserved" and item['itemReserve'] == requestInfo['requestUser']:
             requestInfo = requestdb.soldRequest(requestID, item["itemID"])
             break
@@ -40,12 +41,12 @@ def demanddetail(requestID):
     if userStatus:
         if session["email"] == requestInfo["requestUser"]: 
             identity = "owner"
-            itemList = requestInfo["requestItemList"]
+            for itemID in requestInfo["requestItemList"]: itemList.append(itemdb.findItem(itemID))
         else: identity = "seller"
         myItem = itemdb.getItemList(user=session["email"])
         for k, v in myItem.items():
-            if v not in requestInfo["requestItemList"]: myItemList[k] = v
-            if identity == "seller" and v in requestInfo["requestItemList"]: itemList.append(v)
+            if v['itemID'] not in requestInfo["requestItemList"] and v["itemStatus"] != "Reserved": myItemList[k] = v
+            if identity == "seller" and v['itemID'] in requestInfo["requestItemList"]: itemList.append(v)
 
     if request.method == 'POST':
         button = buttonCheck(request.form)

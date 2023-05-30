@@ -135,8 +135,7 @@ class RequestDB():
     
     def addRequestItemList(self, requestID, itemID):
         request = self.findRequest(requestID)
-        item = itemdb.findItem(itemID)
-        request["requestItemList"].append(item)
+        request["requestItemList"].append(itemID)
         self.db.update_one({"requestID": requestID}, {'$set': {'requestItemList': request["requestItemList"]}})
 
     def dealRequestItem(self, requestID, itemID):
@@ -146,8 +145,7 @@ class RequestDB():
     
     def declineRequestItem(self, requestID, itemID):
         request = self.findRequest(requestID)
-        item = itemdb.findItem(itemID)
-        request["requestItemList"].remove(item)
+        request["requestItemList"].remove(itemID)
         self.db.update_one({"requestID": requestID}, {'$set': {'requestItemList': request["requestItemList"]}})
     
 class ChatDB():
