@@ -26,19 +26,27 @@ demand = Blueprint('demand',__name__)
 def demanddetail(requestID):
 
     requestInfo = requestdb.findRequest(requestID)
+    for item in requestInfo['requestItemList']:
+        if item["itemStatus"] == "Reserved" and item['itemReserve'] == requestInfo['requestUser']:
+            requestInfo = requestdb.soldRequest(requestID, item["itemID"])
+            break
     # requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
     if "email" in session: userStatus = True
     else: userStatus = False
 
+    itemList = []
     myItem = myItemList = {}
     identity = ""
     if userStatus:
-        if session["email"] == requestInfo["requestUser"]: identity = "owner"
+        if session["email"] == requestInfo["requestUser"]: 
+            identity = "owner"
+            itemList = requestInfo["requestItemList"]
         else: identity = "seller"
         myItem = itemdb.getItemList(user=session["email"])
         for k, v in myItem.items():
-            if v not in requestInfo["requestItemList"]:
-                myItemList[k] = v
+            if v not in requestInfo["requestItemList"]: myItemList[k] = v
+            if identity == "seller" and v in requestInfo["requestItemList"]: itemList.append(v)
+
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
@@ -59,7 +67,7 @@ def demanddetail(requestID):
             return redirect(url_for('demand.demanddetail', requestID=requestID))
         
     # print(userStatus, identity, sold)
-    return render_template('demanddetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=requestInfo["requestItemList"], myItemList=myItemList)
+    return render_template('demanddetail.html', requestInfo=requestInfo, userStatus=userStatus, identity=identity, itemList=itemList, myItemList=myItemList)
 
 # @demand.route('/demandcreate', methods=['POST', 'GET'])
 # def demandcreate():
