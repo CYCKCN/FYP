@@ -10,7 +10,6 @@ market = Blueprint('market',__name__)
 
 @market.route('/', methods=['POST', 'GET'])
 def home():
-    print(session['email'])
     if "email" in session: userStatus = True
     else: 
         userStatus = False
