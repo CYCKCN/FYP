@@ -76,6 +76,10 @@ def profile():
         
     return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, bargainItemList=bargainItemList)
 
+@life.route('/chat', methods=['POST', 'GET'])
+def chat():
+    return render_template('chat.html')
+
 # @life.route('/demand/<requestID>', methods=['POST', 'GET'])
 # def demanddetail(requestID):
 #     requestInfo = requestdb.findRequest(requestID)

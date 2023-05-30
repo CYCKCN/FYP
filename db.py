@@ -284,7 +284,7 @@ class StoryDB():
             counter += 1
         return storyInfo
     
-db = connection("test")
+db = connection("LIFE2")
 accountdb = AccountDB(db)
 itemdb = ItemDB(db)
 orderdb = OrderDB(db)
