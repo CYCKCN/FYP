@@ -24,12 +24,18 @@
                     </div>
                     <button class="price-btn-accept" name="type" value="buyer" >Buyer</button>
                     <button class="price-btn-deny" name="type" value="owner" >Owner</button>
-                    {% for bargain in bargainList %}
+                    {% for bargain, item in infoList %}
+                        {% if selected_type == "buyer" %}
+                        <button name="bargainID" value="{{bargain.bargainItem}},{{item.itemOwner}}" >{{bargain.bargainItem}},{{item.itemOwner}}</button>
+                        {% else %}
                         <button name="bargainID" value="{{bargain.bargainItem}},{{bargain.bargainFrom}}" >{{bargain.bargainItem}},{{bargain.bargainFrom}}</button>
+                        {% endif %}
                     {% endfor %}
 
                 </div>
+                
                 <div class="item-right">
+                    {% if selected_bargain %}
                     <div class="latest-price-div">
                         <div class="latest-price-txt">
                             <p>Alice's latest price is: <span style="font-weight: 600;">HK$50</span></p>
@@ -60,7 +66,9 @@
                             <button class="button-option" type="submit" name="Send" value="Send">Send</button>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
+                
             </div>
             <div class="home-top">
                 <div class="top-logo">

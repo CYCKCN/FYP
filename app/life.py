@@ -78,25 +78,42 @@ def profile():
 
 @life.route('/chat', methods=['POST', 'GET'])
 def chat():
-    type = request.args.get('type')
-    bargainList = []
-    if not type:
-        bargainList = bargaindb.findBargainList(session['email'])
-    elif type and type == 'owner':
+    filter = request.args.get('filter') if request.args.get('filter') else 'buyer'
+    itemID = request.args.get('itemID')
+    bargainName = request.args.get('bargainName')
+    selected_bargain = None
+    infoList = []
+    # if not type:
+    #     bargainList = bargaindb.findBargainList(session['email'])
+    if filter == 'owner':
         myItemList = itemdb.getItemList(session['email'])
         for _, item in myItemList.items():
             bargainItemList = bargaindb.findBargainByItem(item['itemID'])
             for bargain in bargainItemList: 
-                bargainList.append(bargain)
-    elif type and type == 'buyer':
+                infoList.append((bargain, item))
+        if bargainName: selected_bargain = bargaindb.findBargainByBuyer(bargainName.split(',')[0], bargainName.split(',')[1])
+    else:
         bargainList = bargaindb.findBargainList(session['email'])
+        for bargain in bargainList:
+            item = itemdb.findItem(bargain['bargainItem'])
+            infoList.append((bargain, item))
+        if itemID: selected_bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
+        if bargainName: selected_bargain = bargaindb.findBargainByBuyer(bargainName.split(',')[0], session['email'])
 
     if request.method == 'POST':
+        button = buttonCheck(request.form)
+        if button: return button
+        category = request.form.get("category")
+        if category:
+            return redirect(url_for("market.home", cate=category, search='', filter=''))
         type = request.form.get('type')
         if type:
-            return(redirect(url_for('life.chat', type=type)))
-        
-    return render_template('chat.html', userName=session['email'], bargainList=bargainList)
+            return(redirect(url_for('life.chat', filter=type, itemID=None, bargainName=None)))
+        bargainID = request.form.get('bargainID')
+        if bargainID:
+            return(redirect(url_for('life.chat', filter=filter, itemID=None, bargainName=bargainID)))
+    # print(selected_bargain)
+    return render_template('chat.html', userName=session['email'], selected_bargain=selected_bargain, selected_type=filter, infoList=infoList, itemCategories=CATEGORY)
 
 # @life.route('/demand/<requestID>', methods=['POST', 'GET'])
 # def demanddetail(requestID):

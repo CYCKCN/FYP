@@ -219,8 +219,9 @@ def item(itemID):
 
         chat = request.form.get('Bargain')
         if chat:
-            print('test')
-            bargaindb.createBargain(itemID, session['email'])
+            bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
+            if not bargain:
+                bargaindb.createBargain(itemID, session['email'])
             return redirect(url_for("life.chat", itemID=itemID))
         
                 
