@@ -11,6 +11,19 @@
     min-width: 100%;
     font-size: 14px;
   }
+  .chat-icon {
+    background: none;
+    color: #373737;
+    border: none;
+    padding-left: 0;
+    padding-top: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: fit-content;
+    height: 50px;
+    cursor: pointer;
+    font-family: sans-serif;
+}
   body::-webkit-scrollbar{
     display: none;
   }
@@ -260,17 +273,17 @@
     display: none;
 }
 .top-buttons-right {
-    position: absolute;
-    width: 25%;
-    margin-left: 150px;
-    top: 0px;
-    right: 0px;
-    padding-left: 0px;
-    padding-top: 0px;
-    background: none;
-    display: flex;
-    flex-direction: row-reverse;
-    background-color: none;
+  position: absolute;
+  width: fit-content;
+  margin-left: 150px;
+  top: 0px;
+  right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  background: none;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: none;
 }
 .individual-button {
     background: none;
@@ -300,17 +313,18 @@
     background-color: rgba(1, 143, 121, 1);
 }
 .profile-icon {
-    color: black;
-    opacity: 70%;
-    padding-left: 10px;
-    padding-top: 10px;
-    border: none;
-    width: fit-content;
-    height: 50px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-    background-color: none;
+  color: black;
+  opacity: 70%;
+  padding-left: 0px;
+  padding-top: 10px;
+  border: none;
+  width: fit-content;
+  height: 50px;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  background-color: none;
+  cursor: pointer;
 }
 .profile-icon p {
     color: black;

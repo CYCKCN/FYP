@@ -14,6 +14,27 @@
         <form method="POST" enctype="multipart/form-data">
             <div class="item-div">
                 <div class="item-left">
+                    <div class="buyer-owner-select">
+                        <button class="buyer-btn" name="type" value="buyer"> I'm buyer</button>
+                        <button class="owner-btn" name="type" value="owner" >I'm owner</button>
+                    </div>
+                    <button class="dialogue-block">
+                        <div class="dialogue-info">
+                            <p class="dialogue-email">zguanad@connect.ust.hk</p>
+                            <p class="dialogue-item">foldable desk</p>
+                        </div>
+                        <img class="dialogue-img"/>
+                    </button>
+                    <button class="dialogue-block">
+                        <div class="dialogue-info">
+                            <p class="dialogue-email">zguanad@connect.ust.hk</p>
+                            <p class="dialogue-item">foldable desk</p>
+                        </div>
+                        <img class="dialogue-img"/>
+                    </button>
+                    
+                    
+                    {% for bargain in bargainList %}
                     <div class="dialogue-block">
                         <div>
                             <p class="dialogue-email">zguanad@connect.ust.hk</p>
@@ -22,10 +43,7 @@
                         
                         <img class="dialogue-img"/>
                     </div>
-                    <button class="price-btn-accept" name="type" value="buyer" >Buyer</button>
-                    <button class="price-btn-deny" name="type" value="owner" >Owner</button>
-                    {% for bargain in bargainList %}
-                        <button name="bargainID" value="{{bargain.bargainItem}},{{bargain.bargainFrom}}" >{{bargain.bargainItem}},{{bargain.bargainFrom}}</button>
+                        <button name="bargainID" value="{{bargain.bargainItem}},{{bargain.bargainFrom}}">{{bargain.bargainItem}},{{bargain.bargainFrom}}</button>
                     {% endfor %}
 
                 </div>
@@ -75,11 +93,16 @@
                 </div>
                 <div class="top-buttons-right">
                     <button class="give-item" name="Create" value="Create-item">Give</button>
-                    <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                        <span class="material-symbols-outlined" style="font-size: 34px;">
-                            account_circle
+                    <button type="submit" name="Chat" value="Chat" class="chat-icon">
+                        <span class="material-symbols-outlined forum-icon" style="font-size: 30px;">
+                            forum
                         </span>
-                        <p>zguanad@connect.ust.hk</p>
+                    </button>
+                    <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                        <!-- <span class="material-symbols-outlined" style="font-size: 34px;">
+                            account_circle
+                        </span> -->
+                        <p>{{userName}}</p>
                     </button>
                 </div>
             </div>
