@@ -45,11 +45,11 @@
                     <p class="item-time">Deadline: 1 June, 2023 | 14 Days left</p>
                 </div>
                 {% if item["itemStatus"] != "Sold" %}
-                <button type="submit" name="item-edit" value="item-edit" class="edit-icon">
+                <!-- <button type="submit" name="item-edit" value="item-edit" class="edit-icon">
                     <span class="material-symbols-outlined" style="font-size: 30px;">
                         edit
                     </span>
-                </button>
+                </button> -->
                 <button type="submit" name="item-delete" value="item-delete" class="delete-icon" onclick="myFunction()">
                     <span class="material-symbols-outlined" style="font-size: 30px;">
                         delete
@@ -91,9 +91,11 @@
                 {% endfor %}
             </div>
             <div class="notes-list-div">
+                {% if bargainInfo != [] %}
                 <textarea class="notes-textarea" cols="3" maxlength="50" name="owner-notes"></textarea>
                 <button class="agree-decline-btn green" type="submit" name="agree" value="agree">Agree</button>
                 <button class="agree-decline-btn red" type="submit" name="decline" value="decline">Decline</button>
+                {% endif%}
             </div>
         </div>
         
