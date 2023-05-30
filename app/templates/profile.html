@@ -74,23 +74,7 @@
                 
             </div>
 
-            {% if section == "My Request" %}
-            <div class="item-right">
-                <hr class="rounded">
-                <div class="display-table">
-                    {% for k, v in requestInfo.items() %}
-                    <a href="/demand/{{v.requestID}}" class="request-link">
-                        <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
-                        <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
-                        <!-- {{v.requestInfo}} -->
-                        <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
-                        <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
-                        
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-            {% elif section == "My Item" %}
+            {% if section == "My Item" %}
             <div class="item-right">
                 <div class="display-table">
                     {% for k,v in itemInfo.items() %}
@@ -109,25 +93,13 @@
                 </div>
             </div>
             {% else %}
-            <!-- <div class="item-right">
-                <div class="inputs-div">
-                    <div class="lable-div">
-                        <p class="user-style2">User Email</p>
-                    </div>
-                    <div class="item-input-div">
-                        <p class="user-style2">{{userName}}</p>        
-                    </div>
-                </div>
-                <button name="logout" value="logout" class="account-style">Log out</button>
-            </div> -->
             <div class="item-right">
                 <div class="display-table">
                     {% for item in myReservedItem %}
                     <a href="/market/item/{{item.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
                             <img src="/view/{{ item.itemImg }}" width="340" class="display-image"/>
-                            <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
-                            <p class="display-text">{{item.itemInfo}}</p>
+                            <p class="display-name" style="font-weight: 600;">{{item.itemName}}</p>
                         </div>
                     </a>
                     {% endfor %}

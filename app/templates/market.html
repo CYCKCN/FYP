@@ -15,25 +15,6 @@
 <body>
     <form method="POST" enctype="multipart/form-data">
         <div class="scroll-div">
-            <div class="status-selection-div">
-                {% if selected_section == "All" %}
-                    <button class="status-btn-all" name="section-btn" value="All" >All</button>
-                {% else %}
-                    <button class="status-btn" name="section-btn" value="All" >All</button>
-                {% endif %}
-                {% for c in itemCondition %}
-                    {% if selected_section == c %}
-                        <button class="status-btn-all" name="section-btn" value="{{c}}" >{{c}}</option>
-                    {% else %}
-                        <button class="status-btn" name="section-btn" value="{{c}}" >{{c}}</option>
-                    {% endif %}
-                {% endfor %}
-                {% if selected_section == "Free" %}
-                    <button class="status-btn-all" name="section-btn" value="Free"> Free</button>
-                {% else %}
-                    <button class="status-btn" name="section-btn" value="Free"> Free</button>
-                {% endif %}
-            </div>
             <div class="item-display-div">
                 {% for k, v in itemInfo.items() %}
                 <a href="item/{{v.itemID}}" style="text-decoration:none">
@@ -122,6 +103,27 @@
                     <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
                 </div>
                 
+            </div>
+            <div class="filter-div">
+                <div class="status-selection-div">
+                    {% if selected_section == "All" %}
+                        <button class="status-btn-all" name="section-btn" value="All" >All</button>
+                    {% else %}
+                        <button class="status-btn" name="section-btn" value="All" >All</button>
+                    {% endif %}
+                    {% for c in itemCondition %}
+                        {% if selected_section == c %}
+                            <button class="status-btn-all" name="section-btn" value="{{c}}" >{{c}}</option>
+                        {% else %}
+                            <button class="status-btn" name="section-btn" value="{{c}}" >{{c}}</option>
+                        {% endif %}
+                    {% endfor %}
+                    {% if selected_section == "Free" %}
+                        <button class="status-btn-all" name="section-btn" value="Free"> Free</button>
+                    {% else %}
+                        <button class="status-btn" name="section-btn" value="Free"> Free</button>
+                    {% endif %}
+                </div>
             </div>
         <!-- </div> -->
 

@@ -146,6 +146,15 @@ body::-webkit-scrollbar {
     top: 50px;
     background: white;
 }
+.filter-div {
+    width: 90%;
+    left: 5%;
+    height: fit-content;
+    position: fixed;
+    padding-top: 10px;
+    top: 150px;
+    background: white;
+}
 .icon-search {
     color: #C1C7DE;
     position: absolute;
@@ -322,16 +331,6 @@ z-index: 1;
     100% {top: 0px;}
 }
 
-.filter-div {
-    width: 80%;
-    height: 30px;
-    position: relative;
-    left: 10%;
-    margin-top: 20px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-}
 .item-img {
     margin-top: 20px;
     position: absolute;
@@ -423,7 +422,7 @@ z-index: 1;
     color: var(--mainGreen2);
 }
 .scroll-div {
-    margin-top: 100px;
+    margin-top: 150px;
     position: relative;
     overflow-y: scroll;
     height: 794px;
@@ -492,7 +491,7 @@ z-index: 1;
     background-color: none;
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .status-btn {
     padding-top: 2px;
