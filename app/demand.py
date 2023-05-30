@@ -26,7 +26,7 @@ def home():
 def demanddetail(requestID):
 
     requestInfo = requestdb.findRequest(requestID)
-    requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
+    # requestInfo["userName"] = accountdb.findUserName(requestInfo['requestUser'])
     if "email" in session: userStatus = True
     else: userStatus = False
 

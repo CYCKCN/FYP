@@ -40,7 +40,14 @@
 
             <div class="request-div">
                 <div class="request-floating-div">
-                    <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
+                    
+                    <marquee width="100%" direction="down" height="100px" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="1">
+                        {% for k, v in requestInfo.items() %}
+                        <a class="marquee-block" href="/demand/{{v.requestID}}">{{v.requestTitle}} --{{v.requestUser}}</a>
+                        <br>
+                        {% endfor %}
+                    </marquee>
+                    <!-- <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
                         <a class="marquee-block" href="">I want a foldable desk. --rose@gmail.com</a>
                     </marquee>
                     <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
@@ -51,8 +58,9 @@
                     </marquee>
                     <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
                         <a class="marquee-block" href="">Backpack (better be black) --rose@gmail.com</a>
-                    </marquee>
+                    </marquee> -->
                 </div>
+                
                 <div class="request-text-div">
                     <textarea maxlength="50" cols="3" name="request-congtent" class="request-input" ></textarea>
 
