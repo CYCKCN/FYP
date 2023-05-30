@@ -44,7 +44,6 @@ def profile():
         return redirect(url_for('auth.google_login'))
     
     section = request.args.get('section')
-    user = accountdb.findUser(session["email"])
     itemInfo = itemdb.getItemList(user=session["email"])
     requestInfo = requestdb.getRequestList(user=session["email"])
     # bargainList = bargaindb.findBargainList(session['email'])
@@ -81,7 +80,7 @@ def profile():
         #         chat = chatdb.findChatByBuyer(itemID, session["email"])
         #     return redirect(url_for('life.chat', chatID=chat["chatID"]))
         
-    return render_template('profile.html', user=user, section=section if section else "Info", itemCategories=CATEGORY, itemInfo=itemInfo, requestInfo=requestInfo, myReservedItem=myReservedItem)
+    return render_template('profile.html', userName=session['email'], section=section if section else "Info", itemCategories=CATEGORY, itemInfo=itemInfo, requestInfo=requestInfo, myReservedItem=myReservedItem)
 
 @life.route('/chat', methods=['POST', 'GET'])
 def chat():
