@@ -7,12 +7,113 @@
         <link rel="stylesheet" href="/static/sell.css">
         <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     </head>
 
     <body>
         <form method="POST" enctype="multipart/form-data">
+            <div class="item-div">
+                <div class="item-left">
+                    <div class="upload-btn">
+                        <label for="file-upload" class="custom-file-upload">Upload Image</label>
+                        <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
+                    </div>
+                    <img class="upload-div" id="output"/>
+                </div>
+                <div class="item-right">
+                    <label for="Name" class="lable">Name your item <span style="color: red;">*</span></label>
+                    {{ form.name(class_='name', placeholder_='e.g. Foldable desk', id_="Name")}}
+                    <label for="Category" class="lable">Category <span style="color: red;">*</span></label>
+                    <select id="Category" name="Category" class="name">
+                        {% for c in itemCategories %}
+                            {% if selected_cate == c %}
+                                <option value="{{c}}" selected>{{c}}</option>
+                            {% else %}
+                                <option value="{{c}}">{{c}}</option>
+                            {% endif%}
+                        {% endfor %}
+                    </select>
+                    <p class="middle-title">About the item</p>
+                    <label for="Condition" class="lable">Condition <span style="color: red;">*</span></label>
+                    <select id="Condition" name="Condition" class="name">
+                        <option value="{{c}}" selected>Brand New</option>
+                        <option value="{{c}}">Like New</option>
+                        <option value="{{c}}">Lightly Used</option>
+                        <option value="{{c}}">Well Used</option>
+                        <option value="{{c}}">Heavily Used</option>
+                    </select>
+                    <div id="switch-div" style="display: flex; flex-direction: row; margin-bottom: 10px;">
+                        <p class="lable" style="margin-right: 10px; margin-top: 5px;">Do you want to give this item out for free?</p>
+                        <label class="switch">
+                            <input type="checkbox" id="has-price" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div id="price-div" style="display: none;">
+                        <label for="Price" class="lable">Price <span style="color: red;">*</span></label>
+                        {{ form.price(class_='name', id_='Price', type_='number', placeholder_="HK$") }}   
+                    </div>
+                    <script>
+                        document.getElementById("has-price").addEventListener('change', function() {
+                            var priceDiv = document.getElementById("price-div");
+                            var switchDiv = document.getElementById("switch-div");
+                            if (!this.checked) {
+                                priceDiv.style.display = "block";
+                            } else {
+                                priceDiv.style.display = "none";
+                            }
+                        });
+                    </script>
+                    <label for="Description" class="lable">Description <span style="color: red;">*</span></label>
+                    {{ form.description(class_='description', maxlength='500') }}
+                    <label for="Place" class="lable">Meet up place<span style="color: red;">*</span></label>
+                    {{ form.pickup(class_='name') }}
+                    <button name="create-contract" value="new-contract" class="post-btn">Post the item!</button> 
+                    <!-- <div class="question-box">
+                        <p class="sell-title">Item Information</p>
+                        <div class="inputs-div">
+                            <div class="lable-div">
+                                <label for="Name" class="lable-style1">Name</label>
+                                <label for="Price" class="lable-style2">Price</label>
+                                <label for="Category" class="lable-style2">Type</label>
+                                <label for="Description" class="lable-style2">Description</label>
+                                <br/><br/><br/>
+                                <label for="Pickup" class="lable-style2">Pick-Up Location</label>
+                                {% for k, c in invalidDict.items() %}
+                                    {% if c == True %}
+                                        <label class="lable-style2"></label>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="item-input-div">
+                                <input type="text" id="Name" name="Name" class="input-style">
+                                <input type="number" id= "Price" name="Price" class="input-style">
+                                {{ form.name(class_='input-style') }}
+                                {{ form.price(class_='input-style') }}                            
+                                <select name="Category" class="input-style">
+                                    <option value="">- Choose a category -</option>
+                                    {% for c in itemCategories %}
+                                        {% if selected_cate == c %}
+                                            <option value="{{c}}" selected>{{c}}</option>
+                                        {% else %}
+                                            <option value="{{c}}">{{c}}</option>
+                                        {% endif%}
+                                    {% endfor %}
+                                </select>
+                                <textarea id="Description" name="Description" class="textarea-style"></textarea>
+                                <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea>
+                                {{ form.description(class_='textarea-style') }}
+                                {{ form.pickup(class_='textarea-style') }}
+                                {% for k, c in invalidDict.items() %}
+                                    {% if c == True %}
+                                        <p class="warning">Please fill in {{k}} !</p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button> 
+                    </div>   -->
+            </div>
             <div class="home-top">
                 <div class="top-logo">
                     <img src="/static/data/ReUST-logo.jpeg" height="50px" />
@@ -24,22 +125,19 @@
                     {% endfor %}
                     <button class="individual-button" type="submit" name="category" value="All">All categories</button>
                 </div>
-                {% if userStatus == True %}
-                    <div class="top-buttons-right">
-                        <button class="give-item" name="Create" value="Create-item">Give</button>
-                        <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                            <span class="material-symbols-outlined" style="font-size: 34px;">
-                                account_circle
-                            </span>
-                            <p>zguanad@connect.ust.hk</p>
-                        </button>
-                    </div>
-                {% endif %}
+                <div class="top-buttons-right">
+                    <button class="give-item" name="Create" value="Create-item">Give</button>
+                    <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                        <span class="material-symbols-outlined" style="font-size: 34px;">
+                            account_circle
+                        </span>
+                        <p>zguanad@connect.ust.hk</p>
+                    </button>
+                </div>
             </div>
             
     
-            <div class="search-div">
-                
+            <div class="search-div">   
                 <i class="material-icons icon-search" style="font-size: 20px;">search</i>
                 <div style="display: flex; flex-direction: row;">
                     <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
@@ -49,62 +147,15 @@
             </div>
             
             
-            <div class="img-div">
-                <label for="file-upload" class="custom-file-upload">Upload Image</label>
-                <input id="file-upload" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)" style="display: none;">
-            </div>
-            <p class="image-display"><img id="output" width="400"/></p>
-            <div class="question-box">
-                <p class="sell-title">Item Information</p>
-                <div class="inputs-div">
-                    <div class="lable-div">
-                        <label for="Name" class="lable-style1">Name</label>
-                        <label for="Price" class="lable-style2">Price</label>
-                        <label for="Category" class="lable-style2">Type</label>
-                        <label for="Description" class="lable-style2">Description</label>
-                        <br/><br/><br/>
-                        <label for="Pickup" class="lable-style2">Pick-Up Location</label>
-                        {% for k, c in invalidDict.items() %}
-                            {% if c == True %}
-                                <label class="lable-style2"></label>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="item-input-div">
-                        <!-- <input type="text" id= "Name" name="Name" class="input-style"> -->
-                        <!-- <input type="number" id= "Price" name="Price" class="input-style"> -->
-                        {{ form.name(class_='input-style') }}
-                        {{ form.price(class_='input-style') }}                            
-                        <select name="Category" class="input-style">
-                            <option value="">- Choose a category -</option>
-                            {% for c in itemCategories %}
-                                {% if selected_cate == c %}
-                                    <option value="{{c}}" selected>{{c}}</option>
-                                {% else %}
-                                    <option value="{{c}}">{{c}}</option>
-                                {% endif%}
-                            {% endfor %}
-                        </select>
-                        <!-- <textarea id="Description" name="Description" class="textarea-style"></textarea>
-                        <textarea id="Pick-Up" name="Pick-Up" class="textarea-style"></textarea> -->
-                        {{ form.description(class_='textarea-style') }}
-                        {{ form.pickup(class_='textarea-style') }}
-                        {% for k, c in invalidDict.items() %}
-                            {% if c == True %}
-                                <p class="warning">Please fill in {{k}} !</p>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-                <button name="create-contract" value="new-contract" class="create-style">New Life Start!</button> 
-            </div>   
         </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>  
     <script>
         var loadFile = function(event) {
             var image = document.getElementById('output');
+            // var uploadDiv = document.getElementById('upload-div');
             image.src=URL.createObjectURL(event.target.files[0]);
+            // image.style.paddingTop = "0%";
         };
     </script>
 </html>

@@ -96,7 +96,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     font-style: bold;
     font-family: sans-serif;
     color: white;
-    background-color: var(--mainGreen1);
+    background-color: rgba(1, 143, 121, 1);
 }
 .profile-icon {
     color: black;
