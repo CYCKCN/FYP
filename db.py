@@ -107,6 +107,10 @@ class RequestDB():
 
     def findRequest(self, requestID):
         return self.db.find_one({"requestID": requestID})
+
+    def soldRequest(self, requestID, itemID):
+        self.db.update_one({"requestID": requestID}, {'$set': {'requestDeal': itemID, 'requestSold': True}})
+        return self.db.find_one({"requestID": requestID})
     
     def createRequest(self, user, info):
         requestID = randomID(IDLENGTH)
@@ -117,14 +121,14 @@ class RequestDB():
         self.db.insert_one(newRequest.__dict__)
         return "Info: New Request Added"
 
-    def getRequestList(self, user=""):
+    def getRequestList(self, user="", noSold=False):
         selection = {}
         if user != "": selection["requestUser"] = user
         requestList = self.db.find(selection).sort('_id', -1) #.limit(10)
         requestInfo = {}
         counter = 0
         for request in requestList:
-            if request["requestSold"]: continue
+            if request["requestSold"] and noSold: continue
             requestInfo[str(counter)] = request
             counter += 1
         return requestInfo

@@ -31,7 +31,7 @@ def home():
     elif (maxprice, minprice) == ('', '200'): price = 'More than 200'
     else: price = ""
 
-    requestInfo = requestdb.getRequestList()
+    requestInfo = requestdb.getRequestList(noSold=True)
     # print(requestInfo)
 
     if request.method == 'POST':
