@@ -3,10 +3,10 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, ds_client, gcs_client, BUCKET
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck#, ds_client, gcs_client, BUCKET
 from db import itemdb, requestdb, accountdb, chatdb, bargaindb
 
-from google.cloud import exceptions, ndb, storage
+# from google.cloud import exceptions, ndb, storage
 
 market = Blueprint('market',__name__)
 
@@ -19,19 +19,18 @@ def home():
         return redirect(url_for('life.login'))
 
     cate = request.args.get('cate')
-    maxprice = request.args.get('maxprice')
-    minprice = request.args.get('minprice')
+    # maxprice = request.args.get('maxprice')
+    # minprice = request.args.get('minprice')
     search = request.args.get('search')
 
     # print(cate, maxprice, minprice, search)
-    itemInfo = itemdb.getItemList(cate=cate if cate else "", maxprice=maxprice if maxprice else "", \
-                                  minprice=minprice if minprice else "", search=search if search else "")
+    itemInfo = itemdb.getItemList(cate=cate if cate in CATEGORY else "", search=search if search else "")
 
-    if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
-    elif (maxprice, minprice) == ('100', '50'): price = 'Between 50 - 100'
-    elif (maxprice, minprice) == ('200', '100'): price = 'Between 100 - 200'
-    elif (maxprice, minprice) == ('', '200'): price = 'More than 200'
-    else: price = ""
+    # if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
+    # elif (maxprice, minprice) == ('100', '50'): price = 'Between 50 - 100'
+    # elif (maxprice, minprice) == ('200', '100'): price = 'Between 100 - 200'
+    # elif (maxprice, minprice) == ('', '200'): price = 'More than 200'
+    # else: price = ""
 
     requestInfo = requestdb.getRequestList(noSold=True)
     # print(requestInfo)
@@ -41,48 +40,54 @@ def home():
         button = buttonCheck(request.form)
         if button: return button
 
-        apply = request.form.get('Apply')
-        clear = request.form.get('Clear')
-        cate = request.form.get("Category")
-        price = request.form.get("Price")
+        category = request.form.get("category")
+        # print(cate)
+        # price = request.form.get("Price")
         create = request.form.get("Create")
         itemName = request.form.get("search-keyword")
-
+        apply = request.form.get("Apply")
+        
         # demand = request.form.get("Demand")
         if itemName == '' and search != '': itemName = search
         # itemName = searchForm.search.data
 
-        if price == 'Less than 50': maxprice, minprice = '50', '0'
-        elif price == 'Between 50 - 100': maxprice, minprice = '100', '50'
-        elif price == 'Between 100 - 200': maxprice, minprice = '200', '100'
-        elif price == 'More than 200': maxprice, minprice = '', '200'
-        else: maxprice, minprice = '', ''
+        # if price == 'Less than 50': maxprice, minprice = '50', '0'
+        # elif price == 'Between 50 - 100': maxprice, minprice = '100', '50'
+        # elif price == 'Between 100 - 200': maxprice, minprice = '200', '100'
+        # elif price == 'More than 200': maxprice, minprice = '', '200'
+        # else: maxprice, minprice = '', ''
 
         # print(cate, maxprice, minprice, itemName)
 
         # if demand == 'Demand':
         #     return redirect(url_for('life.demand'))
 
-        if clear == 'Clear':
-            return redirect(url_for("market.home", cate='', maxprice='', minprice='', search=''))
+        # if clear == 'Clear':
+        #     return redirect(url_for("market.home", cate='', maxprice='', minprice='', search=''))
         
-        if apply == "Apply" or itemName:
-            return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
+        # if apply == "Apply" or itemName:
+        #     return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
+
+        if category:
+            return redirect(url_for("market.home", cate=category, search=''))
+        
+        if itemName and apply:
+            return redirect(url_for("market.home", cate=cate, search=itemName))
 
         if create == 'Create-item':
             return redirect(url_for('market.giveitem'))
-        if create == 'Create-request':
-            return redirect(url_for('demand.demandcreate'))
+        # if create == 'Create-request':
+        #     return redirect(url_for('demand.demandcreate'))
         
         requestBtn = request.form.get('request-send')
         requestCtx = request.form.get('request-congtent')
         
         if requestBtn and requestCtx:
             requestdb.createRequest(session['email'], requestCtx)
-            return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
+            return redirect(url_for("market.home", cate=cate, search=""))
 
     # print(price)
-    return render_template('market.html', search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_price=price if price else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, priceRange=PRICERANGE)
+    return render_template('market.html', userName=session['email'], search=search if search else 'Search Now', selected_cate=cate if cate else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
 
 @market.route('/giveitem', methods=['POST', 'GET'])
 def giveitem():
@@ -162,6 +167,10 @@ def item(itemID):
         button = buttonCheck(request.form)
         if button: return button
 
+        category = request.form.get("category")
+        if category:
+            return redirect(url_for("market.home", cate=category, search=''))
+        
         reserve = request.form.get('Reserve')
         if reserve == "Reserve":
             if userStatus:
@@ -197,7 +206,7 @@ def item(itemID):
             bargaindb.sendBargain(itemID, session['email'], session['email'], price, notes)
             return redirect(url_for('market.item', itemID=itemID))
                 
-    return render_template('item.html', item=item, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
+    return render_template('item.html', item=item, itemCategories=CATEGORY, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 def itemManager(itemID):

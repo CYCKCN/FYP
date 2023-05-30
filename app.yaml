@@ -1,2 +1,2 @@
-runtime: python39
+runtime: python38
 # app_engine_apis: true

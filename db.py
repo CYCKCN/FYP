@@ -3,7 +3,7 @@ from pymongo.mongo_client import MongoClient
 from utils import Account, User, Item, Request, Chat, Story, Bargain, randomID, IDLENGTH, UNIADDR
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
     
 def connection(dbname):
     addr = "mongodb+srv://admin:admin@life2.dwrako7.mongodb.net/?retryWrites=true&w=majority"
@@ -58,7 +58,9 @@ class ItemDB():
     def createItem(self, owner, name, price, category, info, image_path, pickup):
         itemID = randomID(IDLENGTH)
         while (self.db.find_one({"itemID": itemID})): itemID = randomID(IDLENGTH)
-        newItem = Item(itemID, owner, name, price, category, info, image_path, pickup)
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
+        time = now.strftime("%Y.%m.%d %H:%M")
+        newItem = Item(itemID, owner, name, price, category, info, image_path, pickup, time)
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
@@ -84,7 +86,7 @@ class ItemDB():
         return itemInfo
     
     def reserveItem(self, itemID, reservedBy):
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         self.db.update_one({"itemID": itemID}, {'$set': {'itemReserve': reservedBy, 'itemStatus': 'Reserved', 'itemReserveTime': time}})
     
@@ -115,7 +117,7 @@ class RequestDB():
     def createRequest(self, user, info):
         requestID = randomID(IDLENGTH)
         while (self.db.find_one({"requestID": requestID})): requestID = randomID(IDLENGTH)
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         newRequest = Request(requestID, user, info, time)
         self.db.insert_one(newRequest.__dict__)
@@ -167,7 +169,7 @@ class ChatDB():
     def createChat(self, itemID, buyerEmail):
         chatID = randomID(IDLENGTH)
         while (self.db.find_one({"chatID": chatID})): chatID = randomID(IDLENGTH)
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         item = itemdb.findItem(itemID)
         newChat = Chat(chatID, itemID, item["itemOwner"], buyerEmail, time)
@@ -177,7 +179,7 @@ class ChatDB():
     def sendChat(self, itemID, buyerEmail, ownerEmail, chattxt, type="buyer"):
         chat = self.findChatByBuyer(itemID, buyerEmail)
         print(itemID, buyerEmail, chat["chatInfo"])
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         if type == "buyer":
             chat["chatInfo"].append({"sendBy": buyerEmail, "sendTo": ownerEmail, "sendTxt": chattxt, "sendTime": time})
@@ -225,7 +227,7 @@ class BargainDB():
         return self.db.find({"bargainFrom": buyerEmail})
     
     def createBargain(self, itemID, buyerEmail):
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         newB = Bargain(buyerEmail, itemID, time)
         self.db.insert_one(newB.__dict__)
@@ -233,14 +235,14 @@ class BargainDB():
     
     def sendBargain(self, itemID, buyerEmail, userEmail, price, notes):
         bargain = self.findBargainByBuyer(itemID, buyerEmail)
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         bargain["bargainInfo"].append({"sendBy": userEmail, "sendTime": time, "price": price, "notes": notes, "Status": "Pending"})
         self.db.update_one({"bargainItem": itemID, "bargainFrom": buyerEmail}, {'$set': {'bargainInfo': bargain["bargainInfo"]}})
 
     def replyBargain(self, itemID, buyerEmail, userEmail, status, notes, index):
         bargain = self.findBargainByBuyer(itemID, buyerEmail)
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         bargain["bargainInfo"][index]["Status"] = status
         bargain["bargainInfo"].insert(index + 1, {"sendBy": userEmail, "sendTime": time, "notes": notes})
@@ -263,7 +265,7 @@ class StoryDB():
     def createStory(self, itemID, userEmail, img, intro):
         storyID = randomID(IDLENGTH)
         while (self.db.find_one({"storyID": storyID})): storyID = randomID(IDLENGTH)
-        now = datetime.now()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
         newStory = Story(storyID, itemID, userEmail, time, img, intro)
         self.db.insert_one(newStory.__dict__)
