@@ -61,9 +61,9 @@
                         });
                     </script>
                     <label for="Description" class="lable">Description <span style="color: red;">*</span></label>
-                    {{ form.description(class_='description', maxlength='500') }}
+                    {{ form.description(class_='description', maxlength='500', placeholder_="Write any detailed description here") }}
                     <label for="Place" class="lable">Meet up place<span style="color: red;">*</span></label>
-                    {{ form.pickup(class_='name') }}
+                    {{ form.pickup(class_='name', placeholder_="Somewhere in HKUST") }}
                     <button name="create-contract" value="new-contract" class="post-btn">Post the item!</button> 
                     {% for k, c in invalidDict.items() %}
                         {% if c == True %}
@@ -116,10 +116,10 @@
                     </div>   -->
             </div>
             <div class="home-top">
-                <div class="top-logo">
+                <button class="top-logo" name="Home" value="Home">
                     <img src="/static/data/ReUST-logo.jpeg" height="50px" />
                     <p class="logo-font">LIFE2</p>
-                </div>
+                </button>
                 <div class="top-buttons-left">
                     {% for c in itemCategories %}
                     <button class="individual-button" type="submit" name="market" value="{{c}}">{{c}}</button>

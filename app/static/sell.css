@@ -153,6 +153,12 @@
     padding: 10px;
     display: block;
   }
+  .description::placeholder{
+    color: #C1C7DE;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
   .middle-title {
     font-size: 20px;
     font-style: Bold;
@@ -245,6 +251,8 @@
     background: none;
     display: flex;
     flex-direction: row;
+    border: none;
+    cursor: pointer;
 }
 .logo-font {
     font-family: sans-serif;

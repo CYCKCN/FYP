@@ -4,98 +4,114 @@
     <link rel="stylesheet" href="/static/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
   </head>
 
   <body>
     <form method="POST">
     <div class="page-frame">
         <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg"/>
-                <p class="logo-font">ReUST</p>
-            </div>
-            <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <!-- <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
-                <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
-                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button> -->
-            </div>
-        </div>
-
-        <div class="section-bar">
-            <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
-            <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
-            <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
-            <input class="section-btn" type="submit" id="bargain" name="section" value="Bargain">
-        </div>
-
-        {% if section == "Request" %}
-        <div class="content">
-            <hr class="rounded">
-            {% for k, v in requestInfo.items() %}
-            <a href="/demand/{{v.requestID}}" class="request-link">
-                <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
-                <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
-                {{v.requestInfo}}
-                <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
-                <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
-                
-            </a>
-            <hr class="rounded">
-            {% endfor %}
-        </div>
-        {% elif section == "Item" %}
-        <div class="content">
-            <div class="display-table">
-                {% for k, v in itemInfo.items() %}
-                <a href="itemManager/{{v.itemID}}" style="text-decoration:none">
-                    <div class="on-sale-block">
-                        <img src={{v.itemImg}} width="340" class="display-image"/>
-                        <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
-                        <p class="display-text">{{v.itemInfo}}</p>
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-        <!-- {% elif section == "Chat" %}
-        <div class="content">
-            {% for c in chatInfo.values() %}
-            <button type="submit" class="chat-block" name="item" value="{{c['itemID']}}">
-                <p class="font-class" style="text-align: left; margin-left: 20px; font-weight: 600;">{{c["itemName"]}}</p>
-                <p class="font-class" style="text-align: left; margin-left: 20px;">{{c["sendTo"]}}</p>
+            <button class="top-logo" name="Home" value="Home">
+                <img src="/static/data/ReUST-logo.jpeg" height="50px" />
+                <p class="logo-font">LIFE2</p>
             </button>
-            {% endfor %}
-        </div> -->
-        {% elif section == "Bargain" %}
-        <div class="content">
-            <div class="display-table">
-                {% for item in bargainItemList %}
-                <a href="itemManager/{{item.itemID}}" style="text-decoration:none">
-                    <div class="on-sale-block">
-                        <img src={{item.itemImg}} width="340" class="display-image"/>
-                        <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
-                        <p class="display-text">{{item.itemInfo}}</p>
-                    </div>
-                </a>
+            <div class="top-buttons-left">
+                {% for c in itemCategories %}
+                <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
                 {% endfor %}
+                <button class="individual-button" type="submit" name="category" value="All">All categories</button>
+                <!-- <button type="button" class="collapsible">
+                    <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
+                        tune
+                    </span>
+                    <p>Filtering...</p>
+                </button> -->
+            </div>
+
+            <div class="top-buttons-right">
+                <button class="give-item" name="Create" value="Create-item">Give</button>
+                <button type="submit" name="Chat" value="Chat" class="chat-icon">
+                    <span class="material-symbols-outlined forum-icon" style="font-size: 30px;">
+                        forum
+                    </span>
+                </button>
+                <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                    <!-- <span class="material-symbols-outlined" style="font-size: 34px;">
+                        account_circle
+                    </span> -->
+                    <p>{{userName}}</p>
+                </button>
             </div>
         </div>
-        {% else %}
-        <div class="content">
-            <div class="inputs-div">
-                <div class="lable-div">
-                    <p class="user-style1">Username</p>
-                    <p class="user-style2">User Email</p>
-                </div>
-                <div class="item-input-div">
-                    <p class="user-style1">{{user.accountName}}</p>
-                    <p class="user-style2">{{user.accountEmail}}</p>        
+
+        <div class="item-div">
+            <div class="item-left">
+                <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
+                <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
+                <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
+                <input class="section-btn" type="submit" id="bargain" name="section" value="Bargain">
+            </div>
+
+            {% if section == "Request" %}
+            <div class="item-right">
+                <hr class="rounded">
+                {% for k, v in requestInfo.items() %}
+                <a href="/demand/{{v.requestID}}" class="request-link">
+                    <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
+                    <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
+                    {{v.requestInfo}}
+                    <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
+                    <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
+                    
+                </a>
+                <hr class="rounded">
+                {% endfor %}
+            {% elif section == "Item" %}
+            <div class="item-right">
+                <div class="display-table">
+                    {% for k, v in itemInfo.items() %}
+                    <a href="itemManager/{{v.itemID}}" style="text-decoration:none">
+                        <div class="on-sale-block">
+                            <img src={{v.itemImg}} width="340" class="display-image"/>
+                            <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
+                            <p class="display-text">{{v.itemInfo}}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
+            </div>
+            {% elif section == "Bargain" %}
+            <div class="item-right">
+                <div class="display-table">
+                    {% for item in bargainItemList %}
+                    <a href="itemManager/{{item.itemID}}" style="text-decoration:none">
+                        <div class="on-sale-block">
+                            <img src={{item.itemImg}} width="340" class="display-image"/>
+                            <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
+                            <p class="display-text">{{item.itemInfo}}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
-            <button name="logout" value="logout" class="account-style">Log out</button>
+            {% else %}
+            <div class="item-right">
+                <div class="inputs-div">
+                    <div class="lable-div">
+                        <p class="user-style1">Username</p>
+                        <p class="user-style2">User Email</p>
+                    </div>
+                    <div class="item-input-div">
+                        <p class="user-style1">{{user.accountName}}</p>
+                        <p class="user-style2">{{user.accountEmail}}</p>        
+                    </div>
+                </div>
+                <button name="logout" value="logout" class="account-style">Log out</button>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
+
+            
+
         
     </div>
     </form>

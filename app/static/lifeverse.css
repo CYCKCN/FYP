@@ -31,6 +31,8 @@ body::-webkit-scrollbar {
     background: none;
     display: flex;
     flex-direction: row;
+    border: none;
+    cursor: pointer;
 }
 .logo-font {
     font-family: sans-serif;

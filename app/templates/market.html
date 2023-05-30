@@ -9,8 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/static/lifeverse.css" />
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
 </head>
 
 <body>
@@ -80,10 +79,10 @@
         <div class="search-div">
 
             <div class="home-top">
-                <div class="top-logo">
+                <button class="top-logo" name="Home" value="Home">
                     <img src="/static/data/ReUST-logo.jpeg" height="50px" />
                     <p class="logo-font">LIFE2</p>
-                </div>
+                </button>
                 <div class="top-buttons-left">
                     {% for c in itemCategories %}
                     <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
@@ -119,7 +118,7 @@
                 
                 <i class="material-icons icon-search" style="font-size: 20px;">search</i>
                 <div style="display: flex; flex-direction: row;">
-                    <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
+                    <input class="search" type="search" name="search-keyword" placeholder="Search the keyword here" />
                     <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
                 </div>
                 
