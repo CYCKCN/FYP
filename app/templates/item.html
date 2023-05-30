@@ -71,11 +71,12 @@
         </div>
 
         <div class="interactive-div">
-            <div class="form-popup" id="myForm">
 
+            <div class="form-popup" id="myForm">
+                {% if item["itemStatus"] != "Reserved"%}
                 <label for="user-price"><b>Price</b></label>
                 <input type="number" placeholder="Enter your intended price" name="user-price">
-
+                {% endif %}
                 <label for="user-notes"><b>Notes</b></label>
                 <input type="text" placeholder="Any notes for the owner?" name="user-notes">
 
@@ -84,13 +85,19 @@
 
             </div>
 
+            <!-- {% if item["itemStatus"] != "Reserved"%} -->
             <button type="button" class="interaction-div" id="priceButton" onclick="openForm()">
-
                 <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
                     back_hand
                 </span>
             </button>
-
+            <!-- {% elif item["itemStatus"] == "Reserved" and item[] %} -->
+            <button type="button" class="interaction-div" id="priceButton" onclick="openForm()">
+                <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
+                    back_hand
+                </span>
+            </button>
+            <!-- {% endif %} -->
             <div class="bargain-timeline">
                 <div class="timeline">
                     {% for v in bargainInfo %}

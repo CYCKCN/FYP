@@ -93,8 +93,12 @@
             <div class="notes-list-div">
                 {% if bargainInfo != [] %}
                 <textarea class="notes-textarea" cols="3" maxlength="50" name="owner-notes"></textarea>
+                {%  item["itemStatus"] == "Reserved" %}
+                <button class="agree-decline-btn black" type="submit" name="send" value="send">Send</button>
+                {% else %}
                 <button class="agree-decline-btn green" type="submit" name="agree" value="agree">Agree</button>
                 <button class="agree-decline-btn red" type="submit" name="decline" value="decline">Decline</button>
+                {% endif%}
                 {% endif%}
             </div>
         </div>
