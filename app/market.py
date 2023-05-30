@@ -3,7 +3,7 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck#, ds_client, gcs_client, BUCKET
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, CONDITION, PRICERANGE, RequestForm, ItemForm, buttonCheck#, ds_client, gcs_client, BUCKET
 from db import itemdb, requestdb, accountdb, chatdb, bargaindb
 
 # from google.cloud import exceptions, ndb, storage
@@ -22,9 +22,11 @@ def home():
     # maxprice = request.args.get('maxprice')
     # minprice = request.args.get('minprice')
     search = request.args.get('search')
+    filter = request.args.get('filter')
 
     # print(cate, maxprice, minprice, search)
-    itemInfo = itemdb.getItemList(cate=cate if cate in CATEGORY else "", search=search if search else "")
+    # print(filter)
+    itemInfo = itemdb.getItemList(cate=cate if cate in CATEGORY else "", search=search if search else "", filter=filter if filter and filter != "All" else "")
 
     # if (maxprice, minprice) == ('50', '0'): price = 'Less than 50'
     # elif (maxprice, minprice) == ('100', '50'): price = 'Between 50 - 100'
@@ -46,6 +48,7 @@ def home():
         create = request.form.get("Create")
         itemName = request.form.get("search-keyword")
         apply = request.form.get("Apply")
+        section = request.form.get('section-btn')
         
         # demand = request.form.get("Demand")
         if itemName == '' and search != '': itemName = search
@@ -69,15 +72,18 @@ def home():
         #     return redirect(url_for("market.home", cate=cate, maxprice=maxprice, minprice=minprice, search=itemName))
 
         if category:
-            return redirect(url_for("market.home", cate=category, search=''))
+            return redirect(url_for("market.home", cate=category, search='', filter=''))
         
         if itemName and apply:
-            return redirect(url_for("market.home", cate=cate, search=itemName))
+            return redirect(url_for("market.home", cate=cate, search=itemName, filter=filter))
 
         if create == 'Create-item':
             return redirect(url_for('market.giveitem'))
         # if create == 'Create-request':
         #     return redirect(url_for('demand.demandcreate'))
+
+        if section:
+            return redirect(url_for("market.home", filter=section, cate=cate, search=''))
         
         requestBtn = request.form.get('request-send')
         requestCtx = request.form.get('request-congtent')
@@ -87,7 +93,7 @@ def home():
             return redirect(url_for("market.home", cate=cate, search=""))
 
     # print(price)
-    return render_template('market.html', userName=session['email'], search=search if search else 'Search Now', selected_cate=cate if cate else '', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY)
+    return render_template('market.html', userName=session['email'], search=search if search else 'Search Now', selected_cate=cate if cate else '', selected_section=filter if filter else 'All', itemInfo=itemInfo, requestInfo=requestInfo, userStatus=userStatus, itemCategories=CATEGORY, itemCondition=CONDITION)
 
 @market.route('/giveitem', methods=['POST', 'GET'])
 def giveitem():
@@ -95,17 +101,19 @@ def giveitem():
         session['oauth_origin'] = request.full_path
         return redirect(url_for('auth.google_login'))
     
-    selected_cate = ""
     itemImg = ""
     itemForm = ItemForm()
-    invalidDict = {"name": False, "price": False, "info": False, "pickup": False, "cate": False, "img": False}
+    invalidDict = {"name": False, "cate": False, "cond": False, "price": False, "info": False, "pickup": False,  "img": False}
 
     if request.method == 'POST':
         submit = request.form.get('create-contract')
-        selected_cate = category = request.form.get('Category')
+        category = request.form.get('Category')
+        condition = request.form.get('Condition')
+        free = request.form.get('Free')
+        market = request.form.get('market')
 
         name = itemForm.name.data
-        price = itemForm.price.data
+        price = 0 if free else itemForm.price.data
         info = itemForm.description.data
         pickup = itemForm.pickup.data
 
@@ -117,32 +125,35 @@ def giveitem():
 
         button = buttonCheck(request.form)
         if button: return button
+        # print(market)
+        if market:
+            return redirect(url_for("market.home", cate=market, search='', filter=''))
         
-        if file and file.filename != "" and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            blob = gcs_client.bucket(BUCKET).blob(filename)
-            blob.upload_from_file(file, content_type=file.content_type)
-            image_path = filename
-            # file.save(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
-            # image_path = os.path.join(UPLOAD_FOLDER, filename)
-            # itemImg = "../../" + image_path[4:]
-            # print(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
-        else: invalidDict["img"] = True
-
-        if category == "": invalidDict["cate"] = True
-        if not name: invalidDict["name"] = True
-        if not price: invalidDict["price"] = True
-        if not info: invalidDict["info"] = True
-        if not pickup: invalidDict["pickup"] = True
-        
-        if True in invalidDict.values():
-            return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
         # print(image_path)
         if submit == "new-contract":
-            itemdb.createItem(session["email"], name, price, category, info, image_path, pickup)
-            return redirect(url_for('market.home'))
+            if file and file.filename != "" and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                # blob = gcs_client.bucket(BUCKET).blob(filename)
+                # blob.upload_from_file(file, content_type=file.content_type)
+                image_path = filename
+                # file.save(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
+                # image_path = os.path.join(UPLOAD_FOLDER, filename)
+                # itemImg = "../../" + image_path[4:]
+                # print(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
+            else: invalidDict["img"] = True
 
-    return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, selected_cate=selected_cate)
+            if not name: invalidDict["name"] = True
+            if category == "": invalidDict["cate"] = True 
+            if condition == "": invalidDict["cond"] = True 
+            if not free and not price: invalidDict["price"] = True
+            if not info: invalidDict["info"] = True
+            if not pickup: invalidDict["pickup"] = True
+            if True in invalidDict.values():
+                return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
+            
+            itemdb.createItem(session["email"], name, price, category, condition, info, image_path, pickup)
+            return redirect(url_for('market.home'))
+    return render_template('giveitem.html', userName=session['email'], form=itemForm, itemCategories=CATEGORY, itemCondition=CONDITION, invalidDict=invalidDict)
     # return "Sell Page"
 
 @market.route('/item/<itemID>', methods=['POST', 'GET'])

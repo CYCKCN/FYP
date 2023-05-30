@@ -55,19 +55,19 @@ class ItemDB():
         # if item: item['itemImg'] = "../../" + item['itemImg'][4:]
         return item
     
-    def createItem(self, owner, name, price, category, info, image_path, pickup):
+    def createItem(self, owner, name, price, category, condition, info, image_path, pickup):
         itemID = randomID(IDLENGTH)
         while (self.db.find_one({"itemID": itemID})): itemID = randomID(IDLENGTH)
         now = datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))) 
         time = now.strftime("%Y.%m.%d %H:%M")
-        newItem = Item(itemID, owner, name, price, category, info, image_path, pickup, time)
+        newItem = Item(itemID, owner, name, price, category, condition, info, image_path, pickup, time)
         self.db.insert_one(newItem.__dict__)
         return "Info: New Item Added"
 
     def deleteItem(self, itemID):
         self.db.delete_one({"itemID": itemID})
 
-    def getItemList(self, user="", cate="", maxprice="", minprice="", search=""):
+    def getItemList(self, user="", cate="", maxprice="", minprice="", search="", filter=""):
         selection = {}
         if user != "": selection["itemOwner"] = user
         if cate != "": selection["itemCate"] = cate
@@ -75,6 +75,10 @@ class ItemDB():
         elif maxprice != "" and minprice == "": selection["itemPrice"] = {"$lte": int(maxprice)}
         elif maxprice == "" and minprice != "": selection["itemPrice"] = {"$gte": int(minprice)}
         if search != "": selection["itemName"] = {'$regex': search}
+        # print(filter)
+        if filter != "": 
+            if filter == "Free": selection["itemPrice"] = float(0)
+            else: selection["itemCond"] = filter
         # print(selection)
         itemList = self.db.find(selection)
         itemInfo = {}

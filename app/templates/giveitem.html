@@ -25,27 +25,23 @@
                     {{ form.name(class_='name', placeholder_='e.g. Foldable desk', id_="Name")}}
                     <label for="Category" class="lable">Category <span style="color: red;">*</span></label>
                     <select id="Category" name="Category" class="name">
+                        <option value="">- Choose a category -</option>
                         {% for c in itemCategories %}
-                            {% if selected_cate == c %}
-                                <option value="{{c}}" selected>{{c}}</option>
-                            {% else %}
-                                <option value="{{c}}">{{c}}</option>
-                            {% endif%}
+                            <option value="{{c}}">{{c}}</option>
                         {% endfor %}
                     </select>
                     <p class="middle-title">About the item</p>
                     <label for="Condition" class="lable">Condition <span style="color: red;">*</span></label>
                     <select id="Condition" name="Condition" class="name">
-                        <option value="{{c}}" selected>Brand New</option>
-                        <option value="{{c}}">Like New</option>
-                        <option value="{{c}}">Lightly Used</option>
-                        <option value="{{c}}">Well Used</option>
-                        <option value="{{c}}">Heavily Used</option>
+                        <option value="">- Choose item condition -</option>
+                        {% for c in itemCondition %}
+                            <option value="{{c}}">{{c}}</option>
+                        {% endfor %}
                     </select>
                     <div id="switch-div" style="display: flex; flex-direction: row; margin-bottom: 10px;">
                         <p class="lable" style="margin-right: 10px; margin-top: 5px;">Do you want to give this item out for free?</p>
                         <label class="switch">
-                            <input type="checkbox" id="has-price" checked>
+                            <input type="checkbox" id="has-price" name="Free" value="Free" checked>
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -69,6 +65,11 @@
                     <label for="Place" class="lable">Meet up place<span style="color: red;">*</span></label>
                     {{ form.pickup(class_='name') }}
                     <button name="create-contract" value="new-contract" class="post-btn">Post the item!</button> 
+                    {% for k, c in invalidDict.items() %}
+                        {% if c == True %}
+                            <p class="warning">Please fill in {{k}} !</p>
+                        {% endif %}
+                    {% endfor %}
                     <!-- <div class="question-box">
                         <p class="sell-title">Item Information</p>
                         <div class="inputs-div">
@@ -121,9 +122,9 @@
                 </div>
                 <div class="top-buttons-left">
                     {% for c in itemCategories %}
-                    <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
+                    <button class="individual-button" type="submit" name="market" value="{{c}}">{{c}}</button>
                     {% endfor %}
-                    <button class="individual-button" type="submit" name="category" value="All">All categories</button>
+                    <button class="individual-button" type="submit" name="market" value="All">All categories</button>
                 </div>
                 <div class="top-buttons-right">
                     <button class="give-item" name="Create" value="Create-item">Give</button>
@@ -131,7 +132,7 @@
                         <span class="material-symbols-outlined" style="font-size: 34px;">
                             account_circle
                         </span>
-                        <p>zguanad@connect.ust.hk</p>
+                        <p>{{userName}}</p>
                     </button>
                 </div>
             </div>

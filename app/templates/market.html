@@ -17,9 +17,23 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="scroll-div">
             <div class="status-selection-div">
-                <button class="status-btn-all">All</button>
-                <button class="status-btn">Brand New</button>
-                <button class="status-btn">Free</button>
+                {% if selected_section == "All" %}
+                    <button class="status-btn-all" name="section-btn" value="All" >All</button>
+                {% else %}
+                    <button class="status-btn" name="section-btn" value="All" >All</button>
+                {% endif %}
+                {% for c in itemCondition %}
+                    {% if selected_section == c %}
+                        <button class="status-btn-all" name="section-btn" value="{{c}}" >{{c}}</option>
+                    {% else %}
+                        <button class="status-btn" name="section-btn" value="{{c}}" >{{c}}</option>
+                    {% endif %}
+                {% endfor %}
+                {% if selected_section == "Free" %}
+                    <button class="status-btn-all" name="section-btn" value="Free"> Free</button>
+                {% else %}
+                    <button class="status-btn" name="section-btn" value="Free"> Free</button>
+                {% endif %}
             </div>
             <div class="item-display-div">
                 {% for k, v in itemInfo.items() %}
@@ -30,7 +44,7 @@
                             <p class="display-time">{{v.itemTime}}</p>
                         </div>
                         <p class="display-name">{{v.itemName}}</p>
-                        <p class="display-price">HK${{v.itemPrice}} <span class="display-status"> • Brand New</span></p>
+                        <p class="display-price">HK${{v.itemPrice}} <span class="display-status"> • {{v.itemCond}}</span></p>
                     </div>
                 </a>
                 {% endfor %}

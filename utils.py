@@ -26,6 +26,7 @@ UPLOAD_FOLDER = 'app/static/data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 CATEGORY = ['Electronics', 'Clothing', 'Personal Care', 'Furnitures', 'Toys', 'Sports', "Others"]
+CONDITION = ['Brand New', 'Like New', 'Lightly Used', 'Well Used', 'Heavily Used']
 PRICERANGE = ["Less than 50", "Between 50 - 100", "Between 100 - 200", "More than 200"]
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -71,13 +72,14 @@ class Account(object):
         self.accountEmail = email # "university email"
 
 class Item(object):
-    def __init__(self, id, owner, name, price, category, info, image_path, pickup_location, time, status="Available", reservedby="", reservedtime=''):
+    def __init__(self, id, owner, name, price, category, condition, info, image_path, pickup_location, time, status="Available", reservedby="", reservedtime=''):
         self.itemID = id # random 12 numbers
         self.itemTime = time
         self.itemOwner = owner # "33872" / "-1"
         self.itemName = name
         self.itemPrice = float(price)
         self.itemCate = category
+        self.itemCond = condition
         self.itemInfo = info
         self.itemImg = image_path
         self.itemPickUp = pickup_location
