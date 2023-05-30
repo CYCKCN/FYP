@@ -10,45 +10,44 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     </head>
 
-    <body>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="item-div">
-                <div class="item-left">
-                    <div class="buyer-owner-select">
-                        <button class="buyer-btn" name="type" value="buyer"> I'm buyer</button>
-                        <button class="owner-btn" name="type" value="owner" >I'm owner</button>
-                    </div>
-                    <button class="dialogue-block">
-                        <div class="dialogue-info">
-                            <p class="dialogue-email">zguanad@connect.ust.hk</p>
-                            <p class="dialogue-item">foldable desk</p>
-                        </div>
-                        <img class="dialogue-img"/>
-                    </button>
-                    <button class="dialogue-block">
-                        <div class="dialogue-info">
-                            <p class="dialogue-email">zguanad@connect.ust.hk</p>
-                            <p class="dialogue-item">foldable desk</p>
-                        </div>
-                        <img class="dialogue-img"/>
-                    </button>
-                    
-                    
-                    {% for bargain in bargainList %}
-                    <div class="dialogue-block">
-                        <div>
-                            <p class="dialogue-email">zguanad@connect.ust.hk</p>
-                            <p class="dialogue-item">foldable desk</p>
-                        </div>
-                        
-                        <img class="dialogue-img"/>
-                    </div>
-                        <button name="bargainID" value="{{bargain.bargainItem}},{{bargain.bargainFrom}}">{{bargain.bargainItem}},{{bargain.bargainFrom}}</button>
-                    {% endfor %}
-
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="item-div">
+            <div class="item-left">
+                <div class="buyer-owner-select">
+                    <button class="buyer-btn" name="type" value="buyer">Buyer</button>
+                    <button class="owner-btn" name="type" value="owner">Owner</button>
                 </div>
-                <div class="item-right">
-                    <div class="latest-price-div">
+                
+                {% for bargain, item in infoList %}
+                {% if selected_type == "buyer" %}
+                <button name="bargainID" class="dialogue-block"
+                    value="{{bargain.bargainItem}},{{item.itemOwner}}">
+                    <div class="dialogue-info">
+                            <p class="dialogue-email">{{item.itemOwner}}</p>
+                            <p class="dialogue-item">{{bargain.bargainItem}}</p>
+                    </div>
+                    <img src="/view/{{item.itemImg}}" class="dialogue-img"/>
+                </button>
+                {% else %}
+                <button name="bargainID"
+                    value="{{bargain.bargainItem}},{{bargain.bargainFrom}}">
+                    <div class="dialogue-info">
+                        <p class="dialogue-email">{{bargain.bargainFrom}}</p>
+                        <p class="dialogue-item">{{bargain.bargainItem}}</p>
+                    </div>
+                    <img src="/view/{{item.itemImg}}" class="dialogue-img"/>
+                </button>
+                {% endif %}
+                {% endfor %}
+
+            </div>
+
+            <div class="item-right">
+                {% if selected_bargain %}
+                <div class="latest-price-div">
+                    {% if selected_bargain.bargainFrom == userName %}
+                        {% if selected_bargain.bargainPrice and selected_bargain.bargainPrice != -1 %}
                         <div class="latest-price-txt">
                             <p>Alice's latest price is: <span style="font-weight: 600;">HK$50</span></p>
                         </div>
