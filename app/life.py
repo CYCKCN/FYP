@@ -47,7 +47,9 @@ def profile():
     user = accountdb.findUser(session["email"])
     itemInfo = itemdb.getItemList(user=session["email"])
     requestInfo = requestdb.getRequestList(user=session["email"])
-    bargainItem = bargaindb.findBargainList(session['email'])
+    bargainList = bargaindb.findBargainList(session['email'])
+    bargainItemList = []
+    for bargain in bargainList: bargainItemList.append(itemdb.findItem(bargain["bargainItem"]))
 
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -70,7 +72,7 @@ def profile():
         #         chat = chatdb.findChatByBuyer(itemID, session["email"])
         #     return redirect(url_for('life.chat', chatID=chat["chatID"]))
         
-    return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, bargainItem=bargainItem)
+    return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, bargainItemList=bargainItemList)
 
 # @life.route('/demand/<requestID>', methods=['POST', 'GET'])
 # def demanddetail(requestID):

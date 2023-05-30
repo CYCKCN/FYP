@@ -36,7 +36,7 @@
             <a href="/demand/{{v.requestID}}" class="request-link">
                 <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
                 <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
-                {{v.requestTitle}}
+                {{v.requestInfo}}
                 <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
                 <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
                 
@@ -70,12 +70,12 @@
         {% elif section == "Bargain" %}
         <div class="content">
             <div class="display-table">
-                {% for k, v in itemInfo.items() %}
-                <a href="itemManager/{{v.itemID}}" style="text-decoration:none">
+                {% for item in bargainItemList %}
+                <a href="itemManager/{{item.itemID}}" style="text-decoration:none">
                     <div class="on-sale-block">
-                        <img src={{v.itemImg}} width="340" class="display-image"/>
-                        <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
-                        <p class="display-text">{{v.itemInfo}}</p>
+                        <img src={{item.itemImg}} width="340" class="display-image"/>
+                        <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
+                        <p class="display-text">{{item.itemInfo}}</p>
                     </div>
                 </a>
                 {% endfor %}
