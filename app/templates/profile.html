@@ -49,16 +49,18 @@
                 <button class="section-btn" type="submit" id="basic_info" name="section" value="Info">
                     Info
                 </button>
-                <button class="section-btn" type="submit" id="request_list" name="section" value="Request">
-                    My Request
+                <button class="section-btn" type="submit" id="request_list" name="section" value="My Request">
+                    My Requests
                 </button>
-                <button class="section-btn" type="submit" id="item_list" name="section" value="Item">
-                    My Item
+                <button class="section-btn" type="submit" id="item_list" name="section" value="My Item">
+                    My Items
                 </button>
-                <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserve"></button>
+                <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserved Item">
+                    My Reserved Items
+                </button>
             </div>
 
-            {% if section == "Request" %}
+            {% if section == "My Request" %}
             <div class="item-right">
                 <hr class="rounded">
                 {% for k, v in requestInfo.items() %}
@@ -72,7 +74,7 @@
                 </a>
                 <hr class="rounded">
                 {% endfor %}
-            {% elif section == "Item" %}
+            {% elif section == "My Item" %}
             <div class="item-right">
                 <div class="display-table">
                     {% for k, v in itemInfo.items() %}
@@ -85,7 +87,7 @@
                     </a>
                     {% endfor %}
             </div>
-            {% elif section == "My Reserve" %}
+            {% elif section == "My Reserved Item" %}
             <div class="item-right">
                 <div class="display-table">
                     {% for item in myReservedItem %}
@@ -103,12 +105,10 @@
             <div class="item-right">
                 <div class="inputs-div">
                     <div class="lable-div">
-                        <p class="user-style1">Username</p>
                         <p class="user-style2">User Email</p>
                     </div>
                     <div class="item-input-div">
-                        <p class="user-style1">{{user.accountName}}</p>
-                        <p class="user-style2">{{user.accountEmail}}</p>        
+                        <p class="user-style2">{{userName}}</p>        
                     </div>
                 </div>
                 <button name="logout" value="logout" class="account-style">Log out</button>
