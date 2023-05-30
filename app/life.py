@@ -49,7 +49,9 @@ def profile():
     requestInfo = requestdb.getRequestList(user=session["email"])
     bargainList = bargaindb.findBargainList(session['email'])
     bargainItemList = []
-    for bargain in bargainList: bargainItemList.append(itemdb.findItem(bargain["bargainItem"]))
+    for bargain in bargainList:
+        item = itemdb.findItem(bargain["bargainItem"])
+        if item: bargainItemList.append(item)
 
     if request.method == 'POST':
         button = buttonCheck(request.form)

@@ -52,7 +52,7 @@ class ItemDB():
 
     def findItem(self, itemID):
         item = self.db.find_one({"itemID": itemID})
-        item['itemImg'] = "../../" + item['itemImg'][4:]
+        if item: item['itemImg'] = "../../" + item['itemImg'][4:]
         return item
     
     def createItem(self, owner, name, price, category, info, image_path, pickup):
@@ -124,7 +124,7 @@ class RequestDB():
         requestInfo = {}
         counter = 0
         for request in requestList:
-            # print(request)
+            if request["requestSold"]: continue
             requestInfo[str(counter)] = request
             counter += 1
         return requestInfo
