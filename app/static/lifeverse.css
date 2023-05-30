@@ -152,7 +152,7 @@ body::-webkit-scrollbar {
     height: fit-content;
     position: fixed;
     padding-top: 10px;
-    top: 150px;
+    top: 100px;
     background: white;
 }
 .icon-search {
