@@ -17,6 +17,7 @@
 
             <div class="item-static-info">
                 <p class="item-name">{{item["itemName"]}}</p>
+                <p class="item-price">HK${{item["itemPrice"]}}</p>
                 <div class="tag-div">
                     <p class="item-cate-tag">{{item["itemCate"]}}</p>
                     <p class="item-quality-tag">unexpendable | Used for 3 monthes</p>
@@ -30,20 +31,14 @@
                     </p>
                 </div>
                 <p class="item-info">{{item["itemInfo"]}}</p>
-                <div class="location-div">
-                    <span class="material-symbols-outlined">
-                        gavel
-                    </span>
-                    <p class="item-price">HKD {{item["itemPrice"]}}</p>
-                </div>
                 {% if item["itemStatus"] == "Reserved" %}
                 <p style="color: red; font-weight: 600;">RESERVED!!</p>
                 {% endif %}
             </div>
 
-            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
             <lottie-player src="/static/js/Animation2_25.json" background="transparent" speed="1" class="life2-anim"
-                loop autoplay></lottie-player>
+                loop autoplay></lottie-player> -->
 
             <div class="user-div">
                 <div>
@@ -60,22 +55,59 @@
 
         <div class="home-top">
             <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg" />
+                <img src="/static/data/ReUST-logo.jpeg" height="50px" />
                 <p class="logo-font">LIFE2</p>
             </div>
             <div class="top-buttons-left">
-                <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
+                {% for c in itemCategories %}
+                <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
+                {% endfor %}
+                <button class="individual-button" type="submit" name="category" value="All">All categories</button>
+                <!-- <button type="button" class="collapsible">
+                    <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
+                        tune
+                    </span>
+                    <p>Filtering...</p>
+                </button> -->
             </div>
-            <div class="top-buttons">
-                {% if userStatus == True %}
-                <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                {% endif %}
+            {% if userStatus == True %}
+                <div class="top-buttons-right">
+                    <button class="give-item" name="Create" value="Create-item">Give</button>
+                    <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                        <span class="material-symbols-outlined" style="font-size: 34px;">
+                            account_circle
+                        </span>
+                        <p>zguanad@connect.ust.hk</p>
+                    </button>
+                    
+                </div>
+            {% endif %}
+        </div>
+        
+
+        <div class="search-div">
+            
+            <i class="material-icons icon-search" style="font-size: 20px;">search</i>
+            <div style="display: flex; flex-direction: row;">
+                <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
+                <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
             </div>
+            
         </div>
 
         <div class="interactive-div">
+            <div class="contact-div">
+                <div class="owner-div">
+                    <span class="material-symbols-outlined account-icon" style="font-size: 34px; color: rgba(0, 0, 0, 0.5);">
+                        account_circle
+                    </span>
+                    <p class="chat-owner">zguanad@connect.ust.hk</p>
+                </div>
+                
+                <button class="chat-btn">Chat</button>
+            </div>
 
-            <div class="form-popup" id="myForm">
+            <!-- <div class="form-popup" id="myForm">
                 {% if item["itemStatus"] != "Reserved"%}
                 <label for="user-price"><b>Price</b></label>
                 <input type="number" placeholder="Enter your intended price" name="user-price">
@@ -130,10 +162,7 @@
                           </div>
                         {% endif %}
                     {% endfor %}
-            </div>
-
-
-            
+            </div> -->
         </div>
         
         <script>

@@ -15,20 +15,31 @@
 
 <body>
     <form method="POST" enctype="multipart/form-data">
-        <div class="page-frame">
+        <!-- <div class="page-frame"> -->
             <div class="scroll-div">
-                <!-- <img class="head-img" src="/static/data/tree.jpeg" /> -->
+                <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="/static/js/Animation1.json" background="transparent" speed="1" class="life2-anim"
+                loop autoplay></lottie-player>
+                <img class="head-img" src="/static/data/tree.jpeg" /> -->
+                <div class="status-selection-div">
+                    <button class="status-btn-all">All</button>
+                    <button class="status-btn">Brand New</button>
+                    <button class="status-btn">Free</button>
+                </div>
                 <div class="item-display-div">
                     {% for k, v in itemInfo.items() %}
                     <a href="item/{{v.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
                             <img src="/view/{{ v.itemImg }}" class="display-image" />
-                            <p class="display-name">{{v.itemName}} <span style="color: orange; font-weight: 400;">  HKD{{v.itemPrice}}</span></p>
-                            <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
-                            <p class="green-value">32</p>
+                            <div class="shadow-div">
+                                <p class="display-time">May 23 18:00</p>
+                            </div>
+                            <p class="display-name">{{v.itemName}}</p>
+                            <p class="display-price">HK${{v.itemPrice}} <span class="display-status"> • Brand New</span></p>
+                            <!-- <p class="green-value">32</p>
                             <span class="material-symbols-outlined green-icon" style="font-size: 35px;">
                                 psychiatry
-                            </span>
+                            </span> -->
                             <!-- <span class="material-symbols-outlined bargain-icon">
                                 gavel
                             </span> -->
@@ -38,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="request-div">
+            <!-- <div class="request-div">
                 <div class="request-floating-div">
                     
                     <marquee class="marquee-div" direction="down" height="100px" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="1">
@@ -64,13 +75,10 @@
                     <button class="request-send" name="request-send" value="request-send">Send</button>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="header" id="myHeader">
-                <div class="search-div">
-                    <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
-                    <i class="material-icons icon-search" style="font-size: 20px;">search</i>
-                </div>
+            <!-- <div class="header" id="myHeader">
+                
 
                 <div class="filter-div">
                     <select name="Category" class="button-option">
@@ -96,7 +104,7 @@
                     <button class="button-option" type="submit" name="Apply" value="Apply">Apply</button>
                     <button class="button-option" type="submit" name="Clear" value="Clear">Clear</button>
                 </div>
-            </div>
+            </div> -->
 
             <div class="home-top">
                 <div class="top-logo">
@@ -104,36 +112,42 @@
                     <p class="logo-font">LIFE2</p>
                 </div>
                 <div class="top-buttons-left">
-                    <!-- <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <button class="individual-button" type="submit" name="Market" value="Market">Market</button> -->
-                    <!-- <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button> -->
-                </div>
-                <div class="top-buttons">
-                    {% if userStatus == True %}
-                    <div class="dropdown">
-                        <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                            <span class="material-symbols-outlined" style="font-size: 30px;">
-                                account_circle
-                            </span>
-                        </button>
-                    </div>
-                    {% endif %}
-                    <!-- <div class="dropdown">
-                        <button class="dropbtn">Create</button>
-                        <div class="dropdown-content">
-                            <button type="submit" name="Create" value="Create-item">I have!</button>
-                            <button type="submit" name="Create" value="Create-request">I need!</button>
-                        </div>
-                    </div> -->
-                    <button type="button" class="collapsible">
+                    {% for c in itemCategories %}
+                    <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
+                    {% endfor %}
+                    <button class="individual-button" type="submit" name="category" value="All">All categories</button>
+                    <!-- <button type="button" class="collapsible">
                         <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
                             tune
                         </span>
                         <p>Filtering...</p>
-                    </button>
+                    </button> -->
                 </div>
+                {% if userStatus == True %}
+                    <div class="top-buttons-right">
+                        <button class="give-item" name="Create" value="Create-item">Give</button>
+                        <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                            <span class="material-symbols-outlined" style="font-size: 34px;">
+                                account_circle
+                            </span>
+                            <p>zguanad@connect.ust.hk</p>
+                        </button>
+                        
+                    </div>
+                {% endif %}
             </div>
-        </div>
+            
+
+            <div class="search-div">
+                
+                <i class="material-icons icon-search" style="font-size: 20px;">search</i>
+                <div style="display: flex; flex-direction: row;">
+                    <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
+                    <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
+                </div>
+                
+            </div>
+        <!-- </div> -->
 
         <button class="create-item" name="Create" value="Create-item">
             Post Item
