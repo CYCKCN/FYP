@@ -133,8 +133,8 @@ def giveitem():
         if submit == "new-contract":
             if file and file.filename != "" and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                # blob = gcs_client.bucket(BUCKET).blob(filename)
-                # blob.upload_from_file(file, content_type=file.content_type)
+                blob = gcs_client.bucket(BUCKET).blob(filename)
+                blob.upload_from_file(file, content_type=file.content_type)
                 image_path = filename
                 # file.save(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
                 # image_path = os.path.join(UPLOAD_FOLDER, filename)
@@ -168,8 +168,8 @@ def item(itemID):
     if not item:
         return "Record not found", 400
     
-    if userStatus and item["itemOwner"] == session["email"]:
-        return redirect(url_for('market.itemManager', itemID=itemID))
+    # if userStatus and item["itemOwner"] == session["email"]:
+    #     return redirect(url_for('market.itemManager', itemID=itemID))
     
     bargain = bargaindb.findBargainByBuyer(itemID, session['email'])
     # if bargain: bargaindb.checkTime(bargain)
@@ -224,6 +224,10 @@ def item(itemID):
                 bargaindb.createBargain(itemID, session['email'])
             return redirect(url_for("life.chat", itemID=itemID))
         
+        delete = request.form.get('item-delete')
+        if delete == "item-delete":
+            itemdb.deleteItem(itemID)
+            return redirect(url_for('life.profile', section="Item"))
                 
     return render_template('item.html', userName=session['email'], item=item, itemCategories=CATEGORY, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
 

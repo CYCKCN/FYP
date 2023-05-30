@@ -57,7 +57,7 @@ def profile():
     if request.method == 'POST':
         button = buttonCheck(request.form)
         if button: return button
-        section = request.form.get('section')
+        section = request.form.get('section') if request.form.get('section') else section
         logout = request.form.get('logout')
         itemID = request.form.get('item')
 

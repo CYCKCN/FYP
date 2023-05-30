@@ -97,6 +97,7 @@
 
         <div class="interactive-div">
             <div class="contact-div">
+                {% if item['itemOwner'] != userName %}
                 <div class="owner-div">
                     <span class="material-symbols-outlined account-icon" style="font-size: 34px; color: rgba(0, 0, 0, 0.5);">
                         account_circle
@@ -105,6 +106,13 @@
                 </div>
                 
                 <button class="chat-btn" name="Bargain" value="Chat">Chat</button>
+                {% else %}
+                <button type="submit" name="item-delete" value="item-delete" class="delete-icon">
+                    <span class="material-symbols-outlined" style="font-size: 30px;">
+                        delete
+                    </span>
+                </button>
+                {% endif %}
             </div>
 
             <!-- <div class="form-popup" id="myForm">
