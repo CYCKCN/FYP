@@ -49,7 +49,7 @@
                 <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
                 <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
                 <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
-                <input class="section-btn" type="submit" id="bargain" name="section" value="Bargain">
+                <input class="section-btn" type="submit" id="bargain" name="section" value="My Reserve">
             </div>
 
             {% if section == "Request" %}
@@ -70,22 +70,22 @@
             <div class="item-right">
                 <div class="display-table">
                     {% for k, v in itemInfo.items() %}
-                    <a href="itemManager/{{v.itemID}}" style="text-decoration:none">
+                    <a href="/market/item/{{v.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
-                            <img src={{v.itemImg}} width="340" class="display-image"/>
+                            <img src="/view/{{ v.itemImg }}" width="340" class="display-image"/>
                             <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
                             <p class="display-text">{{v.itemInfo}}</p>
                         </div>
                     </a>
                     {% endfor %}
             </div>
-            {% elif section == "Bargain" %}
+            {% elif section == "My Reserve" %}
             <div class="item-right">
                 <div class="display-table">
-                    {% for item in bargainItemList %}
-                    <a href="itemManager/{{item.itemID}}" style="text-decoration:none">
+                    {% for item in myReservedItem %}
+                    <a href="/market/item/{{item.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
-                            <img src={{item.itemImg}} width="340" class="display-image"/>
+                            <img src="/view/{{ item.itemImg }}" width="340" class="display-image"/>
                             <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
                             <p class="display-text">{{item.itemInfo}}</p>
                         </div>

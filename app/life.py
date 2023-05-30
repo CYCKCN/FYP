@@ -47,11 +47,12 @@ def profile():
     user = accountdb.findUser(session["email"])
     itemInfo = itemdb.getItemList(user=session["email"])
     requestInfo = requestdb.getRequestList(user=session["email"])
-    bargainList = bargaindb.findBargainList(session['email'])
-    bargainItemList = []
-    for bargain in bargainList:
-        item = itemdb.findItem(bargain["bargainItem"])
-        if item: bargainItemList.append(item)
+    # bargainList = bargaindb.findBargainList(session['email'])
+    # bargainItemList = []
+    # for bargain in bargainList:
+    #     item = itemdb.findItem(bargain["bargainItem"])
+    #     if item: bargainItemList.append(item)
+    myReservedItem = itemdb.findMyReservedItem(session['email'])
 
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -65,6 +66,12 @@ def profile():
         
         if section:
             return redirect(url_for('life.profile', section=section))
+        create = request.form.get("Create")
+        if create == 'Create-item':
+            return redirect(url_for('market.giveitem'))
+        category = request.form.get("category")
+        if category:
+            return redirect(url_for("market.home", cate=category, search='', filter=''))
         
         # if itemID:
         #     item = itemdb.findItem(itemID)
@@ -74,7 +81,7 @@ def profile():
         #         chat = chatdb.findChatByBuyer(itemID, session["email"])
         #     return redirect(url_for('life.chat', chatID=chat["chatID"]))
         
-    return render_template('profile.html', user=user, section=section if section else "Info", itemInfo=itemInfo, requestInfo=requestInfo, bargainItemList=bargainItemList)
+    return render_template('profile.html', user=user, section=section if section else "Info", itemCategories=CATEGORY, itemInfo=itemInfo, requestInfo=requestInfo, myReservedItem=myReservedItem)
 
 @life.route('/chat', methods=['POST', 'GET'])
 def chat():
@@ -129,6 +136,9 @@ def chat():
                 bargaindb.agreePrice(selected_bargain)
             else: bargaindb.declinePrice(selected_bargain)
             return(redirect(url_for('life.chat', filter=filter, itemID=itemID, bargainName=bargainName)))
+        create = request.form.get("Create")
+        if create == 'Create-item':
+            return redirect(url_for('market.giveitem'))
     # print(selected_bargain)
     return render_template('chat.html', userName=session['email'], selected_bargain=selected_bargain, selected_type=filter, infoList=infoList, itemCategories=CATEGORY)
 
