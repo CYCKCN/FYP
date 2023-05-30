@@ -192,18 +192,18 @@ def item(itemID):
                 session['oauth_origin'] = request.full_path
                 return redirect(url_for('life.login'))
         
-        contact = request.form.get('Contact')
-        if contact == "Contact":
-            if userStatus:
-                chat = chatdb.findChatByBuyer(itemID, session["email"])
-                # print(chat)
-                if not chat:
-                    # print("no chat")
-                    chat = chatdb.createChat(itemID, session["email"])
-                return redirect(url_for('life.chat', chatID=chat["chatID"]))
-            else:
-                session['oauth_origin'] = request.full_path
-                return redirect(url_for('life.login'))
+        # contact = request.form.get('Contact')
+        # if contact == "Contact":
+        #     if userStatus:
+        #         chat = chatdb.findChatByBuyer(itemID, session["email"])
+        #         # print(chat)
+        #         if not chat:
+        #             # print("no chat")
+        #             chat = chatdb.createChat(itemID, session["email"])
+        #         return redirect(url_for('life.chat', chatID=chat["chatID"]))
+        #     else:
+        #         session['oauth_origin'] = request.full_path
+        #         return redirect(url_for('life.login'))
         
         price = request.form.get('user-price')
         notes = request.form.get('user-notes')
@@ -219,10 +219,10 @@ def item(itemID):
 
         chat = request.form.get('Chat')
         if chat:
-            return redirect(url_for("life.chat"))
+            return redirect(url_for("life.chat", itemID=itemID))
         
                 
-    return render_template('item.html', item=item, itemCategories=CATEGORY, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
+    return render_template('item.html', userName=session['email'], item=item, itemCategories=CATEGORY, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
 
 @market.route('/itemManager/<itemID>', methods=['POST', 'GET'])
 def itemManager(itemID):
