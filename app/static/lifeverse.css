@@ -8,6 +8,14 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+.marquee-block {
+    height: 20px;
+    width: fit-content;
+    border-radius: 2px;
+    border: 1.5px solid var(--mainGrey2);
+    text-decoration: none;
+    color: black;
+}
 .create-item {
     position: fixed;
     right: 10px;
@@ -377,7 +385,7 @@ hr.rounded {
     position: relative;
     width: 19%;
     height: 250px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .display-image {
     width: 100%;
