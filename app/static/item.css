@@ -304,6 +304,9 @@ border-radius: 6px;
 .red {
     background-color: red;
 }
+.black {
+    background-color: black;
+}
 .agree-decline-btn:hover {
     background-color: var(--mainGrey2);
 }
