@@ -404,7 +404,7 @@
       height: 90%;
       background: none;
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       overflow-y: scroll;
   }
   .history-div::-webkit-scrollbar {
