@@ -13,13 +13,13 @@
     margin-top: 70px;
     margin-bottom: 20px;
     position: relative;
-    background: red;
+    background: none;
     display: flex;
     flex-direction: row;
   }
   .item-left {
     width: 20%;
-    background: yellow;
+    background: none;
     margin: 0px 5px 0px 0px;
     padding: 5px;
     height: 730px;
@@ -27,7 +27,7 @@
     flex-direction: column;
   }
   .section-btn {
-    height: 25%;
+    height: 8%;
     border: 1px solid black;
     background: none;
     font-family: sans-serif;
@@ -39,11 +39,13 @@
     width: 80%;
     background: pink;
     margin: 0px 5px 0px 0px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     padding: 5px;
     height: 730px;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    border-radius: 10px;
   }
   .item-right::-webkit-scrollbar {
     display: none;

@@ -46,10 +46,16 @@
 
         <div class="item-div">
             <div class="item-left">
-                <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
-                <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
-                <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
-                <input class="section-btn" type="submit" id="bargain" name="section" value="My Reserve">
+                <button class="section-btn" type="submit" id="basic_info" name="section" value="Info">
+                    Info
+                </button>
+                <button class="section-btn" type="submit" id="request_list" name="section" value="Request">
+                    My Request
+                </button>
+                <button class="section-btn" type="submit" id="item_list" name="section" value="Item">
+                    My Item
+                </button>
+                <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserve"></button>
             </div>
 
             {% if section == "Request" %}
