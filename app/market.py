@@ -227,7 +227,7 @@ def item(itemID):
         delete = request.form.get('item-delete')
         if delete == "item-delete":
             itemdb.deleteItem(itemID)
-            return redirect(url_for('life.profile', section="Item"))
+            return redirect(url_for('life.profile', section="My Item"))
                 
     return render_template('item.html', userName=session['email'], item=item, itemCategories=CATEGORY, userStatus=userStatus, bargainInfo=bargain["bargainInfo"] if bargain else [], bargainBuyer=session['email'])
 
