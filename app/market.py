@@ -217,8 +217,10 @@ def item(itemID):
             bargaindb.sendBargain(itemID, session['email'], session['email'], price, notes)
             return redirect(url_for('market.item', itemID=itemID))
 
-        chat = request.form.get('Chat')
+        chat = request.form.get('Bargain')
         if chat:
+            print('test')
+            bargaindb.createBargain(itemID, session['email'])
             return redirect(url_for("life.chat", itemID=itemID))
         
                 

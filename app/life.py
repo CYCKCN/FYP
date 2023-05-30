@@ -79,22 +79,24 @@ def profile():
 @life.route('/chat', methods=['POST', 'GET'])
 def chat():
     type = request.args.get('type')
+    bargainList = []
     if not type:
         bargainList = bargaindb.findBargainList(session['email'])
     elif type and type == 'owner':
-        bargainList = []
         myItemList = itemdb.getItemList(session['email'])
         for _, item in myItemList.items():
             bargainItemList = bargaindb.findBargainByItem(item['itemID'])
             for bargain in bargainItemList: 
-                bargainList.append(bargain)        
+                bargainList.append(bargain)
+    elif type and type == 'buyer':
+        bargainList = bargaindb.findBargainList(session['email'])
 
     if request.method == 'POST':
         type = request.form.get('type')
-        if type == "owner":
+        if type:
             return(redirect(url_for('life.chat', type=type)))
         
-    return render_template('chat.html', bargainList=bargainList)
+    return render_template('chat.html', userName=session['email'], bargainList=bargainList)
 
 # @life.route('/demand/<requestID>', methods=['POST', 'GET'])
 # def demanddetail(requestID):
