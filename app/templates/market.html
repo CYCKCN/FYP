@@ -43,7 +43,7 @@
                     
                     <marquee width="100%" direction="down" height="100px" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="1">
                         {% for k, v in requestInfo.items() %}
-                        <a class="marquee-block" href="/demand/{{v.requestID}}">{{v.requestTitle}} --{{v.requestUser}}</a>
+                        <a class="marquee-block" href="/demand/{{v.requestID}}">{{v.requestInfo}} --{{v.requestUser}}</a>
                         <br>
                         {% endfor %}
                     </marquee>

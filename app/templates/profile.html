@@ -26,7 +26,7 @@
             <input class="section-btn" type="submit" id="basic_info" name="section" value="Info">
             <input class="section-btn" type="submit" id="request_list" name="section" value="Request">
             <input class="section-btn" type="submit" id="item_list" name="section" value="Item">
-            <input class="section-btn" type="submit" id="chat" name="section" value="Chat">
+            <input class="section-btn" type="submit" id="bargain" name="section" value="Bargain">
         </div>
 
         {% if section == "Request" %}
@@ -58,7 +58,7 @@
                 {% endfor %}
             </div>
         </div>
-        {% elif section == "Chat" %}
+        <!-- {% elif section == "Chat" %}
         <div class="content">
             {% for c in chatInfo.values() %}
             <button type="submit" class="chat-block" name="item" value="{{c['itemID']}}">
@@ -66,6 +66,20 @@
                 <p class="font-class" style="text-align: left; margin-left: 20px;">{{c["sendTo"]}}</p>
             </button>
             {% endfor %}
+        </div> -->
+        {% elif section == "Bargain" %}
+        <div class="content">
+            <div class="display-table">
+                {% for k, v in itemInfo.items() %}
+                <a href="itemManager/{{v.itemID}}" style="text-decoration:none">
+                    <div class="on-sale-block">
+                        <img src={{v.itemImg}} width="340" class="display-image"/>
+                        <p class="display-text" style="font-weight: 600;">{{v.itemName}}</p>
+                        <p class="display-text">{{v.itemInfo}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
         </div>
         {% else %}
         <div class="content">

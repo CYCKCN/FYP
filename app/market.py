@@ -217,6 +217,11 @@ def itemManager(itemID):
     if user:
         bargainUser = bargaindb.findBargainByBuyer(itemID, user)
         bargainInfo = bargainUser["bargainInfo"]
+    elif bargainUserList: 
+        user = bargainUserList[0]
+        bargainUser = bargaindb.findBargainByBuyer(itemID, user)
+        bargainInfo = bargainUser["bargainInfo"]
+    print(user)
     # print(bargainInfo)
     if request.method == 'POST':
         button = buttonCheck(request.form)
@@ -245,8 +250,9 @@ def itemManager(itemID):
         agree = request.form.get('agree')
         decline = request.form.get('decline')
         if selectedItem and ownerNotes and (agree or decline):
+            if agree: itemdb.reserveItem(itemID, user)
             bargaindb.replyBargain(itemID, user, session['email'], agree if agree else decline, ownerNotes, int(selectedItem))
             return redirect(url_for('market.itemManager', itemID=itemID, user=user))
         
-    return render_template('itemmanage.html', item=item, bargainUserList=bargainUserList, bargainInfo=bargainInfo)
+    return render_template('itemmanage.html', item=item, bargainUserList=bargainUserList, bargainInfo=bargainInfo, bargainBuyer=user)
 
