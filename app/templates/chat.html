@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="history-div">
-                    {% for v in selected_bargain.bargainInfo %}
+                    {% for v in selected_bargain.bargainInfo | reverse %}
                     {% if v.sendBy == userName %}
                     <div class="history-block">
                         <p class="right-time">{{v.sendTime}}</p>
