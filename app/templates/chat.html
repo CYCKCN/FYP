@@ -17,16 +17,11 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="item-div">
             <div class="item-left">
-                <div class="dialogue-block">
-                    <div>
-                        <p class="dialogue-email">zguanad@connect.ust.hk</p>
-                        <p class="dialogue-item">foldable desk</p>
-                    </div>
-
-                    <img class="dialogue-img" />
+                <div class="buyer-owner-select">
+                    <button class="buyer-btn" name="type" value="buyer">Buyer</button>
+                    <button class="owner-btn" name="type" value="owner">Owner</button>
                 </div>
-                <button class="price-btn-accept" name="type" value="buyer">Buyer</button>
-                <button class="price-btn-deny" name="type" value="owner">Owner</button>
+                
                 {% for bargain, item in infoList %}
                 {% if selected_type == "buyer" %}
                 <button name="bargainID"
