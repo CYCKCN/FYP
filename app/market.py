@@ -3,10 +3,10 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, CONDITION, PRICERANGE, RequestForm, ItemForm, buttonCheck#, ds_client, gcs_client, BUCKET
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, CONDITION, PRICERANGE, RequestForm, ItemForm, buttonCheck, ds_client, gcs_client, BUCKET
 from db import itemdb, requestdb, accountdb, chatdb, bargaindb
 
-# from google.cloud import exceptions, ndb, storage
+from google.cloud import exceptions, ndb, storage
 
 market = Blueprint('market',__name__)
 
@@ -133,8 +133,8 @@ def giveitem():
         if submit == "new-contract":
             if file and file.filename != "" and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                # blob = gcs_client.bucket(BUCKET).blob(filename)
-                # blob.upload_from_file(file, content_type=file.content_type)
+                blob = gcs_client.bucket(BUCKET).blob(filename)
+                blob.upload_from_file(file, content_type=file.content_type)
                 image_path = filename
                 # file.save(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
                 # image_path = os.path.join(UPLOAD_FOLDER, filename)
