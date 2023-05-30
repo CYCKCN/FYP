@@ -11,21 +11,9 @@
     min-width: 100%;
     font-size: 14px;
   }
-  .top-buttons-left {
-    position: absolute;
-    width: 500px;
-    height: 50px;
-    margin-left: 150px;
-    top: 0px;
-    padding-left: 0px;
-    padding-top: 0px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-}
   .top-logo {
     position: absolute;
-    width: 500px;
+    width: 10%;
     height: 50px;
     left: 0%;
     top: 0px;
@@ -38,9 +26,138 @@
 .logo-font {
     font-family: sans-serif;
     color: var(--logoGreen);
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 20px;
     margin-left: 10px;
-    margin-top: 17px;
+    margin-top: 15px;
+    background: none;
+}
+.top-buttons-left {
+    position: absolute;
+    width: 60%;
+    height: 50px;
+    margin-left: 150px;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    background-color: none;
+    overflow-x: scroll;
+}
+.top-buttons-left::-webkit-scrollbar {
+    display: none;
+}
+.top-buttons-right {
+    position: absolute;
+    width: 25%;
+    margin-left: 150px;
+    top: 0px;
+    right: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: none;
+}
+.individual-button {
+    background: none;
+    border: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    width: fit-content;
+    background-color: none;
+    width: fit-content;
+    margin: 10px;
+    opacity: 70%;
+    color: black;
+}
+.give-item {
+    padding: 5px, 10px, 5px, 10px;
+    margin-top: 8px;
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    height: 34px;
+    width: 82px;
+    font-size: 20px;
+    font-style: bold;
+    font-family: sans-serif;
+    color: white;
+    background-color: var(--mainGreen1);
+}
+.profile-icon {
+    color: black;
+    opacity: 70%;
+    padding-left: 10px;
+    padding-top: 10px;
+    border: none;
+    width: fit-content;
+    height: 50px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    background-color: none;
+}
+.profile-icon p {
+    color: black;
+    opacity: 70%;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 0px;
+    margin-top: 0px;
+    width: fit-content;
+    background-color: none;
+}
+.search-div {
+    width: 90%;
+    left: 5%;
+    height: fit-content;
+    position: fixed;
+    padding-top: 10px;
+    top: 50px;
+    background: white;
+}
+.icon-search {
+    color: #C1C7DE;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 11px;
+}
+.search {
+    padding: 8px, 11px, 8px, 11px;
+    height: 40px;
+    width: 90%;
+    border-radius: 5px 0px 0px 5px;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: black;
+    background: none;
+    border: 1px solid #CDD1DC;
+    padding-left: 50px;
+    opacity: 1;
+    position: relative;
+    overflow: hidden;
+}
+.search::placeholder {
+    color: #C1C7DE;
+}
+.button-option {
+    height: 40px;
+    width: 10%;
+    background: #F4EFBA;
+    color: #373737;
+    text-align: center;
+    border-radius: 0px 5px 5px 0px;
+    padding-left: 10px;
+    border: 1px solid #CDD1DC;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-style: bold;
+    cursor: pointer;
 }
   .warning {
     font-family: 'Alatsi';
@@ -62,16 +179,6 @@
     flex-direction: row-reverse;
   }
 
-  .individual-button {
-    background: none;
-    border: none;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 20px;
-    margin: 20px;
-    color: black;
-  }
   .radio-button {
       height: 40px;
       display: flex;
@@ -118,17 +225,6 @@
   }
   .link-here {
       color: var(--mainOrgange);
-  }
-  .button-option {
-    height: 30px;
-    width: 300px;
-    background: white;
-    border-radius: 10px;
-    text-align: center;
-    padding-top: 2px;
-    border: none;
-    font-family: 'Alatsi';
-    cursor: pointer;
   }
   .radio-button input[type="radio"] {
     display: none;
@@ -787,34 +883,7 @@
     border-radius: 10px;
     overflow: hidden;
   }
-  .search {
-    width: 360px;
-    height: 48px;
-    font-family: 'Alatsi';
-    color: var(--mainGrey1);
-    background: white;
-    padding-left: 50px;
-    opacity: 1;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 20px;
-    overflow: hidden;
-    border: none;
-  }
-  .icon-search {
-    color: var(--mainGrey1);
-    position: absolute;
-    left: 10px;
-    top: 9px;
-  }
-  .search-div {
-    width: 360px;
-    height: 48px;
-    position: relative;
-    left: 10px;
-    margin-top: 20px;
-  }
+
   .filter-div {
     width: 360px;
     height: 48px;
