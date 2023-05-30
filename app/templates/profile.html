@@ -46,18 +46,30 @@
 
         <div class="item-div">
             <div class="item-left">
+
+                
+                {% if section == "My Item" %}
                 <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserved Item">
                     My Reserved Items
                 </button>
                 <button class="section-btn" type="submit" id="item_list" name="section" value="My Item">
+                    <span style="color: rgba(1, 143, 121, 1);">My Items</span>
+                </button>
+                {% else %}
+                <button class="section-btn" type="submit" id="item_list" name="section" value="My Item">
+                    <span style="color: rgba(1, 143, 121, 1);">My Reserved Items</span>
+                </button>
+                <button class="section-btn" type="submit" id="item_list" name="section" value="My Item">
                     My Items
                 </button>
+                {% endif %}
+                
                 <!-- <button class="section-btn" type="submit" id="basic_info" name="section" value="Info">
                     Info
                 </button> -->
-                <button class="section-btn" type="submit" id="request_list" name="section" value="My Request">
+                <!-- <button class="section-btn" type="submit" id="request_list" name="section" value="My Request">
                     My Requests
-                </button>
+                </button> -->
                 
                 
             </div>
@@ -65,26 +77,32 @@
             {% if section == "My Request" %}
             <div class="item-right">
                 <hr class="rounded">
-                {% for k, v in requestInfo.items() %}
-                <a href="/demand/{{v.requestID}}" class="request-link">
-                    <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
-                    <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
-                    {{v.requestInfo}}
-                    <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
-                    <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
-                    
-                </a>
-                <hr class="rounded">
-                {% endfor %}
-            {% elif section == "My Reserved Item" %}
+                <div class="display-table">
+                    {% for k, v in requestInfo.items() %}
+                    <a href="/demand/{{v.requestID}}" class="request-link">
+                        <!-- <span style="color: green; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.userName}}</span> -->
+                        <!-- <span style="color: blue; margin-right: 10px;">{{v.requestCate}}</span> -->
+                        <!-- {{v.requestInfo}} -->
+                        <!-- <span style="color: brown; margin-right: 10px; text-align: end; white-space: pre-line;">{{v.requestInfo}}</span> -->
+                        <span style="color: #73A8AC; margin-left: 50px; text-align: end; white-space: pre-line; font-size: 14px; font-weight: 400;">{{v.requestTime}}</span>
+                        
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% elif section == "My Item" %}
             <div class="item-right">
                 <div class="display-table">
-                    {% for item in myReservedItem %}
-                    <a href="/market/item/{{item.itemID}}" style="text-decoration:none">
+                    {% for k,v in itemInfo.items() %}
+                    <a href="/market/item/{{v.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
-                            <img src="/view/{{ item.itemImg }}" width="340" class="display-image"/>
-                            <p class="display-text" style="font-weight: 600;">{{item.itemName}}</p>
-                            <p class="display-text">{{item.itemInfo}}</p>
+                            <img src="/view/{{ v.itemImg }}" width="340" class="display-image"/>
+                            <p class="display-name" style="font-weight: 600;">{{v.itemName}}</p>
+                            {% if v.itemStatus == "Reserved" %}
+                            <p class="display-price" style="color: red;">{{v.itemStatus}}</p>
+                            {% else %}
+                            <p class="display-price" style="color: green;">{{v.itemStatus}}</p>
+                            {% endif %}
                         </div>
                     </a>
                     {% endfor %}
@@ -118,9 +136,7 @@
             {% endif %}
             
         </div>
-        <div style="width: 90%;">
-            <button name="logout" value="logout" class="logout-btn">Log out</button>
-        </div>
+        <button name="logout" value="logout" class="logout-btn">Log out</button>
         
         
     </div>
