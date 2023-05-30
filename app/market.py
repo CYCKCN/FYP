@@ -133,8 +133,8 @@ def giveitem():
         if submit == "new-contract":
             if file and file.filename != "" and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                blob = gcs_client.bucket(BUCKET).blob(filename)
-                blob.upload_from_file(file, content_type=file.content_type)
+                # blob = gcs_client.bucket(BUCKET).blob(filename)
+                # blob.upload_from_file(file, content_type=file.content_type)
                 image_path = filename
                 # file.save(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
                 # image_path = os.path.join(UPLOAD_FOLDER, filename)

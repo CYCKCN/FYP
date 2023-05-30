@@ -19,18 +19,28 @@
                 <p class="item-name">{{item["itemName"]}}</p>
                 <p class="item-price">HK${{item["itemPrice"]}}</p>
                 <div class="tag-div">
+                    <span class="material-symbols-outlined cate-icon" style="font-size: 24px;">
+                        category
+                        </span>
                     <p class="item-cate-tag">{{item["itemCate"]}}</p>
-                    <p class="item-quality-tag">unexpendable | Used for 3 monthes</p>
+                    <p class="item-quality-tag">{{item["itemCond"]}}</p>
+                    
                 </div>
+                <p class="posted">Posted</p>
+                <p class="item-time-tag">{{item["itemTime"]}}</p>
+
                 <div class="location-div">
-                    <span class="material-symbols-outlined" style="font-size: 24px;">
-                        location_on
-                    </span>
-                    <p class="item-location">
-                        {{item["itemPickUp"]}}
-                    </p>
+                    <p class="posted">Meet up</p>
+                    <div class="item-location">
+                        <span class="material-symbols-outlined location-icon" style="font-size: 22px;">
+                            location_on
+                        </span>
+                        <p class="item-pickup-tag">{{item["itemPickUp"]}}</p>
+                    </div>
                 </div>
+                <p class="posted">Description</p>
                 <p class="item-info">{{item["itemInfo"]}}</p>
+
                 {% if item["itemStatus"] == "Reserved" %}
                 <p style="color: red; font-weight: 600;">RESERVED!!</p>
                 {% endif %}
@@ -40,13 +50,28 @@
             <lottie-player src="/static/js/Animation2_25.json" background="transparent" speed="1" class="life2-anim"
                 loop autoplay></lottie-player> -->
 
-            <div class="user-div">
-                <div>
-                    <p class="item-owner">By <span style="font-weight: 600;">{{item["itemOwner"]}}</span></p>
-                    <p class="item-time">Deadline: 1 June, 2023 | 14 Days left</p>
+            <!-- <div class="user-div"> -->
+                
+                <div class="contact-div">
+                    <div class="owner-div">
+                        <span class="material-symbols-outlined" style="font-size: 30px; color: #373737; padding-top: 10px;">
+                            sentiment_satisfied
+                            </span>
+                        <p class="chat-owner">{{item["itemOwner"]}}</p>
+                    </div>
+                    {% if item['itemOwner'] != userName %}
+                    <button class="chat-btn" name="Bargain" value="Chat">Chat</button>
+                    {% else %}
+                    <button class="delete-btn" name="item-delete" value="item-delete">Delete</button>
+                    <!-- <button type="submit" name="item-delete" value="item-delete" class="delete-icon">
+                        <span class="material-symbols-outlined" style="font-size: 30px;">
+                            delete
+                        </span>
+                    </button> -->
+                {% endif %}
                 </div>
                 
-            </div>
+            <!-- </div> -->
         </div>
 
         <div class="home-top">
@@ -96,24 +121,7 @@
         </div>
 
         <div class="interactive-div">
-            <div class="contact-div">
-                {% if item['itemOwner'] != userName %}
-                <div class="owner-div">
-                    <span class="material-symbols-outlined account-icon" style="font-size: 34px; color: rgba(0, 0, 0, 0.5);">
-                        account_circle
-                    </span>
-                    <p class="chat-owner">{{item["itemOwner"]}}</p>
-                </div>
-                
-                <button class="chat-btn" name="Bargain" value="Chat">Chat</button>
-                {% else %}
-                <button type="submit" name="item-delete" value="item-delete" class="delete-icon">
-                    <span class="material-symbols-outlined" style="font-size: 30px;">
-                        delete
-                    </span>
-                </button>
-                {% endif %}
-            </div>
+            
 
             <!-- <div class="form-popup" id="myForm">
                 {% if item["itemStatus"] != "Reserved"%}
