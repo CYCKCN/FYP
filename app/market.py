@@ -3,8 +3,10 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, PRICERANGE, RequestForm, ItemForm, buttonCheck, ds_client, gcs_client, BUCKET
 from db import itemdb, requestdb, accountdb, chatdb, bargaindb
+
+from google.cloud import exceptions, ndb, storage
 
 market = Blueprint('market',__name__)
 
@@ -102,7 +104,7 @@ def giveitem():
         info = itemForm.description.data
         pickup = itemForm.pickup.data
 
-        print(name, price, info, pickup)
+        # print(name, price, info, pickup)
         
         if "upload_cont_img" in request.files: file = request.files['upload_cont_img']
         else: file = None
@@ -113,17 +115,21 @@ def giveitem():
         
         if file and file.filename != "" and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(UPLOAD_FOLDER, filename))
-            image_path = os.path.join(UPLOAD_FOLDER, filename)
-            itemImg = "../../" + image_path[4:]
+            blob = gcs_client.bucket(BUCKET).blob(filename)
+            blob.upload_from_file(file, content_type=file.content_type)
+            image_path = filename
+            # file.save(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
+            # image_path = os.path.join(UPLOAD_FOLDER, filename)
+            # itemImg = "../../" + image_path[4:]
+            # print(os.path.join(os.getcwd(), UPLOAD_FOLDER, filename))
         else: invalidDict["img"] = True
-        print(itemImg)
+
         if category == "": invalidDict["cate"] = True
         if not name: invalidDict["name"] = True
         if not price: invalidDict["price"] = True
         if not info: invalidDict["info"] = True
         if not pickup: invalidDict["pickup"] = True
-        print(itemImg)
+        
         if True in invalidDict.values():
             return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict)
         # print(image_path)
@@ -131,7 +137,7 @@ def giveitem():
             itemdb.createItem(session["email"], name, price, category, info, image_path, pickup)
             return redirect(url_for('market.home'))
 
-    return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, itemImg=itemImg, selected_cate=selected_cate)
+    return render_template('giveitem.html', form=itemForm, itemCategories=CATEGORY, invalidDict=invalidDict, selected_cate=selected_cate)
     # return "Sell Page"
 
 @market.route('/item/<itemID>', methods=['POST', 'GET'])

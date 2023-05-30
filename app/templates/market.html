@@ -22,7 +22,7 @@
                     {% for k, v in itemInfo.items() %}
                     <a href="item/{{v.itemID}}" style="text-decoration:none">
                         <div class="on-sale-block">
-                            <img src={{v.itemImg}} class="display-image" />
+                            <img src="/view/{{ v.itemImg }}" class="display-image" />
                             <p class="display-name">{{v.itemName}} <span style="color: orange; font-weight: 400;">  HKD{{v.itemPrice}}</span></p>
                             <!-- <p class="display-price">HKD {{v.itemPrice}}</p> -->
                             <p class="green-value">32</p>

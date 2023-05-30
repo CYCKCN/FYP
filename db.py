@@ -52,7 +52,7 @@ class ItemDB():
 
     def findItem(self, itemID):
         item = self.db.find_one({"itemID": itemID})
-        if item: item['itemImg'] = "../../" + item['itemImg'][4:]
+        # if item: item['itemImg'] = "../../" + item['itemImg'][4:]
         return item
     
     def createItem(self, owner, name, price, category, info, image_path, pickup):
@@ -79,7 +79,7 @@ class ItemDB():
         counter = 0
         for item in itemList:
             itemInfo[str(counter)] = item
-            itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][4:]
+            # itemInfo[str(counter)]['itemImg'] = "../../" + itemInfo[str(counter)]['itemImg'][4:]
             counter += 1
         return itemInfo
     
@@ -194,7 +194,7 @@ class ChatDB():
             itemID = chat["chatItem"]
             item = itemdb.findItem(itemID)
             chatInfo[str(counter)] = item
-            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][4:]
+            # chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][4:]
             for k, v in chat.items(): chatInfo[str(counter)][k] = v
             chatInfo[str(counter)]["sendTo"] = chat["chatBuyer"]
             counter += 1
@@ -202,7 +202,7 @@ class ChatDB():
             itemID = chat["chatItem"]
             item = itemdb.findItem(itemID)
             chatInfo[str(counter)] = item
-            chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][4:]
+            # chatInfo[str(counter)]['itemImg'] = "../../" + chatInfo[str(counter)]['itemImg'][4:]
             for k, v in chat.items(): chatInfo[str(counter)][k] = v
             chatInfo[str(counter)]["sendTo"] = chat["chatOwner"]
             counter += 1
