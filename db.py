@@ -55,6 +55,9 @@ class ItemDB():
         # if item: item['itemImg'] = "../../" + item['itemImg'][4:]
         return item
     
+    def findMyReservedItem(self, userEmail):
+        return self.db.find({"itemStatus": "Reserved", "itemReserve": userEmail})
+    
     def createItem(self, owner, name, price, category, condition, info, image_path, pickup):
         itemID = randomID(IDLENGTH)
         while (self.db.find_one({"itemID": itemID})): itemID = randomID(IDLENGTH)
