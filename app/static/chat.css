@@ -287,9 +287,9 @@
   .search {
     padding-top: 5px;
     padding-bottom: 5px;
-    height: 40px;
+    height: 30px;
     width: 90%;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 5px;
     font-family: sans-serif;
     font-size: 14px;
     color: black;
@@ -299,9 +299,30 @@
     opacity: 1;
     position: relative;
     overflow: hidden;
+    margin-right: 10px;
+}
+.send {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 40px;
+  width: 90%;
+  border-radius: 5px 0px 0px 5px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: black;
+  background: none;
+  border: 1px solid #CDD1DC;
+  padding-left: 10px;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+  margin-right: 0px;
 }
 .search::placeholder {
     color: #C1C7DE;
+}
+.send::placeholder {
+  color: #C1C7DE;
 }
 .button-option {
     height: 40px;
