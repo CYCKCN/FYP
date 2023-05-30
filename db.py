@@ -218,6 +218,9 @@ class BargainDB():
     
     def findBargainByItem(self, itemID):
         return self.db.find({"bargainItem": itemID})
+
+    def findBargainList(self, buyerEmail):
+        return self.db.find({"bargainFrom": buyerEmail})
     
     def createBargain(self, itemID, buyerEmail):
         now = datetime.now()

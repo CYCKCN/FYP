@@ -85,19 +85,19 @@
 
             </div>
 
-            <!-- {% if item["itemStatus"] != "Reserved"%} -->
+            {% if item["itemStatus"] != "Reserved" %}
             <button type="button" class="interaction-div" id="priceButton" onclick="openForm()">
                 <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
                     back_hand
                 </span>
             </button>
-            <!-- {% elif item["itemStatus"] == "Reserved" and item[] %} -->
+            {% elif item["itemStatus"] == "Reserved" and item["itemReserve"] == bargainBuyer %}
             <button type="button" class="interaction-div" id="priceButton" onclick="openForm()">
                 <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
                     back_hand
                 </span>
             </button>
-            <!-- {% endif %} -->
+            {% endif %}
             <div class="bargain-timeline">
                 <div class="timeline">
                     {% for v in bargainInfo %}
