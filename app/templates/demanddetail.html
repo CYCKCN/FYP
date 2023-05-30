@@ -30,15 +30,13 @@
             </div>
 
             <div class="display-table" id="display-table">
+                
                 {% for v in itemList %}
-                <a href="/itemManager/{{v.itemID}}" style="text-decoration:none">
-                    <div class="on-sale-block">
-                        <img src={{v.itemImg}} width="340" class="display-image"/>
-                        <p class="display-text">{{v.itemName}}</p>
-                        <div style="display: flex; flex-direction: row;">
-                            <p class="display-text">{{v.itemInfo}}</p>
-                            <p class="right-align">HKD {{v.itemPrice}}</p>
-                        </div>
+                <a href="/market/itemManager/{{v.itemID}}" style="text-decoration:none">
+
+                    <div class="request-item-block">
+                        <img src={{v.itemImg}} class="display-image"/>
+                        <p class="request-item-price">HKD {{v.itemPrice}}</p >
                     </div>
 
                     {% if userStatus and identity == "owner" %}

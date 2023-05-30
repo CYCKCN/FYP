@@ -10,7 +10,9 @@ html, body {
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-
+.display-text {
+    color: black;
+}
 .bargain-timeline {
     background-color: none;
     overflow-y: scroll;
@@ -407,6 +409,19 @@ border-radius: 6px;
     width: fit-content;
     height: fit-content;
 }
+.request-item-price {
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 20px;
+    color: black;
+    line-height: 16px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: fit-content;
+    height: fit-content;
+}
     
 .price-div::-webkit-scrollbar {
     display: none;
@@ -459,9 +474,27 @@ border-radius: 6px;
     display: flex;
     flex-direction: row;
 }
+.request-item-info-card {
+    width: 80%;
+    height: 300px;
+    border-radius: 20px;
+    background: var(--mainGrey2);
+    margin-left: 10%;
+    margin-top: 80px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 .item-img {
     height: 400px;
     width: 400px;
+    border-radius: 20px 0px 0px 20px;
+    object-fit: cover;
+    object-position: 0px 0px;
+}
+.request-item-img {
+    height: 200px;
+    width: 200px;
     border-radius: 20px 0px 0px 20px;
     object-fit: cover;
     object-position: 0px 0px;
@@ -472,6 +505,13 @@ border-radius: 6px;
     font-weight: 600;
     color: black;
     line-height: 20px;
+}
+.request-item-name{
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+    line-height: 15px;
 }
 .item-static-info {
     margin: 20px;
@@ -560,7 +600,7 @@ border-radius: 6px;
     width: 80%;
     margin-left: 10%;
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     padding-top: 50px;
     padding-left: 50px;
     padding-right: 50px;
@@ -581,13 +621,14 @@ border-radius: 6px;
     margin-left: 5%;
     margin-top: 20px;
     width: 70%;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
     overflow-y: scroll;
 }
 .suggest-post {
     margin-top: 20px;
     width: 20%;
+    height: 415px;
     border: none;
     border-radius: 10px;
     background: var(--mainGreen1);
@@ -840,7 +881,10 @@ border-radius: 6px;
 .display-table {
     display: table;
     position: relative;
-    border-spacing:10px;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 30px;
+    border-spacing:5px;
 }
 .display-row {
     display: table-row;
@@ -871,6 +915,24 @@ border-radius: 6px;
     height: 235px;
     border-radius: 10px;
     position: relative;
+}
+.request-item-block {
+    display: table-cell;
+    padding: 0px;
+    background: var(--mainGrey2);
+    color: black;
+    position: relative;
+    width: 150px;
+    height: fit-content;
+    border-radius: 10px;
+    position: relative;
+}
+.display-image {
+    border-radius: 10px 10px 0px 0px;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    object-position: 0px 0px;
 }
 .account-style {
     position: relative;

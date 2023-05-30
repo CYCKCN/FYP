@@ -41,24 +41,12 @@
             <div class="request-div">
                 <div class="request-floating-div">
                     
-                    <marquee width="100%" direction="down" height="100px" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="1">
+                    <marquee class="marquee-div" direction="down" height="100px" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="1">
                         {% for k, v in requestInfo.items() %}
                         <a class="marquee-block" href="/demand/{{v.requestID}}">{{v.requestInfo}} --{{v.requestUser}}</a>
                         <br>
                         {% endfor %}
                     </marquee>
-                    <!-- <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
-                        <a class="marquee-block" href="">I want a foldable desk. --rose@gmail.com</a>
-                    </marquee>
-                    <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
-                        <a class="marquee-block" href="">收挂烫机 --rose@gmail.com</a>
-                    </marquee>
-                    <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
-                        <a class="marquee-block" href="">AirPods Pro --rose@gmail.com</a>
-                    </marquee>
-                    <marquee width="100%" direction="right" height="20px" onmouseover="this.stop();" onmouseout="this.start();">
-                        <a class="marquee-block" href="">Backpack (better be black) --rose@gmail.com</a>
-                    </marquee> -->
                 </div>
                 
                 <div class="request-text-div">
@@ -118,7 +106,7 @@
                 <div class="top-buttons-left">
                     <!-- <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
                 <button class="individual-button" type="submit" name="Market" value="Market">Market</button> -->
-                    <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button>
+                    <!-- <button class="individual-button" type="submit" name="Demand" value="Demand">Request</button> -->
                 </div>
                 <div class="top-buttons">
                     {% if userStatus == True %}

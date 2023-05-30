@@ -36,6 +36,21 @@
     0%   {opacity: 0;}
     100% {opacity: 1;}
   }
+  .login-email {
+    position: absolute;
+    font-size: 15px;
+    color: black;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 40%;
+    height: 40px;
+    margin-left: 5%;
+    top: 65%;
+    animation-name: show-up;
+    animation-duration: 1.5s;
+  }
   .login-button {
     position: absolute;
     font-size: 15px;
@@ -47,7 +62,7 @@
     border: none;
     width: 40%;
     margin-left: 5%;
-    top: 65%;
+    top: 72%;
     height: 40px;
     cursor: pointer;
     animation-name: show-up;
