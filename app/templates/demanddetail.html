@@ -12,31 +12,21 @@
         <div class="home-top">
             <div class="top-buttons-left">
                 <button class="individual-button" type="submit" name="Home" value="Home">Home</button>
-                <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
+                <!-- <button class="individual-button" type="submit" name="Market" value="Market">Market</button>
                 <button class="individual-button" type="submit" name="Demand" value="Demand">Demand</button>
-                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button>
+                <button class="individual-button" type="submit" name="Piazza" value="Piazza">Piazza</button> -->
             </div>
             <div class="top-buttons">
-                {% if userStatus == True %}
                 <button class="individual-button" type="submit" name="Profile" value="Profile">Profile</button>
-                {% else %}
-                <button class="individual-button" type="submit" name="Login" value="Login">Login</button>
-                <button class="individual-button" type="submit" name="Signup" value="Signup">Sign Up</button>
-                {% endif %}
             </div>
         </div>
 
         <div class="scroll-div">
             <div class="info-pack">
-                <div class="question-box">
-                    <p class="welcoming"><span style="color: grey;">Requested item name: </span>{{requestInfo.requestTitle}}</p>
-                    <p class="welcoming"><span style="color: grey;">Request category: </span>{{requestInfo.requestCate}}</p>
-                    <p class="welcoming"><span style="color: grey;">Request description: </span>{{requestInfo.requestInfo}}</p>
-                </div>   
-                <div class="seller-info">
-                    <p class="welcoming"><span style="color: grey;">Request by: </span>{{requestInfo.requestUser}}</p>
-                    <p class="welcoming"><span style="color: grey;">Request time:</span> {{requestInfo.requestTime}}</p>
-                </div>
+                <!-- <div class="question-box"> -->
+                    <p class="welcoming">{{requestInfo.requestInfo}}</p>
+                    <p class="welcoming right-align">-- {{requestInfo.requestUser}} | {{requestInfo.requestTime}}</p>
+                <!-- </div>    -->
             </div>
 
             <div class="display-table" id="display-table">
@@ -65,7 +55,7 @@
             
 
             {% if userStatus and identity == "seller" and requestInfo['requestSold'] != True %}
-            <button class="suggest-btn" type="submit" name="suggest" value="suggest">Suggest my item</button>
+            <div class="suggest-btn">--Select one of your item to respond his/her request!--</div>
             <div style="display: flex; flex-direction: row;">
                 <div class="suggest-pack">
 
