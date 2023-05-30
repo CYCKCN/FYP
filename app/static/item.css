@@ -136,6 +136,9 @@ border-radius: 6px;
 /* The popup form - hidden by default */
 .form-popup {
     display: none;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
     position: fixed;
     bottom: 0;
     right: 15px;
@@ -434,7 +437,7 @@ border-radius: 6px;
     background: none;
     color: black;
     cursor: pointer;
-    margin-top: 75px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
 }

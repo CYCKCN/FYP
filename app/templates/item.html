@@ -82,7 +82,7 @@
                 {% endif %}
                 <label for="user-notes"><b>Notes</b></label>
                 <input type="text" placeholder="Any notes for the owner?" name="user-notes">
-
+                <br/>
                 <button type="submit" class="btn" name="submit" value="submit">Submit</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
 
@@ -90,7 +90,7 @@
 
             {% if item["itemStatus"] != "Reserved" %}
             <button type="button" class="interaction-div" id="priceButton" onclick="openForm()">
-                <span class="material-symbols-outlined hand-icon" style="font-size: 50px;">
+                <span class="material-symbols-outlined" style="font-size: 50px;">
                     back_hand
                 </span>
             </button>
@@ -138,7 +138,7 @@
         
         <script>
             function openForm() {
-                document.getElementById("myForm").style.display = "block";
+                document.getElementById("myForm").style.display = "flex";
             }
     
             function closeForm() {

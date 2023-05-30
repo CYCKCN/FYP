@@ -26,6 +26,9 @@
                 <!-- <div class="question-box"> -->
                     <p class="welcoming">{{requestInfo.requestInfo}}</p>
                     <p class="welcoming right-align">-- {{requestInfo.requestUser}} | {{requestInfo.requestTime}}</p>
+                    {% if requestInfo['requestSold'] == True %}
+                    <p style="color: red; font-weight: 600;">DEAL!!</p>
+                    {% endif %}
                 <!-- </div>    -->
             </div>
 
