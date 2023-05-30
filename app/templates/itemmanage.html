@@ -36,6 +36,9 @@
                     </span>
                     <p class="item-price">HKD {{item["itemPrice"]}}</p>
                 </div>
+                {% if item["itemStatus"] == "Reserved" %}
+                <p style="color: red; font-weight: 600;">RESERVED!!</p>
+                {% endif %}
             </div>
 
             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
