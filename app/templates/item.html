@@ -45,11 +45,7 @@
                     <p class="item-owner">By <span style="font-weight: 600;">{{item["itemOwner"]}}</span></p>
                     <p class="item-time">Deadline: 1 June, 2023 | 14 Days left</p>
                 </div>
-                <!-- <button type="submit" name="Contact" value="Contact" class="chat-icon">
-                    <span class="material-symbols-outlined" style="font-size: 30px;">
-                        forum
-                    </span>
-                </button> -->
+                
             </div>
         </div>
 
@@ -71,16 +67,20 @@
                 </button> -->
             </div>
             {% if userStatus == True %}
-                <div class="top-buttons-right">
-                    <button class="give-item" name="Create" value="Create-item">Give</button>
-                    <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                        <span class="material-symbols-outlined" style="font-size: 34px;">
-                            account_circle
-                        </span>
-                        <p>{{userName}}</p>
-                    </button>
-                    
-                </div>
+            <div class="top-buttons-right">
+                <button class="give-item" name="Create" value="Create-item">Give</button>
+                <button type="submit" name="Chat" value="Chat" class="chat-icon">
+                    <span class="material-symbols-outlined forum-icon" style="font-size: 30px;">
+                        forum
+                    </span>
+                </button>
+                <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                    <!-- <span class="material-symbols-outlined" style="font-size: 34px;">
+                        account_circle
+                    </span> -->
+                    <p>{{userName}}</p>
+                </button>
+            </div>
             {% endif %}
         </div>
         
