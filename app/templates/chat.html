@@ -18,8 +18,13 @@
         <div class="item-div">
             <div class="item-left">
                 <div class="buyer-owner-select">
+                    {% if selected_type == "buyer" %}
                     <button class="buyer-btn" name="type" value="buyer">Buyer</button>
                     <button class="owner-btn" name="type" value="owner">Owner</button>
+                    {% else %}
+                    <button class="owner-btn" name="type" value="buyer">Buyer</button>
+                    <button class="buyer-btn" name="type" value="owner">Owner</button>
+                    {% endif %}                    
                 </div>
                 
                 {% for bargain, item in infoList %}
@@ -57,7 +62,7 @@
                         
                         {% if selected_bargain.bargainDeal %}
                         <div class="latest-price-interaction">
-                            <p>Deal</p>
+                            <p style="font-family: sans-serif; font-size: 20px; font-weight: 600; color: green;">Deal</p>
                         </div>
                         {% else %}
                         <div class="latest-price-interaction">
@@ -79,7 +84,7 @@
                             {% endif%}
                             {% if selected_bargain.bargainDeal %}
                             <div class="latest-price-interaction">
-                                <p>Deal</p>
+                                <p style="font-family: sans-serif; font-size: 20px; font-weight: 600; color: green;">Deal</p>
                             </div>
                             {% else %}
                             <div class="latest-price-interaction">
@@ -97,7 +102,7 @@
                             <div class="latest-price-interaction">
                                 {% if selected_bargain.bargainDeal %}
                                 <div class="latest-price-interaction">
-                                    <p>Deal</p>
+                                    <p style="font-family: sans-serif; font-size: 20px; font-weight: 600; color: green;">Deal</p>
                                 </div>
                                 {% else %}
                                 <button class="price-btn-accept" name="accept-btn" value="Accept" >Accept</button>
