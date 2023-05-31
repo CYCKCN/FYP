@@ -1,3 +1,355 @@
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    * {
+        box-sizing: border-box;
+      }
+        body, html{
+          overflow-y: hidden;
+          overflow-x: hidden;
+          
+        }
+        
+        .account-icon {
+          visibility: visible;
+        }
+        .profile-icon p {
+          /* visibility: hidden; */
+          display: none;
+        }
+        .top-buttons-left {
+          visibility: hidden;
+          display: none;
+        }
+        .blank {
+          position: fixed;
+          width: 90%;
+          height: 10px;
+          left: 5%;
+          top: 0px;
+          margin-left: 0px;
+          padding-left: 0px;
+          padding-top: 0px;
+          margin-top: 0px;
+          background: white;
+  
+      }
+      .home-top {
+          position: fixed;
+          width: 90%;
+          height: 50px;
+          left: 5%;
+          top: 0px;
+          margin-left: 0px;
+          padding-left: 0px;
+          padding-top: 0px;
+          margin-top: 10px;
+          background: white;
+      }
+      .item-div {
+        width: 90%;
+        margin-left: 5%;
+        height: fit-content;
+        margin-top: 70px;
+        margin-bottom: 20px;
+        position: relative;
+        background: none;
+        display: flex;
+        flex-direction: column;
+      }
+      .item-left {
+        width: 100%;
+        height: 150px;
+        background: none;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+      }
+      .item-right {
+        width: 100%;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        background: none;
+        margin-top: 20px;
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        height: 425px;
+        display: flex;
+        flex-direction: column;
+      }
+      .history-div {
+        width: 100%;
+        height: 75%;
+        background: none;
+        display: flex;
+        flex-direction: column-reverse;
+        overflow-y: scroll;
+    }
+    .send {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      height: 40px;
+      width: 80%;
+      border-radius: 5px 0px 0px 5px;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: black;
+      background: none;
+      border: 1px solid #CDD1DC;
+      padding-left: 10px;
+      opacity: 1;
+      position: relative;
+      overflow: hidden;
+      margin-right: 0px;
+    }
+    .button-option {
+      height: 40px;
+      width: 20%;
+      background: #F4EFBA;
+      color: #373737;
+      text-align: center;
+      border-radius: 0px 5px 5px 0px;
+      padding-left: 10px;
+      border: 1px solid #CDD1DC;
+      font-family: sans-serif;
+      font-size: 16px;
+      font-style: bold;
+      cursor: pointer;
+    }
+    .buyer-owner-select {
+      width: 88%;
+      height: fit-content;
+      position: fixed;
+      margin-top: 0;
+      display: flex;
+      background: white;
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+    .dialogue-block {
+      width: 100%;
+      height: 100px;
+      margin-top: 50px;
+      background: none;
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid #D9D9D9;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 5px;
+    }
+    .latest-price-interaction {
+      width: 25%;
+      height: 100%;
+      background: none;
+      display: flex;
+      flex-direction: column;
+  }
+  .price-btn-deny {
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: sans-serif;
+    border: 2px solid #373737;
+    color: #373737;
+    border-radius: 5px;
+    background: none;
+    margin-top: 5px;
+}
+.search {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 30px;
+  width: 80px;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: black;
+  background: none;
+  border: 1px solid #CDD1DC;
+  padding-left: 10px;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+  margin-right: 10px;
+}
+    }
+
+@media only screen and (min-device-width: 600px) {
+  .price-btn-deny {
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: sans-serif;
+    border: 2px solid #373737;
+    color: #373737;
+    border-radius: 5px;
+    background: none;
+}
+.search {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 30px;
+  width: 90%;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: black;
+  background: none;
+  border: 1px solid #CDD1DC;
+  padding-left: 10px;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+  margin-right: 10px;
+}
+  .latest-price-interaction {
+    width: 20%;
+    height: 100%;
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+  .dialogue-block {
+    width: 100%;
+    height: 100px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #D9D9D9;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 5px;
+  }
+  .buyer-owner-select {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+  }
+  .send {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 40px;
+  width: 90%;
+  border-radius: 5px 0px 0px 5px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: black;
+  background: none;
+  border: 1px solid #CDD1DC;
+  padding-left: 10px;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+  margin-right: 0px;
+}
+.button-option {
+  height: 40px;
+  width: 10%;
+  background: #F4EFBA;
+  color: #373737;
+  text-align: center;
+  border-radius: 0px 5px 5px 0px;
+  padding-left: 10px;
+  border: 1px solid #CDD1DC;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-style: bold;
+  cursor: pointer;
+}
+  .history-div {
+    width: 100%;
+    height: 90%;
+    background: none;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+}
+  .account-icon {
+    visibility: hidden;
+    display: none;
+  }
+  .item-div {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    position: relative;
+    background: none;
+    display: flex;
+    flex-direction: row;
+  }
+  .item-left {
+    width: 30%;
+    background: none;
+    margin: 0px 5px 0px 0px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .item-right {
+    width: 70%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+    background: none;
+    margin: 0px 0px 0px 5px;
+    border-radius: 10px;
+    padding: 20px;
+    height: 730px;
+    display: flex;
+    flex-direction: column;
+  }
+  .home-top {
+    position: fixed;
+    width: 90%;
+    height: 50px;
+    left: 5%;
+    top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: white;
+  }
+  .profile-icon p {
+    color: black;
+    opacity: 70%;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 0px;
+    margin-top: 5px;
+    width: fit-content;
+    background-color: none;
+}
+
+  .top-buttons-left {
+    position: absolute;
+    width: 60%;
+    height: 50px;
+    margin-left: 150px;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    background-color: none;
+    overflow-x: scroll;
+}
+}
+.history-div::-webkit-scrollbar {
+  display: none;
+}
 * {
     box-sizing: border-box;
   }
@@ -159,42 +511,11 @@
     font-weight: 600;
     margin-bottom: 10px;
   }
-  .item-div {
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 70px;
-    margin-bottom: 20px;
-    position: relative;
-    background: none;
-    display: flex;
-    flex-direction: row;
-  }
-  .item-left {
-    width: 30%;
-    background: none;
-    margin: 0px 5px 0px 0px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-  }
+  
   .item-left::-webkit-scrollbar {
     display: none;
   }
-  .dialogue-block {
-    width: 100%;
-    height: 100px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-    border-top: 1px solid #D9D9D9;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    cursor: pointer;
-    padding: 0;
-    border-radius: 5px;
-  }
+  
   .dialogue-block:hover {
     background: #D9D9D9;
   }
@@ -208,7 +529,6 @@
     background: rgba(195, 222, 169, 1);
     border: none;
     border-radius: 30px;
-    margin-right: 2%;
 }
 .owner-btn {
   width: 49%;;
@@ -221,13 +541,7 @@
     background: rgba(205, 208, 220, 1);
     border: none;
 }
-  .buyer-owner-select {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 25px;
-  }
+  
   .dialogue-email {
     font-family: sans-serif;
     font-size: 12px;
@@ -273,71 +587,16 @@
     /* position: relative; */
     /* 1:1 Aspect Ratio */
   }
-  .item-right {
-    width: 70%;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-    background: none;
-    margin: 0px 0px 0px 5px;
-    border-radius: 10px;
-    padding: 20px;
-    height: 730px;
-    display: flex;
-    flex-direction: column;
-  }
-  .search {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    height: 30px;
-    width: 90%;
-    border-radius: 5px;
-    font-family: sans-serif;
-    font-size: 14px;
-    color: black;
-    background: none;
-    border: 1px solid #CDD1DC;
-    padding-left: 10px;
-    opacity: 1;
-    position: relative;
-    overflow: hidden;
-    margin-right: 10px;
-}
-.send {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  height: 40px;
-  width: 90%;
-  border-radius: 5px 0px 0px 5px;
-  font-family: sans-serif;
-  font-size: 14px;
-  color: black;
-  background: none;
-  border: 1px solid #CDD1DC;
-  padding-left: 10px;
-  opacity: 1;
-  position: relative;
-  overflow: hidden;
-  margin-right: 0px;
-}
+  
+  
+
 .search::placeholder {
     color: #C1C7DE;
 }
 .send::placeholder {
   color: #C1C7DE;
 }
-.button-option {
-    height: 40px;
-    width: 10%;
-    background: #F4EFBA;
-    color: #373737;
-    text-align: center;
-    border-radius: 0px 5px 5px 0px;
-    padding-left: 10px;
-    border: 1px solid #CDD1DC;
-    font-family: sans-serif;
-    font-size: 20px;
-    font-style: bold;
-    cursor: pointer;
-}
+
 .countdown-div {
     width: 100%;
     height: 5%;
@@ -354,7 +613,8 @@
 }
 .latest-price-div {
     width: 100%;
-    height: 5%;
+    height: fit-content;
+    background: white;
     display: flex;
     flex-direction: row;
 }
@@ -370,17 +630,7 @@
     border-radius: 5px;
     margin-right: 10px;
 }
-.price-btn-deny {
-    width: 80px;
-    height: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: sans-serif;
-    border: 2px solid #373737;
-    color: #373737;
-    border-radius: 5px;
-    background: none;
-}
+
 .latest-price-txt {
     width: 80%;
     height: 100%;
@@ -392,24 +642,8 @@
     font-size: 14px;
     font-weight: 400;
 }
-.latest-price-interaction {
-    width: 20%;
-    height: 100%;
-    background: none;
-    display: flex;
-    flex-direction: row;
-}
-  .history-div {
-      width: 100%;
-      height: 90%;
-      background: none;
-      display: flex;
-      flex-direction: column-reverse;
-      overflow-y: scroll;
-  }
-  .history-div::-webkit-scrollbar {
-      display: none;
-  }
+
+  
   .history-block {
     width: 100%;
     height: fit-content;
@@ -500,20 +734,7 @@
     margin-top: 15px;
     background: none;
 }
-.top-buttons-left {
-    position: absolute;
-    width: 60%;
-    height: 50px;
-    margin-left: 150px;
-    top: 0px;
-    padding-left: 0px;
-    padding-top: 0px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-    background-color: none;
-    overflow-x: scroll;
-}
+
 .top-buttons-left::-webkit-scrollbar {
     display: none;
 }
@@ -571,16 +792,7 @@
   background-color: none;
   cursor: pointer;
 }
-.profile-icon p {
-    color: black;
-    opacity: 70%;
-    font-size: 15px;
-    padding-left: 5px;
-    padding-top: 0px;
-    margin-top: 5px;
-    width: fit-content;
-    background-color: none;
-}
+
 .search-div {
     width: 90%;
     left: 5%;
@@ -704,17 +916,7 @@
     display: flex;
     flex-direction: column;
 }
-.home-top {
-  position: fixed;
-  width: 90%;
-  height: 50px;
-  left: 5%;
-  top: 0px;
-  margin-left: 0px;
-  padding-left: 0px;
-  padding-top: 0px;
-  background: white;
-}
+
   .content {
       width: 390px;
       height: 100px;

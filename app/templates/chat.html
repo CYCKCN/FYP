@@ -18,8 +18,14 @@
         <div class="item-div">
             <div class="item-left">
                 <div class="buyer-owner-select">
-                    <button class="buyer-btn" name="type" value="buyer">Buyer</button>
+                    
+                    {% if selected_type == "owner" %}
+                    <button class="owner-btn" style="margin-right: 2%;" name="type" value="buyer">Buyer</button>
+                    <button class="buyer-btn" name="type" value="owner">Owner</button>
+                    {% else %}
+                    <button class="buyer-btn" style="margin-right: 2%;" name="type" value="buyer">Buyer</button>
                     <button class="owner-btn" name="type" value="owner">Owner</button>
+                    {% endif %}
                 </div>
                 
                 {% for bargain, item in infoList %}
@@ -153,10 +159,10 @@
             <div class="top-buttons-right">
                 <button class="give-item" name="Create" value="Create-item">Give</button>
                 <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                    <span class="material-symbols-outlined" style="font-size: 34px;">
+                    <p>{{userName}}</p>
+                    <span class="material-symbols-outlined account-icon" style="font-size: 34px;">
                         account_circle
                     </span>
-                    <p>{{userName}}</p>
                 </button>
             </div>
         </div>

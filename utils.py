@@ -12,7 +12,7 @@ import random
 from functools import wraps
 from wtforms.validators import InputRequired, Email, Length, Regexp
 from flask import Blueprint, request, session, redirect, render_template, url_for
-from google.cloud import exceptions, ndb, storage
+# from google.cloud import exceptions, ndb, storage
 
 time = ["0800", "0815", "0830", "0845", "0900", "0915", "0930", "0945", "1000", "1015", "1030", "1045", \
         "1100", "1115", "1130", "1145", "1200", "1215", "1230", "1245", "1300", "1315", "1330", "1345", \
@@ -34,10 +34,10 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 GOOGLE_CLIENT_ID = "332552845298-u5ejfour55akd8q2d73i2be5odrmah07.apps.googleusercontent.com"
 client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
 
-ds_client = ndb.Client()
-gcs_client = storage.Client()
-_, PROJECT_ID = google.auth.default()
-BUCKET = '%s.appspot.com' % PROJECT_ID
+# ds_client = ndb.Client()
+# gcs_client = storage.Client()
+# _, PROJECT_ID = google.auth.default()
+# BUCKET = '%s.appspot.com' % PROJECT_ID
 
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
