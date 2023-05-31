@@ -31,34 +31,10 @@
             </div>
         </div>
 
-        <!-- <div class="home-top">
-            <div class="top-logo">
-                <img src="/static/data/ReUST-logo.jpeg" height="50px" />
-                <p class="logo-font">LIFE2</p>
+
+        <!-- <div class="search-div"> -->
+            <div class="blank">
             </div>
-            <div class="top-buttons-left">
-                {% for c in itemCategories %}
-                <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
-                {% endfor %}
-                <button class="individual-button" type="submit" name="category" value="All">All categories</button>
-            </div>
-            {% if userStatus == True %}
-            <div class="top-buttons-right">
-                <button class="give-item" name="Create" value="Create-item">Give</button>
-                <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                    <span class="material-symbols-outlined" style="font-size: 34px;">
-                        account_circle
-                    </span>
-                    <p>{{userName}}</p>
-                </button>
-
-            </div>
-            {% endif %}
-        </div> -->
-
-
-        <div class="search-div">
-
             <div class="home-top">
                 <button class="top-logo" name="Home" value="Home">
                     <img src="/static/data/ReUST-logo.jpeg" height="50px" />
@@ -69,12 +45,6 @@
                     <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
                     {% endfor %}
                     <button class="individual-button" type="submit" name="category" value="All">All categories</button>
-                    <!-- <button type="button" class="collapsible">
-                        <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
-                            tune
-                        </span>
-                        <p>Filtering...</p>
-                    </button> -->
                 </div>
                 {% if userStatus == True %}
                     <div class="top-buttons-right">
@@ -85,10 +55,11 @@
                             </span>
                         </button>
                         <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                            <!-- <span class="material-symbols-outlined" style="font-size: 34px;">
-                                account_circle
-                            </span> -->
                             <p>{{userName}}</p>
+                            <span class="material-symbols-outlined account-icon" style="font-size: 34px;">
+                                account_circle
+                            </span>
+                            
                         </button>
                     </div>
                 {% endif %}
@@ -119,9 +90,9 @@
                         {% endif %}
                     {% endfor %}
                     {% if selected_section == "Free" %}
-                        <button class="status-btn-all" name="section-btn" value="Free"> Free</button>
+                        <button class="status-btn-all" name="section-btn" value="Free">Free</button>
                     {% else %}
-                        <button class="status-btn" name="section-btn" value="Free"> Free</button>
+                        <button class="status-btn" name="section-btn" value="Free">Free</button>
                     {% endif %}
                 </div>
             </div>

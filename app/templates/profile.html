@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -36,9 +37,9 @@
                     </span>
                 </button>
                 <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                    <!-- <span class="material-symbols-outlined" style="font-size: 34px;">
+                    <span class="material-symbols-outlined account-icon" style="font-size: 34px;">
                         account_circle
-                    </span> -->
+                    </span>
                     <p>{{userName}}</p>
                 </button>
             </div>
@@ -46,8 +47,6 @@
 
         <div class="item-div">
             <div class="item-left">
-
-                
                 {% if section == "My Item" %}
                 <button class="section-btn" type="submit" id="bargain" name="section" value="My Reserved Item">
                     My Reserved Items

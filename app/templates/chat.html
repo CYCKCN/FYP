@@ -18,13 +18,14 @@
         <div class="item-div">
             <div class="item-left">
                 <div class="buyer-owner-select">
-                    {% if selected_type == "buyer" %}
-                    <button class="buyer-btn" name="type" value="buyer">Buyer</button>
-                    <button class="owner-btn" name="type" value="owner">Owner</button>
+                    
+                    {% if selected_type == "owner" %}
+                    <button class="owner-btn" style="margin-right: 2%;" name="type" value="buyer">Items of interest</button>
+                    <button class="buyer-btn" name="type" value="owner">My items on sale</button>
                     {% else %}
-                    <button class="owner-btn" name="type" value="buyer">Buyer</button>
-                    <button class="buyer-btn" name="type" value="owner">Owner</button>
-                    {% endif %}                    
+                    <button class="buyer-btn" style="margin-right: 2%;" name="type" value="buyer">Items of interest</button>
+                    <button class="owner-btn" name="type" value="owner">My items on sale</button>
+                    {% endif %}
                 </div>
                 
                 {% for bargain, item in infoList %}
@@ -34,6 +35,7 @@
                     <div class="dialogue-info">
                             <p class="dialogue-email">{{item.itemOwner}}</p>
                             <p class="dialogue-item">{{item.itemName}}</p>
+                            <p class="dialogue-bid">Latest bid at: <span style="font-weight: 600;">HK${{bargain.bargainPrice}}</span></p>
                     </div>
                     <img src="/view/{{item.itemImg}}" class="dialogue-img"/>
                 </button>
@@ -42,6 +44,7 @@
                     <div class="dialogue-info">
                         <p class="dialogue-email">{{bargain.bargainFrom}}</p>
                         <p class="dialogue-item">{{item.itemName}}</p>
+                        <p class="dialogue-bid">Latest bid at: <span style="font-weight: 600;">HK${{bargain.bargainPrice}}</span></p>
                     </div>
                     <img src="/view/{{item.itemImg}}" class="dialogue-img"/>
                 </button>
@@ -158,10 +161,10 @@
             <div class="top-buttons-right">
                 <button class="give-item" name="Create" value="Create-item">Give</button>
                 <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                    <span class="material-symbols-outlined" style="font-size: 34px;">
+                    <p>{{userName}}</p>
+                    <span class="material-symbols-outlined account-icon" style="font-size: 34px;">
                         account_circle
                     </span>
-                    <p>{{userName}}</p>
                 </button>
             </div>
         </div>

@@ -1,3 +1,131 @@
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    * {
+        box-sizing: border-box;
+      }
+        body{
+          overflow-y: hidden;
+          overflow-x: hidden;
+          
+        }
+        .account-icon {
+          visibility: visible;
+        }
+        .profile-icon p {
+          /* visibility: hidden; */
+          display: none;
+        }
+        .top-buttons-left {
+          /* visibility: hidden; */
+          display: none;
+        }
+        .item-div {
+          width: 90%;
+          margin-left: 5%;
+          margin-top: 70px;
+          margin-bottom: 20px;
+          position: relative;
+          background: none;
+          display: flex;
+          flex-direction: column;
+        }
+        .item-left {
+          width: 100%;
+          height: fit-content;
+          background: none;
+          margin: 0px 0px 5px 0px;
+          box-shadow: 0px 18px 34px 0px rgba(5, 16, 55, 0.15);
+          border-radius: 10px;
+          padding: 20px;
+          z-index: 9;
+        }
+        .item-right {
+          width: 100%;
+          height: 450px;
+          padding-bottom: 50px;
+          overflow-y: scroll;
+          background: none;
+          margin: 15px 0px 0px 0px;
+          box-shadow: 0px 18px 34px 0px rgba(5, 16, 55, 0.15);
+          border-radius: 10px;
+          padding-left: 20px;
+          padding-top: 20px;
+          padding-right: 20px;
+        }
+        input:checked + .slider:before {
+          -webkit-transform: translateX(19px);
+          -ms-transform: translateX(19px);
+          transform: translateX(19px);
+        }
+}
+
+@media only screen and (min-device-width: 600px) {
+  .profile-icon p {
+    color: black;
+    opacity: 70%;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-top: 0px;
+    margin-top: 5px;
+    width: fit-content;
+    background-color: none;
+  }
+  .top-buttons-left {
+    position: absolute;
+    width: 60%;
+    height: 50px;
+    margin-left: 150px;
+    top: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    background-color: none;
+    overflow-x: scroll;
+}
+.top-buttons-left::-webkit-scrollbar {
+    display: none;
+}
+  .item-div {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    position: relative;
+    background: none;
+    display: flex;
+    flex-direction: row;
+  } 
+  .account-icon {
+    visibility: hidden;
+    /* display: none; */
+  }
+  
+  .item-left {
+    width: 50%;
+    height: fit-content;
+    background: none;
+    margin: 0px 5px 0px 0px;
+    box-shadow: 0px 18px 34px 0px rgba(5, 16, 55, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .item-right {
+    width: 50%;
+    background: none;
+    margin: 0px 0px 0px 5px;
+    box-shadow: 0px 18px 34px 0px rgba(5, 16, 55, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+}
 * {
     box-sizing: border-box;
   }
@@ -98,11 +226,7 @@
     box-shadow: 0 0 1px #1847ED;
   }
   
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
+  
   
   /* Rounded sliders */
   .slider.round {
@@ -167,25 +291,7 @@
     font-weight: 600;
     margin-bottom: 10px;
   }
-  .item-div {
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 70px;
-    margin-bottom: 20px;
-    position: relative;
-    background: none;
-    display: flex;
-    flex-direction: row;
-  }
-  .item-left {
-    width: 50%;
-    height: fit-content;
-    background: none;
-    margin: 0px 5px 0px 0px;
-    box-shadow: 0px 18px 34px 0px rgba(5, 16, 55, 0.15);
-    border-radius: 10px;
-    padding: 20px;
-  }
+  
   .upload-div {
     /* border: 1px solid rgba(115, 168, 172, 1); */
     /* border-style: dashed; */
@@ -232,14 +338,7 @@
     object-fit: cover;
     object-position: 0px 0px;
   }
-  .item-right {
-    width: 50%;
-    background: none;
-    margin: 0px 0px 0px 5px;
-    box-shadow: 0px 18px 34px 0px rgba(5, 16, 55, 0.15);
-    border-radius: 10px;
-    padding: 20px;
-  }
+  
   .top-logo {
     position: absolute;
     width: 10%;
@@ -263,23 +362,7 @@
     margin-top: 15px;
     background: none;
 }
-.top-buttons-left {
-    position: absolute;
-    width: 60%;
-    height: 50px;
-    margin-left: 150px;
-    top: 0px;
-    padding-left: 0px;
-    padding-top: 0px;
-    background: none;
-    display: flex;
-    flex-direction: row;
-    background-color: none;
-    overflow-x: scroll;
-}
-.top-buttons-left::-webkit-scrollbar {
-    display: none;
-}
+
 .top-buttons-right {
   position: absolute;
   width: fit-content;
@@ -334,16 +417,7 @@
   background-color: none;
   cursor: pointer;
 }
-.profile-icon p {
-    color: black;
-    opacity: 70%;
-    font-size: 15px;
-    padding-left: 5px;
-    padding-top: 0px;
-    margin-top: 5px;
-    width: fit-content;
-    background-color: none;
-}
+
 .search-div {
     width: 90%;
     left: 5%;

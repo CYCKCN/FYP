@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/item.css">
     <link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -15,43 +16,38 @@
         <div class="item-info-card">
             <img src="/view/{{item['itemImg']}}" class="item-img" />
 
-            <div class="item-static-info">
-                <p class="item-name">{{item["itemName"]}}</p>
-                <p class="item-price">HK${{item["itemPrice"]}}</p>
-                <div class="tag-div">
-                    <span class="material-symbols-outlined cate-icon" style="font-size: 24px;">
-                        category
-                        </span>
-                    <p class="item-cate-tag">{{item["itemCate"]}}</p>
-                    <p class="item-quality-tag">{{item["itemCond"]}}</p>
-                    
-                </div>
-                <p class="posted">Posted</p>
-                <p class="item-time-tag">{{item["itemTime"]}}</p>
-
-                <div class="location-div">
-                    <p class="posted">Meet up</p>
-                    <div class="item-location">
-                        <span class="material-symbols-outlined location-icon" style="font-size: 22px;">
-                            location_on
-                        </span>
-                        <p class="item-pickup-tag">{{item["itemPickUp"]}}</p>
+            <div class="item-scroll">
+                <div class="item-static-info">
+                    <p class="item-name">{{item["itemName"]}}</p>
+                    <p class="item-price">HK${{item["itemPrice"]}}</p>
+                    <div class="tag-div">
+                        <span class="material-symbols-outlined cate-icon" style="font-size: 24px;">
+                            category
+                            </span>
+                        <p class="item-cate-tag">{{item["itemCate"]}}</p>
+                        <p class="item-quality-tag">{{item["itemCond"]}}</p>
+                        
                     </div>
+                    <p class="posted">Posted</p>
+                    <p class="item-time-tag">{{item["itemTime"]}}</p>
+
+                    <div class="location-div">
+                        <p class="posted">Meet up</p>
+                        <div class="item-location">
+                            <span class="material-symbols-outlined location-icon" style="font-size: 22px;">
+                                location_on
+                            </span>
+                            <p class="item-pickup-tag">{{item["itemPickUp"]}}</p>
+                        </div>
+                    </div>
+                    <p class="posted">Description</p>
+                    <p class="item-info">{{item["itemInfo"]}}</p>
+
+                    {% if item["itemStatus"] == "Reserved" %}
+                    <p style="color: red; font-weight: 600;">RESERVED!!</p>
+                    {% endif %}
                 </div>
-                <p class="posted">Description</p>
-                <p class="item-info">{{item["itemInfo"]}}</p>
-
-                {% if item["itemStatus"] == "Reserved" %}
-                <p style="color: red; font-weight: 600;">RESERVED!!</p>
-                {% endif %}
-            </div>
-
-            <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-            <lottie-player src="/static/js/Animation2_25.json" background="transparent" speed="1" class="life2-anim"
-                loop autoplay></lottie-player> -->
-
-            <!-- <div class="user-div"> -->
-                
+                    
                 <div class="contact-div">
                     <div class="owner-div">
                         <span class="material-symbols-outlined" style="font-size: 30px; color: #373737; padding-top: 10px;">
@@ -68,12 +64,14 @@
                             delete
                         </span>
                     </button> -->
-                {% endif %}
+                    {% endif %}
                 </div>
+            </div>
                 
             <!-- </div> -->
         </div>
 
+        <div class="blank"></div>
         <div class="home-top">
             <button class="top-logo" name="Home" value="Home">
                 <img src="/static/data/ReUST-logo.jpeg" height="50px" />
@@ -84,28 +82,23 @@
                 <button class="individual-button" type="submit" name="category" value="{{c}}">{{c}}</button>
                 {% endfor %}
                 <button class="individual-button" type="submit" name="category" value="All">All categories</button>
-                <!-- <button type="button" class="collapsible">
-                    <span class="material-symbols-outlined filter-icon" style="font-size: 30px;">
-                        tune
-                    </span>
-                    <p>Filtering...</p>
-                </button> -->
             </div>
             {% if userStatus == True %}
-            <div class="top-buttons-right">
-                <button class="give-item" name="Create" value="Create-item">Give</button>
-                <button type="submit" name="Chat" value="Chat" class="chat-icon">
-                    <span class="material-symbols-outlined forum-icon" style="font-size: 30px;">
-                        forum
-                    </span>
-                </button>
-                <button class="profile-icon" type="submit" name="Profile" value="Profile">
-                    <!-- <span class="material-symbols-outlined" style="font-size: 34px;">
-                        account_circle
-                    </span> -->
-                    <p>{{userName}}</p>
-                </button>
-            </div>
+                <div class="top-buttons-right">
+                    <button class="give-item" name="Create" value="Create-item">Give</button>
+                    <button type="submit" name="Chat" value="Chat" class="chat-icon">
+                        <span class="material-symbols-outlined forum-icon" style="font-size: 30px;">
+                            forum
+                        </span>
+                    </button>
+                    <button class="profile-icon" type="submit" name="Profile" value="Profile">
+                        <p>{{userName}}</p>
+                        <span class="material-symbols-outlined account-icon" style="font-size: 30px;">
+                            account_circle
+                        </span>
+                        
+                    </button>
+                </div>
             {% endif %}
         </div>
         
@@ -114,7 +107,7 @@
             
             <i class="material-icons icon-search" style="font-size: 20px;">search</i>
             <div style="display: flex; flex-direction: row;">
-                <input class="search" type="search" name="search-keyword" placeholder="{{search}}" />
+                <input class="search" type="search" name="search-keyword" placeholder="Search the keyword here" />
                 <button class="button-option" type="submit" name="Apply" value="Apply">Search</button>
             </div>
             

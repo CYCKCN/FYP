@@ -3,10 +3,10 @@ from flask import Flask
 from flask import Blueprint, request, session, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
-from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, CONDITION, PRICERANGE, RequestForm, ItemForm, buttonCheck, ds_client, gcs_client, BUCKET
+from utils import User, allowed_file, UPLOAD_FOLDER, CATEGORY, CONDITION, PRICERANGE, RequestForm, ItemForm, buttonCheck#, ds_client, gcs_client, BUCKET
 from db import itemdb, requestdb, accountdb, chatdb, bargaindb
 
-from google.cloud import exceptions, ndb, storage
+# from google.cloud import exceptions, ndb, storage
 
 market = Blueprint('market',__name__)
 
